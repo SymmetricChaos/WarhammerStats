@@ -52,7 +52,10 @@ def set_melee_stats(D,unit):
 
 # Mutate some dictionary D to add the ranged vital stats of unit
 def set_ranged_stats(D,unit):
-    # Some units have no missile attack
+    # Some units have no missile attack so we set them all those stats to None
+    # (Pandas may actually take care of this automatically but we also want a
+    #  raw dictionary output as an option and this will avoid key errors when
+    #  iterating through it.)
     if unit["primary_missile_weapon"] == {}:
         D["ranged_base_damage"] = None
         D["ranged_ap_damage"] = None
@@ -65,6 +68,9 @@ def set_ranged_stats(D,unit):
         D["range"] = None
         D["shots_per_volley"] = None
         D["projectile_number"] = None
+        D["explosion_base_damage"] = None
+        D["explosion_ap_damage"] = None
+        D["explosion_radius"] = None
     else:
         # Most ranged weapon stats are tied to the projectile
         projectile = unit["primary_missile_weapon"]["projectile"]
@@ -80,7 +86,7 @@ def set_ranged_stats(D,unit):
         D["shots_per_volley"] = projectile["shots_per_volley"]
         D["projectile_number"] = projectile["projectile_number"]
         
-        # Some units have no explosion
+        # Some units have no explosion so those stats are set to None
         if projectile["explosion"] == None:
             D["explosion_base_damage"] = None
             D["explosion_ap_damage"] = None
