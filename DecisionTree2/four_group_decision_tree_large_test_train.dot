@@ -1,0 +1,25 @@
+digraph Tree {
+node [shape=box, style="filled, rounded", color="black", fontname=helvetica] ;
+edge [fontname=helvetica] ;
+0 [label="damage_mod_magic <= 12.5\ngini = 0.744\nsamples = 69\nvalue = [16, 21, 18, 14]\nclass = dwf", fillcolor="#47e5390f"] ;
+1 [label="ground_speed <= 31.5\ngini = 0.657\nsamples = 51\nvalue = [16, 21, 0, 14]\nclass = dwf", fillcolor="#47e53924"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="MP_cost <= 675.0\ngini = 0.153\nsamples = 12\nvalue = [11, 1, 0, 0]\nclass = brt", fillcolor="#e58139e8"] ;
+1 -> 2 ;
+3 [label="gini = 0.0\nsamples = 7\nvalue = [7, 0, 0, 0]\nclass = brt", fillcolor="#e58139ff"] ;
+2 -> 3 ;
+4 [label="gini = 0.32\nsamples = 5\nvalue = [4, 1, 0, 0]\nclass = brt", fillcolor="#e58139bf"] ;
+2 -> 4 ;
+5 [label="missile_ap_fraction <= 0.739\ngini = 0.592\nsamples = 39\nvalue = [5, 20, 0, 14]\nclass = dwf", fillcolor="#47e5393d"] ;
+1 -> 5 ;
+6 [label="ground_speed <= 41.0\ngini = 0.619\nsamples = 32\nvalue = [5, 13, 0, 14]\nclass = def", fillcolor="#d739e50d"] ;
+5 -> 6 ;
+7 [label="gini = 0.198\nsamples = 9\nvalue = [0, 1, 0, 8]\nclass = def", fillcolor="#d739e5df"] ;
+6 -> 7 ;
+8 [label="gini = 0.612\nsamples = 23\nvalue = [5, 12, 0, 6]\nclass = dwf", fillcolor="#47e5395a"] ;
+6 -> 8 ;
+9 [label="gini = 0.0\nsamples = 7\nvalue = [0, 7, 0, 0]\nclass = dwf", fillcolor="#47e539ff"] ;
+5 -> 9 ;
+10 [label="gini = 0.0\nsamples = 18\nvalue = [0, 0, 18, 0]\nclass = hef", fillcolor="#399de5ff"] ;
+0 -> 10 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+}
