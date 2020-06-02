@@ -7,30 +7,26 @@ from AnalysisFunctions import histoplot
     
 unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
 
-print(unitsDF['class'].unique())
-print(unitsDF['faction'].unique())
-print(unitsDF['caste'].unique())
-print(unitsDF['category'].unique())
 
-helfs = unitsDF.loc[(unitsDF['faction'] == 'hef') & (unitsDF['class'] != "com")]
-delfs = unitsDF.loc[(unitsDF['faction'] == 'def') & (unitsDF['class'] != "com")]
-welfs = unitsDF.loc[(unitsDF['faction'] == 'wef') & (unitsDF['class'] != "com")]
+helfs = unitsDF.loc[(unitsDF['faction_group'] == 'hef') & (unitsDF['caste'] != "Hero")]
+delfs = unitsDF.loc[(unitsDF['faction_group'] == 'def') & (unitsDF['caste'] != "Hero")]
+welfs = unitsDF.loc[(unitsDF['faction_group'] == 'wef') & (unitsDF['caste'] != "Hero")]
 
 
-histoplot(helfs['melee_D'],np.arange(0,110,5),np.arange(0,110,10),[13,6],
+histoplot(helfs['melee_defence'],np.arange(0,110,5),np.arange(0,110,10),[13,6],
           "High Elf melee_D\nNo Lords or Heroes")
 
-histoplot(delfs['melee_D'],np.arange(0,110,5),np.arange(0,110,10),[13,6],
+histoplot(delfs['melee_defence'],np.arange(0,110,5),np.arange(0,110,10),[13,6],
           "Dwarf Dmelee_D\nNo Lords or Heroes")
 
 
-histoplot(welfs['melee_D'],np.arange(0,110,5),np.arange(0,110,10),[13,6],
+histoplot(welfs['melee_defence'],np.arange(0,110,5),np.arange(0,110,10),[13,6],
           "Wood Elf melee_D\nNo Lords or Heroes")
 
 L = []
-for fac in unitsDF['faction'].unique():
+for fac in unitsDF['faction_group'].unique():
     if fac == 'hef' or fac == 'def' or fac == 'wef':
-        L.append(unitsDF.loc[unitsDF['faction'] == str(fac)]['melee_D'])
+        L.append(unitsDF.loc[unitsDF['faction_group'] == str(fac)]['melee_defence'])
 
 
 

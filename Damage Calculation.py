@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pickle
 
-units = pickle.load( open( "unitsDict.p", "rb" ) )
+units = pickle.load( open( "unitsDF.p", "rb" ) )
 
 def hit_prob(A,D):
     r = 35+A-D
@@ -20,31 +20,29 @@ def average_damage(armor,normal_damage,ap_damage,MA,MD):
     return ((normal_damage*(1-norma_res))+ap_damage)*hit
     
 
-def read_index(n):
-    for stat,val in units.items():
-        print("{:<15}: {}".format(stat,val[n]))
+test_MD = 32
 
-unit1 = units['key_name'].index("wh_main_chs_inf_chosen_1")
-unit2 = units['key_name'].index("wh_main_chs_inf_chosen_0")
-
-read_index(unit1)
-print("\n")
-read_index(unit2)
+unit1 = units.iloc[1034]
+unit2 = units.iloc[1035]
 
 
 U1 = []
 U2 = []
-for i in range(0,201):
-    U1.append(average_damage(i,units['damage'][unit1],units['ap_damage'][unit1],units['melee_A'][unit1],MD=32))
-    U2.append(average_damage(i,units['damage'][unit2],units['ap_damage'][unit2],units['melee_A'][unit2],MD=32))
+for i in range(0,101):
+    U1.append(average_damage(i,unit1['melee_base_damage'],
+                             unit1['melee_ap_damage'],
+                             unit1['melee_attack'],MD=test_MD))
+    U2.append(average_damage(i,unit2['melee_base_damage'],
+                             unit2['melee_ap_damage'],
+                             unit2['melee_attack'],MD=test_MD))
 
 plt.figure()
-plt.gcf().set_size_inches(12, 6)
+plt.gcf().set_size_inches(10, 8)
 plt.plot(U1)
 plt.plot(U2)
-plt.legend([units['name'][unit1],units['name'][unit2]])
+plt.legend([unit1['name'],unit2['name']])
 plt.ylabel("Average Damage")
 plt.xlabel("Armor")
-plt.xticks(np.arange(0,210,10))
-plt.title("Average Damage vs Unit with MD=32",size=20)
+plt.xticks(np.arange(0,110,10))
+plt.title(f"Average Damage vs Unit with MD={test_MD}",size=20)
 plt.grid()
