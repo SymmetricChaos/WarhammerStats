@@ -41,11 +41,11 @@ def get_spells(D):
 
 # Mutate some dictionary D to add the melee vital stats of unit
 def set_melee_stats(D,unit):
-    D["melee_base_damage"] = unit["primary_melee_weapon"]["base_damage"],
-    D["melee_ap_damage"] = unit["primary_melee_weapon"]["ap_damage"],
-    D["melee_total_damage"] = unit["primary_melee_weapon"]["damage"],
-    D["melee_ap_ratio"] = unit["primary_melee_weapon"]["ap_ratio"],
-    D["melee_bonus_v_large"] = unit["primary_melee_weapon"]["bonus_v_large"],
+    D["melee_base_damage"] = unit["primary_melee_weapon"]["base_damage"]
+    D["melee_ap_damage"] = unit["primary_melee_weapon"]["ap_damage"]
+    D["melee_total_damage"] = unit["primary_melee_weapon"]["damage"]
+    D["melee_ap_ratio"] = unit["primary_melee_weapon"]["ap_ratio"]
+    D["melee_bonus_v_large"] = unit["primary_melee_weapon"]["bonus_v_large"]
     D["melee_bonus_v_infantry"] = unit["primary_melee_weapon"]["bonus_v_infantry"]
 
 
