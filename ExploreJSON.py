@@ -37,7 +37,7 @@ def get_faction_group(D):
     return D["key"].split("_")[2]
     
 
-unit = J[15]
+unit = J[57]
 show_dict(unit)
 #show_primary_melee_weapon(unit)
 #show_primary_missile_weapon(unit)
