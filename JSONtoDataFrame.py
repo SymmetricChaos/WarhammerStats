@@ -1,67 +1,50 @@
 import json
+import pandas as pd 
+import pickle
 
 with open('unitsdata.json', encoding="utf8") as f:
   J = json.load(f)
-
-def show_dict(D):
-    for key,val in D.items():
-        print(f"{key}: {val}\n")
-        
-def show_primary_melee_weapon(D):
-    pmw = D["primary_melee_weapon"]
-    show_dict(pmw)
-        
-def show_primary_missile_weapon(D):
-    pmw = D["primary_missile_weapon"]
-    print(f"ammo: {pmw['ammo']}")
-    show_dict(pmw["projectile"])
-
-def show_secondary_missile_weapon(D):
-    smw = D["secondary_missile_weapon"]
-    print(f"ammo: {smw['ammo']}")
-    show_dict(smw["projectile"])
-        
-def show_attributes(D):
+  
+# Make a somewhat cleaner object to store
+# We can expand later if we want
+  
+def get_attributes(D):
     att = D["attributes"]
-    for line in att:
-        print(line["key"])
-        print()
-        
-def show_factions(D):
+    return [line["key"] for line in att]
+
+def get_abilities(D):
+    att = D["abilities"]
+    return [line["name"] for line in att]
+
+def get_factions(D):
     fac = D["factions"]
-    for line in fac:
-        print(line["screen_name"])
+    return [line["screen_name"] for line in fac]
 
 def get_faction_group(D):
     return D["key"].split("_")[2]
-    
 
-#unit = J[15]
-#show_dict(unit)
-#show_primary_melee_weapon(unit)
-#show_primary_missile_weapon(unit)
-#show_attributes(unit)
-#show_factions(unit)
+units = []
 
-
-#castes = set([])
-#categories = set([])
-#special_categories = set([])
-#faction_groups = set([])
-#
-#for unit in J:
-#    castes.add(unit["caste"])
-#    categories.add(unit["category"])
-#    special_categories.add(unit["special_category"])
-#    faction_groups.add(get_faction_group(unit))
-#    
-#print(castes)
-#print(categories)
-#print(special_categories)
-#print(faction_groups)
-        
-        
 for unit in J:
-    if "neu" in unit["key"]:
-        print(unit["key"])
-        
+    D = {"name": unit["name"],
+         "health": unit["health"],
+         "multiplayer_cost": unit["multiplayer_cost"],
+         "mass": unit["mass"],
+         "caste": unit["caste"],
+         "category": unit["category"],
+         "special_category": unit["special_category"],
+         "entity_size": unit["entity_size"],
+         "height": unit["height"],
+         "radius": unit["radius"],
+         "attributes": get_attributes(unit),
+         "abilities": get_abilities(unit),
+         "factions": get_factions(unit),
+         "faction_group": get_faction_group(unit)
+         
+         }
+    units.append(D)
+
+unitsDF = pd.DataFrame(units)
+pickle.dump(unitsDF, open( "unitsDF.p", "wb" ) )
+pickle.dump(units, open( "unitsDict.p", "wb" ) )
+unitsDF.to_csv("units.csv")
