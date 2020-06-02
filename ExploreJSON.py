@@ -13,7 +13,7 @@ def show_primary_melee_weapon(D):
         
 def show_primary_missile_weapon(D):
     pmw = D["primary_missile_weapon"]
-    print(f"ammo: {pmw['ammo']}")
+#    print(f"ammo: {pmw['ammo']}")
     show_dict(pmw["projectile"])
 
 def show_secondary_missile_weapon(D):
@@ -35,10 +35,14 @@ def get_factions(D):
 
 def get_faction_group(D):
     return D["key"].split("_")[2]
+
+def get_spells(D):
+    spl = D["spells"]
+    return [line["name"] for line in spl]
     
 
-unit = J[57]
-show_dict(unit)
+#unit = J[5]
+#show_dict(unit)
 #show_primary_melee_weapon(unit)
 #show_primary_missile_weapon(unit)
 #print(get_attributes(unit))
@@ -64,3 +68,7 @@ show_dict(unit)
 #print(faction_groups)
         
         
+for unit in J:
+    if "Mortar" in unit["name"]:
+        show_primary_missile_weapon(unit)
+        break
