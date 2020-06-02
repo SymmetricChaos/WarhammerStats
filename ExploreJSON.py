@@ -70,5 +70,5 @@ def get_spells(D):
         
 for unit in J:
     if "Mortar" in unit["name"]:
-        show_primary_missile_weapon(unit)
+        show_dict(unit)
         break

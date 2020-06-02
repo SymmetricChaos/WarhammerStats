@@ -123,6 +123,7 @@ for unit in J:
          "damage_mod_physical": unit["damage_mod_physical"],
          "damage_mod_missile": unit["damage_mod_missile"],
          "damage_mod_all": unit["damage_mod_all"],
+         "speed": unit["speed"], # <- this should be speed in the UI
          
          # Simple non-user facing stats
          "health_per_entity": unit["health_per_entity"],
@@ -134,6 +135,11 @@ for unit in J:
          "height": unit["height"],
          "radius": unit["radius"],
          "key": unit["key"],
+         "speed_ground": unit["run_speed"],
+         "speed_flying": unit["fly_speed"],
+         "charge_speed": unit["charge_speed"],
+         "charge_speed_flying": unit["flying_charge_speed"],
+         "ground_stat_effect_group": unit["ground_stat_effect_group"]["group_name"],
 
          #Complex stats
          "factions": get_factions(unit),
