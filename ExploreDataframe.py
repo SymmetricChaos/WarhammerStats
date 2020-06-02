@@ -21,7 +21,7 @@ def show_categorical_stats():
 
 if __name__ == '__main__':
     
-    print("Show A random Unit's Stats")
+    print("Show A random Unit's Stats\n")
     random_unit()
-    print("\n\n\nShow the various categories a unit can fall into")
+    print("\n\n\n\nShow the various categories a unit can fall into\n")
     show_categorical_stats()

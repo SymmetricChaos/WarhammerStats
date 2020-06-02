@@ -47,7 +47,7 @@ def set_melee_stats(D,unit):
     D["melee_ap_ratio"] = unit["primary_melee_weapon"]["ap_ratio"]
     D["melee_bonus_v_large"] = unit["primary_melee_weapon"]["bonus_v_large"]
     D["melee_bonus_v_infantry"] = unit["primary_melee_weapon"]["bonus_v_infantry"]
-
+    D["melee_attack_interval"] = unit["primary_melee_weapon"]["melee_attack_interval"]
 
 
 # Mutate some dictionary D to add the ranged vital stats of unit
