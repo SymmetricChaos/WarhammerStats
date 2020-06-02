@@ -37,6 +37,8 @@ def get_spells(D):
     spl = D["spells"]
     return [line["name"] for line in spl]
 
+
+
 # Mutate some dictionary D to add the melee vital stats of unit
 def set_melee_stats(D,unit):
     D["melee_base_damage"] = unit["primary_melee_weapon"]["base_damage"],
@@ -45,6 +47,8 @@ def set_melee_stats(D,unit):
     D["melee_ap_ratio"] = unit["primary_melee_weapon"]["ap_ratio"],
     D["melee_bonus_v_large"] = unit["primary_melee_weapon"]["bonus_v_large"],
     D["melee_bonus_v_infantry"] = unit["primary_melee_weapon"]["bonus_v_infantry"]
+
+
 
 # Mutate some dictionary D to add the ranged vital stats of unit
 def set_ranged_stats(D,unit):
@@ -93,6 +97,7 @@ def set_ranged_stats(D,unit):
 
 
 
+
 units = []
 
 for unit in J:
@@ -138,7 +143,12 @@ for unit in J:
 
     units.append(D)
 
+
+
+
+# Convert to a pandas DataFrame
 unitsDF = pd.DataFrame(units)
+# Save as a DataFrame, as a dictionary, and as a csv file
 pickle.dump(unitsDF, open( "unitsDF.p", "wb" ) )
 pickle.dump(units, open( "unitsDict.p", "wb" ) )
 unitsDF.to_csv("units.csv")
