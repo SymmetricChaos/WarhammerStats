@@ -2,6 +2,7 @@ import numpy as np
 import pickle
 import pandas as pd
 pd.set_option('display.max_rows', 50)
+pd.set_option('display.max_columns', 60)
 unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
 
 # I believe this is correct based on the description by the developers
@@ -38,6 +39,14 @@ def average_damage_with_armor_ratio(total_damage,ap_ratio,armor):
 ## DataFrame where each row is a unit description like the one created by
 ## JSONtoDataFrame
 
+def random_unit(units):
+    # randint returns a list, the comma just skips having to extract the only
+    # element of the list
+    r, = np.random.randint(0,1365,1)
+    return units.iloc[r]
+
+
+
 # Attributes, abilitiesm and spells are all stored as lists this extracts all
 # the unique attributes, abilities, or spells in a given units dataframe
 def all_attributes(units):
@@ -60,6 +69,7 @@ def all_spells(units):
         for spell in unit_spells:
             spells.add(spell)
     return sorted(spells)
+
 
 
 # Version of a unitsDF that has no single entities
@@ -95,13 +105,6 @@ def all_with_attribute(units,attribute):
 
 
 
-def random_unit(units):
-    # randint returns a list, the comma just skips having to extract the only
-    # element of the list
-    r, = np.random.randint(0,1365,1)
-    return units.iloc[r]
-
-
 
 
 if __name__ == '__main__':
@@ -109,7 +112,11 @@ if __name__ == '__main__':
 #    print(100/average_damage_with_armor_ratio(100,.7,200))
 #    print(no_single_entity(unitsDF))
     
-    print(all_with_ability(unitsDF,"Foe-Seeker"))
+#    print(all_with_ability(unitsDF,"Foe-Seeker"))
     
 #    print(all_with_attribute(unitsDF,"strider"))
-    
+    no_ap_ratio = pd.isna(unitsDF["melee_ap_ratio"])
+    print(no_ap_ratio)
+    what_are_these = unitsDF[no_ap_ratio]
+#    print(what_are_these.iloc[0]['melee_attack'])
+    print(what_are_these)
