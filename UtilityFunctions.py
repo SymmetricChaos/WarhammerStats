@@ -1,4 +1,8 @@
 import numpy as np
+import pickle
+import pandas as pd
+pd.set_option('display.max_rows', 50)
+unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
 
 # I believe this is correct based on the description by the developers
 # "Armour = Max damage reduction percentage. Min is always 50% of armour value.
@@ -30,10 +34,21 @@ def average_damage_with_armor_ratio(total_damage,ap_ratio,armor):
     base_damage = total_damage-ap_damage
     return average_damage_with_armor_raw(base_damage,ap_damage,armor)
 
+# Version of a unitsDF that has no single entities
+def no_single_entity(units):
+    is_not_single_entity = units["unit_size"] != 1
+    return unitsDF[is_not_single_entity]
 
+# Version of a unitsDF that has no special units. Meaning these kinds are removed:
+# 'blessed_spawning', 'crafted', 'elector_counts', 'mistwalker', 'renown', 'tech_lab'
+def no_special_category(units):
+    is_not_special_category = units["special_category"] == ""
+    return unitsDF[is_not_special_category]
 
 
 
 if __name__ == '__main__':
     
     print(100/average_damage_with_armor_ratio(100,.7,200))
+    print(no_single_entity(unitsDF))
+    print(no_special_category(unitsDF))

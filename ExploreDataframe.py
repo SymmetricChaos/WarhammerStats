@@ -22,8 +22,8 @@ def show_categorical_stats():
 if __name__ == '__main__':
 
     
-    print(unitsDF.iloc[0]['melee_attack'])
+#    print(unitsDF.iloc[0]['melee_attack'])
 #    print("Show A random Unit's Stats\n")
 #    random_unit()
-#    print("\n\n\n\nShow the various categories a unit can fall into\n")
-#    show_categorical_stats()
+    print("\n\n\n\nShow the various categories a unit can fall into\n")
+    show_categorical_stats()
