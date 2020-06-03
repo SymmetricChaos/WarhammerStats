@@ -41,14 +41,16 @@ def get_spells(D):
 
 # Mutate some dictionary D to add the melee vital stats of unit
 def set_melee_stats(D,unit):
-    D["melee_base_damage"] = unit["primary_melee_weapon"]["base_damage"]
-    D["melee_ap_damage"] = unit["primary_melee_weapon"]["ap_damage"]
-    D["melee_total_damage"] = unit["primary_melee_weapon"]["damage"]
-    D["melee_ap_ratio"] = unit["primary_melee_weapon"]["ap_ratio"]
-    D["melee_bonus_v_large"] = unit["primary_melee_weapon"]["bonus_v_large"]
-    D["melee_bonus_v_infantry"] = unit["primary_melee_weapon"]["bonus_v_infantry"]
-    D["melee_attack_interval"] = unit["primary_melee_weapon"]["melee_attack_interval"]
-
+    weapon = unit["primary_melee_weapon"]
+    D["melee_base_damage"] = weapon["base_damage"]
+    D["melee_ap_damage"] = weapon["ap_damage"]
+    D["melee_total_damage"] = weapon["damage"]
+    D["melee_ap_ratio"] = weapon["ap_ratio"]
+    D["melee_bonus_v_large"] = weapon["bonus_v_large"]
+    D["melee_bonus_v_infantry"] = weapon["bonus_v_infantry"]
+    D["melee_attack_interval"] = weapon["melee_attack_interval"]
+    D["melee_is_magical"] = weapon["is_magical"]
+    D["melee_is_flaming"] = weapon["ignition_amount"] # <- renamed to player facing name
 
 # Mutate some dictionary D to add the ranged vital stats of unit
 def set_ranged_stats(D,unit):
@@ -71,6 +73,8 @@ def set_ranged_stats(D,unit):
         D["explosion_base_damage"] = None
         D["explosion_ap_damage"] = None
         D["explosion_radius"] = None
+        D["ranged_is_magical"] = None
+        D["ranged_is_flaming"] = None
     else:
         # Most ranged weapon stats are tied to the projectile
         projectile = unit["primary_missile_weapon"]["projectile"]
@@ -85,16 +89,21 @@ def set_ranged_stats(D,unit):
         D["range"] = projectile["range"]
         D["shots_per_volley"] = projectile["shots_per_volley"]
         D["projectile_number"] = projectile["projectile_number"]
+        D["ranged_is_magical"] = projectile["is_magical"]
+        D["ranged_is_flaming"] = projectile["ignition_amount"]
         
         # Some units have no explosion so those stats are set to None
         if projectile["explosion"] == None:
             D["explosion_base_damage"] = None
             D["explosion_ap_damage"] = None
             D["explosion_radius"] = None
+            D["explosion_is_magical"] = None
         else:
             D["explosion_base_damage"] = projectile["explosion"]["base_damage"]
             D["explosion_ap_damage"] = projectile["explosion"]["ap_damage"]
             D["explosion_radius"] = projectile["explosion"]["detonation_radius"]
+            D["explosion_is_magical"] = projectile["explosion"]["is_magical"]
+            D["explosion_is_flaming"] = projectile["explosion"]["ignition_amount"]
         
         # Need to validate meaning of ammo count
         # Used to be total volleys but now user interface shows total shots
@@ -118,7 +127,7 @@ for unit in J:
          "melee_attack": unit["melee_attack"],
          "melee_defence": unit["melee_defence"],
          "is_large": unit["is_large"],
-         "parry_chance": unit["parry_chance"],
+         "missile_block_chance": unit["parry_chance"], # <- renamed to common name
          "unit_size": unit["unit_size"], # <- what matters for BvL or BvI
          "damage_mod_flame": unit["damage_mod_flame"],
          "damage_mod_magic": unit["damage_mod_magic"],

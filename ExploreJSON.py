@@ -13,7 +13,7 @@ def show_primary_melee_weapon(D):
         
 def show_primary_missile_weapon(D):
     pmw = D["primary_missile_weapon"]
-#    print(f"ammo: {pmw['ammo']}")
+    print(f"ammo: {pmw['ammo']}")
     show_dict(pmw["projectile"])
 
 def show_secondary_missile_weapon(D):
@@ -69,6 +69,7 @@ def get_spells(D):
         
         
 for unit in J:
-    if "Mortar" in unit["name"]:
-        show_dict(unit)
+    if "Luthor Harkon" in unit["name"]:
+        for i in unit["primary_missile_weapon"]["phase"].items():
+            print(i)
         break

@@ -110,13 +110,10 @@ def all_with_attribute(units,attribute):
 if __name__ == '__main__':
     
 #    print(100/average_damage_with_armor_ratio(100,.7,200))
-#    print(no_single_entity(unitsDF))
+    print(no_single_entity(unitsDF))
     
 #    print(all_with_ability(unitsDF,"Foe-Seeker"))
     
 #    print(all_with_attribute(unitsDF,"strider"))
-    no_ap_ratio = pd.isna(unitsDF["melee_ap_ratio"])
-    print(no_ap_ratio)
-    what_are_these = unitsDF[no_ap_ratio]
-#    print(what_are_these.iloc[0]['melee_attack'])
-    print(what_are_these)
+
+    
