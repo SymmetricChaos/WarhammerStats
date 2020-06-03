@@ -107,6 +107,8 @@ def set_ranged_stats(D,unit):
 units = []
 
 for unit in J:
+    if "TEST" in unit["name"]:
+        continue
     D = {# Simple user facing stats
          "name": unit["name"],
          "health": unit["health"],
