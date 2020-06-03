@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pickle
 
-units = pickle.load( open( "unitsDict.p", "rb" ) )
+units = pickle.load( open( "unitsDF.p", "rb" ) )
 
 def histoplot(L,bins,x_ticks,size=[13,6],title=""):
     
@@ -22,32 +22,26 @@ def histoplot(L,bins,x_ticks,size=[13,6],title=""):
     plt.show()
 
 
-histoplot(units['armor'],np.arange(0,210,10),[i*10 for i in range(0,21)],[13,6],
+histoplot(units['armour'],np.arange(0,210,10),[i*10 for i in range(0,21)],[13,6],
           "Armor Distribution\nWith 20th, 50th, 80th Percentiles")
 
 
-histoplot(units['melee_A'],np.arange(0,105,5),[i*5 for i in range(0,21)],[13,6],
+histoplot(units['melee_attack'],np.arange(0,105,5),[i*5 for i in range(0,21)],[13,6],
           "Melee Attack Distribution\nWith 20th, 50th, 80th Percentiles")
 
-histoplot(units['melee_D'],np.arange(0,105,5),[i*5 for i in range(0,21)],[13,6],
+histoplot(units['melee_defence'],np.arange(0,105,5),[i*5 for i in range(0,21)],[13,6],
           "Melee Defense Distribution\nWith 20th, 50th, 80th Percentiles")
 
-histoplot(units['total_damage'],np.arange(0,600,20),[i*20 for i in range(0,31)],[13,6],
+histoplot(units['melee_total_damage'],np.arange(0,600,20),[i*20 for i in range(0,31)],[13,6],
           "Total Damage Distribution\nWith 20th, 50th, 80th Percentiles")
 
 
 L = []
-for dam,cla in zip(units['total_damage'],units['class']):
-    if cla != 'com':
+for dam,cste in zip(units['melee_total_damage'],units['caste']):
+    if cste != 'Lord' and cste != 'Hero':
         L.append(dam)
 
 histoplot(L,np.arange(0,600,20),[i*20 for i in range(0,31)],[13,6],
           "Total Damage Distribution (No Lords or Heroes)\nWith 20th, 50th, 80th Percentiles")
 
-histoplot(units['ap_fraction'],np.linspace(0,1,21),np.linspace(0,1,21),[13,6],
-          "AP Fraction Distribution\nWith 20th, 50th, 80th Percentiles")
 
-
-
-
-    
