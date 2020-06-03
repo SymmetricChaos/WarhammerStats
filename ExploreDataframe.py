@@ -1,5 +1,6 @@
 import pickle
 import pandas as pd
+import numpy as np
 from UtilityFunctions import random_unit
 
 unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
@@ -22,6 +23,8 @@ if __name__ == '__main__':
 #    print(unitsDF.iloc[0]['melee_attack'])
 #    print("Show A random Unit's Stats\n")
 #    random_unit()
-    print("\n\n\n\nShow the various categories a unit can fall into\n")
-    show_categorical_stats()
-    random_unit(unitsDF)
+#    print("\n\n\n\nShow the various categories a unit can fall into\n")
+#    show_categorical_stats()
+#    random_unit(unitsDF)
+    
+    print(np.nanmedian(unitsDF["melee_ap_ratio"]))
