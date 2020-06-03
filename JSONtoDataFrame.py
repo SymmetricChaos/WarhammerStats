@@ -107,7 +107,7 @@ def set_ranged_stats(D,unit):
 units = []
 
 for unit in J:
-    if "TEST" in unit["name"]:
+    if unit["name"] == "TEST UNIT - Tomb Kings" or unit["caste"] == "Generic":
         continue
     D = {# Simple user facing stats
          "name": unit["name"],
@@ -117,9 +117,9 @@ for unit in J:
          "armour": unit["armour"],
          "melee_attack": unit["melee_attack"],
          "melee_defence": unit["melee_defence"],
-         "entity_size": unit["entity_size"],
+         "is_large": unit["is_large"],
          "parry_chance": unit["parry_chance"],
-         "unit_size": unit["unit_size"],
+         "unit_size": unit["unit_size"], # <- what matters for BvL or BvI
          "damage_mod_flame": unit["damage_mod_flame"],
          "damage_mod_magic": unit["damage_mod_magic"],
          "damage_mod_physical": unit["damage_mod_physical"],
@@ -142,7 +142,8 @@ for unit in J:
          "charge_speed": unit["charge_speed"],
          "charge_speed_flying": unit["flying_charge_speed"],
          "ground_stat_effect_group": unit["ground_stat_effect_group"]["group_name"],
-
+         "entity_size": unit["entity_size"],
+         
          #Complex stats
          "factions": get_factions(unit),
          "faction_group": get_faction_group(unit),
