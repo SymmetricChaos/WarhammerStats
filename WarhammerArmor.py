@@ -44,8 +44,8 @@ def armor_graph(max_armor=200,ap_fractions=[.07,.3,.7,.88],armor_lines=[60,160])
 
 if __name__ == '__main__':
     armor_graph()
-    plt.annotate("median armor",[37,14.1],size=12)
-    plt.annotate("highest natural armor",[125,14.1],size=12)
+    plt.annotate("median armor",[41,14.1],size=12)
+    plt.annotate("highest natural armor",[132,14.1],size=12)
     
     import pickle
     print("To keep this up to date check the values used")
