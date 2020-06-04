@@ -35,6 +35,9 @@ histoplot(units['melee_defence'],np.arange(0,105,5),[i*5 for i in range(0,21)],[
 histoplot(units['melee_total_damage'],np.arange(0,600,20),[i*20 for i in range(0,31)],[13,6],
           "Total Damage Distribution\nWith 20th, 50th, 80th Percentiles")
 
+histoplot(units['melee_ap_ratio'],np.arange(0,1,.1),np.arange(0,1,.1),[13,6],
+          "AP Ratio Distribution\nWith 20th, 50th, 80th Percentiles")
+
 
 L = []
 for dam,cste in zip(units['melee_total_damage'],units['caste']):

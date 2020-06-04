@@ -11,11 +11,25 @@ unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
 #  armour. This armour roll is a random value between 50% and 100% of the 
 #  armour stat. The armour roll is then applied as percentage damage 
 #  reduction."
-def average_armor_reduction(armor):
+# Legacy calculation method by numerica simulation
+def average_armor_reduction_old(armor):
     """Returns the proportion of base damage blocked by the given armor value"""
-    ar = np.linspace(armor/2,armor)
+    ar = np.linspace(armor/2,armor,1000)
     ar = [min(x,100) for x in ar]
     return np.mean(ar)/100
+
+# Credit to u/Panthera__Tigris on reddit for coming up with this
+def average_armor_reduction(armor):
+    """Returns the proportion of base damage blocked by the given armor value"""
+    if armor < 0:
+        raise Exception("Armor cannot be less than 0")
+    elif armor <= 100:
+        return np.mean([armor,armor/2])/100
+    elif armor <= 200:
+        return (100*(armor-100)+(100-armor*0.5)*((armor*0.5+100)*0.5))/((armor-100)+(100-armor*0.5))/100
+    else:
+        raise Exception("Armor cannot be more than 200")
+
 
 def average_damage_with_armor_raw(base_damage,ap_damage,armor):
     """
@@ -122,3 +136,7 @@ if __name__ == '__main__':
 #    print(all_with_attribute(unitsDF,"strider"))
 #    print(no_summoned(unitsDF))
 #    print(unit_named(unitsDF,"Zombies"))
+    
+    for ar in [9,10,11,12,13,75,150]:
+        print(average_armor_reduction(ar))
+        print(average_armor_reduction_old(ar))
