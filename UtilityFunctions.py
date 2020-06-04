@@ -45,7 +45,8 @@ def random_unit(units):
     r, = np.random.randint(0,1365,1)
     return units.iloc[r]
 
-
+def unit_named(units,name):
+    return units[units["name"]==name]
 
 # Attributes, abilitiesm and spells are all stored as lists this extracts all
 # the unique attributes, abilities, or spells in a given units dataframe
@@ -83,9 +84,14 @@ def no_special_category(units):
     is_not_special_category = units["special_category"] == ""
     return units[is_not_special_category]
 
+# Version of unitsDF without any summoned unitys
+def no_summoned(units):
+    # Tilde is the pandas NOT operator
+    unbinding = ~units["key"].str.contains("summoned")
+    return units[unbinding]
+
 def all_with_ability(units,ability):
     has_ability = []
-    print(units["abilities"])
     for L in units["abilities"]:
         if ability in L:
             has_ability.append(True)
@@ -95,7 +101,6 @@ def all_with_ability(units,ability):
 
 def all_with_attribute(units,attribute):
     has_attribute = []
-    print(units["attributes"])
     for L in units["attributes"]:
         if attribute in L:
             has_attribute.append(True)
@@ -110,10 +115,10 @@ def all_with_attribute(units,attribute):
 if __name__ == '__main__':
     
 #    print(100/average_damage_with_armor_ratio(100,.7,200))
-    print(no_single_entity(unitsDF))
+#    print(no_single_entity(unitsDF))
     
-#    print(all_with_ability(unitsDF,"Foe-Seeker"))
+    print(all_with_ability(unitsDF,"Foe-Seeker"))
     
 #    print(all_with_attribute(unitsDF,"strider"))
-
-    
+#    print(no_summoned(unitsDF))
+#    print(unit_named(unitsDF,"Zombies"))

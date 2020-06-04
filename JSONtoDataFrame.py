@@ -5,18 +5,7 @@ import pickle
 with open('unitsdata.json', encoding="utf8") as f:
   J = json.load(f)
   
-# Make a somewhat cleaner object to store
-# We can expand later if we want
-
-# Ultimately want to include at least these but use internal names
-#  'class'
-#  'BVL','BVI','damage','ap_damage','total_damage','ap_fraction',
-#  'attack_interval','weight_class','melee_weapon',
-#  'missile_weapon',,'missile_damage','missile_ap_damage',
-#  'missile_total_damage','missile_projectiles','missile_shots_per_volley',
-#  'ground_speed','fly_speed','missile_ap_fraction',
-#  'missile_range','damage_mod_fire','damage_mod_magic',
-#  'damage_mod_physical','damage_mod_missiles','damage_mod_all'
+# Make a somewhat cleaner object to that is easier to work with than the raw JSON data
 
 def get_attributes(D):
     att = D["attributes"]
