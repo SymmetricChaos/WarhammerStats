@@ -26,6 +26,10 @@ if __name__ == '__main__':
 #    print(random_unit(unitsDF))
     print("\n\n\n\nShow the various categories a unit can fall into\n")
     show_categorical_stats()
-    random_unit(unitsDF)
+    
+#    R = random_unit(unitsDF)
+#    print(R)
+    
+    print(unitsDF[unitsDF["name"].str.contains("Stormvermin")])
     
 #    print(np.nanmedian(unitsDF["melee_ap_ratio"]))
