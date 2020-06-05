@@ -39,7 +39,12 @@ def set_melee_stats(D,unit):
     D["melee_bonus_v_infantry"] = weapon["bonus_v_infantry"]
     D["melee_attack_interval"] = weapon["melee_attack_interval"]
     D["melee_is_magical"] = weapon["is_magical"]
-    D["melee_is_flaming"] = weapon["ignition_amount"] # <- renamed to player facing name
+    D["melee_is_flaming"] = weapon["ignition_amount"] # <- renamed to reflect player facing name
+    if weapon["phase"] == None:
+        D["melee_contact_effect"] = ""
+    else:
+        D["melee_contact_effect"] = weapon["phase"]["name"]
+    
 
 # Mutate some dictionary D to add the ranged vital stats of unit
 def set_ranged_stats(D,unit):
@@ -54,16 +59,24 @@ def set_ranged_stats(D,unit):
         D["ranged_ap_ratio"] = None
         D["ranged_bonus_v_large"] = None
         D["ranged_bonus_v_infantry"] = None
+        D["ranged_is_magical"] = None
+        D["ranged_is_flaming"] = None
+        D["ranged_contact_effect"] = ""
         D["ammo"] = None
         D["base_reload_time"] = None
         D["range"] = None
         D["shots_per_volley"] = None
         D["projectile_number"] = None
+        
+        # If there is no ranged attack there is also no explosion so again we
+        # provide default values
         D["explosion_base_damage"] = None
         D["explosion_ap_damage"] = None
         D["explosion_radius"] = None
-        D["ranged_is_magical"] = None
-        D["ranged_is_flaming"] = None
+        D["explosion_is_magical"] = None
+        D["explosion_is_flaming"] = None
+        D["explosion_contact_effect"] = ""
+
     else:
         # Most ranged weapon stats are tied to the projectile
         projectile = unit["primary_missile_weapon"]["projectile"]
@@ -80,6 +93,10 @@ def set_ranged_stats(D,unit):
         D["projectile_number"] = projectile["projectile_number"]
         D["ranged_is_magical"] = projectile["is_magical"]
         D["ranged_is_flaming"] = projectile["ignition_amount"]
+        if projectile["phase"] == None:
+            D["ranged_contact_effect"] = ""
+        else:
+            D["ranged_contact_effect"] = projectile["phase"]["name"]
         
         # Some units have no explosion so those stats are set to None
         if projectile["explosion"] == None:
@@ -87,12 +104,19 @@ def set_ranged_stats(D,unit):
             D["explosion_ap_damage"] = None
             D["explosion_radius"] = None
             D["explosion_is_magical"] = None
+            D["explosion_is_flaming"] = None
+            D["explosion_contact_effect"] = ""
+            
         else:
             D["explosion_base_damage"] = projectile["explosion"]["base_damage"]
             D["explosion_ap_damage"] = projectile["explosion"]["ap_damage"]
             D["explosion_radius"] = projectile["explosion"]["detonation_radius"]
             D["explosion_is_magical"] = projectile["explosion"]["is_magical"]
             D["explosion_is_flaming"] = projectile["explosion"]["ignition_amount"]
+            if projectile["phase"] == None:
+                D["explosion_contact_effect"] = ""
+            else:
+                D["explosion_contact_effect"] = projectile["explosion"]["phase"]["name"]
         
         # Need to validate meaning of ammo count
         # Used to be total volleys but now user interface shows total shots

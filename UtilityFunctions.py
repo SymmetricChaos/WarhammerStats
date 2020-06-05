@@ -1,8 +1,8 @@
 import numpy as np
 import pickle
 import pandas as pd
-pd.set_option('display.max_rows', 50)
-pd.set_option('display.max_columns', 60)
+pd.set_option('display.max_rows', 70)
+pd.set_option('display.max_columns', 70)
 unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
 
 # I believe this is correct based on the description by the developers
@@ -130,15 +130,17 @@ def all_from_faction(units,faction_group):
 
 if __name__ == '__main__':
     
+    print(random_unit(unitsDF))
+    
 #    print(100/average_damage_with_armor_ratio(100,.7,200))
 #    print(no_single_entity(unitsDF))
     
-    print(all_with_ability(unitsDF,"Foe-Seeker"))
+#    print(all_with_ability(unitsDF,"Foe-Seeker"))
     
 #    print(all_with_attribute(unitsDF,"strider"))
 #    print(no_summoned(unitsDF))
 #    print(unit_named(unitsDF,"Zombies"))
     
-    for ar in [9,10,11,12,13,75,150]:
-        print(average_armor_reduction(ar))
-        print(average_armor_reduction_old(ar))
+#    for ar in [9,10,11,12,13,75,150]:
+#        print(average_armor_reduction(ar))
+#        print(average_armor_reduction_old(ar))

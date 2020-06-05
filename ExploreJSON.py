@@ -69,7 +69,7 @@ def get_spells(D):
         
         
 for unit in J:
-    if "Luthor Harkon" in unit["name"]:
-        for i in unit["primary_missile_weapon"]["phase"].items():
+    if "Mortar" in unit["name"]:
+        for i in unit["primary_missile_weapon"]["projectile"].items():
             print(i)
         break
