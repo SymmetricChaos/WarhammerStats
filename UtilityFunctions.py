@@ -122,7 +122,9 @@ def all_with_attribute(units,attribute):
             has_attribute.append(False)
     return units[has_attribute]
 
-
+def all_from_faction(units,faction_group):
+    faction = units["faction_group"] == faction_group
+    return units[faction]
 
 
 
