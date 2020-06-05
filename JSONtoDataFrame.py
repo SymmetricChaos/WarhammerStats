@@ -43,7 +43,7 @@ def set_melee_stats(D,unit):
     if weapon["phase"] == None:
         D["melee_contact_effect"] = ""
     else:
-        D["melee_contact_effect"] = weapon["phase"]["name"]
+        D["melee_contact_effect"] = weapon["phase"]["name"].split("\\")[0] # <- contact effects can contain an image after the name
     
 
 # Mutate some dictionary D to add the ranged vital stats of unit
@@ -96,7 +96,7 @@ def set_ranged_stats(D,unit):
         if projectile["phase"] == None:
             D["ranged_contact_effect"] = ""
         else:
-            D["ranged_contact_effect"] = projectile["phase"]["name"]
+            D["ranged_contact_effect"] = projectile["phase"]["name"].split("\\")[0]
         
         # Some units have no explosion so those stats are set to None
         if projectile["explosion"] == None:
@@ -113,10 +113,10 @@ def set_ranged_stats(D,unit):
             D["explosion_radius"] = projectile["explosion"]["detonation_radius"]
             D["explosion_is_magical"] = projectile["explosion"]["is_magical"]
             D["explosion_is_flaming"] = projectile["explosion"]["ignition_amount"]
-            if projectile["phase"] == None:
+            if projectile["explosion"]["phase"] == None:
                 D["explosion_contact_effect"] = ""
             else:
-                D["explosion_contact_effect"] = projectile["explosion"]["phase"]["name"]
+                D["explosion_contact_effect"] = projectile["explosion"]["phase"]["name"].split("\\")[0]
         
         # Need to validate meaning of ammo count
         # Used to be total volleys but now user interface shows total shots

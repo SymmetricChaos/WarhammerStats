@@ -10,7 +10,8 @@ pd.set_option('display.max_rows', 500)
 def show_categorical_stats():
     for cat in ['caste','category','entity_size','faction_group','entity_size',
                 'ground_stat_effect_group','special_category',
-                'melee_contact_effect','ranged_contact_effect']:
+                'melee_contact_effect','ranged_contact_effect',
+                'explosion_contact_effect']:
         
         options = sorted(unitsDF[cat].unique())
         print(f"{cat}:\n{options}\n")
