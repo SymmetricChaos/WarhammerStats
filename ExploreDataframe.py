@@ -2,10 +2,29 @@ import pickle
 import pandas as pd
 import numpy as np
 from UtilityFunctions import random_unit, all_from_faction, all_attributes, \
-                             all_abilities, all_spells
+                             all_abilities, all_spells, no_special_category, \
+                             no_summoned
 
-unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
+units = pickle.load( open( "unitsDF.p", "rb" ) )
 pd.set_option('display.max_rows', 500)
+
+units = no_special_category(no_summoned(units))
+
+brt = all_from_faction(units,'brt')
+bst = all_from_faction(units,'bst')
+chs = all_from_faction(units,'chs')
+cst = all_from_faction(units,'cst')
+dlf = all_from_faction(units,'def')
+dwf = all_from_faction(units,'dwf')
+emp = all_from_faction(units,'emp')
+grn = all_from_faction(units,'grn')
+hef = all_from_faction(units,'hef')
+lzd = all_from_faction(units,'lzd')
+nor = all_from_faction(units,'nor')
+skv = all_from_faction(units,'skv')
+tmb = all_from_faction(units,'tmb')
+vmp = all_from_faction(units,'vmp')
+wef = all_from_faction(units,'wef')
 
 
 def show_categorical_stats():
@@ -14,7 +33,7 @@ def show_categorical_stats():
                 'melee_contact_effect','ranged_contact_effect',
                 'explosion_contact_effect']:
         
-        options = sorted(unitsDF[cat].unique())
+        options = sorted(units[cat].unique())
         print(f"{cat}:\n{options}\n")
         
 
@@ -39,4 +58,4 @@ if __name__ == '__main__':
 #    print(all_attributes(unitsDF))
 #    print(all_abilities(unitsDF))
 #    print(all_spells(unitsDF))
-#    print(unitsDF[unitsDF["special_category"].str.contains('elector')])
+#    print(wef[["name","key"]])

@@ -104,6 +104,57 @@ def no_summoned(units):
     unbinding = ~units["key"].str.contains("summoned")
     return units[unbinding]
 
+def no_nonstandard(units):
+    units = no_summoned(units)
+    units = no_special_category(units)
+    
+    nonstandard_keys = ["wh_dlc07_brt_cha_damsel_beasts_2",
+                        "wh_dlc07_brt_cha_damsel_life_2",
+                        "wh_main_brt_cha_damsel_2",
+                        "wh_dlc05_brt_cha_armand_aquitaine_0",
+                        "wh_dlc05_brt_cha_armand_aquitaine_1",  
+                        "wh_dlc05_brt_cha_armand_aquitaine_2",
+                        "wh_dlc05_brt_cha_armand_aquitaine_3",
+                        "wh_dlc07_brt_cha_damsel_beasts_2",
+                        "wh_dlc03_bst_cha_graktar_0",
+                        "wh2_dlc14_def_cha_malus_darkblade_tzarkan_0_final_battle",
+                        "wh2_dlc13_emp_cav_knights_blazing_sun_0_imperial_supply",
+                        "wh_dlc05_grn_cha_snorko_one_finger_0",
+                        "wh_dlc05_grn_cha_snorko_one_finger_1",
+                        "wh_dlc05_grn_cha_snorko_one_finger_2",
+                        "wh2_dlc15_grn_cha_night_goblin_warboss_0_big",
+                        "wh2_dlc15_hef_mon_forest_dragon_0",
+                        "wh2_main_lzd_cha_slann_mage_priest_campaign_0",
+                        "wh2_main_lzd_inf_temple_guards_nakai",
+                        "wh2_main_lzd_cav_horned_ones_0_nakai",
+                        "wh2_dlc13_lzd_mon_sacred_kroxigors_0_nakai",
+                        "wh2_main_lzd_mon_kroxigors_nakai",
+                        "wh2_dlc12_lzd_cav_terradon_riders_0_tlaqua",
+                        "wh2_dlc12_lzd_cav_terradon_riders_1_tlaqua",
+                        "wh2_dlc12_lzd_mon_ancient_stegadon_1_nakai",
+                        "wh2_dlc12_lzd_mon_bastiladon_3_nakai",
+                        "wh_dlc01_nor_cha_chaos_sorcerer_lord_0",
+                        "wh_dlc01_nor_cha_chaos_sorcerer_lord_1",
+                        "wh_main_nor_cha_chaos_sorcerer_0",
+                        "wh_main_nor_cha_chaos_sorcerer_1",
+                        "wh_main_nor_mon_chaos_warhounds_1",
+                        "wh2_dlc14_skv_cha_deathmaster_snikch_tzarkan_0",
+                        "wh2_main_skv_inf_stormvermin_0_quest",
+                        "wh_pro03_vmp_cha_krell_campaign_0",
+                        "wh_pro03_vmp_cha_krell_campaign_1",
+                        "wh_pro03_vmp_cha_krell_campaign_2",
+                        "wh_pro03_vmp_cha_krell_campaign_3",
+                        "wh_pro03_vmp_cha_krell_0",
+                        "wh2_dlc11_vmp_inf_crossbowmen",
+                        "wh2_dlc11_vmp_inf_handgunners"
+                        ]
+    
+    for unwanted in nonstandard_keys:
+        units = units[~units["key"].str.contains(unwanted)]
+        print(len(units))
+    
+    return units
+
 def all_with_ability(units,ability):
     has_ability = []
     for L in units["abilities"]:
@@ -130,7 +181,10 @@ def all_from_faction(units,faction_group):
 
 if __name__ == '__main__':
     
-    print(random_unit(unitsDF))
+#    print(random_unit(unitsDF))
+    
+#    unitsDF_filtered = no_nonstandard(unitsDF)
+    
     
 #    print(100/average_damage_with_armor_ratio(100,.7,200))
 #    print(no_single_entity(unitsDF))
