@@ -5,6 +5,45 @@ from UtilityFunctions import all_from_faction, no_single_entity
 
 units = pickle.load( open( "unitsDF.p", "rb" ) )
 
+# All lores of magic that can be had by multiple identical units
+# We will replace these with just ""
+lores = [" (Beasts)",
+         " (Death)",
+         " (Fire)",
+         " (Heavens)",
+         " (High)",
+         " (Life)",
+         " (Light)",
+         " (Metal)",
+         " (Shadows)",
+         " (Dark)",
+         " (Vampires)",
+         " (Deep)",
+         " (Plague)",
+         " (Ruin)"]
+
+def remove_lore(name):
+    for lore in lores:
+        if lore in name:
+            name = name.replace(lore," ")
+            name = name.replace("  "," ")
+            return name
+    return name
+
+# Warning! This list should not be used for names as there may be spacing issues
+def deduplicate_lore(units):
+
+    names = units["name"]
+    reduced_names = []
+    for name in names:
+        reduced_names.append(remove_lore(name))
+    
+    units_no_dupe_lores = hef.replace(list(hef["name"]),reduced_names)
+    units_no_dupe_lores.drop_duplicates(subset="name",inplace=True)
+    
+    return units_no_dupe_lores
+        
+
 if __name__ == '__main__':
     
     print("Many units are effectively duplicates of each other which may skew numbers when analysed.")
@@ -28,41 +67,3 @@ if __name__ == '__main__':
     print("However what would really be good would be to reduce all these duplicates to a single entry.")
     print("For example rather than Archmage (Death) on Great Eagle and Archmage (Fire) on Great Eagle and all the others it would be nice to just have Archmage on Great Eagle")
     
-    # All lores of magic that can be had by multiple identical units
-    # We will replace these with just ""
-    lores = [" (Beasts)",
-             " (Death)",
-             " (Fire)",
-             " (Heavens)",
-             " (High)",
-             " (Life)",
-             " (Light)",
-             " (Metal)",
-             " (Shadows)",
-             " (Dark)",
-             " (Vampires)",
-             " (Deep)",
-             " (Plague)",
-             " (Ruin)"]
-
-    def remove_lore(name):
-        for lore in lores:
-            if lore in name:
-                name = name.replace(lore," ")
-                name = name.replace("  "," ")
-                return name
-        return name
-    
-    # Warning! This list should not be used for names as there may be spacing issues
-    def deduplicate_lore(units):
-    
-        names = units["name"]
-        reduced_names = []
-        for name in names:
-            reduced_names.append(remove_lore(name))
-        
-        units_no_dupe_lores = hef.replace(list(hef["name"]),reduced_names)
-        units_no_dupe_lores.drop_duplicates(subset="name",inplace=True)
-        
-        return units_no_dupe_lores
-        
