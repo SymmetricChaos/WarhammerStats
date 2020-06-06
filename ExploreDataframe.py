@@ -1,7 +1,7 @@
 import pickle
 import pandas as pd
 import numpy as np
-from UtilityFunctions import random_unit
+from UtilityFunctions import random_unit, all_from_faction
 
 unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
 pd.set_option('display.max_rows', 500)
@@ -24,12 +24,15 @@ if __name__ == '__main__':
 
 #    print("Show A random Unit's Stats\n")
 #    print(random_unit(unitsDF))
-    print("\n\n\n\nShow the various categories a unit can fall into\n")
-    show_categorical_stats()
+#    print("\n\n\n\nShow the various categories a unit can fall into\n")
+#    show_categorical_stats()
     
 #    R = random_unit(unitsDF)
 #    print(R)
     
-    print(unitsDF[unitsDF["name"].str.contains("Stormvermin")])
+    # Special Keys found: waaagh, summoned, final_battle, aquitaine, graktar,
+    #    imperial_supply, nakai, blessed
+#    print(unitsDF[unitsDF["key"].str.contains('aquitaine')])
+    print(all_from_faction(unitsDF,'cst')["key"])
     
 #    print(np.nanmedian(unitsDF["melee_ap_ratio"]))

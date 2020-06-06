@@ -54,7 +54,6 @@ if __name__ == '__main__':
         return name
     
     # Warning! This list should not be used for names as there may be spacing issues
-    # 
     def deduplicate_lore(units):
     
         names = units["name"]
@@ -66,5 +65,4 @@ if __name__ == '__main__':
         units_no_dupe_lores.drop_duplicates(subset="name",inplace=True)
         
         return units_no_dupe_lores
-    
         
