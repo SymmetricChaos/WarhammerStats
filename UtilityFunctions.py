@@ -181,7 +181,7 @@ def all_from_faction(units,faction_group):
 
 if __name__ == '__main__':
     
-#    print(random_unit(unitsDF))
+    print(random_unit(unitsDF))
     
 #    unitsDF_filtered = no_nonstandard(unitsDF)
     
