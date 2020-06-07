@@ -2,11 +2,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pickle
 from UtilityFunctions import no_single_entity, all_from_faction, no_summoned, \
-                             no_special_category
+                             no_special_category, no_nonstandard
 
 units = pickle.load( open( "unitsDF.p", "rb" ) )
 # Get rid of summon units
-units = no_summoned(units)
+units = no_nonstandard(units)
 
 brt = all_from_faction(units,'brt')
 bst = all_from_faction(units,'bst')
@@ -25,21 +25,33 @@ vmp = all_from_faction(units,'vmp')
 wef = all_from_faction(units,'wef')
 
 
-def histoplot(L,bins,x_ticks,size=[13,6],title=""):
-    
+def histoplot(L,bins,x_ticks,percentiles=[20,50,80],size=[13,6],title=""):
     
     fig = plt.figure()
     fig.set_size_inches(size[0], size[1])
     plt.hist(L,bins=bins)
     plt.xticks(x_ticks)
     plt.title(title,size=20)
-    percentiles = np.nanpercentile(L,[20,50,80])
-    for x in percentiles:
+    percentile_vals = np.nanpercentile(L,np.asarray(percentiles))
+    for x in percentile_vals:
         plt.axvline(x,color='black',linewidth=3)
     percentile_legend = []
-    for i,j in zip(['20','50','80'],percentiles):
-         percentile_legend.append("{}th Percentile: {:.1f}".format(i,j))
+    for i,j in zip(['20','50','80'],percentile_vals):
+         percentile_legend.append(f"{i}th Percentile: {j:.1f}")
     plt.legend(percentile_legend)
+    plt.show()
+    
+    
+def histoplot_simple(L,bins,size=[13,6],title=""):
+    
+    fig = plt.figure()
+    fig.set_size_inches(size[0], size[1])
+    plt.hist(L,bins=bins)
+    plt.xticks(bins)
+    plt.title(title,size=20)
+    med = np.nanmedian(L)
+    plt.axvline(med,color='black',linewidth=3)
+    plt.legend([f"Median: {med:.1f}"])
     plt.show()
 
 
@@ -74,5 +86,5 @@ faction_names = ["Brettonia","Beastmen","Warriors of Chaos","Vampire Coast",
                  "Lizardmen","Norsca","Skaven","Tomb Kings","Vampire Counts",
                  "Wood Elves"]
 for code,name in zip(factions,faction_names):
-    histoplot(code['armour'],np.arange(0,210,10),[i*10 for i in range(0,21)],[13,6],
-              f"Armor Distribution\n{name}")
+    histoplot(code['armour'],np.arange(0,210,10),[13,6],
+              title=f"Armor Distribution\n{name}")

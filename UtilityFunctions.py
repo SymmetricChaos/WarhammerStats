@@ -151,7 +151,6 @@ def no_nonstandard(units):
     
     for unwanted in nonstandard_keys:
         units = units[~units["key"].str.contains(unwanted)]
-        print(len(units))
     
     return units
 
