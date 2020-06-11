@@ -5,6 +5,10 @@ pd.set_option('display.max_rows', 70)
 pd.set_option('display.max_columns', 70)
 unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
 
+# Convert a trait name into a nicer looking version
+def pretty_name(S):
+    return " ".join(S.split("_")).title()
+
 # I believe this is correct based on the description by the developers
 # "Armour = Max damage reduction percentage. Min is always 50% of armour value.
 #  To be more precise, any time base damage is dealt, the target rolls for 
