@@ -139,15 +139,15 @@ for unit in J:
          "armour": unit["armour"],
          "melee_attack": unit["melee_attack"],
          "melee_defence": unit["melee_defence"],
-         "is_large": unit["is_large"],
+         "is_large": unit["is_large"], # <- controls the UI symbol for infantry or large size
          "missile_block_chance": unit["parry_chance"], # <- renamed to common name
-         "unit_size": unit["unit_size"], # <- what matters for BvL or BvI
+         "unit_size": unit["unit_size"], # <- number of entities
          "damage_mod_flame": unit["damage_mod_flame"],
          "damage_mod_magic": unit["damage_mod_magic"],
          "damage_mod_physical": unit["damage_mod_physical"],
          "damage_mod_missile": unit["damage_mod_missile"],
          "damage_mod_all": unit["damage_mod_all"],
-         "speed": unit["speed"], # <- this should be speed in the UI
+         "speed": unit["speed"], # <- speed as shown in UI, better of ground and flying
          
          # Simple non-user facing stats
          "health_per_entity": unit["health_per_entity"],
