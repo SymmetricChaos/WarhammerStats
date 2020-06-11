@@ -10,12 +10,13 @@ unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
 
 
 # Simple linear correlation take from a unitsDF dataframe
-def show_correlation(X,Y):
-    Xname = " ".join(X.name.split("_"))
-    Yname = " ".join(X.name.split("_"))
+def simple_linear_model(X,Y):
+    
+    Xname = " ".join(X.name.split("_")).title()
+    Yname = " ".join(X.name.split("_")).title()
+    
     X = X.values.reshape(-1,1)
     Y = Y.values.reshape(-1,1)
-    
     
     model = linear_model.LinearRegression() 
     model.fit(X,Y)
@@ -23,15 +24,42 @@ def show_correlation(X,Y):
     predicted_Y = model.predict(X)
     
     plt.scatter(X,Y)
-    plt.xlabel(Xname.title())
-    plt.ylabel(Yname.title())
+    plt.xlabel(Xname)
+    plt.ylabel(Yname)
     plt.plot(X,predicted_Y,
                 color='red')
     
-    R2 = r2_score(X, predicted_Y)
-    MAD = median_absolute_error(X, predicted_Y)
+    R2 = r2_score(Y, predicted_Y)
+    MAE = median_absolute_error(Y, predicted_Y)
+    MSE = mean_squared_error(Y,predicted_Y)
+    
+    print(f"Simple Linear Model\n{Xname} vs {Yname}\n")
     print(f"R-squared: {round(R2,2)}")
-    print(f"Median Absolute Error: {round(MAD,2)}")
+    print(f"Mean Square Error: {round(MSE,2)}")
+    print(f"Median Absolute Error: {round(MAE,2)}")
 
 
-show_correlation(unitsDF["melee_attack"],unitsDF["melee_defence"])
+#def multiple_linear_model(Xs,Y):
+#    
+#    X = X.values.reshape(-1,1)
+#    Y = Y.values.reshape(-1,1)
+#    
+#    model = linear_model.LinearRegression() 
+#    model.fit(Xx,Y)
+#    
+#    predicted_Y = model.predict(Xx)
+#    
+#    R2 = r2_score(Y, predicted_Y)
+#    MAE = median_absolute_error(Y, predicted_Y)
+#    MSE = mean_squared_error(Y,predicted_Y)
+#    
+#    print(f"Simple Linear Model\n{Xname} vs {Yname}\n")
+#    print(f"R-squared: {round(R2,2)}")
+#    print(f"Mean Square Error: {round(MSE,2)}")
+#    print(f"Median Absolute Error: {round(MAE,2)}")
+
+
+
+if __name__ == '__main__':
+    simple_linear_model(unitsDF["melee_attack"],
+                        unitsDF["melee_defence"])
