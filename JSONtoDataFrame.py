@@ -67,6 +67,8 @@ def set_ranged_stats(D,unit):
         D["range"] = None
         D["shots_per_volley"] = None
         D["projectile_number"] = None
+        D["calibration_area"] = None
+        D["calibration_distance"] = None
         
         # If there is no ranged attack there is also no explosion so again we
         # provide default values
@@ -76,6 +78,7 @@ def set_ranged_stats(D,unit):
         D["explosion_is_magical"] = None
         D["explosion_is_flaming"] = None
         D["explosion_contact_effect"] = ""
+
 
     else:
         # Most ranged weapon stats are tied to the projectile
@@ -93,6 +96,8 @@ def set_ranged_stats(D,unit):
         D["projectile_number"] = projectile["projectile_number"]
         D["ranged_is_magical"] = projectile["is_magical"]
         D["ranged_is_flaming"] = projectile["ignition_amount"]
+        D["calibration_area"] = projectile["calibration_area"] # precision
+        D["calibration_distance"] = projectile["calibration_distance"] # some modifier to precision
         if projectile["phase"] == None:
             D["ranged_contact_effect"] = ""
         else:
@@ -158,7 +163,7 @@ for unit in J:
          "singleplayer_upkeep":  unit["singleplayer_upkeep"],
          
          "mass": unit["mass"],
-         "weight": unit["weight"],
+#         "weight": unit["weight"], # <- According to devs no longer used
          "height": unit["height"],
          "radius": unit["radius"],
          "entity_size": unit["entity_size"],
@@ -175,7 +180,8 @@ for unit in J:
          "charge_speed_flying": unit["flying_charge_speed"],
          
          "ground_stat_effect_group": unit["ground_stat_effect_group"]["group_name"],
-
+         
+         "reload_skill": unit["reload"],
 
          
          
