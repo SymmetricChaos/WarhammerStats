@@ -33,8 +33,8 @@ def ranged_damage_stats(name,check_hawkish=True):
     reload_time = unit["base_reload_time"].values[0]
     ammo = unit["ammo"].values[0]
     proj_range = unit["range"].values[0]
-    speed = unit["speed"].values[0]
-    
+    caste = unit["caste"].values[0]
+
     damage_v_60a = average_damage_with_armor_raw(base_d,ap_d,60)
 
     damage_per_volley_60a = damage_v_60a*num_models*num_proj*shot_vol
@@ -43,18 +43,17 @@ def ranged_damage_stats(name,check_hawkish=True):
     
     
     print(f"Some Ranged Damage Stats for {name}")
-    
-    if hawkish:
-        print("Including Hawkish Precision")
+    print(f"{caste}")
+    print(f"Range: {int(proj_range)}")
     
     print("\nShooting at 60 Armor")
+    if hawkish:
+        print("Including Hawkish Precision")
     print(f"Damage Per Projectile: {int(damage_v_60a)}")
     print(f"Damage Per Volley: {int(damage_per_volley_60a)}")
     print(f"Damage Per 10s: {int(damage_per_second_60a)}")
     print(f"Damage Per Battle: {int(damage_per_battle_60a)}")
     
-    print(f"\nRange: {int(proj_range)}")
-    print(f"Speed: {speed}")
 
 
 
