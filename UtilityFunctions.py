@@ -186,6 +186,9 @@ if __name__ == '__main__':
     
     print(random_unit(unitsDF))
     
+    print(all_abilities(unitsDF))
+    print(all_attributes(unitsDF))
+    
 #    unitsDF_filtered = no_nonstandard(unitsDF)
     
     

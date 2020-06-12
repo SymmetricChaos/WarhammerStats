@@ -10,9 +10,11 @@ unitsDF = no_nonstandard(unitsDF)
 def ranged_damage_stats(name,check_hawkish=True):
     unit = unitsDF[unitsDF["name"] == name]
     
+    abilities = unit["abilities"].values[0]
+                
     if check_hawkish:
     
-        hawkish = "Hawkish Precision" in unit["abilities"].values[0]
+        hawkish = "Hawkish Precision" in abilities
         
         if hawkish:
             ap_d = unit["ranged_ap_damage"].values[0]*1.15
@@ -30,6 +32,8 @@ def ranged_damage_stats(name,check_hawkish=True):
     shot_vol = unit["shots_per_volley"].values[0]
     reload_time = unit["base_reload_time"].values[0]
     ammo = unit["ammo"].values[0]
+    proj_range = unit["range"].values[0]
+    speed = unit["speed"].values[0]
     
     damage_v_60a = average_damage_with_armor_raw(base_d,ap_d,60)
 
@@ -39,21 +43,24 @@ def ranged_damage_stats(name,check_hawkish=True):
     
     
     print(f"Some Ranged Damage Stats for {name}")
-    print("Shooting at 60 Armor")
     
     if hawkish:
         print("Including Hawkish Precision")
     
-    print(f"\nDamage Per Projectile: {int(damage_v_60a)}")
+    print("\nShooting at 60 Armor")
+    print(f"Damage Per Projectile: {int(damage_v_60a)}")
     print(f"Damage Per Volley: {int(damage_per_volley_60a)}")
     print(f"Damage Per 10s: {int(damage_per_second_60a)}")
     print(f"Damage Per Battle: {int(damage_per_battle_60a)}")
+    
+    print(f"\nRange: {int(proj_range)}")
+    print(f"Speed: {speed}")
 
 
 
 if __name__ == '__main__':
     ranged_damage_stats("Waywatchers")
-    print("\n")
-    ranged_damage_stats("Waywatchers",check_hawkish=False)
     print("\n\n")
     ranged_damage_stats("Sisters of Avelorn")
+    print("\n\n")
+    ranged_damage_stats("Casket of Souls")
