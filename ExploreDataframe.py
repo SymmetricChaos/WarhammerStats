@@ -48,6 +48,7 @@ if __name__ == '__main__':
     print("\n\n\n\nShow the various categories a unit can fall into\n")
     show_categorical_stats()
     
+    print(units[units["reload_skill"]==15])
 
     
     # Special Keys found: waaagh, summoned, final_battle, aquitaine, graktar,

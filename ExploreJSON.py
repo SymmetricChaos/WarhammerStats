@@ -69,6 +69,6 @@ def get_spells(D):
         
         
 for unit in J:
-    if "Sisters of Avelorn" in unit["name"]:
+    if "Plagueclaw" in unit["name"]:
         show_dict(unit)
         break
