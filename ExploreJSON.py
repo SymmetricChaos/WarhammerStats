@@ -3,9 +3,15 @@ import json
 with open('unitsdata.json', encoding="utf8") as f:
   J = json.load(f)
 
+        
 def show_dict(D):
     for key,val in D.items():
-        print(f"{key}: {val}\n")
+        if type(val) == dict:
+            print(f"\n####### begin {key} #######\n")
+            show_dict(val)
+            print(f"####### end {key} #######\n\n")
+        else:
+            print(f"{key}: {val}\n")
         
 def show_primary_melee_weapon(D):
     pmw = D["primary_melee_weapon"]
@@ -13,14 +19,8 @@ def show_primary_melee_weapon(D):
         
 def show_primary_missile_weapon(D):
     pmw = D["primary_missile_weapon"]
-    print(f"ammo: {pmw['ammo']}")
-    show_dict(pmw["projectile"])
+    show_dict(pmw)
 
-def show_secondary_missile_weapon(D):
-    smw = D["secondary_missile_weapon"]
-    print(f"ammo: {smw['ammo']}")
-    show_dict(smw["projectile"])
-        
 def get_attributes(D):
     att = D["attributes"]
     return [line["key"] for line in att]
@@ -69,7 +69,6 @@ def get_spells(D):
         
         
 for unit in J:
-    if "Mortar" in unit["name"]:
-        for i in unit:
-            print(i)
+    if "Sisters of Avelorn" in unit["name"]:
+        show_dict(unit)
         break
