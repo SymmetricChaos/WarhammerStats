@@ -148,23 +148,36 @@ for unit in J:
          "damage_mod_missile": unit["damage_mod_missile"],
          "damage_mod_all": unit["damage_mod_all"],
          "speed": unit["speed"], # <- speed as shown in UI, better of ground and flying
+         "recruitment_time":  unit["create_time"], # <- recruitment time
          
          # Simple non-user facing stats
          "health_per_entity": unit["health_per_entity"],
+         
          "multiplayer_cost": unit["multiplayer_cost"],
+         "singleplayer_cost":  unit["singleplayer_cost"],
+         "singleplayer_upkeep":  unit["singleplayer_upkeep"],
+         
          "mass": unit["mass"],
-         "caste": unit["caste"],
-         "category": unit["category"],
-         "special_category": unit["special_category"],
+         "weight": unit["weight"],
          "height": unit["height"],
          "radius": unit["radius"],
+         "entity_size": unit["entity_size"],
+         
+         "caste": unit["caste"],  
+         "category": unit["category"],
+         "special_category": unit["special_category"],
+
          "key": unit["key"],
+         
          "speed_ground": unit["run_speed"],
          "speed_flying": unit["fly_speed"],
          "charge_speed": unit["charge_speed"],
          "charge_speed_flying": unit["flying_charge_speed"],
+         
          "ground_stat_effect_group": unit["ground_stat_effect_group"]["group_name"],
-         "entity_size": unit["entity_size"],
+
+
+         
          
          #Complex stats
          "factions": get_factions(unit),
