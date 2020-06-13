@@ -1,6 +1,7 @@
 import json
 import pandas as pd 
 import pickle
+from UtlityFunctions import no_nonstandard, deduplicate_lore
 
 with open('unitsdata.json', encoding="utf8") as f:
   J = json.load(f)
@@ -27,7 +28,6 @@ def get_spells(D):
     return [line["name"] for line in spl]
 
 
-faction_names = {"emp": "The Empire", "hef": "High Elves":, "dwf": "Dwarfs"}
 
 
 # Mutate some dictionary D to add the melee vital stats of unit
@@ -210,3 +210,15 @@ unitsDF = pd.DataFrame(units)
 pickle.dump(unitsDF, open( "unitsDF.p", "wb" ) )
 pickle.dump(units, open( "unitsDict.p", "wb" ) )
 unitsDF.to_csv("units.csv")
+
+
+# Create a deeply cleaned version of the DataFrame that removed all non-standard
+# units and turns characters that differ only in lore into a single entry
+# This is often useful when looking at staistics of a whole faction
+unitsDFclean = no_nonstandard(unitsDF)
+unitsDFclean = deduplicate_lore(unitsDFclean)
+
+pickle.dump(unitsDF, open( "unitsDF_clean.p", "wb" ) )
+pickle.dump(units, open( "unitsDict_clean.p", "wb" ) )
+unitsDF.to_csv("units_clean.csv")
+
