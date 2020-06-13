@@ -27,6 +27,8 @@ def get_spells(D):
     return [line["name"] for line in spl]
 
 
+faction_names = {"emp": "The Empire", "hef": "High Elves":, "dwf": "Dwarfs"}
+
 
 # Mutate some dictionary D to add the melee vital stats of unit
 def set_melee_stats(D,unit):

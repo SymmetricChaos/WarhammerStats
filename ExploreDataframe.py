@@ -45,12 +45,12 @@ if __name__ == '__main__':
 #    print("Show A random Unit's Stats\n")
 #    R = random_unit(unitsDF)
 #    print(R)
-    print("\n\n\n\nShow the various categories a unit can fall into\n")
-    show_categorical_stats()
-    
-    print(units[units["reload_skill"]==15])
+#    print("\n\n\n\nShow the various categories a unit can fall into\n")
+#    show_categorical_stats()
+#    
+#    print(units[units["reload_skill"]==15])
 
-    
+    print(emp["name"])
     # Special Keys found: waaagh, summoned, final_battle, aquitaine, graktar,
     #    imperial_supply, nakai, blessed
 #    print(unitsDF[unitsDF["key"].str.contains('aquitaine')])
