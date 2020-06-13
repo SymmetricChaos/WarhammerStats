@@ -9,6 +9,22 @@ unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
 def pretty_name(S):
     return " ".join(S.split("_")).title()
 
+faction_code_to_name = {'brt': "Brettonia",
+                'bst': "Beastmen",
+                'chs': "Warriors of Chaos",
+                'cst': "Vampire Coast",
+                'def': "Dark Elves",
+                'dwf': "Dwarfs",
+                'emp': "The Empire",
+                'grn': "Greenskins",
+                'hef': "High Elves",
+                'lzd': "Lizardmen",
+                'nor': "Norsca",
+                'skv': "Skaven",
+                'tmb': "Tomb Kings",
+                'vmp': "Vampire Counts",
+                'wef': "Wood Elves"}
+
 # I believe this is correct based on the description by the developers
 # "Armour = Max damage reduction percentage. Min is always 50% of armour value.
 #  To be more precise, any time base damage is dealt, the target rolls for 
