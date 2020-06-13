@@ -5,21 +5,23 @@
 
 import os
 import shutil
-cur_dir = os.getcwd()
-flags = cur_dir+"\\ui\\flags"
 
-faction_names = []
-
-for r,d,f in os.walk(flags):
-    if f == []:
-        continue
-#    # Horrible messy 
-    faction_name = "_".join(r[len(flags)+5:].split("_")[1:])
+def extract_flags():
+    cur_dir = os.getcwd()
+    flags1 = cur_dir+"\\WarhammerUI\\flags"
     
-    for size in ["24","64","256"]:
-        try:
-            file24 = f"{r}\\mon_{size}.png"
-            newfile24 = f"{cur_dir}\\FactionFlags\\{faction_name}_{size}.png"
-            shutil.copyfile(file24,newfile24)
-        except:
-            print(f"{faction_name}_{size} not found")
+    for r,d,f in os.walk(flags1):
+        if f == []:
+            continue
+        faction_name = "_".join(r[len(flags1)+5:].split("_")[1:])
+        for size in ["24","64","256"]:
+            try:
+                file24 = f"{r}\\mon_{size}.png"
+                newfile24 = f"{cur_dir}\\FactionFlags\\{faction_name}_{size}.png"
+                shutil.copyfile(file24,newfile24)
+            except:
+                print(f"{faction_name}_{size} not found")
+    
+
+                
+extract_flags()
