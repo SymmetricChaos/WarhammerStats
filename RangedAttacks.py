@@ -1,21 +1,39 @@
 import numpy as np
 import pickle
 import pandas as pd
-from UtilityFunctions import no_nonstandard, average_damage_with_armor_raw
+from UtilityFunctions import average_damage_with_armor_raw
 
 unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
 
 
 def ranged_damage_stats(name,base_dmg_mod=1,ap_dmg_mod=1,reload_buff=0):
     
-    unit = unitsDF[unitsDF["name"].str.contains(name)]
-    if len(unit) == 0:
-        unit = unitsDF[unitsDF["key"] == name]
+    # Look for a unit with a name that matches exactly
+    # If we get exactly one match move on
+    # Otherwise
+    #     look for every unit that includes that name
+    #         if there is exactly one move on
+    #         if there are zero matches then
+    #              check if there is an exact match as a key value
+    #                  if not the input is invalid
+    #                  if there is then move on
+    #         if there is more then one match print out all the possibilities along with their key
+    #     
+    unit = unitsDF[unitsDF["name"] == name]
+    if len(unit) != 1:    
+        unit = unitsDF[unitsDF["name"].str.contains(name)]
         if len(unit) == 0:
-            raise Exception(f"{name} is not a unit name or key")
-    if len(unit) > 1:
-        raise Exception(f"Ambiguous name. Please use one of these key values\n{unit['key'].values}")
-    
+            unit = unitsDF[unitsDF["key"] == name]
+            if len(unit) == 0:
+                raise Exception(f"{name} is not a unit name or key")
+        if len(unit) > 1:
+            helper = unit[["name","key"]]
+            S = ""
+            for line in helper.values:
+                S += f"{line[0]:<50} {line[1]}\n"
+            
+            raise Exception(f"Ambiguous name. Please use one of these key values on the right:\n{S}")
+        
     show_name = unit["name"].values[0]
     
     ap_d = unit["ranged_ap_damage"].values[0]*ap_dmg_mod
@@ -69,12 +87,12 @@ if __name__ == '__main__':
     print("\n\n")
     ranged_damage_stats("wh2_dlc10_hef_inf_sisters_of_avelorn_0")
     print("\n\n")
-    ranged_damage_stats("wh2_dlc09_tmb_art_casket_of_souls_0")
+    ranged_damage_stats("Casket of Souls")
     print("\n\n")
     ranged_damage_stats("Thunderers")
     print("\n\n")
-    ranged_damage_stats("wh2_dlc12_skv_inf_ratling_gun_0")
+    ranged_damage_stats("Ratling Guns")
     print("\n\n")
-    ranged_damage_stats("wh2_dlc13_emp_inf_archers_0")
+    ranged_damage_stats("Deathjacks")
     print("\n\n")
     ranged_damage_stats("wh_main_emp_cav_pistoliers_1")

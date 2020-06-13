@@ -185,8 +185,6 @@ for unit in J:
          
          "reload_skill": unit["reload"],
 
-         
-         
          #Complex stats
          "factions": get_factions(unit),
          "faction_group": get_faction_group(unit),
