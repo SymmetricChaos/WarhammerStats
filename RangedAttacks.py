@@ -6,14 +6,15 @@ from UtilityFunctions import no_nonstandard, average_damage_with_armor_raw
 unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
 
 
-def ranged_damage_stats(name="",key="",base_dmg_mod=1,ap_dmg_mod=1,reload_buff=0):
-    if name == "":
-        unit = unitsDF[unitsDF["key"] == key]
-    else:
-        unit = unitsDF[unitsDF["name"] == name]
-        
-        if len(unit) > 1:
-            raise Exception(f"Amiguous name. Please use one of these key balues\n{unit['key']}")
+def ranged_damage_stats(name,base_dmg_mod=1,ap_dmg_mod=1,reload_buff=0):
+    
+    unit = unitsDF[unitsDF["name"].str.contains(name)]
+    if len(unit) == 0:
+        unit = unitsDF[unitsDF["key"] == name]
+        if len(unit) == 0:
+            raise Exception(f"{name} is not a unit name or key")
+    if len(unit) > 1:
+        raise Exception(f"Ambiguous name. Please use one of these key values\n{unit['key'].values}")
     
     show_name = unit["name"].values[0]
     
@@ -25,7 +26,9 @@ def ranged_damage_stats(name="",key="",base_dmg_mod=1,ap_dmg_mod=1,reload_buff=0
     shot_vol = unit["shots_per_volley"].values[0]
     ammo = unit["ammo"].values[0]
     proj_range = unit["range"].values[0]
+    
     caste = unit["caste"].values[0]
+    category = unit["category"].values[0]
     
     base_reload = unit["base_reload_time"].values[0]
     reload_skill = unit["reload_skill"].values[0]+reload_buff
@@ -42,7 +45,11 @@ def ranged_damage_stats(name="",key="",base_dmg_mod=1,ap_dmg_mod=1,reload_buff=0
     
     
     print(f"Some Ranged Damage Stats for {show_name}")
-    print(f"{caste}")
+    if caste == category:
+        print(f"{caste}\n")
+    else:
+        print(f"{caste}: {category}\n")
+    
     print(f"Range: {int(proj_range)}m")
     print(f"Target Area: {calibration_area}m")
     print(f"Calibration Dist: {calibration_distance}m")
@@ -58,14 +65,16 @@ def ranged_damage_stats(name="",key="",base_dmg_mod=1,ap_dmg_mod=1,reload_buff=0
 
 
 if __name__ == '__main__':
-    ranged_damage_stats("Waywatchers")
+    ranged_damage_stats("wh_dlc05_wef_inf_waywatchers_0")
     print("\n\n")
-    ranged_damage_stats("Sisters of Avelorn")
+    ranged_damage_stats("wh2_dlc10_hef_inf_sisters_of_avelorn_0")
     print("\n\n")
-    ranged_damage_stats("Casket of Souls")
+    ranged_damage_stats("wh2_dlc09_tmb_art_casket_of_souls_0")
     print("\n\n")
     ranged_damage_stats("Thunderers")
     print("\n\n")
-    ranged_damage_stats("Ratling Guns")
+    ranged_damage_stats("wh2_dlc12_skv_inf_ratling_gun_0")
     print("\n\n")
-    ranged_damage_stats(key="wh2_dlc13_emp_inf_archers_0")
+    ranged_damage_stats("wh2_dlc13_emp_inf_archers_0")
+    print("\n\n")
+    ranged_damage_stats("wh_main_emp_cav_pistoliers_1")
