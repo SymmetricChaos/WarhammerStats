@@ -9,6 +9,11 @@ unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
 def pretty_name(S):
     return " ".join(S.split("_")).title()
 
+
+
+
+
+# Go from name code to the common name
 faction_code_to_name = {'brt': "Brettonia",
                 'bst': "Beastmen",
                 'chs': "Warriors of Chaos",
@@ -25,18 +30,65 @@ faction_code_to_name = {'brt': "Brettonia",
                 'vmp': "Vampire Counts",
                 'wef': "Wood Elves"}
 
+
+
+
+
+### System for Removing Duplicate Characters That Share a Lore of Magic ###
+# This should only be used in JSONtoDataframe if it is needed elsewhere the
+# unitsDF_clean dataframe should just be loaded
+lores = [" (Beasts)",
+         " (Death)",
+         " (Fire)",
+         " (Heavens)",
+         " (High)",
+         " (Life)",
+         " (Light)",
+         " (Metal)",
+         " (Shadows)",
+         " (Dark)",
+         " (Vampires)",
+         " (Deep)",
+         " (Plague)",
+         " (Ruin)"]
+
+def remove_lore(name):
+    for lore in lores:
+        if lore in name:
+            name = name.replace(lore," ")
+            while "  " in name:
+                name = name.replace("  "," ")
+            return name
+    return name
+
+def deduplicate_lore(units):
+
+    names = units["name"]
+    reduced_names = []
+    for name in names:
+        reduced_names.append(remove_lore(name))
+    
+    units_no_dupe_lores = units.replace(list(units["name"]),reduced_names)
+    units_no_dupe_lores.drop_duplicates(subset="name",inplace=True)
+    
+    return units_no_dupe_lores
+
+
+
+
+
 # I believe this is correct based on the description by the developers
 # "Armour = Max damage reduction percentage. Min is always 50% of armour value.
 #  To be more precise, any time base damage is dealt, the target rolls for 
 #  armour. This armour roll is a random value between 50% and 100% of the 
 #  armour stat. The armour roll is then applied as percentage damage 
 #  reduction."
-# Legacy calculation method by numerica simulation
-def average_armor_reduction_old(armor):
-    """Returns the proportion of base damage blocked by the given armor value"""
-    ar = np.linspace(armor/2,armor,1000)
-    ar = [min(x,100) for x in ar]
-    return np.mean(ar)/100
+# Legacy calculation method by numerical simulation
+#def average_armor_reduction_old(armor):
+#    """Returns the proportion of base damage blocked by the given armor value"""
+#    ar = np.linspace(armor/2,armor,1000)
+#    ar = [min(x,100) for x in ar]
+#    return np.mean(ar)/100
 
 # Credit to u/Panthera__Tigris on reddit for coming up with this
 def average_armor_reduction(armor):
@@ -49,7 +101,6 @@ def average_armor_reduction(armor):
         return (100*(armor-100)+(100-armor*0.5)*((armor*0.5+100)*0.5))/((armor-100)+(100-armor*0.5))/100
     else:
         raise Exception("Armor cannot be more than 200")
-
 
 def average_damage_with_armor_raw(base_damage,ap_damage,armor):
     """
@@ -68,6 +119,10 @@ def average_damage_with_armor_ratio(total_damage,ap_ratio,armor):
     ap_damage = total_damage*ap_ratio
     base_damage = total_damage-ap_damage
     return average_damage_with_armor_raw(base_damage,ap_damage,armor)
+
+
+
+
 
 ## Most functions below accept the argument "units" which should be a pandas
 ## DataFrame where each row is a unit description like the one created by
@@ -124,6 +179,8 @@ def no_summoned(units):
     unbinding = ~units["key"].str.contains("summoned")
     return units[unbinding]
 
+# Remove summon units, units with a special category like RoR, Mistwalker, etc
+# Then also remove specific campaign only units
 def no_nonstandard(units):
     units = no_summoned(units)
     units = no_special_category(units)
