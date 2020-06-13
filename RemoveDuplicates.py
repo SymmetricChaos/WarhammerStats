@@ -38,7 +38,7 @@ def deduplicate_lore(units):
     for name in names:
         reduced_names.append(remove_lore(name))
     
-    units_no_dupe_lores = hef.replace(list(hef["name"]),reduced_names)
+    units_no_dupe_lores = units.replace(list(units["name"]),reduced_names)
     units_no_dupe_lores.drop_duplicates(subset="name",inplace=True)
     
     return units_no_dupe_lores

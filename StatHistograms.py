@@ -3,10 +3,13 @@ import matplotlib.pyplot as plt
 import pickle
 from UtilityFunctions import no_single_entity, all_from_faction, no_summoned, \
                              no_special_category, no_nonstandard
+from RemoveDuplicates import deduplicate_lore
 
 units = pickle.load( open( "unitsDF.p", "rb" ) )
-# Get rid of summon units
+# Get rid of all nonstandard units
 units = no_nonstandard(units)
+units = deduplicate_lore(units)
+
 
 brt = all_from_faction(units,'brt')
 bst = all_from_faction(units,'bst')
