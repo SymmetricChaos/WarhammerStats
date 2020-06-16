@@ -3,7 +3,6 @@ import pickle
 import pandas as pd
 from UtilityFunctions import average_damage_with_armor_raw
 
-unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
 
 
 def ranged_damage_stats(name,base_dmg_mod=1,ap_dmg_mod=1,reload_buff=0):
@@ -83,6 +82,9 @@ def ranged_damage_stats(name,base_dmg_mod=1,ap_dmg_mod=1,reload_buff=0):
 
 
 if __name__ == '__main__':
+    
+    unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
+    
     ranged_damage_stats("wh_dlc05_wef_inf_waywatchers_0")
     print("\n\n")
     ranged_damage_stats("wh2_dlc10_hef_inf_sisters_of_avelorn_0")

@@ -1,11 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pickle
-from UtilityFunctions import no_single_entity, all_from_faction, no_summoned, \
-                             no_special_category, pretty_name, faction_code_to_name
-                             
+from UtilityFunctions import  all_from_faction, pretty_name, faction_code_to_name
 
-units = pickle.load( open( "unitsDF_clean.p", "rb" ) )
 
 
 def histoplot(L,bins=[],percentiles=[],size=[13,6],title=""):
@@ -39,8 +36,16 @@ def stats_plot(units,column,faction_code,bins=[]):
     faction_DF =  all_from_faction(units,faction_code)
     histoplot(faction_DF[column],bins,[50],
               title=f"{pretty_name(column)} Distribution\n{faction_name}")
+    
+
+
+        
 
 
 
-for faction in ["hef","wef","def"]:
-    stats_plot(units,"melee_attack",faction,np.arange(0,105,5))
+if __name__ == '__main__':
+    
+    units = pickle.load( open( "unitsDF_clean.p", "rb" ) )
+    
+    for faction in ["hef","wef","def"]:
+        stats_plot(units,"melee_attack",faction,np.arange(0,105,5))

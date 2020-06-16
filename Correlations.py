@@ -4,10 +4,8 @@ import pickle
 import pandas as pd
 from sklearn import linear_model
 from sklearn.metrics import mean_squared_error, r2_score, median_absolute_error
-from UtilityFunctions import no_nonstandard, pretty_name
+from UtilityFunctions import pretty_name
 
-unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
-unitsDF = no_nonstandard(unitsDF)
 
 # Simple linear correlation take from a unitsDF dataframe
 def simple_linear_model(X,Y):
@@ -38,6 +36,8 @@ def simple_linear_model(X,Y):
     print(f"Mean Square Error: {round(MSE,2)}")
     print(f"Median Absolute Error: {round(MAE,2)}")
     plt.show()
+    
+    return model
 
 
 def multiple_linear_model(Xs,Y):
@@ -65,16 +65,20 @@ def multiple_linear_model(Xs,Y):
     print(f"\nR-squared: {round(R2,2)}")
     print(f"Mean Square Error: {round(MSE,2)}")
     print(f"Median Absolute Error: {round(MAE,2)}")
+    
+    return model
 
 
 if __name__ == '__main__':
+    
+    unitsDF = pickle.load( open( "unitsDF_clean.p", "rb" ) )
+    
     simple_linear_model(unitsDF["leadership"],
                         unitsDF["multiplayer_cost"])
     
     print()
     
-    multiple_linear_model(unitsDF[["leadership","melee_attack","melee_defence",
+    m = multiple_linear_model(unitsDF[["leadership","melee_attack","melee_defence",
                                    "melee_ap_ratio","health","armour","speed"]],
                         unitsDF["multiplayer_cost"])
-    
-    
+    print(m.get_params())
