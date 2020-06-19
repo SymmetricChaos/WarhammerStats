@@ -8,20 +8,30 @@ import shutil
 
 def extract_flags():
     cur_dir = os.getcwd()
-    flags1 = cur_dir+"\\WarhammerUI\\flags"
+    flags = cur_dir+"\\WarhammerUI\\flags"
     
-    for r,d,f in os.walk(flags1):
+    for r,d,f in os.walk(flags):
         if f == []:
             continue
-        faction_name = "_".join(r[len(flags1)+5:].split("_")[1:])
+        faction_name = "_".join(r[len(flags)+5:].split("_")[1:])
         for size in ["24","64","256"]:
             try:
-                file24 = f"{r}\\mon_{size}.png"
-                newfile24 = f"{cur_dir}\\FactionFlags\\{faction_name}_{size}.png"
-                shutil.copyfile(file24,newfile24)
+                oldfile = f"{r}\\mon_{size}.png"
+                newfile = f"{cur_dir}\\FactionFlags\\{faction_name}_{size}.png"
+                shutil.copyfile(oldfile,newfile)
             except:
                 print(f"{faction_name}_{size} not found")
     
+def extract_units():
+    cur_dir = os.getcwd()
+    units = cur_dir+"\\WarhammerUI\\units\\infopics"
+    
+    for r,d,f in os.walk(units):
+        for i in f:
+            oldfile = f"{r}\\{i}"
+            newfile = f"{cur_dir}\\UnitPics\\{i}.png"
+            shutil.copyfile(oldfile,newfile)
 
                 
-extract_flags()
+#extract_flags()
+extract_units()

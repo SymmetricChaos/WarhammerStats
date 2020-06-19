@@ -8,8 +8,6 @@ from UtilityFunctions import random_unit, all_from_faction, all_attributes, \
 units = pickle.load( open( "unitsDF.p", "rb" ) )
 pd.set_option('display.max_rows', 500)
 
-units = no_special_category(no_summoned(units))
-
 brt = all_from_faction(units,'brt')
 bst = all_from_faction(units,'bst')
 chs = all_from_faction(units,'chs')
@@ -42,15 +40,15 @@ def show_categorical_stats():
 if __name__ == '__main__':
 
 
-#    print("Show A random Unit's Stats\n")
-#    R = random_unit(unitsDF)
-#    print(R)
+    print("Show A random Unit's Stats\n")
+    R = random_unit(units)
+    print(R)
 #    print("\n\n\n\nShow the various categories a unit can fall into\n")
 #    show_categorical_stats()
 #    
 #    print(units[units["reload_skill"]==15])
 
-    print(emp["name"])
+#    print(emp["key"])
     # Special Keys found: waaagh, summoned, final_battle, aquitaine, graktar,
     #    imperial_supply, nakai, blessed
 #    print(unitsDF[unitsDF["key"].str.contains('aquitaine')])
