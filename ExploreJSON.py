@@ -12,6 +12,19 @@ def show_dict(D):
             print(f"####### end {key} #######\n\n")
         else:
             print(f"{key}: {val}\n")
+            
+#def show_dict_responsive(D):
+#    print(f"Show {D['key']}")
+#    x = input()
+#    if "y" in x.lower():
+#        for key,val in D.items():
+#            if type(val) == dict:
+#                    print(f"\n####### begin {key} #######\n")
+#                    show_dict(val)
+#                    print(f"####### end {key} #######\n\n")
+#            else:
+#                print(f"{key}: {val}\n")
+    
         
 def show_primary_melee_weapon(D):
     pmw = D["primary_melee_weapon"]
@@ -69,6 +82,8 @@ def get_spells(D):
         
         
 for unit in J:
-    if "Volkmar" in unit["name"]:
-        show_dict(unit)
-        break
+    if "General" in unit["name"]:
+        print(f"Looking for {unit['key']}")
+        x = input()
+        if "y" in x.lower():
+            show_dict(unit)

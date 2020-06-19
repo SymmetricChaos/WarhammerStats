@@ -24,8 +24,12 @@ if __name__ == '__main__':
     R = random_unit(units)
     card_img = R["unit_card"]
     
+    
+    print(card_img)
+    
     cur_dir = os.getcwd()
     card_img_path = f"{cur_dir}\\UnitPics\\{card_img}"
+    
     
     I = img_and_name(0,0,card_img_path,R["name"])
     I.show()

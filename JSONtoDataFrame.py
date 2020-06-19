@@ -43,7 +43,7 @@ def set_melee_stats(D,unit):
     D["melee_is_magical"] = weapon["is_magical"]
     D["melee_is_flaming"] = weapon["ignition_amount"] # <- renamed to reflect player facing name
     if weapon["phase"] == None:
-        D["melee_contact_effect"] = ""
+        D["melee_contact_effect"] = "" # <- internally called phase but goes into the data as contact effect
     else:
         D["melee_contact_effect"] = weapon["phase"]["name"].split("\\")[0] # <- contact effects can contain an image after the name
     
