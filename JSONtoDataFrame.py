@@ -1,7 +1,7 @@
 import json
 import pandas as pd 
 import pickle
-from UtlityFunctions import no_nonstandard, deduplicate_lore
+from UtilityFunctions import no_nonstandard, deduplicate_lore
 
 with open('unitsdata.json', encoding="utf8") as f:
   J = json.load(f)
@@ -156,6 +156,9 @@ for unit in J:
          "damage_mod_all": unit["damage_mod_all"],
          "speed": unit["speed"], # <- speed as shown in UI, better of ground and flying
          "recruitment_time":  unit["create_time"], # <- recruitment time
+         
+         "unit_card":unit["unit_card"].split("/")[-1],
+         
          
          # Simple non-user facing stats
          "health_per_entity": unit["health_per_entity"],
