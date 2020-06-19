@@ -1,5 +1,5 @@
 # The UI file is extracted from the game using the File Pack Manager
-# Its large so ts not included in this repository to hide the entire folder
+# Its large so it is not included in this repository. To hide the entire folder
 # it contains a .gitignore that just says * and the same method is used to 
 # prevent the FactionFlags folder from being uploaded as well
 

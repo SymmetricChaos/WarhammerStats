@@ -26,5 +26,6 @@ if __name__ == '__main__':
     
     cur_dir = os.getcwd()
     card_img_path = f"{cur_dir}\\UnitPics\\{card_img}"
-    image(card_img_path,scale=1)
-    text(0,.5,R["name"],horizontalalignment="center",size=20)
+    
+    I = img_and_name(0,0,card_img_path,R["name"])
+    I.show()
