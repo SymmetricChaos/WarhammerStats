@@ -156,7 +156,6 @@ for unit in J:
          "damage_mod_all": unit["damage_mod_all"],
          "speed": unit["speed"], # <- speed as shown in UI, better of ground and flying
          "recruitment_time":  unit["create_time"], # <- recruitment time
-         
          "unit_card":unit["unit_card"].split("/")[-1],
          
          

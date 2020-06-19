@@ -29,9 +29,9 @@ def extract_units():
     for r,d,f in os.walk(units):
         for i in f:
             oldfile = f"{r}\\{i}"
-            newfile = f"{cur_dir}\\UnitPics\\{i}.png"
+            newfile = f"{cur_dir}\\UnitPics\\{i}"
             shutil.copyfile(oldfile,newfile)
 
-                
-#extract_flags()
-extract_units()
+if __name__ == '__main__':       
+    extract_flags()
+    extract_units()
