@@ -14,7 +14,7 @@ class img_and_name:
     
     def show(self):
         image(card_img_path,x=self.x,y=self.y)
-        text(self.x,self.y+.3,R["name"],horizontalalignment="center",size=20)
+        text(self.x,self.y+.25,R["name"],horizontalalignment="center",size=14)
 
 if __name__ == '__main__':
     units = pickle.load( open( "unitsDF_clean.p", "rb" ) )
