@@ -87,3 +87,4 @@ for unit in J:
         x = input()
         if "y" in x.lower():
             show_dict(unit)
+            break

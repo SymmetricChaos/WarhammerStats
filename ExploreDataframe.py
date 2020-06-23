@@ -29,7 +29,7 @@ def show_categorical_stats():
     for cat in ['caste','category','entity_size','faction_group','entity_size',
                 'ground_stat_effect_group','special_category',
                 'melee_contact_effect','ranged_contact_effect',
-                'explosion_contact_effect']:
+                'explosion_contact_effect','melee_splash_attack_multiplier']:
         
         options = sorted(units[cat].unique())
         print(f"{cat}:\n{options}\n")
@@ -40,11 +40,11 @@ def show_categorical_stats():
 if __name__ == '__main__':
 
 
-    print("Show A random Unit's Stats\n")
-    R = random_unit(units)
-    print(R)
-#    print("\n\n\n\nShow the various categories a unit can fall into\n")
-#    show_categorical_stats()
+#    print("Show A random Unit's Stats\n")
+#    R = random_unit(units)
+#    print(R)
+    print("\n\n\n\nShow the various categories a unit can fall into\n")
+    show_categorical_stats()
 #    
 #    print(units[units["reload_skill"]==15])
 

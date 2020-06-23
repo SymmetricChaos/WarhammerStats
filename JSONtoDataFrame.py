@@ -42,6 +42,9 @@ def set_melee_stats(D,unit):
     D["melee_attack_interval"] = weapon["melee_attack_interval"]
     D["melee_is_magical"] = weapon["is_magical"]
     D["melee_is_flaming"] = weapon["ignition_amount"] # <- renamed to reflect player facing name
+    D["melee_splash_attacks"] = weapon["splash_attack_max_attacks"]
+    D["melee_splash_attack_target_size"] = weapon["splash_attack_target_size"]
+    D["melee_splash_attack_multiplier"] = weapon["splash_attack_power_multiplier"]
     if weapon["phase"] == None:
         D["melee_contact_effect"] = "" # <- internally called phase but goes into the data as contact effect
     else:
