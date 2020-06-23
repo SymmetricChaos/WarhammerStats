@@ -90,7 +90,9 @@ def deduplicate_lore(units):
 #    ar = [min(x,100) for x in ar]
 #    return np.mean(ar)/100
 
-# Credit to u/Panthera__Tigris on reddit for coming up with this
+# Credit to u/Panthera__Tigris on reddit for the formula
+# (100*(armor-100)+(100-armor*0.5)*((armor*0.5+100)*0.5))/((armor-100)+(100-armor*0.5))/100
+# Credit to u/tilerkiwi for pointing out the simplification used below
 def average_armor_reduction(armor):
     """Returns the proportion of base damage blocked by the given armor value"""
     if armor < 0:
@@ -98,7 +100,7 @@ def average_armor_reduction(armor):
     elif armor <= 100:
         return np.mean([armor,armor/2])/100
     elif armor <= 200:
-        return (100*(armor-100)+(100-armor*0.5)*((armor*0.5+100)*0.5))/((armor-100)+(100-armor*0.5))/100
+        return 2-.0025*armor - 100/armor
     else:
         raise Exception("Armor cannot be more than 200")
 
@@ -259,8 +261,8 @@ if __name__ == '__main__':
     
     print(random_unit(unitsDF))
     
-    print(all_abilities(unitsDF))
-    print(all_attributes(unitsDF))
+#    print(all_abilities(unitsDF))
+#    print(all_attributes(unitsDF))
     
 #    unitsDF_filtered = no_nonstandard(unitsDF)
     
