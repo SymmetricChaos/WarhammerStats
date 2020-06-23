@@ -141,7 +141,7 @@ units = []
 for unit in J:
     if unit["name"] == "TEST UNIT - Tomb Kings" or unit["caste"] == "Generic":
         continue
-    D = {# Simple user facing stats
+    D = {## Simple user facing stats ##
          "name": unit["name"],
          "health": unit["health"],
          "leadership": unit["leadership"],
@@ -158,19 +158,16 @@ for unit in J:
          "damage_mod_missile": unit["damage_mod_missile"],
          "damage_mod_all": unit["damage_mod_all"],
          "speed": unit["speed"], # <- speed as shown in UI, better of ground and flying
-         "recruitment_time":  unit["create_time"], # <- recruitment time
+         "recruitment_time": unit["create_time"], # <- recruitment time
          "unit_card":unit["unit_card"].split("/")[-1],
-         
-         
-         # Simple non-user facing stats
-         "health_per_entity": unit["health_per_entity"],
-         
          "multiplayer_cost": unit["multiplayer_cost"],
          "singleplayer_cost":  unit["singleplayer_cost"],
          "singleplayer_upkeep":  unit["singleplayer_upkeep"],
          
-         "mass": unit["mass"],
-#         "weight": unit["weight"], # <- According to devs no longer used
+         ## Stats not visible to the user ##
+         "health_per_entity": unit["health_per_entity"],
+         
+         "mass": unit["mass"], #weight also exists but devs says it is deprecated
          "height": unit["height"],
          "radius": unit["radius"],
          "entity_size": unit["entity_size"],
@@ -190,7 +187,7 @@ for unit in J:
          
          "reload_skill": unit["reload"],
 
-         #Complex stats
+         ## Stats that are lists ##
          "factions": get_factions(unit),
          "faction_group": get_faction_group(unit),
          "attributes": get_attributes(unit),
