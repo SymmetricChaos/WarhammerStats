@@ -74,6 +74,8 @@ def set_ranged_stats(D,unit):
         D["projectile_number"] = None
         D["calibration_area"] = None
         D["calibration_distance"] = None
+        D["accuracy"] = None
+        D["max_penetration"] = None
         
         # If there is no ranged attack there is also no explosion so again we
         # provide default values
@@ -103,6 +105,8 @@ def set_ranged_stats(D,unit):
         D["ranged_is_flaming"] = projectile["ignition_amount"]
         D["calibration_area"] = projectile["calibration_area"] # precision
         D["calibration_distance"] = projectile["calibration_distance"] # some modifier to precision
+        D["max_penetration"] = projectile["penetration_max_penetration"]
+        D["penetration_entity_size_cap"] = projectile["penetration_entity_size_cap"]
         if projectile["phase"] == None:
             D["ranged_contact_effect"] = ""
         else:
@@ -128,10 +132,10 @@ def set_ranged_stats(D,unit):
             else:
                 D["explosion_contact_effect"] = projectile["explosion"]["phase"]["name"].split("\\")[0]
         
-        # Need to validate meaning of ammo count
-        # Used to be total volleys but now user interface shows total shots
+        # Total shots
         D["ammo"] = unit["primary_missile_weapon"]["ammo"]
-        
+        # No idea how this affects accuracy exactly
+        D["accuracy"] = unit["total_accuracy"]
 
 
 

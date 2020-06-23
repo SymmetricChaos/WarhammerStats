@@ -1,9 +1,4 @@
-import json
 
-with open('unitsdata.json', encoding="utf8") as f:
-  J = json.load(f)
-
-        
 def show_dict(D):
     for key,val in D.items():
         if type(val) == dict:
@@ -12,35 +7,32 @@ def show_dict(D):
             print(f"####### end {key} #######\n\n")
         else:
             print(f"{key}: {val}\n")
+
+def show_dict_clean(D):
+    for key,val in D.items():
+        if type(val) == dict:
+            print(f"\n####### begin {key} #######\n")
+            show_dict(val)
+            print(f"####### end {key} #######\n\n")
+        else:
+            if key in ["spells","abilities"]:
+                print(f"{key}: {[line['name'] for line in val]}\n")
+            elif key in ["attributes"]:
+                print(f"{key}: {[line['key'] for line in val]}\n")
+            else:
+                print(f"{key}: {val}\n")
+
             
-#def show_dict_responsive(D):
-#    print(f"Show {D['key']}")
-#    x = input()
-#    if "y" in x.lower():
-#        for key,val in D.items():
-#            if type(val) == dict:
-#                    print(f"\n####### begin {key} #######\n")
-#                    show_dict(val)
-#                    print(f"####### end {key} #######\n\n")
-#            else:
-#                print(f"{key}: {val}\n")
-    
-        
-def show_primary_melee_weapon(D):
-    pmw = D["primary_melee_weapon"]
-    show_dict(pmw)
-        
-def show_primary_missile_weapon(D):
-    pmw = D["primary_missile_weapon"]
-    show_dict(pmw)
+def find_unit(D,name):
+    for unit in D:
+        if name in unit["name"]:
+            print(f"Looking for {unit['key']}?")
+            x = input()
+            if "y" in x.lower():
+                show_dict_clean(unit)
+                break
 
-def get_attributes(D):
-    att = D["attributes"]
-    return [line["key"] for line in att]
 
-def get_abilities(D):
-    att = D["abilities"]
-    return [line["name"] for line in att]
 
 def get_factions(D):
     fac = D["factions"]
@@ -49,10 +41,6 @@ def get_factions(D):
 def get_faction_group(D):
     return D["key"].split("_")[2]
 
-def get_spells(D):
-    spl = D["spells"]
-    return [line["name"] for line in spl]
-    
 
 #unit = J[5]
 #show_dict(unit)
@@ -80,11 +68,8 @@ def get_spells(D):
 #print(special_categories)
 #print(faction_groups)
         
-        
-for unit in J:
-    if "General" in unit["name"]:
-        print(f"Looking for {unit['key']}")
-        x = input()
-        if "y" in x.lower():
-            show_dict(unit)
-            break
+if __name__ == '__main__':
+    import json
+    with open('unitsdata.json', encoding="utf8") as f:
+        J = json.load(f)
+    find_unit(J,"Gelt")
