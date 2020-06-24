@@ -105,8 +105,8 @@ def set_ranged_stats(D,unit):
         D["ranged_is_flaming"] = projectile["ignition_amount"]
         D["calibration_area"] = projectile["calibration_area"] # precision
         D["calibration_distance"] = projectile["calibration_distance"] # some modifier to precision
-        D["max_penetration"] = projectile["penetration_max_penetration"]
-        D["penetration_entity_size_cap"] = projectile["penetration_entity_size_cap"]
+#        D["max_penetration"] = projectile["penetration_max_penetration"]
+#        D["penetration_entity_size_cap"] = projectile["penetration_entity_size_cap"]
         if projectile["phase"] == None:
             D["ranged_contact_effect"] = ""
         else:
@@ -135,7 +135,7 @@ def set_ranged_stats(D,unit):
         # Total shots
         D["ammo"] = unit["primary_missile_weapon"]["ammo"]
         # No idea how this affects accuracy exactly
-        D["accuracy"] = unit["total_accuracy"]
+#        D["accuracy"] = unit["total_accuracy"] #removed temporarily by ciment
 
 
 
@@ -173,7 +173,7 @@ for unit in J:
          
          "mass": unit["mass"], #weight also exists but devs says it is deprecated
          "height": unit["height"],
-         "radius": unit["radius"],
+#         "radius": unit["radius"], #removed temporarily by ciment
          "entity_size": unit["entity_size"],
          
          "caste": unit["caste"],  
