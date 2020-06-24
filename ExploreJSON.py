@@ -22,15 +22,31 @@ def show_dict_clean(D):
             else:
                 print(f"{key}: {val}\n")
 
+def show_unit_by_key(D,key):
+    for unit in D:
+        if key == unit["key"]:
+            show_dict_clean(unit)
+            break
             
 def find_unit(D,name):
+    
+    name_list = []
     for unit in D:
         if name in unit["name"]:
-            print(f"Looking for {unit['key']}?")
-            x = input()
-            if "y" in x.lower():
-                show_dict_clean(unit)
-                break
+            name_list.append((unit["name"],unit["key"]))
+    
+    if len(name_list) == 0:
+        raise Exception(f"No units contain {name} in their name")
+    
+    if len(name_list) == 1:
+        show_unit_by_key(D,name_list[0][1])
+        
+    else:               
+        print("Multiple matches. Choose a unit")   
+        for n,i in enumerate(name_list):
+            print(n,i[0],i[1])
+        x = int(input())
+        show_unit_by_key(D,name_list[x][1])
 
 
 
@@ -72,4 +88,6 @@ if __name__ == '__main__':
     import json
     with open('unitsdata.json', encoding="utf8") as f:
         J = json.load(f)
-    find_unit(J,"Gelt")
+        
+        
+    find_unit(J,"Ellyrian")
