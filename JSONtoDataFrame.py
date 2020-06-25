@@ -1,10 +1,7 @@
-import json
-import pandas as pd 
-import pickle
+
 from UtilityFunctions import no_nonstandard, deduplicate_lore
 
-with open('unitsdata.json', encoding="utf8") as f:
-  J = json.load(f)
+
   
 # Make a somewhat cleaner object to that is easier to work with than the raw JSON data
 
@@ -138,91 +135,110 @@ def set_ranged_stats(D,unit):
 #        D["accuracy"] = unit["total_accuracy"] #removed temporarily by ciment
 
 
-
-
-units = []
-
-for unit in J:
-    if unit["name"] == "TEST UNIT - Tomb Kings" or unit["caste"] == "Generic":
-        continue
-    D = {## Simple user facing stats ##
-         "name": unit["name"],
-         "health": unit["health"],
-         "leadership": unit["leadership"],
-         "charge_bonus": unit["charge_bonus"],
-         "armour": unit["armour"],
-         "melee_attack": unit["melee_attack"],
-         "melee_defence": unit["melee_defence"],
-         "is_large": unit["is_large"], # <- controls the UI symbol for infantry or large size
-         "missile_block_chance": unit["parry_chance"], # <- renamed to common name
-         "unit_size": unit["unit_size"], # <- number of entities
-         "damage_mod_flame": unit["damage_mod_flame"],
-         "damage_mod_magic": unit["damage_mod_magic"],
-         "damage_mod_physical": unit["damage_mod_physical"],
-         "damage_mod_missile": unit["damage_mod_missile"],
-         "damage_mod_all": unit["damage_mod_all"],
-         "speed": unit["speed"], # <- speed as shown in UI, better of ground and flying
-         "recruitment_time": unit["create_time"], # <- recruitment time
-         "unit_card":unit["unit_card"].split("/")[-1],
-         "multiplayer_cost": unit["multiplayer_cost"],
-         "singleplayer_cost":  unit["singleplayer_cost"],
-         "singleplayer_upkeep":  unit["singleplayer_upkeep"],
-         
-         ## Stats not visible to the user ##
-         "health_per_entity": unit["health_per_entity"],
-         
-         "mass": unit["mass"], #weight also exists but devs says it is deprecated
-         "height": unit["height"],
-#         "radius": unit["radius"], #removed temporarily by ciment
-         "entity_size": unit["entity_size"],
-         
-         "caste": unit["caste"],  
-         "category": unit["category"],
-         "special_category": unit["special_category"],
-
-         "key": unit["key"],
-         
-         "speed_ground": unit["run_speed"],
-         "speed_flying": unit["fly_speed"],
-         "charge_speed": unit["charge_speed"],
-         "charge_speed_flying": unit["flying_charge_speed"],
-         
-         "ground_stat_effect_group": unit["ground_stat_effect_group"]["group_name"],
-         
-         "reload_skill": unit["reload"],
-
-         ## Stats that are lists ##
-         "factions": get_factions(unit),
-         "faction_group": get_faction_group(unit),
-         "attributes": get_attributes(unit),
-         "abilities": get_abilities(unit),
-         "spells": get_spells(unit)
-         }
+def create_units_dict_from_JSON(J):
+    units = []
     
-    # Weapon stats
-    set_melee_stats(D,unit)
-    set_ranged_stats(D,unit)
+    for unit in J:
+        if unit["name"] == "TEST UNIT - Tomb Kings" or unit["caste"] == "Generic":
+            continue
+        D = {## Simple user facing stats ##
+             "name": unit["name"],
+             "health": unit["health"],
+             "leadership": unit["leadership"],
+             "charge_bonus": unit["charge_bonus"],
+             "armour": unit["armour"],
+             "melee_attack": unit["melee_attack"],
+             "melee_defence": unit["melee_defence"],
+             "is_large": unit["is_large"], # <- controls the UI symbol for infantry or large size
+             "missile_block_chance": unit["parry_chance"], # <- renamed to common name
+             "unit_size": unit["unit_size"], # <- number of entities
+             "damage_mod_flame": unit["damage_mod_flame"],
+             "damage_mod_magic": unit["damage_mod_magic"],
+             "damage_mod_physical": unit["damage_mod_physical"],
+             "damage_mod_missile": unit["damage_mod_missile"],
+             "damage_mod_all": unit["damage_mod_all"],
+             "speed": unit["speed"], # <- speed as shown in UI, better of ground and flying
+             "recruitment_time": unit["create_time"], # <- recruitment time
+             "unit_card":unit["unit_card"].split("/")[-1],
+             "multiplayer_cost": unit["multiplayer_cost"],
+             "singleplayer_cost":  unit["singleplayer_cost"],
+             "singleplayer_upkeep":  unit["singleplayer_upkeep"],
+             
+             ## Stats not visible to the user ##
+             "health_per_entity": unit["health_per_entity"],
+             
+             "mass": unit["mass"], #weight also exists but devs says it is deprecated
+             "height": unit["height"],
+    #         "radius": unit["radius"], #removed temporarily by ciment
+             "entity_size": unit["entity_size"],
+             
+             "caste": unit["caste"],  
+             "category": unit["category"],
+             "special_category": unit["special_category"],
+    
+             "key": unit["key"],
+             
+             "run_speed": unit["run_speed"],
+             "fly_speed": unit["fly_speed"],
+             "walk_speed": unit["walk_speed"],
+             "charge_speed": unit["charge_speed"],
+             "charge_speed_flying": unit["flying_charge_speed"],
+             
+             "ground_stat_effect_group": unit["ground_stat_effect_group"]["group_name"],
+             
+             "reload_skill": unit["reload"],
+    
+             ## Stats that are lists ##
+             "factions": get_factions(unit),
+             "faction_group": get_faction_group(unit),
+             "attributes": get_attributes(unit),
+             "abilities": get_abilities(unit),
+             "spells": get_spells(unit)
+             }
+        
+        # Weapon stats
+        set_melee_stats(D,unit)
+        set_ranged_stats(D,unit)
+    
+        units.append(D)
+    return units
 
-    units.append(D)
 
+if __name__ == '__main__':
+    
+    import json
+    import pandas as pd 
+    import pickle
+    
+    with open('unitsdata.json', encoding="utf8") as f:
+      J = json.load(f)
+     
+    # Create the dictionary
+    units = create_units_dict_from_JSON(J)
+    # Convert to a pandas DataFrame
+    unitsDF = pd.DataFrame(units)
+    
+    
 
-
-
-# Convert to a pandas DataFrame
-unitsDF = pd.DataFrame(units)
-# Save as a DataFrame, as a dictionary, and as a csv file
-pickle.dump(unitsDF, open( "unitsDF.p", "wb" ) )
-pickle.dump(units, open( "unitsDict.p", "wb" ) )
-unitsDF.to_csv("units.csv")
-
-
-# Create a deeply cleaned version of the DataFrame that removed all non-standard
-# units and turns characters that differ only in lore into a single entry
-# This is often useful when looking at staistics of a whole faction
-unitsDFclean = no_nonstandard(unitsDF)
-unitsDFclean = deduplicate_lore(unitsDFclean)
-
-pickle.dump(unitsDF, open( "unitsDF_clean.p", "wb" ) )
-pickle.dump(units, open( "unitsDict_clean.p", "wb" ) )
-unitsDF.to_csv("units_clean.csv")
-
+    # Save as a DataFrame, as a dictionary, and as a csv file
+    pickle.dump(unitsDF, open( "unitsDF.p", "wb" ) )
+    pickle.dump(unitsDF.to_dict(), open( "unitsDict.p", "wb" ) )
+    unitsDF.to_csv("units.csv")
+    
+    
+    # Create a deeply cleaned version of the DataFrame that removed all non-standard
+    # units. This avoid some issues when looking at the data
+    unitsDFclean = no_nonstandard(unitsDF)
+    
+    pickle.dump(unitsDFclean, open( "unitsDF_clean.p", "wb" ) )
+    pickle.dump(unitsDFclean.to_dict(), open( "unitsDict_clean.p", "wb" ) )
+    unitsDFclean.to_csv("units_clean.csv")
+    
+    # Deduplicate characters that can have various different lores of magic
+    # This has a big impact on High Elves which have many identical Mages and
+    # Archmages
+    unitsDFdedupe = deduplicate_lore(unitsDFclean)
+    
+    pickle.dump(unitsDFdedupe, open( "unitsDF_dedupe.p", "wb" ) )
+    pickle.dump(unitsDFdedupe.to_dict(), open( "unitsDict_dedupe.p", "wb" ) )
+    unitsDFdedupe.to_csv("units_dedupe.csv")
