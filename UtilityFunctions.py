@@ -142,8 +142,25 @@ def random_unit(units):
     r, = np.random.randint(0,len(units),1)
     return units.iloc[r]
 
-def unit_named(units,name):
-    return units[units["name"]==name]
+def select_unit(unitsDF,name):
+    unit = unitsDF[unitsDF["name"] == name]
+    if len(unit) != 1:    
+        unit = unitsDF[unitsDF["name"].str.contains(name)]
+        if len(unit) == 0:
+            unit = unitsDF[unitsDF["key"] == name]
+            if len(unit) == 0:
+                raise Exception(f"{name} is not a unit name or key")
+        
+        if len(unit) > 1:
+            helper = unit[["name","key"]]
+            S = ""
+            for line in helper.values:
+                S += f"{line[0]:<50} {line[1]}\n"
+            raise Exception(f"Ambiguous name. Please use one of these key values on the right:\n{S}")
+
+    return unit.T.squeeze()
+
+
 
 # Attributes, abilitiesm and spells are all stored as lists this extracts all
 # the unique attributes, abilities, or spells in a given units dataframe
@@ -167,6 +184,7 @@ def all_spells(units):
         for spell in unit_spells:
             spells.add(spell)
     return sorted(spells)
+
 
 
 
