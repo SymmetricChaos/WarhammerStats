@@ -85,13 +85,13 @@ def expected_damage_per_melee_attack(unitsDF,attacker_name,defender_name,
     
     
     print("\n## Defender Stats ##")
-    print(f"MD       = {defender['melee_defence']}")
-    print(f"armor    = {defender['armour']}")
-    print(f"phys_res = {defender['damage_mod_physical']}%")
-    print(f"mag_res  = {defender['damage_mod_magic']}%")
-    print(f"fire_res = {defender['damage_mod_flame']}%")
-    print(f"ward_res = {defender['damage_mod_all']}%")
-    print(f"large    = {defender['is_large']}")
+    print(f"MD       = {defender['melee_defence']:>4}")
+    print(f"armor    = {defender['armour']:>4}")
+    print(f"phys_res = {defender['damage_mod_physical']:>3}%")
+    print(f"mag_res  = {defender['damage_mod_magic']:>3}%")
+    print(f"fire_res = {defender['damage_mod_flame']:>3}%")
+    print(f"ward_res = {defender['damage_mod_all']:>3}%")
+    print(f"large    = {defender['is_large']:>4}")
     
     # # Effects of BvI and BvL
     if defender['is_large'] and attacker['melee_bonus_v_large'] > 0:
@@ -115,22 +115,29 @@ def expected_damage_per_melee_attack(unitsDF,attacker_name,defender_name,
     
     print(f"\nHit Probability = {expected_hit}")
     
+    # Damage that gets through armour
+    # Resistances are then applied to this value
+    damage_with_armor = average_damage_with_armor_raw(attacker['melee_base_damage'],
+                                                      attacker['melee_ap_damage'],
+                                                      defender['armour'])
+    
     # Ward save
-    dmg_mul_res = 1-defender['damage_mod_all']/100
+    dmg_mul_res = defender['damage_mod_all']
     
     # Magical and physical resistance
     if attacker['melee_is_magical']:
-        dmg_mul_res *= 1-defender['damage_mod_magic']/100
+        dmg_mul_res += defender['damage_mod_magic']
     else:
-        dmg_mul_res *= 1-defender['damage_mod_physical']/100
+        dmg_mul_res += defender['damage_mod_physical']
     
     # Fire resist and weakness
     if attacker['melee_is_flaming']:
-        dmg_mul_res *= 1-defender['damage_mod_flame']/100
+        dmg_mul_res += defender['damage_mod_flame']
 
     
     # Maximum effect of resistance
-    dmg_mul_res = max(dmg_mul_res,.1)
+    dmg_mul_res = min(dmg_mul_res,10)
+    dmg_mul_res = 1-(dmg_mul_res/100)
     
     print(f"\nDamage Multiplier From Resistances = {round(dmg_mul_res,2)}")
     
@@ -142,9 +149,7 @@ def expected_damage_per_melee_attack(unitsDF,attacker_name,defender_name,
     print(f"Damage Multiplier From Armor = {round(dmg_mul_armor,2)}")
     print(f"Damage Multiplier From All = {round(dmg_mul_armor*dmg_mul_res,2)}")
     
-    damage_with_armor = average_damage_with_armor_raw(attacker['melee_base_damage'],
-                                                      attacker['melee_ap_damage'],
-                                                      defender['armour'])
+
     avg_dmg = damage_with_armor*dmg_mul_res
     
     print(f"\nExpected Damage Per Attack = {round(max(1,expected_hit*avg_dmg),2)}"
@@ -163,4 +168,4 @@ if __name__ == '__main__':
     # unit1 = random_unit(unitsDF)
     # print(type(unit1))
     # unit2 = random_unit(units)
-    expected_damage_per_melee_attack(unitsDF,"The Fireborn","Karl Franz on Deathclaw")
+    expected_damage_per_melee_attack(unitsDF,"The Fireborn","Durthu")
