@@ -7,9 +7,16 @@ from UtilityFunctions import melee_hit_prob, average_damage_with_armor_raw, \
 
 units = pickle.load( open( "unitsDF.p", "rb" ) )
 
-# Need to incorporate BvL and BvI
+# Need to incorporate passive traits like:
+    # regeneration, aura of agony, aura of endurance, aura of pestilence, aura of the lady,
+    # bathed in blood, blizzard aura, blinding radiance, crush the weak, enchanting beauty,
+    # magical void, martial mastery, martial prowess, fenzy, blessing of the lady, portent of warding
+    # power of the dragonback, primal fury, strength in numbers
+    # 
 
-def expected_damage_per_melee_attack(attacker,defender):
+def expected_damage_per_melee_attack(attacker,defender,
+                                     suppress_abilities=False,
+                                     fraction_units_attacking=1.0):
     
     spacer = max(len(attacker['name']),len(defender['name']))
     
@@ -57,7 +64,7 @@ def expected_damage_per_melee_attack(attacker,defender):
     print(f"ward_res = {def_ward_res}%")
     print(f"large    = {def_large}")
     
-    
+    # Effects of BvI and BvL
     if def_large and att_BvL > 0:
         att_MA += att_BvL
         att_base += math.floor(att_BvL*(1-att_ratio))
@@ -92,13 +99,13 @@ def expected_damage_per_melee_attack(attacker,defender):
     else:
         dmg_mul_res *= 1-def_physical_res/100
     
+    # Fire resist and weakness
     if att_flame:
         dmg_mul_res *= 1-def_flame_res/100
     else:
         pass
     
-    
-    
+    # Maximum effect of resistance
     dmg_mul_res = max(dmg_mul_res,.1)
     
     print(f"\nDamage Multiplier From Resistances = {round(dmg_mul_res,2)}")
@@ -108,7 +115,6 @@ def expected_damage_per_melee_attack(attacker,defender):
     
     print(f"Damage Multiplier From Armor = {round(dmg_mul_armor,2)}")
     print(f"Damage Multiplier From All = {round(dmg_mul_armor*dmg_mul_res,2)}")
-    
     
     damage_with_armor = average_damage_with_armor_raw(att_base,att_ap,def_armor)
     avg_dmg = damage_with_armor*dmg_mul_res
@@ -125,28 +131,3 @@ if __name__ == '__main__':
     unit1 = random_unit(units)
     unit2 = random_unit(units)
     expected_damage_per_melee_attack(unit1,unit2)
-
-
-
-
-
-# U1 = []
-# U2 = []
-# for i in range(0,101):
-#     U1.append(average_damage(i,unit1['melee_base_damage'],
-#                              unit1['melee_ap_damage'],
-#                              unit1['melee_attack'],MD=test_MD))
-#     U2.append(average_damage(i,unit2['melee_base_damage'],
-#                              unit2['melee_ap_damage'],
-#                              unit2['melee_attack'],MD=test_MD))
-
-# plt.figure()
-# plt.gcf().set_size_inches(10, 8)
-# plt.plot(U1)
-# plt.plot(U2)
-# plt.legend([unit1['name'],unit2['name']])
-# plt.ylabel("Average Damage")
-# plt.xlabel("Armor")
-# plt.xticks(np.arange(0,110,10))
-# plt.title(f"Average Damage vs Unit with MD={test_MD}",size=20)
-# plt.grid()

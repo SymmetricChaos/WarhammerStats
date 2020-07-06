@@ -1,10 +1,10 @@
-
 from UtilityFunctions import no_nonstandard, deduplicate_lore
 
 
-  
+
 # Make a somewhat cleaner object to that is easier to work with than the raw JSON data
 
+# Grab complex traits
 def get_attributes(D):
     att = D["attributes"]
     return [line["key"] for line in att]
