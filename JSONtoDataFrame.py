@@ -29,13 +29,23 @@ def get_spells(D):
 
 # Mutate some dictionary D to add the melee vital stats of unit
 def set_melee_stats(D,unit):
+    
     weapon = unit["primary_melee_weapon"]
+    
+    if weapon["bonus_v_large"] == None:
+        D["melee_bonus_v_large"] = 0
+    else:
+        D["melee_bonus_v_large"] = weapon["bonus_v_large"]
+        
+    if weapon["bonus_v_infantry"] == None:
+        D["melee_bonus_v_infantry"] = 0
+    else:
+        D["melee_bonus_v_infantry"] = weapon["bonus_v_infantry"]
+
     D["melee_base_damage"] = weapon["base_damage"]
     D["melee_ap_damage"] = weapon["ap_damage"]
     D["melee_total_damage"] = weapon["damage"]
     D["melee_ap_ratio"] = weapon["ap_ratio"]
-    D["melee_bonus_v_large"] = weapon["bonus_v_large"]
-    D["melee_bonus_v_infantry"] = weapon["bonus_v_infantry"]
     D["melee_attack_interval"] = weapon["melee_attack_interval"]
     D["melee_is_magical"] = weapon["is_magical"]
     D["melee_is_flaming"] = weapon["ignition_amount"] # <- renamed to reflect player facing name
