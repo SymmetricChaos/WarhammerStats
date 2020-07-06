@@ -124,6 +124,12 @@ def average_damage_with_armor_ratio(total_damage,ap_ratio,armor):
 
 
 
+## Probability of hitting with a melee attack
+def melee_hit_prob(melee_attack,melee_defense):
+    r = 35+melee_attack-melee_defense
+    h = min(max(r,8),90)
+    return h/100
+
 
 
 ## Most functions below accept the argument "units" which should be a pandas
