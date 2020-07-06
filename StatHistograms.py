@@ -7,7 +7,7 @@ from UtilityFunctions import  all_from_faction, pretty_name, faction_code_to_nam
 
 def histoplot(L,bins=[],percentiles=[],size=[13,6],title=""):
     
-    # Coerce bins to a lisy
+    # Coerce bins to a list
     bins = list(bins)
     
     fig = plt.figure()
@@ -36,10 +36,8 @@ def stats_plot(units,column,faction_code,bins=[]):
     faction_DF =  all_from_faction(units,faction_code)
     histoplot(faction_DF[column],bins,[50],
               title=f"{pretty_name(column)} Distribution\n{faction_name}")
-    
 
 
-        
 
 
 

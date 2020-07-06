@@ -27,7 +27,7 @@ def show_unit_by_key(D,key):
         if key == unit["key"]:
             show_dict_clean(unit)
             break
-            
+
 def find_unit(D,name):
     
     name_list = []
@@ -83,7 +83,7 @@ def get_faction_group(D):
 #print(categories)
 #print(special_categories)
 #print(faction_groups)
-        
+
 if __name__ == '__main__':
     import json
     with open('unitsdata.json', encoding="utf8") as f:
