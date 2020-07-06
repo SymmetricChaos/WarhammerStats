@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pickle
+import math
 from UtilityFunctions import melee_hit_prob, average_damage_with_armor_raw, \
                              random_unit, average_armor_reduction
 
@@ -20,12 +21,13 @@ def expected_damage_per_melee_attack(attacker,defender):
     att_base = attacker["melee_base_damage"]
     att_ap = attacker["melee_ap_damage"]
     att_total = attacker["melee_total_damage"]
+    att_ratio = attacker["melee_ap_ratio"]
     att_magic = attacker["melee_is_magical"]
     att_flame = attacker["melee_is_flaming"]
     att_flame = attacker["melee_is_flaming"]
     att_flame = attacker["melee_is_flaming"]
-    att_BvI = attacker["melee_bonus_v_infantry"]
-    att_BvL = attacker["melee_bonus_v_large"]
+    att_BvI = int(max(0,attacker["melee_bonus_v_infantry"]))
+    att_BvL = int(max(0,attacker["melee_bonus_v_large"]))
     
     print("\nAttacker Stats")
     print(f"MA       = {att_MA}")
@@ -56,6 +58,25 @@ def expected_damage_per_melee_attack(attacker,defender):
     print(f"large    = {def_large}")
     
     
+    if def_large and att_BvL > 0:
+        att_MA += att_BvL
+        att_base += math.floor(att_BvL*(1-att_ratio))
+        att_ap += math.floor(att_BvL*att_ratio)
+        
+        print("\nBonus vs Infantry")
+        print(f"Modified MA       = {att_MA}")
+        print(f"Modified base-dmg = {att_base}")
+        print(f"Modified ap-dmg   = {att_ap}")
+    
+    if not def_large and att_BvI > 0:
+        att_MA += att_BvI
+        att_base += math.floor(att_BvI*(1-att_ratio))
+        att_ap += math.floor(att_BvI*att_ratio)
+        
+        print("\nBonus vs Large")
+        print(f"Modified MA       = {att_MA}")
+        print(f"Modified base-dmg = {att_base}")
+        print(f"Modified ap-dmg   = {att_ap}")
     
     # Probability of an attack to hit
     expected_hit = melee_hit_prob(att_MA,def_MD)
