@@ -156,7 +156,7 @@ def select_unit(unitsDF,name):
             S = ""
             for line in helper.values:
                 S += f"{line[0]:<50} {line[1]}\n"
-            raise Exception(f"Ambiguous name. Please use one of these key values on the right:\n{S}")
+            raise Exception(f"The name '{name}' is ambiguous. Please use one of these names or key values:\n{S}")
 
     return unit.T.squeeze()
 
