@@ -6,10 +6,14 @@ from UtilityFunctions import melee_hit_prob, average_damage_with_armor_raw, \
 
 units = pickle.load( open( "unitsDF.p", "rb" ) )
 
+# Need to incorporate BvL and BvI
+
 def expected_damage_per_melee_attack(attacker,defender):
     
-    print(f"Attacker: {attacker['name']}")
-    print(f"Defender: {defender['name']}")
+    spacer = max(len(attacker['name']),len(defender['name']))
+    
+    print(f"Attacker: {attacker['name']:<{spacer}}   {attacker['key']}")
+    print(f"Defender: {defender['name']:<{spacer}}   {defender['key']}")
     
     
     att_MA = attacker["melee_attack"]
@@ -18,6 +22,10 @@ def expected_damage_per_melee_attack(attacker,defender):
     att_total = attacker["melee_total_damage"]
     att_magic = attacker["melee_is_magical"]
     att_flame = attacker["melee_is_flaming"]
+    att_flame = attacker["melee_is_flaming"]
+    att_flame = attacker["melee_is_flaming"]
+    att_BvI = attacker["melee_bonus_v_infantry"]
+    att_BvL = attacker["melee_bonus_v_large"]
     
     print("\nAttacker Stats")
     print(f"MA       = {att_MA}")
@@ -26,6 +34,8 @@ def expected_damage_per_melee_attack(attacker,defender):
     print(f"tot-dmg  = {att_total}")
     print(f"magic    = {att_magic}")
     print(f"flaming  = {att_flame}")
+    print(f"BvI      = {att_BvI}")
+    print(f"BvL      = {att_BvL}")
     
     
     def_MD = defender["melee_defence"]
@@ -34,6 +44,7 @@ def expected_damage_per_melee_attack(attacker,defender):
     def_magical_res = defender["damage_mod_magic"]
     def_flame_res = defender["damage_mod_flame"]
     def_ward_res = defender["damage_mod_all"]
+    def_large = defender["is_large"]
     
     print("\nDefender Stats")
     print(f"MD       = {def_MD}")
@@ -42,6 +53,7 @@ def expected_damage_per_melee_attack(attacker,defender):
     print(f"mag_res  = {def_magical_res}%")
     print(f"fire_res = {def_flame_res}%")
     print(f"ward_res = {def_ward_res}%")
+    print(f"large    = {def_large}")
     
     
     
@@ -68,19 +80,19 @@ def expected_damage_per_melee_attack(attacker,defender):
     
     dmg_mul_res = max(dmg_mul_res,.1)
     
-    print(f"\nDamage Multiplier From Resistances = {dmg_mul_res}")
+    print(f"\nDamage Multiplier From Resistances = {round(dmg_mul_res,2)}")
     
     # Not used, just reported
     dmg_mul_armor = ((1-average_armor_reduction(def_armor))*att_base+att_ap)/(att_base+att_ap)
     
-    print(f"Damage Multiplier From Armor = {dmg_mul_armor}")
-    print(f"Damage Multiplier From All = {dmg_mul_armor*dmg_mul_res}")
+    print(f"Damage Multiplier From Armor = {round(dmg_mul_armor,2)}")
+    print(f"Damage Multiplier From All = {round(dmg_mul_armor*dmg_mul_res,2)}")
     
     
     damage_with_armor = average_damage_with_armor_raw(att_base,att_ap,def_armor)
     avg_dmg = damage_with_armor*dmg_mul_res
     
-    print(f"\nExpected Damage Per Attack = {max(1,expected_hit*avg_dmg)}")
+    print(f"\nExpected Damage Per Attack = {round(max(1,expected_hit*avg_dmg),2)}")
 
 
 
