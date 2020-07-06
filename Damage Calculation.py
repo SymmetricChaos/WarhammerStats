@@ -4,6 +4,7 @@ import pickle
 import math
 from UtilityFunctions import melee_hit_prob, average_damage_with_armor_raw, \
                              random_unit, average_armor_reduction
+from Fatigue import fatigue_dict
 
 units = pickle.load( open( "unitsDF.p", "rb" ) )
 
@@ -16,17 +17,22 @@ units = pickle.load( open( "unitsDF.p", "rb" ) )
 
 def expected_damage_per_melee_attack(attacker,defender,
                                      suppress_abilities=False,
-                                     fraction_units_attacking=1.0):
+                                     fraction_units_attacking=0.5,
+                                     attacker_fatigue="fresh",
+                                     defender_fatigue="fresh"):
     
     spacer = max(len(attacker['name']),len(defender['name']))
     
     print(f"Attacker: {attacker['name']:<{spacer}}   {attacker['key']}")
     print(f"Defender: {defender['name']:<{spacer}}   {defender['key']}")
     
+    print(f"Attacker is {attacker_fatigue}")
+    print(f"Attacker is {defender_fatigue}")
     
-    att_MA = attacker["melee_attack"]
+    
+    att_MA = attacker["melee_attack"]*fatigue_dict[attacker_fatigue]["melee_attack"]
     att_base = attacker["melee_base_damage"]
-    att_ap = attacker["melee_ap_damage"]
+    att_ap = attacker["melee_ap_damage"]*fatigue_dict[attacker_fatigue]["melee_ap_damage"]
     att_total = attacker["melee_total_damage"]
     att_ratio = attacker["melee_ap_ratio"]
     att_magic = attacker["melee_is_magical"]
@@ -35,6 +41,8 @@ def expected_damage_per_melee_attack(attacker,defender,
     att_flame = attacker["melee_is_flaming"]
     att_BvI = int(max(0,attacker["melee_bonus_v_infantry"]))
     att_BvL = int(max(0,attacker["melee_bonus_v_large"]))
+    att_models = attacker["unit_size"]
+    att_models_used = math.ceil(att_models*fraction_units_attacking)
     
     print("\nAttacker Stats")
     print(f"MA       = {att_MA}")
@@ -47,8 +55,9 @@ def expected_damage_per_melee_attack(attacker,defender,
     print(f"BvL      = {att_BvL}")
     
     
-    def_MD = defender["melee_defence"]
-    def_armor = defender["armour"]
+    
+    def_MD = defender["melee_defence"]*fatigue_dict[defender_fatigue]["melee_defence"]
+    def_armor = defender["armour"]*fatigue_dict[defender_fatigue]["armour"]
     def_physical_res = defender["damage_mod_physical"]
     def_magical_res = defender["damage_mod_magic"]
     def_flame_res = defender["damage_mod_flame"]
@@ -130,4 +139,4 @@ if __name__ == '__main__':
     # Gotta figure out why some results are negative
     unit1 = random_unit(units)
     unit2 = random_unit(units)
-    expected_damage_per_melee_attack(unit1,unit2)
+    expected_damage_per_melee_attack(unit1,unit2,defender_fatigue="exhausted")
