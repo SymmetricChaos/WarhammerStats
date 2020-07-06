@@ -139,7 +139,7 @@ def melee_hit_prob(melee_attack,melee_defense):
 def random_unit(units):
     # randint returns a list, the comma just skips having to extract the only
     # element of the list
-    r, = np.random.randint(0,1365,1)
+    r, = np.random.randint(0,len(units),1)
     return units.iloc[r]
 
 def unit_named(units,name):
