@@ -113,6 +113,8 @@ def expected_damage_per_melee_attack(unitsDF,attacker_name,defender_name,
                                                       attacker['melee_ap_damage'],
                                                       defender['armour'])
     
+    print(f"\nDamage After Armor = {math.ceil(damage_with_armor)}")
+    
     # Ward save
     dmg_mul_res = defender['damage_mod_all']
     
@@ -133,15 +135,6 @@ def expected_damage_per_melee_attack(unitsDF,attacker_name,defender_name,
     
     print(f"\nDamage Multiplier From Resistances = {round(dmg_mul_res,2)}")
     
-    # Not used, just reported
-    armor_mul_base = 1-average_armor_reduction(defender['armour'])
-    dmg_mul_armor = (armor_mul_base * attacker['melee_base_damage']
-                     +attacker['melee_ap_damage'])/(attacker['melee_total_damage'])
-    
-    print(f"Damage Multiplier From Armor = {round(dmg_mul_armor,2)}")
-    print(f"Damage Multiplier From All = {round(dmg_mul_armor*dmg_mul_res,2)}")
-    
-
     avg_dmg = damage_with_armor*dmg_mul_res
     
     print(f"\nExpected Damage Per Attack = {round(max(1,expected_hit*avg_dmg),2)}"
@@ -157,4 +150,5 @@ def expected_damage_per_melee_attack(unitsDF,attacker_name,defender_name,
 if __name__ == '__main__':
     unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
 
-    expected_damage_per_melee_attack(unitsDF,"The Fireborn","Firebark")
+    expected_damage_per_melee_attack(unitsDF,"The Fireborn","Firebark",
+                                     attacker_fatigue = "exhausted")
