@@ -1,4 +1,5 @@
 import json
+import pickle
 from ExploreJSON import show_dict
 with open('fatigue.json', encoding="utf8") as f:
     F = json.load(f)
@@ -28,9 +29,24 @@ for level in F:
     subdict["melee_ap_damage"] = none_to_one(level["stat_melee_damage_ap"])
 
     fatigue_dict[level["key"][10:]] = subdict
-    
+
+fatigue_dict["animated"] = fatigue_dict["fresh"]
+fatigue_dict["fading"] = fatigue_dict["winded"]
+fatigue_dict["diminished"] = fatigue_dict["tired"]
+fatigue_dict["debilitated"] = fatigue_dict["exhausted"]
 
 
 if __name__ == '__main__':
-    show_dict(fatigue_dict)
+    
+    import csv
 
+
+    pickle.dump(fatigue_dict, open( "fatigueDict.p", "wb" ) )
+    
+    with open('fatigue.csv', 'w') as f:
+        w = csv.DictWriter(f, fatigue_dict.keys())
+        w.writeheader()
+        w.writerow(fatigue_dict)
+    
+    with open('fatigue.json', 'w') as fp:
+        json.dump(fatigue_dict, fp)
