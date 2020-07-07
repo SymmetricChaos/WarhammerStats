@@ -125,10 +125,10 @@ def expected_damage_per_melee_attack(unitsDF,attacker_name,defender_name,
     # Fire resist and weakness
     if attacker['melee_is_flaming']:
         dmg_mul_res += defender['damage_mod_flame']
-
+    
     
     # Maximum effect of resistance
-    dmg_mul_res = min(dmg_mul_res,10)
+    dmg_mul_res = max(dmg_mul_res,10)
     dmg_mul_res = 1-(dmg_mul_res/100)
     
     print(f"\nDamage Multiplier From Resistances = {round(dmg_mul_res,2)}")
@@ -157,4 +157,4 @@ def expected_damage_per_melee_attack(unitsDF,attacker_name,defender_name,
 if __name__ == '__main__':
     unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
 
-    expected_damage_per_melee_attack(unitsDF,"The Fireborn","Durthu")
+    expected_damage_per_melee_attack(unitsDF,"The Fireborn","Firebark")
