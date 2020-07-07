@@ -71,17 +71,25 @@ def expected_damage_per_melee_attack(unitsDF,attacker_name,defender_name,
     apply_fatigue_effects(attacker,attacker_fatigue)
     apply_fatigue_effects(defender,defender_fatigue)
     
+
+    
     att_models_used = math.ceil(attacker["unit_size"]*fraction_units_attacking)
     
     print("\n## Attacker Stats ##")
+    if defender['is_large'] and attacker['melee_bonus_v_large'] > 0:
+        print(f"## Including Bonus vs Large of {attacker['melee_bonus_v_large']} ##")
+        apply_BvL(attacker)
+    if not defender['is_large'] and attacker['melee_bonus_v_infantry'] > 0:
+        print("## Including Bonus vs Infantry of {attacker['melee_bonus_v_infantry']} ##")
+        apply_BvI(attacker)
+    
     print(f"MA       = {attacker['melee_attack']}")
     print(f"base-dmg = {attacker['melee_base_damage']}")
     print(f"ap-dmg   = {attacker['melee_ap_damage']}")
     print(f"tot-dmg  = {attacker['melee_total_damage']}")
     print(f"magic    = {attacker['melee_is_magical']}")
     print(f"flaming  = {attacker['melee_is_flaming']}")
-    print(f"BvI      = {attacker['melee_bonus_v_infantry']}")
-    print(f"BvL      = {attacker['melee_bonus_v_large']}")
+
     
     
     print("\n## Defender Stats ##")
@@ -92,23 +100,7 @@ def expected_damage_per_melee_attack(unitsDF,attacker_name,defender_name,
     print(f"fire_res = {defender['damage_mod_flame']:>3}%")
     print(f"ward_res = {defender['damage_mod_all']:>3}%")
     print(f"large    = {defender['is_large']:>4}")
-    
-    # # Effects of BvI and BvL
-    if defender['is_large'] and attacker['melee_bonus_v_large'] > 0:
-        apply_BvL(attacker)
-        print("\nAttacker Bonus vs Infantry")
-        print(f"MA       = {attacker['melee_attack']}")
-        print(f"base-dmg = {attacker['melee_base_damage']}")
-        print(f"ap-dmg   = {attacker['melee_ap_damage']}")
-        print(f"tot-dmg  = {attacker['melee_total_damage']}")
-    
-    if not defender['is_large'] and attacker['melee_bonus_v_infantry'] > 0:
-        apply_BvI(attacker)
-        print("\nAttacker Bonus vs Infantry")
-        print(f"MA       = {attacker['melee_attack']}")
-        print(f"base-dmg = {attacker['melee_base_damage']}")
-        print(f"ap-dmg   = {attacker['melee_ap_damage']}")
-        print(f"tot-dmg  = {attacker['melee_total_damage']}")
+
     
     # Probability of an attack to hit
     expected_hit = melee_hit_prob(attacker['melee_attack'],defender['melee_defence'])
@@ -165,7 +157,4 @@ def expected_damage_per_melee_attack(unitsDF,attacker_name,defender_name,
 if __name__ == '__main__':
     unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
 
-    # unit1 = random_unit(unitsDF)
-    # print(type(unit1))
-    # unit2 = random_unit(units)
     expected_damage_per_melee_attack(unitsDF,"The Fireborn","Durthu")
