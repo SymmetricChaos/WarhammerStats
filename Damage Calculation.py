@@ -1,9 +1,6 @@
-import matplotlib.pyplot as plt
-import pickle
 import math
-import pandas as pd
 from UtilityFunctions import melee_hit_prob, average_damage_with_armor_raw, \
-                             random_unit, average_armor_reduction, select_unit
+                             select_unit
 from Fatigue import fatigue_dict
 
 
@@ -39,8 +36,14 @@ def apply_BvL(unit):
     unit["melee_base_damage"] += math.floor(BvL*(1-ap_ratio))
     unit["melee_ap_damage"] += math.floor(BvL*(ap_ratio))
     unit["melee_total_damage"] = unit["melee_base_damage"]+unit["melee_ap_damage"]
-    
 
+def apply_charge(unit):
+    charge = unit["charge_bonus"]
+    ap_ratio = unit["melee_ap_ratio"]
+    unit["melee_attack"] += charge
+    unit["melee_base_damage"] += math.floor(charge*(1-ap_ratio))
+    unit["melee_ap_damage"] += math.floor(charge*(ap_ratio))
+    unit["melee_total_damage"] = unit["melee_base_damage"]+unit["melee_ap_damage"]
 
 
 
@@ -48,7 +51,7 @@ def apply_BvL(unit):
 # Copy technique from that other file
 
 def expected_damage_per_melee_attack(unitsDF,attacker_name,defender_name,
-                                     fraction_units_attacking=0.2,
+                                     units_attacking=None,
                                      attacker_fatigue="fresh",
                                      defender_fatigue="fresh"):
     
@@ -71,16 +74,17 @@ def expected_damage_per_melee_attack(unitsDF,attacker_name,defender_name,
     apply_fatigue_effects(attacker,attacker_fatigue)
     apply_fatigue_effects(defender,defender_fatigue)
     
-
+    # Very rough estimate of 1/5 units attacking is not specified by user
+    if units_attacking == None:
+        units_attacking = math.ceil(attacker["unit_size"]*.2)
     
-    att_models_used = math.ceil(attacker["unit_size"]*fraction_units_attacking)
     
     print("\n## Attacker Stats ##")
     if defender['is_large'] and attacker['melee_bonus_v_large'] > 0:
         print(f"## Including Bonus vs Large of {attacker['melee_bonus_v_large']} ##")
         apply_BvL(attacker)
     if not defender['is_large'] and attacker['melee_bonus_v_infantry'] > 0:
-        print("## Including Bonus vs Infantry of {attacker['melee_bonus_v_infantry']} ##")
+        print(f"## Including Bonus vs Infantry of {attacker['melee_bonus_v_infantry']} ##")
         apply_BvI(attacker)
     
     print(f"MA       = {attacker['melee_attack']}")
@@ -89,7 +93,7 @@ def expected_damage_per_melee_attack(unitsDF,attacker_name,defender_name,
     print(f"tot-dmg  = {attacker['melee_total_damage']}")
     print(f"magic    = {attacker['melee_is_magical']}")
     print(f"flaming  = {attacker['melee_is_flaming']}")
-
+    
     
     
     print("\n## Defender Stats ##")
@@ -138,17 +142,21 @@ def expected_damage_per_melee_attack(unitsDF,attacker_name,defender_name,
     avg_dmg = damage_with_armor*dmg_mul_res
     
     print(f"\nExpected Damage Per Attack = {round(max(1,expected_hit*avg_dmg),2)}"
-          f"\n\nAssuming {att_models_used} "
-          f"{'Unit Attacks' if att_models_used == 1 else 'Units Attack'}"
+          f"\n\nAssuming {units_attacking} "
+          f"{'Unit Attacks' if units_attacking == 1 else 'Units Attack'}"
           "\nTotal Expected Damage = "
-          f"{round(max(1,expected_hit*avg_dmg*att_models_used),2)}")
+          f"{round(max(1,expected_hit*avg_dmg*units_attacking),2)}")
 
 
 
 
 
 if __name__ == '__main__':
+    import pickle
     unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
 
     expected_damage_per_melee_attack(unitsDF,"The Fireborn","Firebark",
                                      attacker_fatigue = "exhausted")
+    print("\n\n\n")
+    expected_damage_per_melee_attack(unitsDF,"Swordmasters of Hoeth","Skavenslaves",
+                                     defender_fatigue = "exhausted")
