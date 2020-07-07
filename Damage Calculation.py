@@ -126,10 +126,10 @@ def expected_damage_per_melee_attack(unitsDF,attacker_name,defender_name,
     if attacker['melee_is_flaming']:
         dmg_mul_res += defender['damage_mod_flame']
     
-    
     # Maximum effect of resistance
-    dmg_mul_res = max(dmg_mul_res,10)
     dmg_mul_res = 1-(dmg_mul_res/100)
+    dmg_mul_res = max(dmg_mul_res,.1)
+    
     
     print(f"\nDamage Multiplier From Resistances = {round(dmg_mul_res,2)}")
     
