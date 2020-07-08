@@ -28,6 +28,9 @@ class TWWUnit:
     
     def __setitem__(self,n,v):
         self.data[n] = v
+        
+    def __str__(self):
+        return f"TWWUnit: {self['name']}"
     
     def reset_stats(self):
         self.data = self.shadow
@@ -85,7 +88,10 @@ class TWWUnit:
             self.effects.append(effect)
             effect(self)
         else:
-            del self.effects[effect]
+            for n,e in enumerate(self.effects):
+                if e == effect:
+                    break
+            del self.effects[n]
             effect(self,remove=True)
 
 
@@ -95,20 +101,41 @@ class TWWUnit:
 if __name__ == '__main__':
     import pickle
     from UtilityFunctions import select_unit
+    from EffectClass import TWWEffect
     
     unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
-    
+    stat_effects = pickle.load( open( "stat_effects.p", "rb" ) )
+
     my_unit = TWWUnit(select_unit(unitsDF,"Scourgerunner Chariots"))
-    print(my_unit["melee_attack"])
+    
+    print(my_unit)
+    
+    print("\nTest Bonus Vs Infantry")
+    print("Currently it is off")
     print(my_unit.BvI_on)
+    print(f"MA = {my_unit['melee_attack']}\n")
+    
     my_unit.toggle_BvI()
-    print(my_unit["melee_attack"])
+    print("Toggled to on")
     print(my_unit.BvI_on)
+    print(f"MA = {my_unit['melee_attack']}\n")
+    
     my_unit.toggle_BvI()
-    print(my_unit["melee_attack"])
+    print("Toggled back off")
     print(my_unit.BvI_on)
+    print(f"MA = {my_unit['melee_attack']}\n")
+    
+
     
     my_unit["abilities"].append("TEST")
     
     print(my_unit["abilities"])
     print(my_unit.shadow["abilities"])
+    
+    print(my_unit["melee_defence"])
+    my_unit.toggle_effect(stat_effects["Stand Your Ground"])
+    print(my_unit.effects)
+    print(my_unit["melee_defence"])
+    my_unit.toggle_effect(stat_effects["Stand Your Ground"])
+    print(my_unit.effects)
+    print(my_unit["melee_defence"])

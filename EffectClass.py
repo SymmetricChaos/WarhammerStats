@@ -17,7 +17,7 @@ class TWWEffect:
         return self.pretty_name
     
     def __call__(self,unit,remove=False):
-        for stat in self.effect:
+        for stat in self.effects:
             if 'UNUSED' in stat[1]:
                 continue
             else:
@@ -87,25 +87,28 @@ stat_translator = {
                     'stat_melee_defence': 'melee_defence',
                     }
 
-
-# The stat effects can be found in the:
-# special_abilty_phase_stat_effects_tables
-name_and_effects = {}
-with open("stat_effects_tables.tsv") as fd:
-    rd = csv.reader(fd, delimiter="\t", quotechar='"')
-    for n,row in enumerate(rd):
-        if row[0] == " ":
-            print(row)
-        if n < 3:
-            continue
-        if row[0] not in name_and_effects:
-            name_and_effects[row[0]] = [(float(row[1]),stat_translator[row[2]],row[3])]
-        else:
-            name_and_effects[row[0]].append((float(row[1]),stat_translator[row[2]],row[3]))
-
-effects_dict = {}
-for name,effects in name_and_effects.items():
-    E = TWWEffect(name,effects)
-    effects_dict[str(E)] = E
-
-
+if __name__ == '__main__':
+    # The stat effects can be found in the:
+    # special_abilty_phase_stat_effects_tables
+    name_and_effects = {}
+    with open("stat_effects_tables.tsv") as fd:
+        rd = csv.reader(fd, delimiter="\t", quotechar='"')
+        for n,row in enumerate(rd):
+            if row[0] == " ":
+                print(row)
+            if n < 3:
+                continue
+            if row[0] not in name_and_effects:
+                name_and_effects[row[0]] = [(float(row[1]),stat_translator[row[2]],row[3])]
+            else:
+                name_and_effects[row[0]].append((float(row[1]),stat_translator[row[2]],row[3]))
+    
+    effects_dict = {}
+    for name,effects in name_and_effects.items():
+        E = TWWEffect(name,effects)
+        effects_dict[str(E)] = E
+    
+    import pickle
+    import csv
+    import json
+    pickle.dump(effects_dict, open( "stat_effects.p", "wb" ) )
