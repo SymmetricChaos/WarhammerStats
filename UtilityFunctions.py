@@ -1,15 +1,21 @@
 import numpy as np
-import pickle
-import pandas as pd
-pd.set_option('display.max_rows', 70)
-pd.set_option('display.max_columns', 70)
-unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
+
+
+
 
 # Convert a trait name into a nicer looking version
 def pretty_name(S):
     return " ".join(S.split("_")).title()
 
-
+# Recursivelu show a dictionary
+def show_dict(D):
+    for key,val in D.items():
+        if type(val) == dict:
+            print(f"\n####### begin {key} #######\n")
+            show_dict(val)
+            print(f"####### end {key} #######\n\n")
+        else:
+            print(f"{key}: {val}\n")
 
 
 
@@ -30,11 +36,7 @@ faction_code_to_name = {'brt': "Brettonia",
                 'vmp': "Vampire Counts",
                 'wef': "Wood Elves"}
 
-
-
-
-
-### System for Removing Duplicate Characters That Share a Lore of Magic ###
+# System for Removing Duplicate Characters That Share a Lore of Magic ###
 # This should only be used in JSONtoDataframe if it is needed elsewhere the
 # unitsDF_clean dataframe should just be loaded
 lores = [" (Beasts)",
@@ -281,7 +283,11 @@ def all_from_faction(units,faction_group):
 
 
 
+
+
 if __name__ == '__main__':
+    import pickle
+    unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
     
     print(random_unit(unitsDF))
     

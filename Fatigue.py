@@ -1,7 +1,6 @@
 import json
-import pickle
-from ExploreJSON import show_dict
-with open('fatigue.json', encoding="utf8") as f:
+
+with open('twwstats_fatigue.json', encoding="utf8") as f:
     F = json.load(f)
 
 # All of the effects of fatigue are multiplers so values of None are 
@@ -39,8 +38,8 @@ fatigue_dict["debilitated"] = fatigue_dict["exhausted"]
 if __name__ == '__main__':
     
     import csv
-
-
+    import pickle
+    
     pickle.dump(fatigue_dict, open( "fatigueDict.p", "wb" ) )
     
     with open('fatigue.csv', 'w') as f:

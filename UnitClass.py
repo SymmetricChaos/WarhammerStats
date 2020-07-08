@@ -13,9 +13,9 @@ class TWWUnit:
         self.shadow = copy.deepcopy(dict(data)) # shadow not to be modified
         
         # Toggleable stats
-        self.BvI = False
-        self.BvL = False
-        self.charge = False
+        self.BvI_on = False
+        self.BvL_on = False
+        self.charge_on = False
         
         # names of active effects
         self.effects = []
@@ -33,8 +33,8 @@ class TWWUnit:
         self.data = self.shadow
     
     def toggle_BvI(self):
-        if self.BvI == False:
-            self.BvI = True
+        if self.BvI_on == False:
+            self.BvI_on = True
             BvI = self.data["melee_bonus_v_infantry"]
             ap_ratio = self.shadow["melee_ap_ratio"] # note the ap ratio is pulled from shadow since only the base value matters
             self.data["melee_attack"] += BvI
@@ -42,15 +42,15 @@ class TWWUnit:
             self.data["melee_ap_damage"] += math.floor(BvI*(ap_ratio))
             self.data["melee_total_damage"] = self.data["melee_base_damage"]+self.data["melee_ap_damage"]
         else:
-            self.BvI = False
+            self.BvI_on = False
             self.data["melee_attack"] = self.shadow["melee_attack"]
             self.data["melee_base_damage"] = self.shadow["melee_base_damage"]
             self.data["melee_ap_damage"] =self.shadow["melee_ap_damage"]
             self.data["melee_total_damage"] = self.shadow["melee_total_damage"]
 
     def toggle_BvL(self):
-        if self.BvL == False:
-            self.BvL = True
+        if self.BvL_on == False:
+            self.Bv_onL = True
             BvL = self.data["melee_bonus_v_large"]
             ap_ratio = self.shadow["melee_ap_ratio"]
             self.data["melee_attack"] += BvL
@@ -58,15 +58,15 @@ class TWWUnit:
             self.data["melee_ap_damage"] += math.floor(BvL*(ap_ratio))
             self.data["melee_total_damage"] = self.data["melee_base_damage"]+self.data["melee_ap_damage"]
         else:
-            self.BvL = False
+            self.BvL_on = False
             self.data["melee_attack"] = self.shadow["melee_attack"]
             self.data["melee_base_damage"] = self.shadow["melee_base_damage"]
             self.data["melee_ap_damage"] =self.shadow["melee_ap_damage"]
             self.data["melee_total_damage"] = self.shadow["melee_total_damage"]
         
     def toggle_charge(self):
-        if self.charge == False:
-            self.charge = True
+        if self.charge_on == False:
+            self.charge_on = True
             charge = self.data["charge_bonus"]
             ap_ratio = self.shadow["melee_ap_ratio"]
             self.data["melee_attack"] += charge
@@ -74,15 +74,17 @@ class TWWUnit:
             self.data["melee_ap_damage"] += math.floor(charge*(ap_ratio))
             self.data["melee_total_damage"] = self.data["melee_base_damage"]+self.data["melee_ap_damage"]
         else:
-            self.charge = False
+            self.charge_on = False
             self.data["melee_attack"] = self.shadow["melee_attack"]
             self.data["melee_base_damage"] = self.shadow["melee_base_damage"]
             self.data["melee_ap_damage"] =self.shadow["melee_ap_damage"]
             self.data["melee_total_damage"] = self.shadow["melee_total_damage"]
     
-    # def apply_effect(self,name):
-    #     if name not in self.effects:
-    #     else:
+    def apply_effect(self,name):
+        if name not in self.effects:
+            pass
+        else:
+            raise Exception("There is already an effect named {name} and effects with the same name do not stack")
 
 
 
@@ -96,12 +98,15 @@ if __name__ == '__main__':
     
     my_unit = TWWUnit(select_unit(unitsDF,"Scourgerunner Chariots"))
     print(my_unit["melee_attack"])
+    print(my_unit.BvI_on)
     my_unit.toggle_BvI()
     print(my_unit["melee_attack"])
+    print(my_unit.BvI_on)
     my_unit.toggle_BvI()
     print(my_unit["melee_attack"])
+    print(my_unit.BvI_on)
     
     my_unit["abilities"].append("TEST")
     
-    print(my_unit.data["abilities"])
+    print(my_unit["abilities"])
     print(my_unit.shadow["abilities"])
