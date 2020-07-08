@@ -9,8 +9,6 @@ stat_translator = {
                     'scalar_missile_explosion_damage_base': 'explosion_base_damage',
                     'scalar_missile_explosion_damage_ap': 'explosion_ap_damage',
                    
-                    
-                    
                     'stat_melee_damage_base': 'melee_base_damage', 
                     'stat_melee_damage_ap': 'melee_ap_damage',
                    
