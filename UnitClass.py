@@ -33,58 +33,60 @@ class TWWUnit:
         self.data = self.shadow
     
     def toggle_BvI(self):
+        BvI = self.data["melee_bonus_v_infantry"]
+        ap_ratio = self.shadow["melee_ap_ratio"] # note the ap ratio is pulled from shadow since only the base value matters
         if self.BvI_on == False:
             self.BvI_on = True
-            BvI = self.data["melee_bonus_v_infantry"]
-            ap_ratio = self.shadow["melee_ap_ratio"] # note the ap ratio is pulled from shadow since only the base value matters
             self.data["melee_attack"] += BvI
             self.data["melee_base_damage"] += math.floor(BvI*(1-ap_ratio))
             self.data["melee_ap_damage"] += math.floor(BvI*(ap_ratio))
             self.data["melee_total_damage"] = self.data["melee_base_damage"]+self.data["melee_ap_damage"]
         else:
             self.BvI_on = False
-            self.data["melee_attack"] = self.shadow["melee_attack"]
-            self.data["melee_base_damage"] = self.shadow["melee_base_damage"]
-            self.data["melee_ap_damage"] =self.shadow["melee_ap_damage"]
-            self.data["melee_total_damage"] = self.shadow["melee_total_damage"]
+            self.data["melee_attack"] -= BvI
+            self.data["melee_base_damage"] -= math.floor(BvI*(1-ap_ratio))
+            self.data["melee_ap_damage"] -= math.floor(BvI*(ap_ratio))
+            self.data["melee_total_damage"] = self.data["melee_base_damage"]+self.data["melee_ap_damage"]
 
     def toggle_BvL(self):
+        BvL = self.data["melee_bonus_v_large"]
+        ap_ratio = self.shadow["melee_ap_ratio"]
         if self.BvL_on == False:
-            self.Bv_onL = True
-            BvL = self.data["melee_bonus_v_large"]
-            ap_ratio = self.shadow["melee_ap_ratio"]
+            self.BvL_on = True
             self.data["melee_attack"] += BvL
             self.data["melee_base_damage"] += math.floor(BvL*(1-ap_ratio))
             self.data["melee_ap_damage"] += math.floor(BvL*(ap_ratio))
             self.data["melee_total_damage"] = self.data["melee_base_damage"]+self.data["melee_ap_damage"]
         else:
             self.BvL_on = False
-            self.data["melee_attack"] = self.shadow["melee_attack"]
-            self.data["melee_base_damage"] = self.shadow["melee_base_damage"]
-            self.data["melee_ap_damage"] =self.shadow["melee_ap_damage"]
-            self.data["melee_total_damage"] = self.shadow["melee_total_damage"]
+            self.data["melee_attack"] -= BvL
+            self.data["melee_base_damage"] -= math.floor(BvL*(1-ap_ratio))
+            self.data["melee_ap_damage"] -= math.floor(BvL*(ap_ratio))
+            self.data["melee_total_damage"] = self.data["melee_base_damage"]+self.data["melee_ap_damage"]
         
     def toggle_charge(self):
+        charge = self.data["charge_bonus"]
+        ap_ratio = self.shadow["melee_ap_ratio"]
         if self.charge_on == False:
             self.charge_on = True
-            charge = self.data["charge_bonus"]
-            ap_ratio = self.shadow["melee_ap_ratio"]
             self.data["melee_attack"] += charge
             self.data["melee_base_damage"] += math.floor(charge*(1-ap_ratio))
             self.data["melee_ap_damage"] += math.floor(charge*(ap_ratio))
             self.data["melee_total_damage"] = self.data["melee_base_damage"]+self.data["melee_ap_damage"]
         else:
             self.charge_on = False
-            self.data["melee_attack"] = self.shadow["melee_attack"]
-            self.data["melee_base_damage"] = self.shadow["melee_base_damage"]
-            self.data["melee_ap_damage"] =self.shadow["melee_ap_damage"]
-            self.data["melee_total_damage"] = self.shadow["melee_total_damage"]
+            self.data["melee_attack"] -= charge
+            self.data["melee_base_damage"] -= math.floor(charge*(1-ap_ratio))
+            self.data["melee_ap_damage"] -= math.floor(charge*(ap_ratio))
+            self.data["melee_total_damage"] = self.data["melee_base_damage"]+self.data["melee_ap_damage"]
     
-    def apply_effect(self,name):
-        if name not in self.effects:
-            pass
+    def toggle_effect(self,effect):
+        if effect not in self.effects:
+            self.effects.append(effect)
+            effect(self)
         else:
-            raise Exception("There is already an effect named {name} and effects with the same name do not stack")
+            del self.effects[effect]
+            effect(self,remove=True)
 
 
 
