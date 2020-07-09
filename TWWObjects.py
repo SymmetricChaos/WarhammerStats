@@ -54,11 +54,6 @@ class TWWUnit:
         self.data = dict(data)
         self.shadow = copy.deepcopy(dict(data)) # shadow not to be modified
         
-        # Toggleable stats
-        self.BvI_on = False
-        self.BvL_on = False
-        self.charge_on = False
-        
         # names of active effects
         self.effects = []
         
@@ -70,7 +65,7 @@ class TWWUnit:
     
     def __setitem__(self,n,v):
         self.data[n] = v
-        
+    
     def __str__(self):
         return f"TWWUnit: {self['name']}"
     
@@ -92,46 +87,46 @@ class TWWUnit:
     def toggle_BvI(self):
         BvI = self.data["melee_bonus_v_infantry"]
         ap_ratio = self.shadow["melee_ap_ratio"] # note the ap ratio is pulled from shadow since only the base value matters
-        if self.BvI_on == False:
-            self.BvI_on = True
+        if "BvI" not in self.effects:
+            self.effects.append("BvI")
             self.data["melee_attack"] += BvI
             self.data["melee_base_damage"] += math.floor(BvI*(1-ap_ratio))
             self.data["melee_ap_damage"] += math.floor(BvI*(ap_ratio))
             self.data["melee_total_damage"] = self.data["melee_base_damage"]+self.data["melee_ap_damage"]
         else:
-            self.BvI_on = False
+            self.effects.remove("BvI")
             self.data["melee_attack"] -= BvI
             self.data["melee_base_damage"] -= math.floor(BvI*(1-ap_ratio))
             self.data["melee_ap_damage"] -= math.floor(BvI*(ap_ratio))
             self.data["melee_total_damage"] = self.data["melee_base_damage"]+self.data["melee_ap_damage"]
-
+    
     def toggle_BvL(self):
         BvL = self.data["melee_bonus_v_large"]
         ap_ratio = self.shadow["melee_ap_ratio"]
-        if self.BvL_on == False:
-            self.BvL_on = True
+        if "BvL" not in self.effects:
+            self.effects.append("BvL")
             self.data["melee_attack"] += BvL
             self.data["melee_base_damage"] += math.floor(BvL*(1-ap_ratio))
             self.data["melee_ap_damage"] += math.floor(BvL*(ap_ratio))
             self.data["melee_total_damage"] = self.data["melee_base_damage"]+self.data["melee_ap_damage"]
         else:
-            self.BvL_on = False
+            self.effects.remove("BvL")
             self.data["melee_attack"] -= BvL
             self.data["melee_base_damage"] -= math.floor(BvL*(1-ap_ratio))
             self.data["melee_ap_damage"] -= math.floor(BvL*(ap_ratio))
             self.data["melee_total_damage"] = self.data["melee_base_damage"]+self.data["melee_ap_damage"]
-        
+    
     def toggle_charge(self):
         charge = self.data["charge_bonus"]
         ap_ratio = self.shadow["melee_ap_ratio"]
-        if self.charge_on == False:
-            self.charge_on = True
+        if "Charge Bonus" not in self.effects:
+            self.effects.append("Charge Bonus")
             self.data["melee_attack"] += charge
             self.data["melee_base_damage"] += math.floor(charge*(1-ap_ratio))
             self.data["melee_ap_damage"] += math.floor(charge*(ap_ratio))
             self.data["melee_total_damage"] = self.data["melee_base_damage"]+self.data["melee_ap_damage"]
         else:
-            self.charge_on = False
+            self.effects.remove("Charge Bonus")
             self.data["melee_attack"] -= charge
             self.data["melee_base_damage"] -= math.floor(charge*(1-ap_ratio))
             self.data["melee_ap_damage"] -= math.floor(charge*(ap_ratio))
@@ -142,8 +137,13 @@ class TWWUnit:
             self.effects.append(effect.pretty_name)
             effect(self)
         else:
-            for n,e in enumerate(self.effects):
-                if e == effect.name:
-                    break
-            del self.effects[n-1]
+            self.effects.remove(effect.pretty_name)
             effect(self,remove=True)
+    
+    # def set_fatigue(level):
+    #     if type(level) == str:
+            
+    #     elif type(level) == int:
+            
+    #     else:
+    #         raise Exception("Fatigue level must be a string or integers")
