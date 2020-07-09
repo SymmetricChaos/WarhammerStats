@@ -35,17 +35,16 @@ fatigue_dict["diminished"] = fatigue_dict["tired"]
 fatigue_dict["debilitated"] = fatigue_dict["exhausted"]
 
 
-if __name__ == '__main__':
-    
-    import csv
-    import pickle
-    
-    pickle.dump(fatigue_dict, open( "fatigueDict.p", "wb" ) )
-    
-    with open('fatigue.csv', 'w') as f:
-        w = csv.DictWriter(f, fatigue_dict.keys())
-        w.writeheader()
-        w.writerow(fatigue_dict)
-    
-    with open('fatigue.json', 'w') as fp:
-        json.dump(fatigue_dict, fp)
+
+import csv
+import pickle
+
+pickle.dump(fatigue_dict, open( "fatigueDict.p", "wb" ) )
+
+with open('fatigue.csv', 'w') as f:
+    w = csv.DictWriter(f, fatigue_dict.keys())
+    w.writeheader()
+    w.writerow(fatigue_dict)
+
+with open('fatigue.json', 'w') as fp:
+    json.dump(fatigue_dict, fp)

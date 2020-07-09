@@ -1,7 +1,6 @@
 import math
 from UtilityFunctions import melee_hit_prob, average_damage_with_armor_raw, \
                              select_unit
-# from Fatigue import fatigue_dict
 from TWWObjects import TWWUnit
 from StatEffects import effects_dict
 
@@ -37,8 +36,6 @@ def expected_damage_per_melee_attack(unitsDF,attacker_name,defender_name,
     attacker = TWWUnit(select_unit(unitsDF,attacker_name))
     defender = TWWUnit(select_unit(unitsDF,defender_name))
     
-    
-    
     spacer = max(len(attacker['name']),len(defender['name']))
     
     print(f"Attacker: {attacker['name']:<{spacer}}   {attacker['key']}")
@@ -55,9 +52,8 @@ def expected_damage_per_melee_attack(unitsDF,attacker_name,defender_name,
         if effect in effects_dict:
             defender.toggle_effect(effects_dict[effect])
     
-    
-    # apply_fatigue_effects(attacker,attacker_fatigue)
-    # apply_fatigue_effects(defender,defender_fatigue)
+    attacker.set_fatigue(attacker_fatigue)
+    defender.set_fatigue(defender_fatigue)
     
     # Very rough estimate of 1/5 units attacking is not specified by user
     if units_attacking == None:
@@ -79,11 +75,7 @@ def expected_damage_per_melee_attack(unitsDF,attacker_name,defender_name,
     
     
     print("\n## Defender Stats ##")
-    defender`.unit_card()
-    print(f"phys_res = {defender['damage_mod_physical']:>3}%")
-    print(f"mag_res  = {defender['damage_mod_magic']:>3}%")
-    print(f"fire_res = {defender['damage_mod_flame']:>3}%")
-    print(f"ward_res = {defender['damage_mod_all']:>3}%")
+    defender.unit_card()
 
     
     # Probability of an attack to hit

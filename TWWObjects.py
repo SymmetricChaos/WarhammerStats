@@ -1,7 +1,8 @@
 import math
 import pandas as pd
 import copy
-
+import pickle
+fatigue_dict = pickle.load( open( "fatigueDict.p", "rb" ) )
 
 class TWWEffect:
     
@@ -82,6 +83,10 @@ class TWWUnit:
               f"Melee Defence    {int(self['melee_defence'])}\n"
               f"Weapon Strength  {int(self['melee_total_damage'])} ({int(self['melee_base_damage'])}\\{int(self['melee_ap_damage'])})\n"
               f"Charge Bonus     {int(self['charge_bonus'])}\n"
+              f"phys_res         {self['damage_mod_physical']}%\n"
+              f"mag_res          {self['damage_mod_magic']}%\n"
+              f"fire_res         {self['damage_mod_flame']}%\n"
+              f"ward_res         {self['damage_mod_all']}%\n"
               f"Active Effects: {', '.join(self.effects)}\n"
               )
     
@@ -144,19 +149,20 @@ class TWWUnit:
             self.effects.remove(effect.pretty_name)
             effect(self,remove=True)
     
-    def set_fatigue(level):
-        if type(level) == str:
-            MA_mul = fatigue_dict[level]["melee_attack"]
-            ap_mul = fatigue_dict[level]["melee_ap_damage"]
-            armour_mul = fatigue_dict[level]["armour"]
-    #     elif type(level) == int:
+    def set_fatigue(self,level):
+        if self.fatigue == level:
+            return None
+        else:
+            # Reset fatigue first
+            for stat in ("melee_attack","melee_defence","melee_ap_damage","armour","charge_bonus"):
+                mul = fatigue_dict[self.fatigue][stat]
+                increase = round(self.shadow[stat]*mul-self.shadow[stat])
+                self[stat] += increase
             
-    #     else:
-    #         raise Exception("Fatigue level must be a string or integers")
-    
-    # unit["melee_attack"] = math.ceil(unit["melee_attack"]*fatigue_dict[fatigue_level]["melee_attack"])
-    # unit["melee_ap_damage"] = math.ceil(unit["melee_ap_damage"]*fatigue_dict[fatigue_level]["melee_ap_damage"])
-    # unit["melee_defence"] = math.ceil(unit["melee_defence"]*fatigue_dict[fatigue_level]["melee_defence"])
-    # unit["armour"] = math.ceil(unit["armour"]*fatigue_dict[fatigue_level]["armour"])
-    # unit["charge_bonus"] = math.ceil(unit["charge_bonus"]*fatigue_dict[fatigue_level]["charge_bonus"])
-    # unit["melee_total_damage"] = unit["melee_base_damage"]+unit["melee_ap_damage"]
+            # Then apply fatigue
+            for stat in ("melee_attack","melee_defence","melee_ap_damage","armour","charge_bonus"):
+                mul = fatigue_dict[level][stat]
+                increase = round(self.shadow[stat]*mul-self.shadow[stat])
+                self[stat] += increase
+            self.data["melee_total_damage"] = self.data["melee_base_damage"]+self.data["melee_ap_damage"]
+
