@@ -18,7 +18,10 @@ class TWWEffect:
     def __repr__(self):
         return f"TWWEffect: {self.pretty_name}"
     
+    # This needs to deal with the fact that "speed" affects several stats
     def __call__(self,unit,remove=False):
+        if type(unit) != TWWUnit:
+            raise Exception(f"Input must be of type TWWUnit not {type(unit)}")
         for stat in self.effects:
             if 'UNUSED' in stat[1]:
                 continue
@@ -141,9 +144,11 @@ class TWWUnit:
             self.effects.remove(effect.pretty_name)
             effect(self,remove=True)
     
-    # def set_fatigue(level):
-    #     if type(level) == str:
-            
+    def set_fatigue(level):
+        if type(level) == str:
+            MA_mul = fatigue_dict[level]["melee_attack"]
+            ap_mul = fatigue_dict[level]["melee_ap_damage"]
+            armour_mul = fatigue_dict[level]["armour"]
     #     elif type(level) == int:
             
     #     else:

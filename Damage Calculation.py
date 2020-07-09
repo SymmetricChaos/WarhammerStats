@@ -1,8 +1,9 @@
 import math
 from UtilityFunctions import melee_hit_prob, average_damage_with_armor_raw, \
                              select_unit
-from Fatigue import fatigue_dict
-
+# from Fatigue import fatigue_dict
+from TWWObjects import TWWUnit
+from StatEffects import effects_dict
 
 # Need to incorporate passive traits like:
     # regeneration, aura of agony, aura of endurance, aura of pestilence, aura of the lady,
@@ -13,37 +14,14 @@ from Fatigue import fatigue_dict
 
 # Conditions and abilities that affect self
 
-def apply_fatigue_effects(unit,fatigue_level="fresh"):
-    unit["melee_attack"] = math.ceil(unit["melee_attack"]*fatigue_dict[fatigue_level]["melee_attack"])
-    unit["melee_ap_damage"] = math.ceil(unit["melee_ap_damage"]*fatigue_dict[fatigue_level]["melee_ap_damage"])
-    unit["melee_defence"] = math.ceil(unit["melee_defence"]*fatigue_dict[fatigue_level]["melee_defence"])
-    unit["armour"] = math.ceil(unit["armour"]*fatigue_dict[fatigue_level]["armour"])
-    unit["charge_bonus"] = math.ceil(unit["charge_bonus"]*fatigue_dict[fatigue_level]["charge_bonus"])
-    unit["melee_total_damage"] = unit["melee_base_damage"]+unit["melee_ap_damage"]
+# def apply_fatigue_effects(unit,fatigue_level="fresh"):
+#     unit["melee_attack"] = math.ceil(unit["melee_attack"]*fatigue_dict[fatigue_level]["melee_attack"])
+#     unit["melee_ap_damage"] = math.ceil(unit["melee_ap_damage"]*fatigue_dict[fatigue_level]["melee_ap_damage"])
+#     unit["melee_defence"] = math.ceil(unit["melee_defence"]*fatigue_dict[fatigue_level]["melee_defence"])
+#     unit["armour"] = math.ceil(unit["armour"]*fatigue_dict[fatigue_level]["armour"])
+#     unit["charge_bonus"] = math.ceil(unit["charge_bonus"]*fatigue_dict[fatigue_level]["charge_bonus"])
+#     unit["melee_total_damage"] = unit["melee_base_damage"]+unit["melee_ap_damage"]
 
-def apply_BvI(unit):
-    BvI = unit["melee_bonus_v_infantry"]
-    ap_ratio = unit["melee_ap_ratio"]
-    unit["melee_attack"] += BvI
-    unit["melee_base_damage"] += math.floor(BvI*(1-ap_ratio))
-    unit["melee_ap_damage"] += math.floor(BvI*(ap_ratio))
-    unit["melee_total_damage"] = unit["melee_base_damage"]+unit["melee_ap_damage"]
-
-def apply_BvL(unit):
-    BvL = unit["melee_bonus_v_large"]
-    ap_ratio = unit["melee_ap_ratio"]
-    unit["melee_attack"] += BvL
-    unit["melee_base_damage"] += math.floor(BvL*(1-ap_ratio))
-    unit["melee_ap_damage"] += math.floor(BvL*(ap_ratio))
-    unit["melee_total_damage"] = unit["melee_base_damage"]+unit["melee_ap_damage"]
-
-def apply_charge(unit):
-    charge = unit["charge_bonus"]
-    ap_ratio = unit["melee_ap_ratio"]
-    unit["melee_attack"] += charge
-    unit["melee_base_damage"] += math.floor(charge*(1-ap_ratio))
-    unit["melee_ap_damage"] += math.floor(charge*(ap_ratio))
-    unit["melee_total_damage"] = unit["melee_base_damage"]+unit["melee_ap_damage"]
 
 
 
@@ -52,27 +30,34 @@ def apply_charge(unit):
 
 def expected_damage_per_melee_attack(unitsDF,attacker_name,defender_name,
                                      units_attacking=None,
+                                     
                                      attacker_fatigue="fresh",
                                      defender_fatigue="fresh"):
     
-    attacker = select_unit(unitsDF,attacker_name)
-    defender = select_unit(unitsDF,defender_name)
+    attacker = TWWUnit(select_unit(unitsDF,attacker_name))
+    defender = TWWUnit(select_unit(unitsDF,defender_name))
+    
+    
     
     spacer = max(len(attacker['name']),len(defender['name']))
     
     print(f"Attacker: {attacker['name']:<{spacer}}   {attacker['key']}")
     print(f"Defender: {defender['name']:<{spacer}}   {defender['key']}")
     
-    print(f"\nAttacker is {attacker_fatigue}")
-    print(f"Defender is {defender_fatigue}")
+    # print(f"\nAttacker is {attacker_fatigue}")
+    # print(f"Defender is {defender_fatigue}")
+    
+    for effect in attacker['abilities']:
+        if effect in effects_dict:
+            attacker.toggle_effect(effects_dict[effect])
+    
+    for effect in defender['abilities']:
+        if effect in effects_dict:
+            defender.toggle_effect(effects_dict[effect])
     
     
-    # print(attacker['abilities'])
-    # print(defender['abilities'])
-    
-    
-    apply_fatigue_effects(attacker,attacker_fatigue)
-    apply_fatigue_effects(defender,defender_fatigue)
+    # apply_fatigue_effects(attacker,attacker_fatigue)
+    # apply_fatigue_effects(defender,defender_fatigue)
     
     # Very rough estimate of 1/5 units attacking is not specified by user
     if units_attacking == None:
@@ -82,28 +67,23 @@ def expected_damage_per_melee_attack(unitsDF,attacker_name,defender_name,
     print("\n## Attacker Stats ##")
     if defender['is_large'] and attacker['melee_bonus_v_large'] > 0:
         print(f"## Including Bonus vs Large of {attacker['melee_bonus_v_large']} ##")
-        apply_BvL(attacker)
+        attacker.toggle_BvL()
     if not defender['is_large'] and attacker['melee_bonus_v_infantry'] > 0:
         print(f"## Including Bonus vs Infantry of {attacker['melee_bonus_v_infantry']} ##")
-        apply_BvI(attacker)
+        attacker.toggle_BvI()
     
-    print(f"MA       = {attacker['melee_attack']}")
-    print(f"base-dmg = {attacker['melee_base_damage']}")
-    print(f"ap-dmg   = {attacker['melee_ap_damage']}")
-    print(f"tot-dmg  = {attacker['melee_total_damage']}")
+    attacker.unit_card()
     print(f"magic    = {attacker['melee_is_magical']}")
     print(f"flaming  = {attacker['melee_is_flaming']}")
     
     
     
     print("\n## Defender Stats ##")
-    print(f"MD       = {defender['melee_defence']:>4}")
-    print(f"armor    = {defender['armour']:>4}")
+    defender`.unit_card()
     print(f"phys_res = {defender['damage_mod_physical']:>3}%")
     print(f"mag_res  = {defender['damage_mod_magic']:>3}%")
     print(f"fire_res = {defender['damage_mod_flame']:>3}%")
     print(f"ward_res = {defender['damage_mod_all']:>3}%")
-    print(f"large    = {defender['is_large']:>4}")
 
     
     # Probability of an attack to hit
