@@ -88,9 +88,5 @@ if __name__ == '__main__':
     import json
     with open('unitsdata.json', encoding="utf8") as f:
         J = json.load(f)
-        
-    with open('fatigue.json', encoding="utf8") as f:
-        F = json.load(f)
-#    find_unit(J,"Ellyrian")
-        
-    show_dict(F[1])
+
+    find_unit(J,"Ellyrian")
