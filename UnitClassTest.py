@@ -35,3 +35,9 @@ my_unit.unit_card()
 
 my_unit.toggle_effect(stat_effects["Martial Mastery"])
 my_unit.unit_card()
+
+my_unit.toggle_effect(stat_effects["Stand Your Ground"])
+my_unit.unit_card()
+
+my_unit.toggle_effect(stat_effects["Poison"])
+my_unit.unit_card()

@@ -40,6 +40,7 @@ class TWWEffect:
                     except:
                         pass
             unit["melee_total_damage"] = unit["melee_base_damage"]+unit["melee_ap_damage"]
+            unit["ranged_total_damage"] = unit["ranged_base_damage"]+unit["ranged_ap_damage"]
 
 
 
@@ -144,5 +145,5 @@ class TWWUnit:
             for n,e in enumerate(self.effects):
                 if e == effect.name:
                     break
-            del self.effects[n]
+            del self.effects[n-1]
             effect(self,remove=True)
