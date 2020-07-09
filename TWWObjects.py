@@ -24,8 +24,7 @@ class TWWEffect:
             else:
                 if stat[2] == 'mult':
                     try:
-                        increase = math.floor(unit.shadow[stat[1]]*stat[0])-unit.shadow[stat[1]]
-                        print(stat,increase)
+                        increase = round(unit.shadow[stat[1]]*stat[0]-unit.shadow[stat[1]])
                         if remove == False:
                             unit[stat[1]] += increase
                         else:
@@ -41,7 +40,7 @@ class TWWEffect:
                     except:
                         pass
             unit["melee_total_damage"] = unit["melee_base_damage"]+unit["melee_ap_damage"]
-            
+
 
 
 class TWWUnit:

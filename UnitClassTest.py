@@ -24,14 +24,14 @@ my_unit.unit_card()
 
 
 
-# print("\nTest Martial Mastery")
-# my_unit.unit_card()
+print("\n\n\nTest Martial Mastery")
+my_unit.unit_card()
 
-# my_unit.toggle_effect(stat_effects["Martial Mastery"])
-# my_unit.unit_card()
+my_unit.toggle_effect(stat_effects["Martial Mastery"])
+my_unit.unit_card()
 
-# my_unit.toggle_effect(stat_effects["Poison"])
-# my_unit.unit_card()
+my_unit.toggle_effect(stat_effects["Poison"])
+my_unit.unit_card()
 
-# my_unit.toggle_effect(stat_effects["Martial Mastery"])
-# my_unit.unit_card()
+my_unit.toggle_effect(stat_effects["Martial Mastery"])
+my_unit.unit_card()
