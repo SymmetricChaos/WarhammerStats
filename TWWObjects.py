@@ -2,6 +2,7 @@ import math
 import pandas as pd
 import copy
 
+
 class TWWEffect:
     
     def __init__(self,name,effects):
@@ -147,3 +148,10 @@ class TWWUnit:
             
     #     else:
     #         raise Exception("Fatigue level must be a string or integers")
+    
+    # unit["melee_attack"] = math.ceil(unit["melee_attack"]*fatigue_dict[fatigue_level]["melee_attack"])
+    # unit["melee_ap_damage"] = math.ceil(unit["melee_ap_damage"]*fatigue_dict[fatigue_level]["melee_ap_damage"])
+    # unit["melee_defence"] = math.ceil(unit["melee_defence"]*fatigue_dict[fatigue_level]["melee_defence"])
+    # unit["armour"] = math.ceil(unit["armour"]*fatigue_dict[fatigue_level]["armour"])
+    # unit["charge_bonus"] = math.ceil(unit["charge_bonus"]*fatigue_dict[fatigue_level]["charge_bonus"])
+    # unit["melee_total_damage"] = unit["melee_base_damage"]+unit["melee_ap_damage"]
