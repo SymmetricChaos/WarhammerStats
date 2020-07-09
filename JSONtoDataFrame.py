@@ -193,9 +193,12 @@ def create_units_dict_from_JSON(J):
              #"walk_speed": unit["walk_speed"],
              "charge_speed": unit["charge_speed"],
              "charge_speed_flying": unit["flying_charge_speed"],
+             "acceleration": unit["acceleration"],
+             "deceleration": unit["deceleration"],
              
              "ground_stat_effect_group": unit["ground_stat_effect_group"]["group_name"],
              
+             "accuracy": unit["accuracy"], # <- very unclear what this stat does
              "reload_skill": unit["reload"],
     
              ## Stats that are lists ##
