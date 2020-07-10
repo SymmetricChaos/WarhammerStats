@@ -1,7 +1,7 @@
 import pickle
 from UtilityFunctions import select_unit
 from TWWObjects import TWWUnit
-from StatEffects import effects_dict
+effects_dict = pickle.load( open( "effectsDict.p", "rb" ) )
 
 unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
 

@@ -2,6 +2,9 @@ import math
 import pandas as pd
 import copy
 import pickle
+from Translators import attribute_pretty_name
+
+
 fatigue_dict = pickle.load( open( "fatigueDict.p", "rb" ) )
 
 class TWWEffect:
@@ -74,22 +77,35 @@ class TWWUnit:
     def __str__(self):
         return f"TWWUnit: {self['name']}"
     
+    def __repr__(self):
+        return f"TWWUnit: {self['name']}"
+    
     def unit_card(self):
-        print(f"| {self['name']}\n|\n"
+        attributes = [attribute_pretty_name[att] for att in self['attributes']]
+        
+        melee_total = int(self['melee_total_damage'])
+        melee_base = int(self['melee_base_damage'])
+        melee_ap = int(self['melee_ap_damage'])
+
+        # NEED TO UPDATE WITH RANGED INFO
+        
+        print(f"\n| {self['name']}\n|\n"
               f"| HP               {self['health']}\n"
               f"| Armour           {int(self['armour'])}\n"
               f"| Leadership       {int(self['leadership'])}\n"
               f"| Speed            {int(self['speed'])}\n"
               f"| Melee Attack     {int(self['melee_attack'])}\n"
               f"| Melee Defence    {int(self['melee_defence'])}\n"
-              f"| Weapon Strength  {int(self['melee_total_damage'])} ({int(self['melee_base_damage'])}\\{int(self['melee_ap_damage'])})\n"
+              f"| Weapon Strength  {melee_total} ({melee_base}\\{melee_ap})\n"
               f"| Charge Bonus     {int(self['charge_bonus'])}\n|\n"
               f"| phys_res         {self['damage_mod_physical']}%\n"
               f"| mag_res          {self['damage_mod_magic']}%\n"
               f"| fire_res         {self['damage_mod_flame']}%\n"
               f"| ward_res         {self['damage_mod_all']}%\n|\n"
+              f"| Attributes: {', '.join(attributes)}\n"
+              f"| Abilities: {', '.join(self['abilities'])}\n|\n"
               f"| Active Effects: {', '.join(self.effects)}\n"
-              # f"Inactive Effects: {', '.join([i for i in self['abilities'] if i not in self.effects])}\n"
+
               )
     
     def reset_stats(self):
