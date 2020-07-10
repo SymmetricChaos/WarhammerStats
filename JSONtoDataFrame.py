@@ -232,12 +232,10 @@ if __name__ == '__main__':
     unitsDF = pd.DataFrame(units)
     
     
-    
     # Save as a DataFrame, as a dictionary, and as a csv file
     pickle.dump(unitsDF, open( "unitsDF.p", "wb" ) )
     pickle.dump(unitsDF.to_dict(), open( "unitsDict.p", "wb" ) )
     unitsDF.to_csv("units.csv")
-    
     
     # Create a deeply cleaned version of the DataFrame that removed all non-standard
     # units. This avoid some issues when looking at the data

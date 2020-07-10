@@ -50,6 +50,7 @@ stat_translator = {
 
 # The stat effects can be found in the:
 # special_abilty_phase_stat_effects_tables
+# Need to find a way to get correct names
 name_and_effects = {}
 with open("stat_effects_tables.tsv") as fd:
     rd = csv.reader(fd, delimiter="\t", quotechar='"')

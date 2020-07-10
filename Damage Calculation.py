@@ -2,8 +2,8 @@ import math
 from UtilityFunctions import melee_hit_prob, average_damage_with_armor_raw, \
                              select_unit
 from TWWObjects import TWWUnit
-from StatEffects import effects_dict
-
+import pickle
+effects_dict = pickle.load( open( "effectsDict.p", "rb" ) )
 
 def simulate_attack(attacker,defender,units_attacking=None):
         
@@ -96,9 +96,9 @@ def simulate_attack_quick(unitsDF,attacker_name,defender_name,
 
 
 if __name__ == '__main__':
-    import pickle
+    
     unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
-
+    
     simulate_attack_quick(unitsDF,"The Fireborn","Firebark",
                           attacker_fatigue = "exhausted")
     print("\n\n\n")
