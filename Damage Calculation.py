@@ -95,13 +95,6 @@ def simulate_attack_quick(unitsDF,attacker_name,defender_name,
 
 
 
-
-
-
-
-
-
-
 if __name__ == '__main__':
     import pickle
     unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )

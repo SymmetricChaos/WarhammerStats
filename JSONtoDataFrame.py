@@ -224,7 +224,7 @@ if __name__ == '__main__':
     import pickle
     
     with open('unitsdata.json', encoding="utf8") as f:
-      J = json.load(f)
+        J = json.load(f)
      
     # Create the dictionary
     units = create_units_dict_from_JSON(J)
@@ -232,7 +232,7 @@ if __name__ == '__main__':
     unitsDF = pd.DataFrame(units)
     
     
-
+    
     # Save as a DataFrame, as a dictionary, and as a csv file
     pickle.dump(unitsDF, open( "unitsDF.p", "wb" ) )
     pickle.dump(unitsDF.to_dict(), open( "unitsDict.p", "wb" ) )

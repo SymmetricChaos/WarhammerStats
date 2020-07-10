@@ -1,6 +1,6 @@
 import pickle
 from UtilityFunctions import select_unit
-from TWWObjects import TWWUnit, TWWEffect
+from TWWObjects import TWWUnit
 from StatEffects import effects_dict
 
 unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
@@ -25,8 +25,7 @@ my_unit.unit_card()
 
 
 
-print("\n\n\nTest Martial Mastery")
-my_unit.unit_card()
+print("\n\n\nTest Effects")
 
 my_unit.toggle_effect(effects_dict["Martial Mastery"])
 my_unit.unit_card()
