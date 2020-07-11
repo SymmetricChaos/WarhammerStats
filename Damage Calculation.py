@@ -2,8 +2,6 @@ import math
 from UtilityFunctions import melee_hit_prob, average_damage_with_armor_raw, \
                              select_unit
 from TWWObjects import TWWUnit
-import pickle
-effects_dict = pickle.load( open( "effectsDict.p", "rb" ) )
 
 def simulate_attack(attacker,defender,units_attacking=None):
         
@@ -11,14 +9,16 @@ def simulate_attack(attacker,defender,units_attacking=None):
     if units_attacking == None:
         units_attacking = math.ceil(attacker["unit_size"]*.2)
     
-    print("\n## Attacker Stats ##")
-    if defender['is_large'] and attacker['melee_bonus_v_large'] > 0 and "BvI" not in attacker.effects:
-        print(f"## Including Bonus vs Large of {attacker['melee_bonus_v_large']} ##")
-        attacker.toggle_BvL()
-    if not defender['is_large'] and attacker['melee_bonus_v_infantry'] > 0 and "BvL" not in attacker.effects:
-        print(f"## Including Bonus vs Infantry of {attacker['melee_bonus_v_infantry']} ##")
-        attacker.toggle_BvI()
+    print("## Attacker Stats ##")
     attacker.unit_card()
+    # Activate BvL if relevant
+    if defender['is_large'] and attacker['melee_bonus_v_large'] > 0 and "BvL" not in attacker.effects:
+        print(f"## Bonus vs Large Activated for Attacker ##")
+        attacker.toggle_BvL()
+    # Activate BvI if relevant
+    if not defender['is_large'] and attacker['melee_bonus_v_infantry'] > 0 and "BvI" not in attacker.effects:
+        print(f"## Bonus vs Infantry Activated for Attacker ##")
+        attacker.toggle_BvI()
     
     print("\n## Defender Stats ##")
     defender.unit_card()
@@ -63,33 +63,8 @@ def simulate_attack(attacker,defender,units_attacking=None):
           f"{'Unit Attacks' if units_attacking == 1 else 'Units Attack'}"
           "\nTotal Expected Damage = "
           f"{round(max(1,expected_hit*avg_dmg*units_attacking),2)}")
-
-
-# Just given a dataframe to draw from and names make a best effort simulation
-def simulate_attack_quick(unitsDF,attacker_name,defender_name,
-                          units_attacking=None,
-                          charge=False,
-                          attacker_fatigue="fresh",
-                          defender_fatigue="fresh"):
     
-    attacker = TWWUnit(select_unit(unitsDF,attacker_name))
-    defender = TWWUnit(select_unit(unitsDF,defender_name))
-    
-    for effect in attacker['abilities']:
-        if effect.title() in effects_dict:
-            attacker.toggle_effect(effects_dict[effect.title()])
-    
-    for effect in defender['abilities']:
-        if effect.title() in effects_dict:
-            defender.toggle_effect(effects_dict[effect.title()])
-    
-    attacker.set_fatigue(attacker_fatigue)
-    defender.set_fatigue(defender_fatigue)
-    
-    if charge:
-        attacker.toggle_charge()
-    
-    simulate_attack(attacker,defender)
+    return attacker,defender
 
 
 
@@ -97,11 +72,13 @@ def simulate_attack_quick(unitsDF,attacker_name,defender_name,
 
 if __name__ == '__main__':
     
+    import pickle
     unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
+    effects_dict = pickle.load( open( "effectsDict.p", "rb" ) )
     
-    simulate_attack_quick(unitsDF,"The Fireborn","Firebark",
-                          attacker_fatigue = "exhausted")
-    print("\n\n\n")
-    simulate_attack_quick(unitsDF,"Swordmasters of Hoeth","Skavenslaves",
-                          defender_fatigue = "exhausted",
-                          charge=True)
+    fireborn = TWWUnit(select_unit(unitsDF,"The Fireborn"))
+    firebark = TWWUnit(select_unit(unitsDF,"wh_dlc05_wef_inf_dryads_0"))
+    
+    fireborn.toggle_effect(effects_dict["Martial Mastery"])
+    
+    simulate_attack(fireborn,firebark)

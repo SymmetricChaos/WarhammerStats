@@ -11,7 +11,7 @@ class TWWEffect:
     
     def __init__(self,name,effects):
         self.name = name
-        self.pretty_name = " ".join(name.split("_")[4:]).title()
+        self.pretty_name = name
         if self.pretty_name == "":
             self.pretty_name = " ".join(name.split("_")[3:]).title()
         self.effects = effects

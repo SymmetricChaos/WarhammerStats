@@ -30,7 +30,7 @@ print("\n\n\nTest Effects")
 my_unit.toggle_effect(effects_dict["Martial Mastery"])
 my_unit.unit_card()
 
-my_unit.toggle_effect(effects_dict["Stand Your Ground"])
+my_unit.toggle_effect(effects_dict["Stand Your Ground!"])
 my_unit.unit_card()
 
 my_unit.toggle_effect(effects_dict["Poison"])
@@ -42,5 +42,5 @@ my_unit.unit_card()
 my_unit.toggle_effect(effects_dict["Poison"])
 my_unit.unit_card()
 
-my_unit.toggle_effect(effects_dict["Stand Your Ground"])
+my_unit.toggle_effect(effects_dict["Stand Your Ground!"])
 my_unit.unit_card()
