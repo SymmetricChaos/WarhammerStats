@@ -95,17 +95,22 @@ class TWWUnit:
             F = "F"
         else:
             F = ""
-            
-        ammo =         f"| Ammo             {self['ammo']}\n"
-        weapon_range = f"| Range            {self['range']}\n"
-        missile =      f"| Missile Strength {self['ranged_total_damage']}\n"
         
-        if "nan" in ammo:
+        if math.isnan(self['ammo']):
             ammo = ""
-        if "nan" in weapon_range:
+        else:
+            ammo = f"| Ammo             {int(self['ammo'])}\n"
+        
+        if math.isnan(self['range']):
             weapon_range = ""
-        if "nan" in missile:
+        else:
+            weapon_range = f"| Range            {int(self['range'])}\n"
+            
+        if math.isnan(self['ranged_total_damage']):
             missile = ""
+        else:
+            missile = f"| Missile Strength {int(self['ranged_total_damage'])}\n"
+        
         
         # NEED TO UPDATE WITH RANGED INFO
         
