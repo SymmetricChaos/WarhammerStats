@@ -3,7 +3,7 @@ from UtilityFunctions import melee_hit_prob, average_damage_with_armor_raw, \
                              select_unit
 from TWWObjects import TWWUnit
 
-def simulate_attack(attacker,defender,units_attacking=None):
+def simulate_melee_attack(attacker,defender,units_attacking=None):
         
     # Very rough estimate of 1/5 units attacking is not specified by user
     if units_attacking == None:
@@ -13,11 +13,11 @@ def simulate_attack(attacker,defender,units_attacking=None):
     attacker.unit_card()
     # Activate BvL if relevant
     if defender['is_large'] and attacker['melee_bonus_v_large'] > 0 and "BvL" not in attacker.effects:
-        print(f"## Bonus vs Large Activated for Attacker ##")
+        print("## Bonus vs Large Activated ##")
         attacker.toggle_BvL()
     # Activate BvI if relevant
     if not defender['is_large'] and attacker['melee_bonus_v_infantry'] > 0 and "BvI" not in attacker.effects:
-        print(f"## Bonus vs Infantry Activated for Attacker ##")
+        print("## Bonus vs Infantry Activated ##")
         attacker.toggle_BvI()
     
     print("\n## Defender Stats ##")
@@ -77,9 +77,9 @@ if __name__ == '__main__':
     effects_dict = pickle.load( open( "effectsDict.p", "rb" ) )
     
     fireborn = TWWUnit(select_unit(unitsDF,"The Fireborn"))
-    firebark = TWWUnit(select_unit(unitsDF,"wh_dlc05_wef_inf_dryads_0"))
+    dryads = TWWUnit(select_unit(unitsDF,"wh_dlc05_wef_inf_dryads_0"))
     
     fireborn.toggle_effect(effects_dict["Martial Mastery"])
     fireborn.toggle_charge()
     
-    simulate_attack(fireborn,firebark)
+    simulate_melee_attack(fireborn,dryads)
