@@ -80,5 +80,6 @@ if __name__ == '__main__':
     firebark = TWWUnit(select_unit(unitsDF,"wh_dlc05_wef_inf_dryads_0"))
     
     fireborn.toggle_effect(effects_dict["Martial Mastery"])
+    fireborn.toggle_charge()
     
     simulate_attack(fireborn,firebark)

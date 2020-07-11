@@ -86,7 +86,27 @@ class TWWUnit:
         melee_total = int(self['melee_total_damage'])
         melee_base = int(self['melee_base_damage'])
         melee_ap = int(self['melee_ap_damage'])
-
+        
+        if self['melee_is_magical']:
+            M = "M"
+        else:
+            M = ""
+        if self['melee_is_flaming']:
+            F = "F"
+        else:
+            F = ""
+            
+        ammo =         f"| Ammo             {self['ammo']}\n"
+        weapon_range = f"| Range            {self['range']}\n"
+        missile =      f"| Missile Strength {self['ranged_total_damage']}\n"
+        
+        if "nan" in ammo:
+            ammo = ""
+        if "nan" in weapon_range:
+            weapon_range = ""
+        if "nan" in missile:
+            missile = ""
+        
         # NEED TO UPDATE WITH RANGED INFO
         
         print(f"\n| {self['name']}\n|\n"
@@ -96,8 +116,12 @@ class TWWUnit:
               f"| Speed            {int(self['speed'])}\n"
               f"| Melee Attack     {int(self['melee_attack'])}\n"
               f"| Melee Defence    {int(self['melee_defence'])}\n"
-              f"| Weapon Strength  {melee_total} ({melee_base}\\{melee_ap})\n"
-              f"| Charge Bonus     {int(self['charge_bonus'])}\n|\n"
+              f"| Weapon Strength  {melee_total} ({melee_base}\\{melee_ap}) {M}{F}\n"
+              f"| Charge Bonus     {int(self['charge_bonus'])}\n"
+              f"{ammo}"
+              f"{weapon_range}"
+              f"{missile}"
+              f"|\n"
               f"| phys_res         {self['damage_mod_physical']}%\n"
               f"| mag_res          {self['damage_mod_magic']}%\n"
               f"| fire_res         {self['damage_mod_flame']}%\n"
@@ -105,8 +129,8 @@ class TWWUnit:
               f"| Attributes: {', '.join(attributes)}\n"
               f"| Abilities: {', '.join(self['abilities'])}\n|\n"
               f"| Active Effects: {', '.join(self.effects)}\n"
-
               )
+        
     
     def reset_stats(self):
         self.data = self.shadow
