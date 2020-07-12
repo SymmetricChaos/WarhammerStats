@@ -111,7 +111,16 @@ class TWWUnit:
         else:
             ranged_base = int(self['ranged_base_damage'])
             ranged_ap = int(self['ranged_ap_damage'])
-            missile = f"| Missile Strength {int(self['ranged_total_damage'])} ({ranged_base}\\{ranged_ap})\n"
+            if self['ranged_is_magical']:
+                rM = "M"
+            else:
+                rM = ""
+            if self['ranged_is_flaming']:
+                rF = "F"
+            else:
+                rF = ""
+            missile = f"| Missile Strength {int(self['ranged_total_damage'])} ({ranged_base}\\{ranged_ap}) {rM}{rF}\n"
+            
         
         
         # NEED TO UPDATE WITH RANGED INFO
