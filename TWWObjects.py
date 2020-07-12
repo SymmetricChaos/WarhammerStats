@@ -127,10 +127,11 @@ class TWWUnit:
               f"{weapon_range}"
               f"{missile}"
               f"|\n"
-              f"| phys_res         {self['damage_mod_physical']}%\n"
-              f"| mag_res          {self['damage_mod_magic']}%\n"
-              f"| fire_res         {self['damage_mod_flame']}%\n"
-              f"| ward_res         {self['damage_mod_all']}%\n|\n"
+              f"| Physical Resist  {self['damage_mod_physical']}%\n"
+              f"| Magic Resist     {self['damage_mod_magic']}%\n"
+              f"| Flame Resist     {self['damage_mod_flame']}%\n"
+              f"| Ward Save        {self['damage_mod_all']}%\n|\n"
+              f"| Fatigue: {self.fatigue.title()}\n|\n"
               f"| Attributes: {', '.join(attributes)}\n"
               f"| Abilities: {', '.join(self['abilities'])}\n|\n"
               f"| Active Effects: {', '.join(self.effects)}\n"
@@ -212,4 +213,5 @@ class TWWUnit:
                 increase = round(self.shadow[stat]*mul-self.shadow[stat])
                 self[stat] += increase
             self.data["melee_total_damage"] = self.data["melee_base_damage"]+self.data["melee_ap_damage"]
+            self.fatigue = level
 
