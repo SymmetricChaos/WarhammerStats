@@ -109,7 +109,9 @@ class TWWUnit:
         if math.isnan(self['ranged_total_damage']):
             missile = ""
         else:
-            missile = f"| Missile Strength {int(self['ranged_total_damage'])}\n"
+            ranged_base = int(self['ranged_base_damage'])
+            ranged_ap = int(self['ranged_ap_damage'])
+            missile = f"| Missile Strength {int(self['ranged_total_damage'])} ({ranged_base}\\{ranged_ap})\n"
         
         
         # NEED TO UPDATE WITH RANGED INFO
