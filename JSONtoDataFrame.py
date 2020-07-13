@@ -35,16 +35,16 @@ def set_melee_stats(D,unit):
     if weapon["bonus_v_large"] == None:
         D["melee_bonus_v_large"] = 0
     else:
-        D["melee_bonus_v_large"] = weapon["bonus_v_large"]
+        D["melee_bonus_v_large"] = int(weapon["bonus_v_large"])
         
     if weapon["bonus_v_infantry"] == None:
         D["melee_bonus_v_infantry"] = 0
     else:
         D["melee_bonus_v_infantry"] = weapon["bonus_v_infantry"]
 
-    D["melee_base_damage"] = weapon["base_damage"]
-    D["melee_ap_damage"] = weapon["ap_damage"]
-    D["melee_total_damage"] = weapon["damage"]
+    D["melee_base_damage"] = int(weapon["base_damage"])
+    D["melee_ap_damage"] = int(weapon["ap_damage"])
+    D["melee_total_damage"] = int(weapon["damage"])
     D["melee_ap_ratio"] = weapon["ap_ratio"]
     D["melee_attack_interval"] = weapon["melee_attack_interval"]
     D["melee_is_magical"] = weapon["is_magical"]
@@ -65,32 +65,33 @@ def set_ranged_stats(D,unit):
     #  raw dictionary output as an option and this will avoid key errors when
     #  iterating through it.)
     if unit["primary_missile_weapon"] == {}:
-        D["ranged_base_damage"] = None
-        D["ranged_ap_damage"] = None
-        D["ranged_total_damage"] = None
+        D["ranged_base_damage"] = 0
+        D["ranged_ap_damage"] = 0
+        D["ranged_total_damage"] = 0
         D["ranged_ap_ratio"] = None
-        D["ranged_bonus_v_large"] = None
-        D["ranged_bonus_v_infantry"] = None
+        D["ranged_bonus_v_large"] = 0
+        D["ranged_bonus_v_infantry"] = 0
         D["ranged_is_magical"] = None
         D["ranged_is_flaming"] = None
         D["ranged_contact_effect"] = ""
-        D["ammo"] = None
+        D["ammo"] = 0
         D["base_reload_time"] = None
-        D["range"] = None
-        D["shots_per_volley"] = None
-        D["projectile_number"] = None
-        D["calibration_area"] = None
-        D["calibration_distance"] = None
-        D["accuracy"] = None
-        D["max_penetration"] = None
+        D["range"] = 0
+        D["shots_per_volley"] = 0
+        D["projectile_number"] = 0
+        D["calibration_area"] = 0
+        D["calibration_distance"] = 0
+        D["accuracy"] = 0
+        #D["max_penetration"] = projectile["penetration_max_penetration"]
+        #D["penetration_entity_size_cap"] = projectile["penetration_entity_size_cap"]
         
         # If there is no ranged attack there is also no explosion so again we
         # provide default values
-        D["explosion_base_damage"] = None
-        D["explosion_ap_damage"] = None
-        D["explosion_radius"] = None
-        D["explosion_is_magical"] = None
-        D["explosion_is_flaming"] = None
+        D["explosion_base_damage"] = 0
+        D["explosion_ap_damage"] = 0
+        D["explosion_radius"] = 0
+        D["explosion_is_magical"] = False
+        D["explosion_is_flaming"] = False
         D["explosion_contact_effect"] = ""
 
 
@@ -119,15 +120,14 @@ def set_ranged_stats(D,unit):
         else:
             D["ranged_contact_effect"] = projectile["phase"]["name"].split("\\")[0]
         
-        # Some units have no explosion so those stats are set to None
+        # Some units have a ranged attack but no explosion so those stats are set to None
         if projectile["explosion"] == None:
-            D["explosion_base_damage"] = None
-            D["explosion_ap_damage"] = None
-            D["explosion_radius"] = None
-            D["explosion_is_magical"] = None
-            D["explosion_is_flaming"] = None
+            D["explosion_base_damage"] = 0
+            D["explosion_ap_damage"] = 0
+            D["explosion_radius"] = 0
+            D["explosion_is_magical"] = False
+            D["explosion_is_flaming"] = False
             D["explosion_contact_effect"] = ""
-            
         else:
             D["explosion_base_damage"] = projectile["explosion"]["base_damage"]
             D["explosion_ap_damage"] = projectile["explosion"]["ap_damage"]
@@ -230,6 +230,10 @@ if __name__ == '__main__':
     units = create_units_dict_from_JSON(J)
     # Convert to a pandas DataFrame
     unitsDF = pd.DataFrame(units)
+    
+    pd.set_option('display.max_columns', None)
+    pd.set_option('display.max_rows', None)
+    print(unitsDF.dtypes)
     
     
     # Save as a DataFrame, as a dictionary, and as a csv file
