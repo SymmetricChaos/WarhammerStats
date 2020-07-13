@@ -67,6 +67,7 @@ class TWWUnit:
         
         # Fatgiue level
         self.fatigue = "fresh"
+        self.rank = 0
     
     def __getitem__(self,n):
         return self.data[n]
@@ -125,10 +126,6 @@ class TWWUnit:
             missile_damage =   f"| Missile Damage   {self['ranged_total_damage']} ({ranged_base}\\{ranged_ap})\n"
             missile_strength = f"| Missile Strength {int(self['ranged_total_damage']*10/reload_time)} ({reload_time}s)\n"
         
-        
-        
-        # NEED TO UPDATE WITH RANGED INFO
-        
         print(f"\n| {self['name']}\n|\n"
               f"| HP               {self['health']}\n"
               f"| Armour           {int(self['armour'])}\n"
@@ -156,6 +153,24 @@ class TWWUnit:
     
     def reset_stats(self):
         self.data = self.shadow
+    
+    def change_stat(stat,value,operation,remove=False):
+        if operation.lower() in ('add','addition'):
+             if type(self[stat]) != str:
+                 if remove == False:
+                     self[stat] += value
+                 else:
+                     self[stat] -= value
+        elif operation.lower() in ('mul','multiply','multiplication'):
+             if type(self[stat]) != str:
+                 increase = round(self.shadow[stat]*value-self.shadow[stat])
+                 if remove == False:
+                     unit[stat] += increase
+                 else:
+                     unit[stat] -= increase
+        else:
+            raise Exception("Operations must be either 'add' or 'mul'")
+        
     
     def toggle_BvI(self):
         BvI = self.data["melee_bonus_v_infantry"]
