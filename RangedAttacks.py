@@ -1,64 +1,38 @@
 import numpy as np
 import pickle
-import pandas as pd
-from UtilityFunctions import average_damage_with_armor_raw
+from UtilityFunctions import average_damage_with_armor_raw, select_unit
 
 
-
-def ranged_damage_stats(name,base_dmg_mod=1,ap_dmg_mod=1,reload_buff=0):
+def ranged_damage_stats(unit,target_armor=60,shield=0):
     
-    # Look for a unit with a name that matches exactly
-    # If we get exactly one match move on
-    # Otherwise
-    #     look for every unit that includes that name
-    #         if there is exactly one move on
-    #         if there are zero matches then
-    #              check if there is an exact match as a key value
-    #                  if not the input is invalid
-    #                  if there is then move on
-    #         if there is more then one match print out all the possibilities along with their key
-    #     
-    unit = unitsDF[unitsDF["name"] == name]
-    if len(unit) != 1:    
-        unit = unitsDF[unitsDF["name"].str.contains(name)]
-        if len(unit) == 0:
-            unit = unitsDF[unitsDF["key"] == name]
-            if len(unit) == 0:
-                raise Exception(f"{name} is not a unit name or key")
-        if len(unit) > 1:
-            helper = unit[["name","key"]]
-            S = ""
-            for line in helper.values:
-                S += f"{line[0]:<50} {line[1]}\n"
-            
-            raise Exception(f"Ambiguous name. Please use one of these key values on the right:\n{S}")
-        
-    show_name = unit["name"].values[0]
+    show_name = unit["name"]
     
-    ap_d = unit["ranged_ap_damage"].values[0]*ap_dmg_mod
-    base_d = unit["ranged_base_damage"].values[0]*base_dmg_mod
-
-    num_models = unit["unit_size"].values[0]
-    num_proj = unit["projectile_number"].values[0]
-    shot_vol = unit["shots_per_volley"].values[0]
-    ammo = unit["ammo"].values[0]
-    proj_range = unit["range"].values[0]
+    ap_d = unit["ranged_ap_damage"]
+    base_d = unit["ranged_base_damage"]
     
-    caste = unit["caste"].values[0]
-    category = unit["category"].values[0]
+    num_models = unit["unit_size"]
+    num_proj = unit["projectile_number"]
+    shot_vol = unit["shots_per_volley"]
+    ammo = unit["ammo"]
+    proj_range = unit["range"]
     
-    base_reload = unit["base_reload_time"].values[0]
-    reload_skill = unit["reload_skill"].values[0]+reload_buff
+    caste = unit["caste"]
+    category = unit["category"]
+    
+    base_reload = unit["base_reload_time"]
+    reload_skill = unit["reload_skill"]
     reload_time = base_reload*(100-reload_skill)/100 # this is probably wrong but it is very close
 
-    calibration_area = unit["calibration_area"].values[0]
-    calibration_distance = unit["calibration_distance"].values[0]
+    calibration_area = unit["calibration_area"]
+    calibration_distance = unit["calibration_distance"]
 
-    damage_v_60a = average_damage_with_armor_raw(base_d,ap_d,60)
+    damage_v_a = average_damage_with_armor_raw(base_d,ap_d,target_armor)
 
-    damage_per_volley_60a = damage_v_60a*num_models*num_proj*shot_vol
-    damage_per_ten_60a = damage_per_volley_60a*(10/reload_time)
-    damage_per_battle_60a = damage_per_volley_60a*ammo
+    damage_per_volley_a = damage_v_a*num_models*num_proj*shot_vol
+    damage_per_ten_a = damage_per_volley_a*(10/reload_time)
+    damage_per_battle_a = damage_per_volley_a*ammo
+    
+    
     
     
     print(f"Some Ranged Damage Stats for {show_name}")
@@ -67,15 +41,25 @@ def ranged_damage_stats(name,base_dmg_mod=1,ap_dmg_mod=1,reload_buff=0):
     else:
         print(f"{caste}: {category}\n")
     
+    
+    print("## User Facing Stats ##")
+    print(f"Ammo: {ammo}")
+    print(f"Shots per Volley: {int(shot_vol)}")
+    print(f"Number Projectiles: {int(num_proj)}")
+    print(f"Missile Strength: {int(unit['ranged_total_damage']*10/reload_time)} ({reload_time}s)")
+    print(f"Damage: {unit['ranged_total_damage']} ({unit['ranged_base_damage']}\\{unit['ranged_ap_damage']})")
     print(f"Range: {int(proj_range)}m")
+    
+    print("\n## Hidden Stats ##")
     print(f"Target Area: {calibration_area}m")
     print(f"Calibration Dist: {calibration_distance}m")
     
-    print("\nShooting at 60 Armor")
-    print(f"Damage Per Projectile: {int(damage_v_60a)}")
-    print(f"Damage Per Volley: {int(damage_per_volley_60a)}")
-    print(f"Damage Per 10s: {int(damage_per_ten_60a)}")
-    print(f"Damage Per Battle: {int(damage_per_battle_60a)}")
+    print("\n## Derived Stats ##")
+    print("Shooting at {target_armor} Armor")
+    print(f"Damage Per Projectile: {int(damage_v_a)}")
+    print(f"Damage Per Volley: {int(damage_per_volley_a)}")
+    print(f"Damage Per 10s: {int(damage_per_ten_a)}")
+    print(f"Damage Per Battle: {int(damage_per_battle_a)}")
     
     
 
@@ -83,18 +67,10 @@ def ranged_damage_stats(name,base_dmg_mod=1,ap_dmg_mod=1,reload_buff=0):
 
 if __name__ == '__main__':
     
+    import pandas as pd
     unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
+    from TWWObjects import TWWUnit
     
-    ranged_damage_stats("wh_dlc05_wef_inf_waywatchers_0")
+    ranged_damage_stats(TWWUnit(select_unit(unitsDF,"wh_dlc05_wef_inf_waywatchers_0")))
     print("\n\n")
-    ranged_damage_stats("wh2_dlc10_hef_inf_sisters_of_avelorn_0")
-    print("\n\n")
-    ranged_damage_stats("Casket of Souls")
-    print("\n\n")
-    ranged_damage_stats("Thunderers")
-    print("\n\n")
-    ranged_damage_stats("Ratling Guns")
-    print("\n\n")
-    ranged_damage_stats("Deathjacks")
-    print("\n\n")
-    ranged_damage_stats("wh_main_emp_cav_pistoliers_1")
+    ranged_damage_stats(TWWUnit(select_unit(unitsDF,"Ratling Guns")))
