@@ -395,8 +395,8 @@ wh2_dlc15_character_abilities_they_needs_stabbin	-30	stat_armour	add
 wh2_dlc15_character_abilities_they_needs_stabbin	-24	stat_melee_defence	add
 wh2_dlc15_character_abilities_wardens_cage	-60	stat_armour	add
 wh2_dlc15_character_abilities_wardens_cage	-48	stat_melee_defence	add
-wh2_dlc15_hero_abilities_mither	0.28	scalar_charge_speed	mult
-wh2_dlc15_hero_abilities_mither	0.28	scalar_speed	mult
+wh2_dlc15_hero_abilites_mither	0.28	scalar_charge_speed	mult
+wh2_dlc15_hero_abilites_mither	0.28	scalar_speed	mult
 wh2_dlc15_hero_passive_ballistics_instructor	1.1	scalar_missile_range	mult
 wh2_dlc15_item_abilities_azhags_ard_armour	30	stat_armour	add
 wh2_dlc15_item_abilities_azhags_ard_armour	24	stat_melee_defence	add

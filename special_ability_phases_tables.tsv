@@ -1,0 +1,974 @@
+special_ability_phases_tables
+35
+duration	effect_type	id	requested_stance	unbreakable	cant_move	freeze_fatigue	fatigue_change_ratio	inspiration_aura_range_mod	ability_recharge_change	hp_change_frequency	heal_amount	damage_chance	damage_amount	max_damaged_entites	heal_amount_duplicate	resurrect	mana_regen_mod	mana_max_depletion_mod	imbue_magical	imbue_ignition	imbue_contact	phase_display	phase_audio	recharge_time	is_hidden_in_ui	affects_allies	affects_enemies	replenish_ammo	composite_scene_group
+48	positive	wh2_dlc09_army_abilities_rictus_clanstone		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0			wh2_main_ability_mors_clanstone	-1	False	True	True	0	
+73	positive	wh2_dlc09_army_abilities_sand_veil		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh2_dlc09_army_abilities_sand_veil	wh2_dlc09_ability_sand_veil_one_shot	-1	False	True	True	0	
+18	negative	wh2_dlc09_army_ability_tomb_swarm		False	False	False	0	0	0	1	0	0.18	9	18	0	False	0	0	False	0		wh2_dlc09_army_abilities_tomb_swarm	wh2_dlc09_ability_tmb_negative	-1	False	True	True	0	
+-1	positive	wh2_dlc09_army_passive_realm_of_souls_ushabti_trigger		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	True	True	True	0	
+22	negative	wh2_dlc09_character_abilities_curse_of_djaf		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc09_abilities_curse_of_djaf	wh2_dlc09_ability_curse_of_djaf	-1	False	True	True	0	
+25	negative	wh2_dlc09_character_abilities_curse_of_khsar		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_defence	wh2_dlc09_ability_tmb_negative	-1	False	True	True	0	
+20	positive	wh2_dlc09_character_abilities_restore		False	False	False	0	0	0	0.5	24	0	0	-1	24	False	0	0	False	0		wh_main_generic_hp_regen	wh2_dlc09_ability_tmb_positive	-1	False	True	True	0	
+31	positive	wh2_dlc09_character_abilities_stay_here_ill_get_help		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_morale	wh_ability_positive	-1	False	True	True	0	
+31	positive	wh2_dlc09_character_abilities_stay_here_ill_get_help_miscast		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_main_spell_ruin_skitterleap		-1	False	True	False	0	
+27	positive	wh2_dlc09_character_abilities_strike_of_nagash		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+23	positive	wh2_dlc09_character_abilities_strike_of_nehekhara		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+23	positive	wh2_dlc09_character_abilities_strike_of_tombs		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+14	positive	wh2_dlc09_character_abilities_tomb_king_rally		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_morale	wh2_dlc09_ability_tmb_positive	-1	False	True	True	0	
+10	positive	wh2_dlc09_character_abilities_tomb_king_rally_upgraded		False	False	False	0	0	0	0.5	24	0	0	-1	24	False	0	0	False	0		wh_main_generic_buff_morale	wh2_dlc09_ability_tmb_positive	-1	False	True	True	0	
+23	negative	wh2_dlc09_character_passive_befalling_curse		False	False	False	0.18	0	0	1	0	0.18	6	18	0	False	0	0	False	0		wh2_dlc09_abilities_befalling_curse		-1	False	True	True	0	
+-1	positive	wh2_dlc09_character_passive_blessing_of_asaph		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc09_abilities_blessing_of_asaph		-1	False	True	True	0	
+-1	positive	wh2_dlc09_character_passive_stone_shaper		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence_passive		-1	False	True	True	0	
+-1	positive	wh2_dlc09_character_passive_tretchs_raiders		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	False	0	
+-1	positive	wh2_dlc09_character_passive_true_blessing_of_asaph		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc09_abilities_blessing_of_asaph		-1	False	True	True	0	
+-1	positive	wh2_dlc09_character_passive_unyielding_will		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	positive	wh2_dlc09_character_passive_wrath_of_the_creator		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+7	positive	wh2_dlc09_faction_passive_realm_of_souls_tier_1		False	False	False	0	0	0	0.5	8	0	0	-1	8	True	0	0	False	0		wh2_dlc09_abilities_realm_of_souls_tier_1	wh2_dlc09_ability_tmb_positive	-1	False	True	False	0	
+14	positive	wh2_dlc09_faction_passive_realm_of_souls_tier_2		False	False	False	0	0	0	0.5	8	0	0	-1	8	True	0	0	False	0		wh2_dlc09_abilities_realm_of_souls_tier_2	wh2_dlc09_ability_tmb_positive	-1	False	True	False	0	
+21	positive	wh2_dlc09_faction_passive_realm_of_souls_tier_3		False	False	False	0	0	0	0.5	8	0	0	-1	8	True	0	0	False	0		wh2_dlc09_abilities_realm_of_souls_tier_3	wh2_dlc09_ability_tmb_positive	-1	False	True	False	0	
+22	negative	wh2_dlc09_item_abilities_amulet_of_phastah		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0			wh_ability_negative	-1	False	True	True	0	
+44	positive	wh2_dlc09_item_abilities_cloak_of_the_dunes		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0			wh_ability_positive	-1	False	True	True	0	
+36	positive	wh2_dlc09_item_abilities_elixir_of_might		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+24	positive	wh2_dlc09_item_abilities_enkhils_kanopi		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_ward_save_magic	wh_ability_negative	-1	False	True	True	0	
+33	positive	wh2_dlc09_item_abilities_hieratic_jar		False	False	False	0	0	0	0.5	24	0	0	0	24	True	0	0	False	0		wh_main_generic_hp_regen	wh_ability_positive	-1	False	True	True	0	
+11	positive	wh2_dlc09_item_abilities_neferras_scrolls_of_mighty_incantations		False	False	False	0	0	0	0	0	0	0	-1	0	False	0.08000001	6	False	0		wh2_main_generic_buff_wom_banner	wh_ability_positive_banner	-1	False	True	True	0	
+33	positive	wh2_dlc09_item_abilities_staff_of_nagash		False	False	False	0	0	-30	0	0	0	0	-1	0	False	0.3	0	False	0		wh2_main_generic_buff_wom_banner	wh_ability_positive_banner	-1	False	True	True	0	
+-1	positive	wh2_dlc09_item_passive_crown_of_nehekhara		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+17	positive	wh2_dlc09_item_passive_lucky_skullhelm		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_ward_save_all		45	False	True	True	0	
+-1	positive	wh2_dlc09_item_passive_scorpion_armour		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	negative	wh2_dlc09_item_passive_vambraces_of_the_sun		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+15	positive	wh2_dlc09_lord_abilities_the_liber_mortis		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0			wh2_dlc09_ability_liber_mortis	-1	False	True	True	0	
+-1	positive	wh2_dlc09_lord_passive_my_will_be_done		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+15	negative	wh2_dlc09_lord_passive_the_curse		False	False	False	0	0	0	1	0	0.18	6	18	0	False	0	0	False	0		wh2_dlc09_abilities_the_curse		-1	False	True	True	0	
+7	positive	wh2_dlc09_lore_passive_the_restless_dead		False	False	False	0	0	0	0.5	4	0	0	-1	4	True	0	0	False	0				-1	False	True	True	0	
+-1	negative	wh2_dlc09_quest_passive_full_hide		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	True	True	False	0	
+25	positive	wh2_dlc09_spell_nehekhara_djafs_incantation_of_cursed_blades		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh2_dlc09_spell_nehekhara_djafs_incantation_of_cursed_blades	wh2_tmb_spell_nehekhara_djafs_incantation_of_cursed_blades	-1	False	True	False	0	
+25	positive	wh2_dlc09_spell_nehekhara_djafs_incantation_of_cursed_blades_upgraded		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh2_dlc09_spell_nehekhara_djafs_incantation_of_cursed_blades	wh2_tmb_spell_nehekhara_djafs_incantation_of_cursed_blades	-1	False	True	False	0	
+18	positive	wh2_dlc09_spell_nehekhara_nerus_incantation_of_protection		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh2_dlc09_spell_nehekhara_nerus_incantation_of_protection	wh2_tmb_spell_nehekhara_nerus_incantation_of_protection	-1	False	True	False	0	
+36	positive	wh2_dlc09_spell_nehekhara_nerus_incantation_of_protection_upgraded		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh2_dlc09_spell_nehekhara_nerus_incantation_of_protection	wh2_tmb_spell_nehekhara_nerus_incantation_of_protection	-1	False	True	False	0	
+32	positive	wh2_dlc09_spell_nehekhara_ptras_incantation_of_righteous_smiting		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc09_spell_nehekhara_ptras_incantation_of_righteous_smiting	wh2_tmb_spell_nehekhara_ptras_incantation_of_righteous_smiting	-1	False	True	False	0	
+32	positive	wh2_dlc09_spell_nehekhara_ptras_incantation_of_righteous_smiting_upgraded		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc09_spell_nehekhara_ptras_incantation_of_righteous_smiting	wh2_tmb_spell_nehekhara_ptras_incantation_of_righteous_smiting	-1	False	True	False	0	
+38	negative	wh2_dlc09_spell_nehekhara_usekhps_incantation_of_desiccation		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc09_spell_nehekhara_usekhps_incantation_of_desiccation	wh2_tmb_spell_nehekhara_usekhps_incantation_of_dessication	-1	False	False	True	0	
+38	negative	wh2_dlc09_spell_nehekhara_usekhps_incantation_of_desiccation_upgraded		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc09_spell_nehekhara_usekhps_incantation_of_desiccation	wh2_tmb_spell_nehekhara_usekhps_incantation_of_dessication	-1	False	False	True	0	
+24	negative	wh2_dlc09_spell_nehekhara_usirians_incantation_of_vengeance		False	False	False	0	0	0	1	0	0.18	6	18	0	False	0	0	False	0		wh2_dlc09_spell_nehekhara_usirians_incantation_of_vengeance	wh2_tmb_spell_nehekhara_usirians_incantation_of_vengeance	-1	False	False	True	0	
+24	negative	wh2_dlc09_spell_nehekhara_usirians_incantation_of_vengeance_upgraded		False	False	False	0	0	0	1	0	0.18	6	18	0	False	0	0	False	0		wh2_dlc09_spell_nehekhara_usirians_incantation_of_vengeance	wh2_tmb_spell_nehekhara_usirians_incantation_of_vengeance	-1	False	False	True	0	
+10	negative	wh2_dlc09_unit_contact_shieldbreaker		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0				-1	False	False	True	0	
+-1	positive	wh2_dlc09_unit_passive_covenant_of_power		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	10	False	0				-1	False	True	True	0	
+-1	positive	wh2_dlc09_unit_passive_guardian		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_ward_save_all		-1	False	True	True	0	
+-1	positive	wh2_dlc09_unit_passive_spirit_conduit		False	False	False	0	0	0	0	0	0	0	-1	0	False	0.06	0	False	0				-1	False	True	True	0	
+47	negative	wh2_dlc09_unit_passive_unbinding_skeleton_warriors		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_bound_entity_energy_small	wh2_dlc13_ability_summon_unbinding_generic_small_phase_01	-1	False	True	True	0	
+57	negative	wh2_dlc09_unit_passive_unbinding_ushabti		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_bound_entity_energy_small	wh2_dlc13_ability_summon_unbinding_generic_small_phase_01	-1	False	True	True	0	
+-1	negative	wh2_dlc09_unit_passive_unstable_mark_ii_sand		False	False	False	0	0	0	0.2	0	1	72	5	0	False	0	0	False	0		wh2_dlc09_sand_crumble_II		-1	False	True	True	0	
+-1	negative	wh2_dlc09_unit_passive_unstable_sand		False	False	False	0	0	0	1	0	1	12	1	0	False	0	0	False	0		wh2_dlc09_sand_crumble		-1	False	True	True	0	
+44	negative	wh2_dlc09_weapon_abilities_blade_of_setep		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc09_abilities_blade_of_setep	wh2_dlc09_ability_tmb_negative	-1	False	True	True	0	
+43	positive	wh2_dlc09_weapon_abilities_blessed_blade_of_ptra		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	10	wh_dlc06_unit_contact_blinded	wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+15	negative	wh2_dlc09_weapon_passive_the_liche_staff		False	False	False	0	0	15	0	0	0	0	-1	0	False	0	0	False	0		wh2_main_generic_debuff_wom_banner		-1	False	True	True	0	
+15	negative	wh2_dlc10_character_abilities_entangle		False	True	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc10_entangle_phase	wh_ability_negative	-1	False	True	True	0	
+-1	positive	wh2_dlc10_hef_unit_passive_ability_guardian		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_ward_save_all		-1	False	True	False	0	
+-1	positive	wh2_dlc10_hero_passive_quicksilver_shot		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+47	negative	wh2_dlc10_item_abilities_fear_of_aramar		False	False	False	0.18	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_debuff_morale	wh2_dlc10_ability_fear_of_aramar	-1	False	True	True	0	
+44	positive	wh2_dlc10_item_abilities_speed_of_lykos		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh2_dlc09_army_abilities_sand_veil	wh2_dlc09_ability_sand_veil_one_shot	-1	False	True	True	0	
+27	positive	wh2_dlc10_item_abilities_star_of_avelorn		False	False	False	0	0	0	0.5	20	0	0	0	20	False	0	0	False	0		wh2_dlc10_item_abilities_star_of_avelorn		-1	False	True	True	0	
+40	positive	wh2_dlc10_item_abilities_stave_of_avelorn		False	False	False	0	0	0	0	0	0	0	-1	0	False	0.3	0	False	0		wh2_main_generic_buff_wom_banner	wh_ability_positive_banner	-1	False	True	True	0	
+50	negative	wh2_dlc10_item_abilities_the_amber_trance		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_morale	wh_ability_negative	-1	False	False	True	0	
+50	positive	wh2_dlc10_item_abilities_the_amber_trance_miscast		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_buff_morale		-1	False	True	False	0	
+-1	positive	wh2_dlc10_item_passive_amulet_of_dark_fire		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh2_dlc10_item_passive_banner_of_avelorn		False	False	False	0	0	0	0	0	0	0	-1	0	False	0.03	10	False	0				-1	False	True	True	0	
+-1	positive	wh2_dlc10_item_passive_dragon_slayers_fang		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence_passive		-1	False	True	True	0	
+-1	positive	wh2_dlc10_item_passive_gate_keepers_belt		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_ward_save_all_passive		-1	False	True	True	0	
+-1	positive	wh2_dlc10_item_passive_gate_keepers_helm		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_ward_save_missile_passive		-1	False	True	True	0	
+33	positive	wh2_dlc10_item_passive_ironbeards_bracers		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_ward_save_all		90	False	True	True	0	
+-1	negative	wh2_dlc10_item_passive_ironbeards_ring		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh2_dlc10_item_passive_ironwardens_shield		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_ward_save_all_passive		-1	False	True	True	0	
+-1	negative	wh2_dlc10_item_passive_old_guards_armour		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack_passive		-1	False	True	True	0	
+-1	positive	wh2_dlc10_item_passive_old_guards_tankard		False	False	False	0	0	0	0.5	2	0	0	0	2	False	0	0	False	0		wh_main_generic_hp_regen_passive		-1	False	True	True	0	
+-1	positive	wh2_dlc10_item_passive_prospectors_spyglass		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	positive	wh2_dlc10_item_passive_ring_of_vengeance		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_morale_attack_passive		-1	False	True	True	0	
+-1	positive	wh2_dlc10_item_passive_shieldstone_of_isha		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh2_dlc10_item_passive_stone_of_midnight		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh2_dlc10_item_passive_the_shadow_crown		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+28	positive	wh2_dlc10_lord_abilities_gaze_of_khaine		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+47	positive	wh2_dlc10_lord_abilities_mislead		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc10_mislead_phase	wh2_dlc10_ability_mislead_caster	-1	False	True	False	0	
+44	negative	wh2_dlc10_lord_abilities_oath_of_vengeance		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_defence	wh_ability_negative	-1	False	True	True	0	
+35	positive	wh2_dlc10_lord_abilities_red_ruin		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+30	positive	wh2_dlc10_lord_passive_blood_frenzy_1		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc10_lord_phase_blood_frenzy_1	wh2_dlc10_lord_passive_blood_frenzy_1	-1	False	True	True	0	
+30	positive	wh2_dlc10_lord_passive_blood_frenzy_2		False	False	False	-0.09	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc10_lord_phase_blood_frenzy_2	wh2_dlc10_lord_passive_blood_frenzy_2	-1	False	True	True	0	
+30	positive	wh2_dlc10_lord_passive_blood_frenzy_3		False	False	False	-0.18	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc10_lord_phase_blood_frenzy_3	wh2_dlc10_lord_passive_blood_frenzy_3	-1	False	True	True	0	
+-1	positive	wh2_dlc10_lord_passive_boon_of_isha		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	True	0				-1	False	True	True	0	
+25	positive	wh2_dlc10_quest_abilities_insane_head		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc10_insane_head	wh2_dlc10_quest_abilitiy_insane_head	-1	False	True	True	0	
+15	positive	wh2_dlc10_quest_abilities_regenerating_head		False	False	False	0	0	0	0.5	65	0	0	-1	65	False	0	0	False	0		wh_main_generic_hp_regen_passive		-1	False	False	True	0	
+25	positive	wh2_dlc10_quest_abilities_regenerating_head_dummy		False	False	False	0	0	0	1	1	0	0	-1	1	False	0	0	False	0				-1	True	False	True	0	
+15	positive	wh2_dlc10_quest_abilities_unidentified_hydra_head		False	False	False	0	0	0	1	30	0	0	-1	30	False	0	0	False	0		wh_main_generic_hp_regen_passive		-1	False	False	True	0	
+-1	positive	wh2_dlc10_quest_passive_mother_of_flame		False	False	False	0	0	0	0.5	24	0	0	0	24	False	0	0	False	0	wh_dlc06_unit_contact_flammable	wh2_dlc10_motherofflame	wh_main_spell_fire_cascading_fire_cloak	-1	False	True	False	0	
+45	positive	wh2_dlc10_quest_passive_primal_rage_i		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_dlc08_ability_passive_rage	-1	False	True	True	0	
+45	positive	wh2_dlc10_quest_passive_primal_rage_ii		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_dlc08_ability_passive_rage	-1	False	True	True	0	
+45	positive	wh2_dlc10_quest_passive_primal_rage_iii		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_dlc08_ability_passive_rage	-1	False	True	True	0	
+45	positive	wh2_dlc10_quest_passive_primal_rampage_i		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc10_primalrampage1		-1	False	True	True	0	
+-1	negative	wh2_dlc10_quest_passive_primal_rampage_i_hidden		False	False	False	0	0	0	1	0	0.5	45	2	0	False	0	0	False	0		wh_dlc03_spell_wild_devolve		-1	False	False	True	0	
+45	positive	wh2_dlc10_quest_passive_primal_rampage_ii		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc10_primalrampage2		-1	False	True	True	0	
+45	negative	wh2_dlc10_quest_passive_primal_rampage_ii_hidden		False	False	False	0	0	0	1	0	0.5	45	2	0	False	0	0	False	0		wh_dlc03_spell_wild_devolve		-1	False	False	True	0	
+45	positive	wh2_dlc10_quest_passive_primal_rampage_iii		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc10_primalrampage3		-1	False	True	True	0	
+45	negative	wh2_dlc10_quest_passive_primal_rampage_iii_hidden		False	False	False	0	0	0	1	0	0.5	80	2	0	False	0	0	False	0		wh_dlc03_spell_wild_devolve		-1	False	False	True	0	
+2	positive	wh2_dlc10_quest_passive_the_rats_overwhelm	rebirth	False	False	False	0	0	0	0.5	2	0	0	-1	2	False	0	0	False	0				-1	False	True	True	0	
+-1	negative	wh2_dlc10_unit_passive_abyssal_howl		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_defence_attack_morale_passive	wh2_dlc10_ability_abyssal_howl	-1	False	True	True	0	
+15	positive	wh2_dlc10_unit_passive_the_trial_of_blades		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+47	negative	wh2_dlc10_unit_passive_unbinding_alith_anar_1		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0			wh2_dlc13_ability_summon_unbinding_generic_small_phase_01	-1	False	True	True	0	
+-1	negative	wh2_dlc10_unit_passive_unbinding_alith_anar_2		False	False	False	0	0	0	1	0	1	10000	1	0	False	0	0	False	0			wh2_dlc13_ability_summon_unbinding_generic_small_phase_02	-1	False	True	True	0	
+-1	positive	wh2_dlc10_unit_passive_unbreakable_hidden		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0				-1	True	True	True	0	
+-1	positive	wh2_dlc10_weapon_passive_dragon_slayers_axe		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	positive	wh2_dlc10_weapon_passive_ironwardens_hammer		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_main_generic_buff_speed_passive		-1	False	True	True	0	
+60	positive	wh2_dlc10_weapon_passive_shadow_of_khaine		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc10_weapon_abilities_shadow_of_khaine		-1	False	True	True	0	
+10	negative	wh2_dlc10_weapon_passive_the_cursed_blade		False	False	False	0	0	0	11	0	1	144	1	0	False	0	0	False	0		wh_main_generic_hp_damage_passive		-1	False	True	True	0	
+30	positive	wh2_dlc11_army_abilities_shanty_verse_1		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc11_army_abilities_shanty_verse_1	wh2_dlc11_ability_shanty_verse_01	-1	False	True	True	0	
+30	positive	wh2_dlc11_army_abilities_shanty_verse_2		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc11_army_abilities_shanty_verse_2	wh2_dlc11_ability_shanty_verse_02	-1	False	True	True	0	
+30	positive	wh2_dlc11_army_abilities_shanty_verse_3		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc11_army_abilities_shanty_verse_3	wh2_dlc11_ability_shanty_verse_03	-1	False	True	True	0	
+20	positive	wh2_dlc11_character_abilities_all_hands_hoay		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_morale	wh_ability_positive	-1	False	True	True	0	
+14	positive	wh2_dlc11_character_abilities_avast_ye		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_morale	wh_ability_positive	-1	False	True	True	0	
+32	positive	wh2_dlc11_character_abilities_ballistic_enchantment		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+12	negative	wh2_dlc11_character_abilities_cackle_fruit		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	False	True	0	
+32	negative	wh2_dlc11_character_abilities_hornswaggle		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_defence	wh2_dlc11_ability_cst_negative_aoe	-1	False	True	True	0	
+12	negative	wh2_dlc11_character_abilities_pyromaniac		False	False	False	0	0	0	1	0	1	10	8	0	False	0	0	False	0				-1	False	False	True	0	
+17	negative	wh2_dlc11_character_abilities_taunt		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_defence	wh2_dlc11_ability_cst_negative_aoe	-1	False	True	True	0	
+4	negative	wh2_dlc11_hero_abilities_bomb_throw		False	False	False	0	0	0	1	0	1	10	8	0	False	0	0	False	0				-1	False	True	True	0	
+10	positive	wh2_dlc11_hero_abilities_more_powder		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0.3	
+-1	positive	wh2_dlc11_hero_passive_dead_eyes		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+15	positive	wh2_dlc11_item_abilities_moonshine		False	False	False	0	0	0	0.5	24	0	0	0	24	False	0	0	False	0		wh_main_generic_buff_defence_banner	wh_ability_positive_banner	-1	False	True	True	0	
+55	negative	wh2_dlc11_item_abilities_slann_gold		False	False	False	0	0	0	0	0	0	0	-1	0	False	-0.3	0	False	0		wh2_main_generic_debuff_wom	wh2_dlc11_ability_cst_negative	-1	False	False	True	0	
+-1	positive	wh2_dlc11_item_passive_helm_of_the_kraken		False	False	False	0	0	0	0.5	2	0	0	0	2	False	0	0	False	0		wh_main_generic_hp_regen_passive		-1	False	True	True	0	
+15	positive	wh2_dlc11_item_passive_the_bordeleaux_flabellum		False	False	False	0	0	-10	0	0	0	0	-1	0	False	0.15	0	False	0		wh_main_generic_buff_morale_passive		-1	False	True	True	0	
+34	positive	wh2_dlc11_lord_abilities_claws_of_mourkain		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive_banner	120	False	False	True	0	
+30	positive	wh2_dlc11_lord_abilities_dark_protection		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_buff_defence	wh_ability_positive_banner	90	False	False	False	0	
+22	positive	wh2_dlc11_lord_abilities_dreaded_duelist		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_buff_defence_attack	wh_ability_positive_banner	-1	False	True	True	0	
+32	positive	wh2_dlc11_lord_abilities_ghoul_king_of_ushoran		False	False	False	0	0	0	0.5	24	0	0	0	24	False	0	0	False	0		wh_main_generic_hp_regen	wh_ability_positive_banner	120	False	False	False	0	
+28	positive	wh2_dlc11_lord_abilities_heart_piercing		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0	wh_dlc06_unit_contact_sundered_armour	wh_main_generic_buff_attack	wh_ability_positive_banner	120	False	False	False	0	
+32	positive	wh2_dlc11_lord_abilities_lightning_reflexes		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh2_main_generic_buff_speed_passive	wh_ability_positive_one_shot	90	False	False	False	0	
+15	positive	wh2_dlc11_lord_abilities_mananns_luck		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_ward_save_all	wh_ability_positive_banner	-1	False	False	False	0	
+30	negative	wh2_dlc11_lord_abilities_power_siphon		False	False	False	0.18	0	15	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack_passive	wh2_dlc11_ability_cst_negative	-1	False	True	True	0	
+41	negative	wh2_dlc11_lord_abilities_seduction		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_debuff_attack	wh_ability_negative	120	False	False	True	0	
+22	negative	wh2_dlc11_lord_abilities_song_of_enthrallment		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh2_dlc11_deep_debuff_attack	wh2_dlc11_ability_enthrallment	-1	False	True	True	0	
+18	negative	wh2_dlc11_lord_abilities_spearfishers_net		False	True	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc11_ability_spearfishers_net	wh_ability_negative	-1	False	False	True	0	
+11	negative	wh2_dlc11_lord_abilities_storm_of_the_night		False	False	False	0	0	0	1	0	1	40	2	0	False	0	0	False	0		wh2_dlc11_lord_abilities_storm_of_the_night		-1	False	True	True	0	
+26	positive	wh2_dlc11_lord_abilities_transfix		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0	wh_dlc06_unit_contact_discouraged	wh2_main_generic_buff_speed_passive	wh_ability_positive_one_shot	120	False	False	False	0	
+-1	positive	wh2_dlc11_lord_passive_honour_or_death		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_morale_passive		-1	False	False	False	0	
+-1	positive	wh2_dlc11_lord_passive_magical_void		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_buff_defence_passive		-1	False	True	True	0	
+-1	negative	wh2_dlc11_lord_passive_merciless_slaver		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_debuff_morale_passive		-1	False	False	True	0	
+4	negative	wh2_dlc11_lore_passive_kiss_of_the_deep		False	False	False	0	0	0	0.5	0	1	4	1	0	False	0	0	False	0				-1	False	False	True	0	
+30	positive	wh2_dlc11_quest_battle_supply		False	False	False	-0.1	0	0	0.5	10	0	0	-1	10	False	0	0	False	0		wh_main_generic_hp_regen_passive		-1	False	True	True	1	
+35	negative	wh2_dlc11_spell_deep_fog_of_the_damned		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_heavens_curse_of_the_midnight_wind	wh2_dlc11_ability_fog_of_the_damned_debuff	-1	False	True	True	0	
+35	negative	wh2_dlc11_spell_deep_fog_of_the_damned_upgraded		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_heavens_curse_of_the_midnight_wind	wh2_dlc11_ability_fog_of_the_damned_debuff	-1	False	True	True	0	
+10	negative	wh2_dlc11_spell_deep_krakens_pull		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_heavens_curse_of_the_midnight_wind		-1	False	False	True	0	
+36	positive	wh2_dlc11_spell_deep_spiteful_shot		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	True	0		wh2_dlc11_spell_deep_spiteful_shot	wh2_dlc11_spell_deep_spiteful_shot	-1	False	True	False	0	
+72	positive	wh2_dlc11_spell_deep_spiteful_shot_upgraded		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	True	0		wh2_dlc11_spell_deep_spiteful_shot	wh2_dlc11_spell_deep_spiteful_shot	-1	False	True	False	0	
+10	negative	wh2_dlc11_spell_deep_tidecall		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	False	True	0	
+10	negative	wh2_dlc11_unit_contact_charmed		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0				-1	False	False	True	0	
+10	negative	wh2_dlc11_unit_contact_disrupted		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0				-1	False	False	True	0	
+10	negative	wh2_dlc11_unit_contact_monstrous_impact		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0				-1	False	False	True	0	
+1	positive	wh2_dlc11_unit_passive_abandon_ship		False	False	False	0	0	0	1	0	1	1	1	0	False	0	0	False	0			wh2_dlc11_ability_abandon_ship	-1	False	True	True	0	
+-1	positive	wh2_dlc11_unit_passive_extra_powder		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc11_unit_passive_extra_powder		-1	False	True	True	0	
+0.1	negative	wh2_dlc11_unit_passive_gaseous_demise_buffer		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_crumble_II	wh2_dlc11_gaseous_demise	-1	False	True	True	0	
+1	negative	wh2_dlc11_unit_passive_gaseous_demise_death		False	False	False	0	0	0	0.1	0	1	1000	1	0	False	0	0	False	0		wh_main_generic_crumble_II		-1	False	True	True	0	
+0.1	negative	wh2_dlc11_unit_passive_noxious_unstable_buffer		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_crumble_II	wh2_dlc11_gaseous_demise	-1	False	True	True	0	
+-1	negative	wh2_dlc11_unit_passive_noxious_unstable_mark_ii		False	False	False	0	0	0	0.1	0	1	1000	1	0	False	0	0	False	0		wh_main_generic_crumble_II		-1	False	True	True	0	
+-1	positive	wh2_dlc11_unit_passive_the_ravenous_dead		False	False	False	0	0	0	0.5	8	0	0	0	8	False	0	0	False	0				-1	False	True	True	0	
+53	negative	wh2_dlc11_unit_passive_unbinding_deckhands_mob		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_bound_entity_energy_small	wh2_dlc13_ability_summon_unbinding_generic_small_phase_01	-1	False	True	True	0	
+86	negative	wh2_dlc11_unit_passive_unbinding_gunnery_mob		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_bound_entity_energy_small	wh2_dlc13_ability_summon_unbinding_generic_small_phase_01	-1	False	True	True	0	
+58	negative	wh2_dlc11_unit_passive_unbinding_knights_of_the_realm		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_bound_entity_energy_small	wh2_dlc13_ability_summon_unbinding_generic_small_phase_01	-1	False	True	True	0	
+36	negative	wh2_dlc11_unit_passive_unbinding_rotting_prometheans		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_bound_entity_energy_large	wh2_dlc13_ability_summon_unbinding_generic_large_phase_01	-1	False	True	True	0	
+42	negative	wh2_dlc11_unit_passive_unbinding_varghulf		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_bound_entity_energy_large	wh2_dlc13_ability_summon_unbinding_generic_large_phase_01	-1	False	True	True	0	
+-1	positive	wh2_dlc11_weapon_passive_krakens_bane		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+16	negative	wh2_dlc12_army_abilities_warpstorm_doomrocket		False	False	False	0	0	0	1	0	0.6	12	4	0	False	0	0	False	0				-1	False	True	True	0	
+13	negative	wh2_dlc12_character_abilities_brass_orb		False	False	False	0	0	0	1	0	0.6	12	8	0	False	0	0	False	0				-1	False	True	True	0	
+18	positive	wh2_dlc12_character_abilities_supreme_shield_of_the_old_ones		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence	wh2_dlc12_ability_supreme_shield_of_the_old_ones	-1	False	True	True	0	
+-1	positive	wh2_dlc12_item_passive_braid_of_bordeleaux		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	negative	wh2_dlc12_item_passive_golden_death_mask		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack_passive		-1	False	True	True	0	
+-1	positive	wh2_dlc12_item_passive_mask_of_heavens		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence_passive		-1	False	True	True	0	
+21	positive	wh2_dlc12_item_passive_plaque_of_sotek		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_ward_save_all_passive		-1	False	True	True	0	
+30	negative	wh2_dlc12_lord_abilities_drop_sphere_of_tepok		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh2_dlc12_drop_sphere_contact		-1	False	False	True	0	
+40	positive	wh2_dlc12_lord_abilities_focus_instincts		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_buff_morale_passive		-1	False	True	False	0	
+31	positive	wh2_dlc12_lord_abilities_master_of_the_skies		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence	wh_ability_positive_banner	-1	False	True	True	0	
+29	positive	wh2_dlc12_lord_abilities_unlimited_power		False	False	False	0	0	0	0	0	0	0	-1	0	False	0.3	20	False	0		wh2_dlc12_ability_unlimited_power	wh2_dlc12_ability_unlimited_power	-1	False	True	True	0	
+30	positive	wh2_dlc12_lord_abilities_warriors_crest		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+15	positive	wh2_dlc12_lord_passive_adrenaline_rush		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack		-1	False	True	True	0	
+40	positive	wh2_dlc12_lord_passive_overload		False	False	False	0	0	0	0	0	0	0	-1	0	False	0.15	10	False	0		wh2_main_generic_buff_wom_banner	wh_ability_negative_one_shot	-1	False	True	True	0	
+15	positive	wh2_dlc12_lord_passive_secondwind_serum		False	False	False	0	0	0	0.5	24	0	0	-1	24	False	0	0	False	0		wh_main_generic_hp_regen_passive		-1	False	True	True	0	
+20	positive	wh2_dlc12_unit_abilities_refuse_to_die		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_morale	wh_ability_positive	-1	False	True	True	0	
+25	positive	wh2_dlc12_unit_abilities_shield_of_chaqua		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence	wh_ability_positive_aoe	-1	False	True	True	0	
+18	positive	wh2_dlc12_unit_abilities_toad_rage		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+20	negative	wh2_dlc12_unit_contact_flammable		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0				-1	False	False	True	0	
+30	negative	wh2_dlc12_unit_contact_sundered_armour		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0				-1	False	False	True	0	
+10	negative	wh2_dlc12_unit_contact_suppressive_fire		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0				-1	False	False	True	0	
+-1	positive	wh2_dlc12_unit_passive_arcane_configuration		False	False	False	0	0	0	0	0	0	0	-1	0	False	0.03	0	False	0				-1	False	True	True	0	
+-1	positive	wh2_dlc12_unit_passive_blade_swirl		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0	wh_dlc06_unit_contact_sundered_armour			-1	False	True	True	0	
+-1	positive	wh2_dlc12_unit_passive_demagoguery		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence_morale_passive		-1	False	True	True	0	
+5	positive	wh2_dlc12_unit_passive_endless_drum		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack		-1	False	True	True	0.03	
+-1	positive	wh2_dlc12_unit_passive_portent_of_warding		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_ward_save_all_passive		-1	False	True	True	0	
+-1	positive	wh2_dlc12_unit_passive_the_best_defence		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence_passive		-1	False	True	True	0	
+-1	positive	wh2_dlc12_unit_passive_witness_me		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack		-1	False	True	True	0	
+10	negative	wh2_dlc12_unit_passive_zzzap		False	False	False	0	0	10	0	0	0	0	0	0	False	0	0	False	0				-1	False	False	True	0	
+-1	positive	wh2_dlc12_weapon_passive_blade_of_the_ancient_skies		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	positive	wh2_dlc12_weapon_passive_blade_of_the_serpents_tongue		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0	wh_main_unit_contact_poison	wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	negative	wh2_dlc13_armour_passive_obsinite_plate		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack_passive		-1	False	True	True	0	
+12	positive	wh2_dlc13_army_abilities_protection_of_quetzl		True	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc13_abilities_protection_of_quetzl	wh2_dlc13_ability_protection_of_quetzl	-1	False	True	True	0	
+20	positive	wh2_dlc13_army_abilities_protection_of_quetzl_upgraded		True	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc13_abilities_protection_of_quetzl	wh2_dlc13_ability_protection_of_quetzl	-1	False	True	True	0	
+7	positive	wh2_dlc13_character_abilities_patch_up		False	False	False	0	0	0	0.5	48	0	0	0	48	False	0	0	False	0		wh_main_generic_hp_regen	wh_ability_positive	-1	False	True	True	0	
+16	negative	wh2_dlc13_character_ability_big_boom_contact		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_defence_passive		-1	False	False	True	0	
+32	positive	wh2_dlc13_character_ability_hunters_call		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence_morale_passive	wh_ability_positive_aoe	-1	False	True	True	0	
+9	negative	wh2_dlc13_character_ability_ishas_rain_contact		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack_banner		-1	False	False	True	0	
+180	positive	wh2_dlc13_final_battle_abilities_shield_of_the_old_ones		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence	wh2_main_ability_shield_of_the_old_ones	-1	False	True	True	0	
+5	positive	wh2_dlc13_final_battle_character_abilities_jorek_ammo_replenishment		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_shadow_buff_attack_passive	wh_ability_positive_aoe	45	False	True	False	0.1	
+-1	negative	wh2_dlc13_final_battle_character_abilities_rodrik_ward_save_reduction		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_defence	wh_ability_negative_aoe	-1	False	False	True	0	
+23	positive	wh2_dlc13_item_abilities_shield_of_aeons		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence	wh_ability_positive_aoe	-1	False	True	True	0	
+-1	positive	wh2_dlc13_item_passive_band_of_loyalty		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_ward_save_all_passive		-1	False	False	False	0	
+-1	positive	wh2_dlc13_item_passive_golden_tributes		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+1.1	positive	wh2_dlc13_item_passive_resilient_spirit		False	False	False	0	0	0	1	600	0	0	-1	600	False	0	0	False	0		wh2_main_unit_passive_rebirth		-1	False	True	True	0	
+24	negative	wh2_dlc13_lord_abilities_aura_of_inertia		False	False	False	0.09	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_morale	wh_ability_negative_aoe	-1	False	True	True	0	
+33	positive	wh2_dlc13_lord_abilities_funnel_of_flame		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	1		wh2_dlc13_lord_abilities_hail_of_fire	wh2_dlc13_ability_hail_of_fire	-1	False	True	True	0	
+22	positive	wh2_dlc13_lord_abilities_hail_of_fire		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	1		wh2_dlc13_lord_abilities_hail_of_fire	wh2_dlc13_ability_hail_of_fire	-1	False	True	True	0	
+11	negative	wh2_dlc13_lord_abilities_hunters_snare		False	True	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_dlc05_ability_pray_of_anath_raema	wh2_main_unit_abilities_snare_net	-1	False	True	True	0	
+22	negative	wh2_dlc13_lord_abilities_hunters_trap		False	True	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_dlc05_ability_pray_of_anath_raema	wh2_main_unit_abilities_snare_net	-1	False	True	True	0	
+16	negative	wh2_dlc13_lord_abilities_miasma_of_despair		False	False	False	0.09	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_morale	wh2_dlc13_ability_miasma_of_despair	-1	False	True	True	0	
+35	positive	wh2_dlc13_lord_abilities_monstrous_strength		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+18	negative	wh2_dlc13_lord_abilities_oil_flask		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	False	True	0	
+17	positive	wh2_dlc13_lord_abilities_primal_roar		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive_aoe	-1	False	True	True	0	
+24	positive	wh2_dlc13_lord_abilities_rock_of_itza		False	False	False	-0.09	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence	wh_ability_positive	-1	False	True	True	0	
+-1	positive	wh2_dlc13_lord_passive_endurance_aura		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	positive	wh2_dlc13_lord_passive_fleet_footed		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	positive	wh2_dlc13_lord_passive_merely_a_fleshwound		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	positive	wh2_dlc13_lord_passive_to_the_death		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	positive	wh2_dlc13_lord_passive_trueshot_aura		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	positive	wh2_dlc13_unit_abilities_bathed_in_blood		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	negative	wh2_dlc13_unit_abilities_blinding_radiance		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack_passive		-1	False	True	True	0	
+-1	negative	wh2_dlc13_unit_passive_dread_aversion		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence_morale_passive		-1	False	True	True	0	
+-1	positive	wh2_dlc13_unit_passive_grim_resolve		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence_morale_passive		-1	False	True	True	0	
+33	negative	wh2_dlc13_weapon_abilities_averland_runefang		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_dlc05_spell_shadow_the_enfeebling_foe	wh_ability_negative	-1	False	True	True	0	
+39	positive	wh2_dlc13_weapon_abilities_drakwald_runefang		False	False	False	-0.09	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+24	negative	wh2_dlc13_weapon_abilities_hochland_runefang		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_spell_metal_plague_of_rust	wh_ability_negative_aoe	-1	False	True	True	0	
+24	positive	wh2_dlc13_weapon_abilities_mace_of_ulumak		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+22	negative	wh2_dlc13_weapon_abilities_nordland_runefang		False	False	False	0	0	0	0.5	0	0.15	3	9	0	False	0	0	False	0		wh_main_hero_abilities_accusation	wh_ability_negative_aoe	-1	False	True	True	0	
+27	positive	wh2_dlc13_weapon_abilities_ostermark_runefang		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_shadow_buff_attack_passive	wh_ability_positive_aoe	-1	False	True	True	0	
+38	positive	wh2_dlc13_weapon_abilities_ostland_runefang		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+41	positive	wh2_dlc13_weapon_abilities_talabecland_runefang		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0	wh_dlc06_unit_contact_sundered_armour	wh_main_shadow_buff_attack_passive	wh_ability_positive	-1	False	True	True	0	
+29	negative	wh2_dlc13_weapon_abilities_wissenland_runefang		False	False	False	0.09	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack_passive	wh_ability_negative	-1	False	True	True	0	
+-1	negative	wh2_dlc13_weapon_passive_solland_runefang		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack_passive		-1	False	True	True	0	
+-1	positive	wh2_dlc13_weapon_passive_stirland_runefang		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+30	positive	wh2_dlc14_character_abilities_from_the_shadows		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence	wh_ability_positive	-1	False	True	False	0	
+-1	negative	wh2_dlc14_character_abilities_henri_le_massif_exploit_weakness		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_defence	wh_ability_negative_aoe	-1	False	False	True	0	
+-1	negative	wh2_dlc14_character_passive_discombobulate		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_morale_passive	wh_ability_negative_aoe	-1	False	False	True	0	
+10	negative	wh2_dlc14_contact_maddening		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	False	True	0	
+-1	negative	wh2_dlc14_item_passive_idol_of_darkness		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_main_generic_buff_speed_passive		-1	False	True	True	0	
+-1	negative	wh2_dlc14_item_passive_the_cloak_of_shadows		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_defence_passive		-1	False	True	True	0	
+17	positive	wh2_dlc14_lord_abilities_beastslaver		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+9	positive	wh2_dlc14_lord_abilities_bloodstorm		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0			wh_ability_positive_one_shot	-1	False	True	True	0	
+7	negative	wh2_dlc14_lord_abilities_deathmasters_sigil		False	True	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0			wh_ability_negative_one_shot	-1	False	True	True	0	
+31	negative	wh2_dlc14_lord_abilities_looming_dread		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_defence	wh_ability_negative	-1	False	True	True	0	
+9	negative	wh2_dlc14_lord_abilities_reaper_of_souls		False	False	False	0	0	0	1	0	0.5	72	1	0	False	0	0	False	0		wh2_dlc14_abilities_reaper_of_souls	wh2_dlc14_ability_reaper_of_souls	-1	False	True	True	0	
+9	positive	wh2_dlc14_lord_abilities_reaper_of_souls_miscast		False	False	False	0	0	0	0.5	24	0	0	0	24	False	0	0	False	0				-1	False	True	False	0	
+22	positive	wh2_dlc14_lord_abilities_the_blood_price		False	False	False	0	0	0	2	0	0.75	60	1	0	False	0	0	False	0		wh2_dlc14_lord_abilities_the_blood_price	wh2_dlc14_ability_blood_price	-1	False	True	True	0	
+12	negative	wh2_dlc14_lord_abilities_the_daemons_curse		False	False	False	0	0	0	0	0	0	0	1	0	False	0	0	False	0		wh2_dlc14_lord_abilities_the_daemons_curse	wh2_dlc14_ability_daemons_curse	-1	False	True	True	0	
+12	negative	wh2_dlc14_lord_abilities_the_daemons_curse_miscast		False	False	False	0	0	0	2	0	0.75	110	1	0	False	0	0	False	0				-1	False	True	False	0	
+21	positive	wh2_dlc14_lord_abilities_whiplash		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+-1	positive	wh2_dlc14_lord_passive_fleur_de_lys_banner		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence_attack_passive		-1	False	True	True	0	
+-1	positive	wh2_dlc14_lord_passive_tzarkan		True	False	False	0	0	0	1	0	0.5	45	1	0	False	0	0	False	0				-1	False	True	True	0	
+8	negative	wh2_dlc14_lore_passive_toxic_rain		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+14	negative	wh2_dlc14_spell_ruin_flensing_ruin		False	False	False	0	0	0	2	0	0.5	144	1	0	False	0	0	False	0		wh2_dlc14_spell_ruin_flensing_ruin	wh2_dlc14_spell_ruin_flensing_ruin	-1	False	True	True	0	
+22	negative	wh2_dlc14_spell_ruin_flensing_ruin_upgraded		False	False	False	0	0	0	2	0	0.5	144	1	0	False	0	0	False	0		wh2_dlc14_spell_ruin_flensing_ruin	wh2_dlc14_spell_ruin_flensing_ruin	-1	False	True	True	0	
+33	positive	wh2_dlc14_spell_stealth_armour_of_darkness		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh2_dlc14_spell_stealth_armour_of_darkness	wh2_dlc14_spell_stealth_armour_of_darkness	-1	False	True	True	0	
+33	positive	wh2_dlc14_spell_stealth_armour_of_darkness_upgraded		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh2_dlc14_spell_stealth_armour_of_darkness	wh2_dlc14_spell_stealth_armour_of_darkness_upgraded	-1	False	True	True	0	
+39	negative	wh2_dlc14_spell_stealth_brittle_bone		False	False	False	0.09	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc14_spell_stealth_brittle_bone	wh2_dlc14_spell_stealth_brittle_bone	-1	False	True	True	0	
+39	negative	wh2_dlc14_spell_stealth_brittle_bone_upgraded		False	False	False	0.09	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc14_spell_stealth_brittle_bone	wh2_dlc14_spell_stealth_brittle_bone_upgraded	-1	False	True	True	0	
+12	negative	wh2_dlc14_spell_stealth_veil_of_shadows		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	False	True	0	
+60	positive	wh2_dlc14_unit_abilities_doppelgang		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0			wh2_dlc14_ability_doppelgang	-1	False	True	False	0	
+13	negative	wh2_dlc14_unit_abilities_seismic_snare		False	True	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc14_abilities_seismic_snare		-1	False	True	True	0	
+7	negative	wh2_dlc14_unit_abilities_wail_of_malice		False	False	False	0	0	0	1	0	0.18	9	18	0	False	0	0	False	0				-1	False	True	True	0	
+17	negative	wh2_dlc14_unit_abilities_warp_quake		False	False	False	0	0	0	0.5	0	0.18	4	18	0	False	0	0	False	0		wh2_dlc14_spell_ruin_flensing_ruin		-1	False	True	True	0	
+10	negative	wh2_dlc14_unit_contact_poisoned_wind		False	False	False	0	0	0	0.5	0	0.5	1	28	0	False	0	0	False	0		wh2_dlc14_spell_stealth_brittle_bone		-1	False	True	True	0	
+10	negative	wh2_dlc14_unit_contact_poisoned_wind_alt		False	False	False	0	0	0	0.5	0	0.5	1	28	0	False	0	0	False	0		wh2_dlc14_spell_stealth_brittle_bone		-1	False	True	True	0	
+-1	negative	wh2_dlc14_unit_passive_aura_of_agony		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_defence_passive		-1	False	True	True	0	
+-1	positive	wh2_dlc14_unit_passive_aura_of_ardour		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	negative	wh2_dlc14_unit_passive_barbed_net		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_defence_passive		-1	False	True	True	0	
+-1	positive	wh2_dlc14_unit_passive_crowfeast		False	False	False	0	0	0	0.5	2	0	0	0	2	False	0	0	False	0		wh2_dlc14_def_crowfeast		-1	False	True	True	0	
+-1	positive	wh2_dlc14_unit_passive_duck_and_weave		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence_passive		-1	False	True	True	0	
+60	negative	wh2_dlc14_unit_passive_unbinding_eshin_triads_ror_1		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0			wh2_dlc13_ability_summon_unbinding_generic_small_phase_01	-1	False	True	True	0	
+-1	negative	wh2_dlc14_unit_passive_unbinding_eshin_triads_ror_2		False	False	False	0	0	0	1	0	1	64	-1	0	False	0	0	False	0			wh2_dlc13_ability_summon_unbinding_generic_small_phase_02	-1	True	True	True	0	
+40	negative	wh2_dlc14_unit_passive_unbinding_stormvermin_0		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_bound_entity_energy_small	wh2_dlc13_ability_summon_unbinding_generic_small_phase_01	-1	False	True	True	0	
+50	negative	wh2_dlc14_unit_passive_unbinding_stormvermin_1		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_bound_entity_energy_small	wh2_dlc13_ability_summon_unbinding_generic_small_phase_01	-1	False	True	True	0	
+24	positive	wh2_dlc14_weapon_abilities_sword_of_lyonesse		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+-1	positive	wh2_dlc14_weapon_abilities_warpsword_of_khaine		False	False	False	0	0	0	0.5	4	0	0	0	4	False	0	0	False	0				-1	False	True	True	0	
+5	negative	wh2_dlc14_weapon_abilities_whirl_of_weeping_blades		False	True	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	False	0	
+36	negative	wh2_dlc15_abilities_fermented_fungi		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc15_abilities_fermented_fungi	wh2_dlc15_ability_fermented_fungi	-1	False	True	True	0	
+18	positive	wh2_dlc15_army_abilities_azhags_big_waaagh		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc10_waaagh	wh_main_character_abilities_waaagh	-1	False	True	True	0	
+18	positive	wh2_dlc15_army_abilities_azhags_waaagh		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc10_waaagh	wh_main_character_abilities_waaagh	-1	False	True	True	0	
+18	positive	wh2_dlc15_army_abilities_big_waaagh		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc10_waaagh	wh_main_character_abilities_waaagh	-1	False	True	True	0	
+30	positive	wh2_dlc15_army_abilities_envelop_in_mist		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc15_ability_envelop_in_mist	wh2_dlc15_ability_envelop_in_mist	-1	False	True	True	0	
+18	positive	wh2_dlc15_army_abilities_grimgors_big_waaagh		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc10_waaagh	wh_main_character_abilities_waaagh	-1	False	True	True	0	
+18	positive	wh2_dlc15_army_abilities_grimgors_waaagh		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc10_waaagh	wh_main_character_abilities_waaagh	-1	False	True	True	0	
+18	positive	wh2_dlc15_army_abilities_groms_big_waaagh		False	False	False	0	0	0	0.5	12	0	0	-1	12	False	0	0	False	0		wh2_dlc10_waaagh	wh_main_character_abilities_waaagh	-1	False	True	True	0	
+18	positive	wh2_dlc15_army_abilities_groms_waaagh		False	False	False	0	0	0	0.5	12	0	0	-1	12	False	0	0	False	0		wh2_dlc10_waaagh	wh_main_character_abilities_waaagh	-1	False	True	True	0	
+12	negative	wh2_dlc15_army_abilities_invocation_of_ending		False	False	False	0	0	30	0	0	0	0	0	0	False	0	0	False	0		wh2_main_generic_debuff_wom	wh_ability_negative_aoe	-1	False	True	True	0	
+21	positive	wh2_dlc15_army_abilities_oath_of_replenishment		False	False	False	-0.09	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence	wh_ability_positive_aoe_army_wide	-1	False	True	True	0.3	
+21	positive	wh2_dlc15_army_abilities_oath_of_replenishment_upgraded		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence	wh_ability_positive_aoe_army_wide	-1	False	True	True	0.3	
+18	positive	wh2_dlc15_army_abilities_skarsniks_big_waaagh		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc10_waaagh	wh_main_character_abilities_waaagh	-1	False	True	True	0	
+18	positive	wh2_dlc15_army_abilities_skarsniks_waaagh		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc10_waaagh	wh_main_character_abilities_waaagh	-1	False	True	True	0	
+15	positive	wh2_dlc15_army_abilities_unleash_the_winds		False	False	False	0	0	-30	0	0	0	0	-1	0	False	2	50	False	0		wh2_main_generic_buff_wom_banner	wh_ability_positive_banner	-1	False	True	True	0	
+18	positive	wh2_dlc15_army_abilities_waaagh		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc10_waaagh	wh_main_character_abilities_waaagh	-1	False	True	True	0	
+18	positive	wh2_dlc15_army_abilities_wurrzags_big_waaagh		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc10_waaagh	wh_main_character_abilities_waaagh	-1	False	True	True	0	
+18	positive	wh2_dlc15_army_abilities_wurrzags_waaagh		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc10_waaagh	wh_main_character_abilities_waaagh	-1	False	True	True	0	
+-1	positive	wh2_dlc15_banner_passive_da_immortulz		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence_passive		-1	False	True	True	0	
+36	positive	wh2_dlc15_character_abilities_sausage_busta		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc10_waaagh	wh_main_character_abilities_waaagh	-1	False	True	True	0	
+7	positive	wh2_dlc15_character_abilities_slimy_smoothie		False	False	False	0	0	0	0.5	24	0	0	0	24	False	0	0	False	0		wh_dlc05_spell_life_earth_blood	wh_ability_positive_aoe	-1	False	True	True	0	
+29	negative	wh2_dlc15_character_abilities_they_needs_stabbin		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_defence	wh_ability_negative_banner	-1	False	True	True	0	
+25	negative	wh2_dlc15_character_abilities_wardens_cage		False	True	False	0	0	0	1	0	0	20	1	0	False	0	0	False	0		wh2_dlc15_abilities_wardens_cage	wh2_dlc15_ability_wardens_cage	-1	False	True	True	0	
+15	negative	wh2_dlc15_hero_abilites_mither		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_debuff_morale	wh_ability_negative	-1	False	True	True	0	
+-1	positive	wh2_dlc15_hero_passive_ballistics_instructor		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_ward_save_missile_passive		-1	False	True	True	0	
+20	positive	wh2_dlc15_item_abilities_armour_of_caledor		False	True	False	-1	0	-120	0.5	25	0	0	-1	25	False	0	0	False	0		wh_main_generic_buff_attack_banner	wh_ability_positive	-1	False	True	True	0	
+38	positive	wh2_dlc15_item_abilities_azhags_ard_armour		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence	wh_ability_positive	-1	False	True	True	0	
+12	positive	wh2_dlc15_item_abilities_blood_forged_armour		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0			wh_ability_positive_one_shot	-1	False	True	True	0	
+17	positive	wh2_dlc15_item_abilities_helm_of_yvresse		True	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc15_ability_helm_of_yvresse	wh2_dlc15_ability_helm_of_yvreese	-1	False	True	True	0	
+30	positive	wh2_dlc15_item_abilities_lucky_banner		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence_passive		-1	False	False	True	0	
+14	negative	wh2_dlc15_item_abilities_vine_dragon_scale		False	True	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc15_ability_vine_dragon_scale	wh2_dlc15_ability_dragon_vine_scales	-1	False	True	True	0	
+28	negative	wh2_dlc15_lord_abilities_bad_trip		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_defence	wh_ability_negative_one_shot	-1	False	True	True	0	
+20	positive	wh2_dlc15_lord_abilities_da_great_un_iz_ere		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence	wh_ability_positive	-1	False	True	True	0	
+18	negative	wh2_dlc15_lord_abilities_dont_even_try_it		False	False	False	0	0	15	2	0	0.5	144	1	0	False	0	0	False	0		wh_main_generic_hp_damage_passive	wh_ability_negative_one_shot	-1	False	True	True	0	
+16	positive	wh2_dlc15_lord_abilities_dragonhorn		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive_aoe_army_wide	-1	False	True	True	0	
+30	negative	wh2_dlc15_lord_abilities_lord_of_dragons		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack	wh_ability_negative	-1	False	False	True	0	
+18	positive	wh2_dlc15_lord_abilities_smash_em_faster		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive_aoe	-1	False	True	True	0	
+-1	positive	wh2_dlc15_lord_abilities_wardens_stand		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence_morale_passive		-1	False	True	True	0	
+24	negative	wh2_dlc15_lord_abilities_youre_next		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_defence	wh_ability_negative	-1	False	True	True	0	
+-1	positive	wh2_dlc15_lord_passive_best_of_da_best		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence_passive		-1	False	True	True	0	
+30	positive	wh2_dlc15_lord_passive_language_of_da_boyz		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_morale_attack_passive		-1	False	True	False	0	
+3	positive	wh2_dlc15_lord_passive_mistwalkers_barrage		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh2_dlc15_unit_abilities_exploding_unit		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc11_unit_passive_extra_powder		-1	False	True	True	0	
+25	negative	wh2_dlc15_unit_abilities_mighty_roar		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc15_unit_abilities_mighty_roar	wh_ability_negative_aoe	-1	False	False	True	0	
+40	positive	wh2_dlc15_unit_abilities_mimic_cold_blooded		False	False	False	-1	0	0	0	0	0	0	0	0	False	0	0	False	0		wh2_main_character_abilities_cold_blooded	wh2_main_ability_cold_blooded	-1	False	True	True	0	
+50	positive	wh2_dlc15_unit_abilities_mimic_grand_hammer_of_faith		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+1	positive	wh2_dlc15_unit_abilities_rock_bottom		False	False	False	0	0	0	1	0	1	350	1	0	False	0	0	False	0			wh_ability_positive	-1	False	True	True	0.3	
+60	positive	wh2_dlc15_unit_active_mimic_ruinshelter		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack		-1	False	True	True	0	
+10	negative	wh2_dlc15_unit_contact_nightgoblin_poison		False	False	False	0	0	0	0.5	0	0.5	1	10	0	False	0	0	False	0				-1	False	False	True	0	
+10	negative	wh2_dlc15_unit_contact_orrible_smell		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0				-1	False	False	True	0	
+20	negative	wh2_dlc15_unit_contact_rattled		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0				-1	False	False	True	0	
+10	negative	wh2_dlc15_unit_contact_scorched		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0				-1	False	False	True	0	
+20	negative	wh2_dlc15_unit_contact_shackolot_breath		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0				-1	False	False	True	0	
+-1	positive	wh2_dlc15_unit_passive_ghostly_protection		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+1	positive	wh2_dlc15_unit_passive_giant_explodin_spores		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack		-1	False	True	True	0	
+-1	positive	wh2_dlc15_unit_passive_grim_discipline		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh2_dlc15_unit_passive_heavy_ammo		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh2_dlc15_unit_passive_ignore_pain		False	False	False	0	0	0	0.5	2	0	0	0	2	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh2_dlc15_unit_passive_immense_power		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0	wh_dlc06_unit_contact_sundered_armour			-1	False	True	True	0	
+-1	positive	wh2_dlc15_unit_passive_journeys_end		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	positive	wh2_dlc15_unit_passive_mimic_ethereal		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh2_dlc15_unit_passive_mimic_forest_walker		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh2_dlc15_unit_passive_monstrous_disease		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0	wh_main_unit_contact_morale			-1	False	True	True	0	
+-1	positive	wh2_dlc15_unit_passive_nightgoblin_poison		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0	wh2_dlc15_unit_contact_nightgoblin_poison			-1	False	True	True	0	
+-1	positive	wh2_dlc15_unit_passive_omen_of_hope		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_morale		-1	False	True	False	0	
+-1	negative	wh2_dlc15_unit_passive_overwhelming_odour		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_debuff_attack_passive		-1	False	True	True	0	
+-1	positive	wh2_dlc15_unit_passive_padded_shield		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+25	positive	wh2_dlc15_unit_passive_pump_harder_ladz		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_main_generic_buff_speed_passive		-1	False	True	True	0	
+-1	positive	wh2_dlc15_unit_passive_regeneration_map		False	False	False	0	0	0	0.5	2	0	0	-1	2	False	0	0	False	0				-1	False	True	True	0	
+-1	neutral	wh2_dlc15_unit_passive_rubble_and_ruin_tier_1		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	False	False	0	
+-1	neutral	wh2_dlc15_unit_passive_rubble_and_ruin_tier_2		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	False	False	0	
+-1	neutral	wh2_dlc15_unit_passive_rubble_and_ruin_tier_3		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	False	False	0	
+-1	positive	wh2_dlc15_unit_passive_sorcery_weapon		False	False	False	0	0	0	0	0	0	0	-1	0	False	0.025	0	False	0				-1	False	True	True	0	
+-1	positive	wh2_dlc15_unit_passive_spiky_skin		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh2_dlc15_unit_passive_spirit_of_gork_or_mork		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence_morale_passive		-1	False	True	False	0	
+-1	negative	wh2_dlc15_unit_passive_thermal_thorax		False	False	False	0	0	0	1	0	1	4	4	0	False	0	0	False	0		wh_main_generic_hp_damage_passive		-1	False	True	True	0	
+5	positive	wh2_dlc15_unit_passive_unending_volley		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack		-1	False	True	True	0.03	
+29	positive	wh2_dlc15_weapon_abilities_axe_of_grom		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0	wh_dlc06_unit_contact_sundered_armour	wh_main_generic_buff_attack_passive		-1	False	False	True	0	
+31	positive	wh2_dlc15_weapon_abilities_fangsword_of_eltharion		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	True	0				-1	False	True	True	0	
+29	positive	wh2_dlc15_weapon_abilities_star_lance		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	10	wh2_dlc12_unit_contact_flammable	wh2_main_generic_buff_speed_passive	wh_ability_positive	-1	False	False	True	0	
+-1	positive	wh2_dlc15_weapon_passive_slaggas_slashas		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	positive	wh2_main_army_abilities_channeling_spire		False	False	False	0	0	0	0	0	0	0	-1	0	False	0.15	10	False	0		wh2_main_generic_buff_wom_banner	wh2_main_ability_channeling_spire	-1	False	True	True	0	
+27	negative	wh2_main_army_abilities_dark_conduit		False	False	False	1	0	90	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+22	negative	wh2_main_army_abilities_eshin_clanstone		False	False	False	0	0	0	1	0	0.15	9	9	0	False	0	0	False	0			wh2_main_ability_eshin_clanstone	-1	False	True	True	0	
+57	negative	wh2_main_army_abilities_holy_stela		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0			wh2_main_ability_holy_stela	-1	False	True	True	0	
+11	negative	wh2_main_army_abilities_lure_of_the_pale_queen		False	True	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh2_main_abilities_lure_of_the_pale_queen	wh_ability_negative	-1	False	True	True	0	
+28	positive	wh2_main_army_abilities_mors_clanstone		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0			wh2_main_ability_mors_clanstone	-1	False	True	True	0	
+22	positive	wh2_main_army_abilities_moulder_clanstone		False	False	False	0	0	0	0.5	24	0	0	0	24	True	0	0	False	0			wh2_main_ability_moulder_clanstone	-1	False	True	True	0	
+75	positive	wh2_main_army_abilities_pestilens_clanstone		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0	wh_main_unit_contact_poison		wh2_main_ability_pestilens_clanstone	-1	False	True	True	0	
+52	negative	wh2_main_army_abilities_skyre_clanstone		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0			wh2_main_ability_skyre_clanstone	-1	False	True	True	0	
+38	negative	wh2_main_army_abilities_temple_of_mists		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0			wh2_main_ability_temple_of_mists	-1	False	True	True	0	
+-1	negative	wh2_main_banner_passive_battle_banner		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_debuff_morale_passive		-1	False	True	True	0	
+-1	negative	wh2_main_banner_passive_sacred_banner_of_the_horned_rat		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_debuff_morale_passive		-1	False	True	True	0	
+-1	negative	wh2_main_banner_passive_storm_banner		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_debuff_attack_passive		-1	False	True	True	0	
+29	negative	wh2_main_character_abilities_assassins_trophy		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack	wh_ability_negative_one_shot	-1	False	True	True	0	
+44	positive	wh2_main_character_abilities_black_lotus		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0	wh_dlc06_unit_contact_discouraged	wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+40	positive	wh2_main_character_abilities_cold_blooded		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh2_main_character_abilities_cold_blooded	wh2_main_ability_cold_blooded	-1	False	True	True	0	
+40	positive	wh2_main_character_abilities_dark_venom		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+17	positive	wh2_main_character_abilities_shield_of_the_old_ones		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence	wh2_main_ability_shield_of_the_old_ones	-1	False	True	True	0	
+35	positive	wh2_main_character_abilities_swiftness_of_itzl		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0			wh_ability_positive_one_shot	-1	False	True	True	0	
+17	positive	wh2_main_character_abilities_verminous_valour		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0			wh_ability_positive_one_shot	-1	False	True	True	0	
+47	positive	wh2_main_character_abilities_witchbrew		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0			wh_ability_positive_one_shot	-1	False	True	True	0	
+-1	negative	wh2_main_character_passive_aura_of_pestilence		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_main_character_passive_aura_of_pestilence		-1	False	True	True	0	
+-1	positive	wh2_main_character_passive_darken_the_skies		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	negative	wh2_main_character_passive_fallen_mages		False	False	False	0	0	0	1	0	1	9999	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh2_main_character_passive_grand_arcane_conduit		False	False	False	0	0	0	0	0	0	0	-1	0	False	0.03	30	False	0				-1	False	True	True	0	
+-1	positive	wh2_main_character_passive_horn_of_isha		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	positive	wh2_main_character_passive_loose		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+120	positive	wh2_main_faction_abilities_murderous_mastery		False	False	False	-0.18	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_main_faction_abilities_murderous_prowess	wh_ability_positive	-1	False	True	True	0	
+90	positive	wh2_main_faction_abilities_murderous_prowess		False	False	False	-0.18	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_main_faction_abilities_murderous_prowess	wh2_main_ability_murderous_prowess	-1	False	True	True	0	
+-1	positive	wh2_main_faction_abilities_murderous_prowess_indicator		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_main_faction_abilities_murderous_prowess_indicator	wh2_main_ability_murderous_prowess	-1	True	True	True	0	
+18	positive	wh2_main_item_abilities_amulet_of_itzl		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_ward_save_all	wh2_main_ability_amulet_of_itzl	-1	False	True	True	0	
+67	positive	wh2_main_item_abilities_armour_of_the_stars		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_main_item_abilities_armour_of_the_stars	wh2_main_ability_armour_of_the_stars	-1	False	True	True	0	
+25	positive	wh2_main_item_abilities_aura_of_quetzl		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence	wh_ability_positive	-1	False	True	True	0	
+38	positive	wh2_main_item_abilities_blade_of_bel_korhadris		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+14	negative	wh2_main_item_abilities_blood_statuette_of_spite		False	False	False	0	0	0	1	0	0.18	6	9	0	False	0	0	False	0		wh_main_hero_abilities_accusation	wh_ability_negative	-1	False	True	True	0	
+36	positive	wh2_main_item_abilities_book_of_hoeth		False	False	False	0	0	0	0	0	0	0	-1	0	False	0.3	0	False	0		wh2_main_generic_buff_wom_banner	wh_ability_positive_banner	-1	False	True	True	0	
+18	negative	wh2_main_item_abilities_cube_of_darkness		False	False	False	0	0	0	0	0	0	0	-1	0	False	-0.15	0	False	0		wh2_main_generic_debuff_wom_banner	wh_ability_negative_one_shot	-1	False	True	True	0	
+28	positive	wh2_main_item_abilities_dragonhorn		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+44	positive	wh2_main_item_abilities_pearl_of_infinite_bleakness		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_morale	wh_ability_positive	-1	False	True	True	0	
+20	negative	wh2_main_item_abilities_plaque_of_dominion		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_morale	wh2_main_ability_plaque_of_dominion	-1	False	True	True	0	
+31	negative	wh2_main_item_abilities_rival_hide_talisman		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack	wh_ability_negative	-1	False	True	True	0	
+11	negative	wh2_main_item_abilities_rod_of_corruption		False	False	False	0	0	0	0.5	0	0.15	6	9	0	False	0	0	False	0		wh_main_hero_abilities_accusation	wh_ability_negative	-1	False	True	True	0	
+32	negative	wh2_main_item_abilities_scroll_of_hoeth		False	False	False	0	0	30	0	0	0	0	-1	0	False	-0.15	0	False	0		wh2_main_generic_debuff_wom_banner	wh_ability_negative_banner	-1	False	True	True	0	
+15	positive	wh2_main_item_abilities_scrying_stone		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_ward_save_all	wh2_main_ability_scrying_stone	-1	False	True	True	0	
+33	positive	wh2_main_item_abilities_skalm		False	False	False	0	0	0	0.5	24	0	0	-1	24	False	0	0	False	0		wh_main_generic_hp_regen	wh_ability_positive	-1	False	True	True	0	
+47	positive	wh2_main_item_abilities_skavenbrew		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+44	positive	wh2_main_item_abilities_starwood_staff		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	20	False	0		wh2_main_generic_buff_wom_banner	wh_ability_positive_banner	-1	False	True	True	0	
+67	positive	wh2_main_item_abilities_talisman_of_loec		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+44	positive	wh2_main_item_abilities_the_bane_shield		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence	wh_ability_positive	-1	False	True	True	0	
+18	positive	wh2_main_item_abilities_the_guiding_eye		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+20	positive	wh2_main_item_abilities_the_horn_of_kygor		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+15	negative	wh2_main_item_abilities_the_liber_bubonicus		False	False	False	0	0	0	1	0	0.5	144	1	0	False	0	0	False	0		wh_main_hero_abilities_accusation	wh_ability_negative	-1	False	True	True	0	
+16	negative	wh2_main_item_abilities_the_tricksters_pendant		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack	wh_ability_negative	-1	False	True	True	0	
+31	negative	wh2_main_item_abilities_the_vortex_shard		False	False	False	0	0	0	0	0	0	0	-1	0	False	-0.3	0	False	0		wh2_main_generic_debuff_wom_banner	wh_ability_negative_banner	-1	False	True	True	0	
+29	negative	wh2_main_item_abilities_warpstorm_scroll		False	False	False	0	0	0	2	0	0.33	40	4	0	False	0	0	False	0		wh_main_hero_abilities_accusation	wh_ability_negative	-1	False	True	True	0	
+57	positive	wh2_main_item_abilities_worlds_edge_armour		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence	wh_ability_positive	-1	False	True	True	0	
+-1	positive	wh2_main_item_passive_blessed_tome		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_morale_passive		-1	False	True	True	0	
+-1	negative	wh2_main_item_passive_circlet_of_iron		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack_passive		-1	False	True	True	0	
+-1	negative	wh2_main_item_passive_curse_charm_of_tepok		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack_passive		-1	False	True	True	0	
+-1	positive	wh2_main_item_passive_darkstar_cloak		False	False	False	0	0	0	0	0	0	0	-1	0	False	0.06	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	positive	wh2_main_item_passive_diamond_guardian_phoenix		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_ward_save_magic_passive		-1	False	True	True	0	
+-1	positive	wh2_main_item_passive_enchanted_spyglass		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_ward_save_missile_passive		-1	False	True	True	0	
+1.1	positive	wh2_main_item_passive_heart_of_averlorn		False	False	False	0	0	0	1	1872	0	0	-1	1872	False	0	0	False	0		wh2_main_unit_passive_rebirth		-1	False	True	True	0	
+-1	positive	wh2_main_item_passive_loremasters_cloak		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_ward_save_magic_passive		-1	False	True	True	0	
+-1	negative	wh2_main_item_passive_pipes_of_piebald		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack_passive		-1	False	True	True	0	
+-1	negative	wh2_main_item_passive_portents_of_verminous_doom		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_morale_passive		-1	False	True	True	0	
+-1	negative	wh2_main_item_passive_ring_of_hotek		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack_passive		-1	False	True	True	0	
+-1	positive	wh2_main_item_passive_ruby_guardian_phoenix		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_ward_save_missile_passive		-1	False	True	True	0	
+-1	positive	wh2_main_item_passive_sacred_incense		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_ward_save_missile_passive		-1	False	True	True	0	
+-1	positive	wh2_main_item_passive_sapphire_guardian_phoenix		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_ward_save_magic_passive		-1	False	True	True	0	
+-1	positive	wh2_main_item_passive_shadow_magnet_trinket		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence_passive		-1	False	True	True	0	
+-1	negative	wh2_main_item_passive_shield_of_distraction		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack_passive		-1	False	True	True	0	
+-1	negative	wh2_main_item_passive_shield_of_ghrond		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack_passive		-1	False	True	True	0	
+-1	positive	wh2_main_item_passive_sunburst_standard_of_hexoatl		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence_passive		-1	False	True	True	0	
+-1	negative	wh2_main_item_passive_supreme_spellshield		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	-6	False	0		wh_main_generic_debuff_attack_passive		-1	False	True	True	0	
+1.1	positive	wh2_main_item_passive_the_book_of_the_phoenix		False	False	False	0	0	0	1	624	0	0	-1	624	False	0	0	False	0		wh2_main_unit_passive_rebirth		-1	False	True	True	0	
+-1	positive	wh2_main_item_passive_war_drum_of_xahutec		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_morale_attack_passive		-1	False	True	True	0	
+-1	negative	wh2_main_item_passive_warp_shard_armour		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_defence_passive		-1	False	True	True	0	
+-1	negative	wh2_main_item_passive_warpstone_armour		False	False	False	0	0	0	1	0	0.15	2	9	0	False	0	0	False	0		wh_main_hero_abilities_accusation		-1	False	True	True	0	
+28	positive	wh2_main_lord_abilities_feint_and_reposte		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+9	positive	wh2_main_lord_abilities_potion_of_charoi		False	False	False	0	0	30	0.5	24	0	0	-1	24	False	0	0	False	0		wh2_main_abilities_potion_of_charoi	wh_ability_positive	-1	False	True	True	0	
+20	positive	wh2_main_lord_abilities_sacred_spawning_of_xhotl		False	False	False	-0.18	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_ward_save_all	wh2_main_ability_amulet_of_itzl	-1	False	True	True	0	
+36	negative	wh2_main_lord_abilities_trophy_heads		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack	wh_ability_negative	-1	False	True	True	0	
+-1	negative	wh2_main_lord_passive_enchanting_beauty		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack_passive		-1	False	True	True	0	
+-1	positive	wh2_main_lord_passive_glamour_of_hoeth		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence_morale_passive		-1	False	True	True	0	
+-1	positive	wh2_main_lord_passive_kindle_the_fury		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	positive	wh2_main_lord_passive_strength_through_spite		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+8	negative	wh2_main_lore_passive_musk_of_fear		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+10	negative	wh2_main_lore_passive_plague_rash		False	False	False	0.05	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+9	positive	wh2_main_lore_passive_shield_of_saphery		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+18	negative	wh2_main_lore_passive_spiteful_conjuration		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+18	positive	wh2_main_mount_abilities_unholy_clamour		False	False	False	-0.18	0	0	0	0	0	0	-1	0	False	0	0	False	0			wh2_ability_unholy_clamour	-1	False	True	True	0	
+-1	negative	wh2_main_mount_passive_billowing_death		False	False	False	0	0	0	1	0	1	3	5	0	False	0	0	False	0		wh2_main_mount_passive_billowing_death		-1	False	True	True	0	
+-1	positive	wh2_main_mount_passive_wall_of_unholy_sound		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+30	positive	wh2_main_spell_bound_black_staff		False	False	False	0	0	0	3	0	0.75	50	1	0	False	0.3	20	False	0		wh2_main_generic_buff_wom_banner	wh_ability_positive_banner	-1	False	True	True	0	
+19	positive	wh2_main_spell_bound_embers_of_the_phoenix		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	True	10		wh_main_spell_fire_flaming_sword_of_rhuin	wh_ability_positive	-1	False	True	True	0	
+10	positive	wh2_main_spell_bound_radiant_gem_of_hoeth		False	False	False	0	0	0	0.5	24	0	0	0	24	False	0	0	False	0		wh2_main_spell_high_magic_apothesis	wh2_main_spell_high_magic_apotheosis	-1	False	True	True	0	
+22	negative	wh2_main_spell_bound_ring_of_corin		False	False	False	0	0	30	2	0	0.5	144	1	0	False	0	0	False	0		wh2_main_spell_high_magic_arcane_unforgiving	wh2_main_spell_high_magic_arcane_unforging	-1	False	True	True	0	
+22	positive	wh2_main_spell_bound_the_seerstaff_of_saphery		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh2_main_spell_high_magic_hand_of_glory	wh2_main_spell_high_magic_hand_of_glory	-1	False	True	True	0	
+31	negative	wh2_main_spell_bound_whip_of_agony		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh2_main_spell_dark_magic_word_of_pain	wh_main_spell_dark_magic_word_of_pain	-1	False	True	True	0	
+20	negative	wh2_main_spell_dark_magic_chillwind		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	False	True	0	
+20	negative	wh2_main_spell_dark_magic_chillwind_upgraded		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	False	True	0	
+30	positive	wh2_main_spell_dark_magic_power_of_darkness		False	False	False	0	0	0	3	0	0.75	50	1	0	False	0.6	30	False	0		wh2_main_spell_dark_magic_power_of_darkness	wh_main_spell_dark_magic_power_of_darkness	-1	False	True	True	0	
+12	negative	wh2_main_spell_dark_magic_soul_stealer		False	False	False	0	0	0	2	0	0.5	144	1	0	False	0	0	False	0		wh2_main_spell_dark_magic_soul_stealer	wh_main_spell_dark_magic_soul_stealer	-1	False	True	True	0	
+12	positive	wh2_main_spell_dark_magic_soul_stealer_miscast		False	False	False	0	0	0	0.5	24	0	0	0	24	False	0	0	False	0				-1	False	True	False	0	
+40	negative	wh2_main_spell_dark_magic_word_of_pain		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh2_main_spell_dark_magic_word_of_pain	wh_main_spell_dark_magic_word_of_pain	-1	False	True	True	0	
+40	negative	wh2_main_spell_dark_magic_word_of_pain_upgraded		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh2_main_spell_dark_magic_word_of_pain	wh_main_spell_dark_magic_word_of_pain	-1	False	True	True	0	
+10	positive	wh2_main_spell_high_magic_apotheosis		False	False	False	0	0	0	0.5	24	0	0	0	24	False	0	0	False	0		wh2_main_spell_high_magic_apothesis	wh2_main_spell_high_magic_apotheosis	-1	False	True	True	0	
+22	negative	wh2_main_spell_high_magic_arcane_unforging		False	False	False	0	0	30	2	0	0.5	144	1	0	False	0	0	False	0		wh2_main_spell_high_magic_arcane_unforgiving	wh2_main_spell_high_magic_arcane_unforging	-1	False	True	True	0	
+22	negative	wh2_main_spell_high_magic_arcane_unforging_upgraded		False	False	False	0	0	45	2	0	0.5	144	1	0	False	0	0	False	0		wh2_main_spell_high_magic_arcane_unforgiving	wh2_main_spell_high_magic_arcane_unforging	-1	False	True	True	0	
+29	positive	wh2_main_spell_high_magic_hand_of_glory		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh2_main_spell_high_magic_hand_of_glory	wh2_main_spell_high_magic_hand_of_glory	-1	False	True	True	0	
+29	positive	wh2_main_spell_high_magic_hand_of_glory_upgraded		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh2_main_spell_high_magic_hand_of_glory	wh2_main_spell_high_magic_hand_of_glory	-1	False	True	True	0	
+11	negative	wh2_main_spell_high_magic_tempest		False	False	False	0	0	0	1	0	1	40	2	0	False	0	0	False	0		wh2_main_spell_high_magic_tempest		-1	False	False	True	0	
+22	negative	wh2_main_spell_high_magic_tempest_upgraded		False	False	False	0	0	0	1	0	1	40	2	0	False	0	0	False	0		wh2_main_spell_high_magic_tempest		-1	False	False	True	0	
+22	positive	wh2_main_spell_plague_bless_with_filth		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0	wh_main_unit_contact_poison	wh2_main_spell_plague_bless_with_filth	wh2_main_spell_plague_bless_with_filth	-1	False	True	True	0	
+44	positive	wh2_main_spell_plague_bless_with_filth_upgraded		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0	wh_main_unit_contact_poison	wh2_main_spell_plague_bless_with_filth	wh2_main_spell_plague_bless_with_filth	-1	False	True	True	0	
+50	negative	wh2_main_spell_plague_wither		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_main_spell_plague_wither	wh2_main_spell_plague_wither	-1	False	True	True	0	
+50	negative	wh2_main_spell_plague_wither_upgraded		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_main_spell_plague_wither	wh2_main_spell_plague_wither	-1	False	True	True	0	
+28	positive	wh2_main_spell_ruin_death_frenzy		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_main_spell_ruin_death_frenzy	wh_main_spell_ruin_death_frenzy	-1	False	True	True	0	
+14	negative	wh2_main_spell_ruin_howling_warpgale		False	True	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_main_spell_ruin_howling_warpgale	wh_main_spell_ruin_howling_warpgale	-1	False	True	True	0	
+28	negative	wh2_main_spell_ruin_howling_warpgale_upgraded		False	True	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_main_spell_ruin_howling_warpgale	wh_main_spell_ruin_howling_warpgale	-1	False	True	True	0	
+25	positive	wh2_main_spell_ruin_skitterleap		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_main_spell_ruin_skitterleap	wh2_dlc14_spell_stealth_skitterleap	-1	False	True	True	0	
+25	positive	wh2_main_spell_ruin_skitterleap_upgraded		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_main_spell_ruin_skitterleap	wh2_dlc14_spell_stealth_skitterleap	-1	False	True	True	0	
+67	positive	wh2_main_unit_abilities_concealment_bombs		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_main_unit_abilities_concealment_bombs	wh2_main_unit_abilities_concealment_bombs	-1	False	True	True	0	
+62	positive	wh2_main_unit_abilities_fury_of_khaine		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+-1	positive	wh2_main_unit_abilities_hidden_blade		False	False	False	0	0	0	1	0	0	0	0	0	False	0	0	False	0				-1	True	True	True	0	
+26	positive	wh2_main_unit_abilities_revivification_crystal		False	False	False	0	0	0	0.5	12	0	0	-1	12	True	0	0	False	0		wh_main_spell_vampires_invocation_of_nehek	wh_ability_positive	-1	False	True	True	0	
+1	positive	wh2_main_unit_contact_healing_heavy		True	False	False	0	0	0	1	960	0	0	-1	960	False	0	0	False	0		wh_main_generic_hp_regen_passive		10	False	True	False	0	
+1	positive	wh2_main_unit_contact_healing_light		False	False	False	0	0	0	1	240	0	0	-1	240	False	0	0	False	0		wh_main_generic_hp_regen_passive		5	False	True	False	0	
+3	negative	wh2_main_unit_contact_kill_self		False	False	False	0	0	0	0.5	0	1	1000	-1	0	False	0	0	False	0				-1	False	True	False	0	
+20	negative	wh2_main_unit_contact_noxious_breath		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0				-1	False	False	True	0	
+10	negative	wh2_main_unit_contact_plague_monk_censer_morale		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	False	True	0	
+3	negative	wh2_main_unit_contact_souls		False	False	False	0	0	0	0.5	0	0.18	6	18	0	False	0	0	False	0		wh_main_unit_contact_souls	wh2_main_spell_high_magic_soul_quench_tail	-1	True	False	True	0	
+35	negative	wh2_main_unit_contact_weeping_blade		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh2_main_unit_contact_weeping_blade		-1	False	False	True	0	
+15	negative	wh2_main_unit_contact_witch_elf_poison		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0				-1	False	False	True	0	
+1	positive	wh2_main_unit_passive_another_takes_its_place		False	False	False	0	0	0	1	568	0	0	-1	568	False	0	0	False	0		wh2_main_unit_passive_another_takes_its_place		-1	False	True	True	0	
+-1	positive	wh2_main_unit_passive_attuned_to_magic		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	True	0		wh_main_generic_debuff_attack_passive		-1	False	True	True	0	
+-1	negative	wh2_main_unit_passive_blizzard_aura		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_debuff_attack_passive		-1	False	True	True	0	
+-1	positive	wh2_main_unit_passive_bloodshield_of_khaine		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence_passive		-1	False	True	True	0	
+-1	positive	wh2_main_unit_passive_martial_mastery		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh2_main_unit_passive_martial_prowess		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	negative	wh2_main_unit_passive_primal_instincts		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+2	positive	wh2_main_unit_passive_rebirth	rebirth	False	False	False	0	0	0	1	1248	0	0	-1	1248	False	0	0	False	0		wh2_main_unit_passive_rebirth		-1	False	True	True	0	
+1	positive	wh2_main_unit_passive_rebirth_buffer		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+0.5	negative	wh2_main_unit_passive_rebirth_miscast		False	False	False	0	0	0	0.1	0	1	1248	1	0	False	0	0	False	0		wh2_main_rebirth_miscast		-1	False	True	False	0	
+-1	positive	wh2_main_unit_passive_scurry_away		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_main_generic_buff_speed_passive		-1	False	True	True	0	
+-1	negative	wh2_main_unit_passive_snare_net		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_defence_passive		-1	False	True	True	0	
+-1	positive	wh2_main_unit_passive_strength_in_numbers		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+2	positive	wh2_main_unit_passive_too_horrible_to_die		False	False	False	0	0	0	1	1248	0	0	-1	1248	False	0	0	False	0		wh2_main_unit_passive_rebirth		-1	False	True	True	0	
+32	negative	wh2_main_unit_passive_unbinding_clanrats		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh2_main_bound_entity_energy_rat	wh2_dlc13_ability_summon_unbinding_generic_small_phase_01	-1	False	True	True	0	
+32	negative	wh2_main_unit_passive_unbinding_clanrats_small		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh2_main_bound_entity_energy_rat	wh2_dlc13_ability_summon_unbinding_generic_small_phase_01	-1	False	True	True	0	
+43	negative	wh2_main_unit_passive_unbinding_great_eagle		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh2_main_bound_entity_energy_eagle	wh2_dlc13_ability_summon_unbinding_generic_large_phase_01	-1	False	True	True	0	
+38	negative	wh2_main_unit_passive_unbinding_plague_monks		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_bound_entity_energy_small	wh2_dlc13_ability_summon_unbinding_generic_small_phase_01	-1	False	True	True	0	
+64	negative	wh2_main_unit_passive_unbinding_skaven_slaves		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_bound_entity_energy_small	wh2_dlc13_ability_summon_unbinding_generic_small_phase_01	-1	False	True	True	0	
+85	negative	wh2_main_unit_passive_unbinding_skink_priest		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_bound_entity_energy_small	wh2_dlc13_ability_summon_unbinding_generic_small_phase_01	-1	False	True	True	0	
+36	positive	wh2_main_weapon_abilities_dwarf_gouger		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+38	positive	wh2_main_weapon_abilities_hydra_blade		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+30	positive	wh2_main_weapon_abilities_sword_of_teclis		False	False	False	0	0	0	0	0	0	0	-1	0	False	0.3	20	False	0		wh2_main_generic_buff_wom_banner		-1	False	True	True	0	
+17	negative	wh2_main_weapon_abilities_web_of_shadows		False	False	False	0	0	0	2	0	0.5	144	1	0	False	0	0	False	0		wh_main_hero_abilities_accusation	wh_ability_negative	-1	False	True	True	0	
+7	negative	wh2_main_weapon_bound_winged_staff		False	False	False	0	0	0	1	0	0.15	18	6	0	False	0	0	False	0		wh_dlc03_spell_beast_flock_of_doom	wh_dlc03_spell_beasts_flock_of_doom	-1	False	True	True	0	
+-1	negative	wh2_main_weapon_passive_chillblade		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack_passive		-1	False	True	True	0	
+15	negative	wh2_main_weapon_passive_destroyer		False	False	False	0	0	15	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack_passive		90	False	True	True	0	
+-1	negative	wh2_main_weapon_passive_heartrender_and_the_darksword		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack_passive		-1	False	True	True	0	
+22	positive	wh2_pro08_character_abilities_gotrek_doom		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence	wh_ability_positive	-1	False	True	True	0	
+22	positive	wh2_pro08_character_abilities_helping_hand		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+-1	positive	wh2_pro08_character_passive_blood_oath		False	False	False	0	0	0	0.5	4	0	0	0	4	False	0	0	False	0				-1	False	True	True	0	
+1	positive	wh2_pro08_character_passive_heroic_fortitude		False	False	False	0	0	0	1	0	0	0	0	0	False	0	0	False	0		wh2_main_unit_passive_rebirth		-1	False	True	True	0	
+2	positive	wh2_pro08_character_passive_heroic_fortitude_miscast		False	False	False	0	0	0	0.5	312	0	0	0	312	False	0	0	False	0				-1	False	True	False	0	
+10	negative	wh2_pro08_unit_contact_dampen		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0				-1	False	False	True	0	
+28	positive	wh2_pro08_weapon_abilities_karaghul		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	1		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+36	positive	wh2_pro08_weapon_abilities_rune_axe_of_gotrek		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0	wh2_pro08_unit_contact_dampen	wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+-1	positive	wh_dlc01_banner_passive_blasted_standard		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_buff_defence_passive		-1	False	True	True	0	
+-1	positive	wh_dlc01_item_passive_helm_of_many_eyes		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_buff_defence_attack_passive		-1	False	True	True	0	
+-1	positive	wh_dlc01_item_passive_the_crown_of_domination		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_morale_passive		-1	False	True	True	0	
+56	negative	wh_dlc01_unit_passive_unbinding_chaos_spawn		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_bound_entity_energy_small	wh2_dlc13_ability_summon_unbinding_generic_large_phase_01	-1	False	True	True	0	
+43	positive	wh_dlc01_weapon_abilities_starcrusher		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+11	positive	wh_dlc01_weapon_abilities_sword_of_change		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_buff_attack_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+39	positive	wh_dlc01_weapon_abilities_the_slayer_of_kings		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+-1	positive	wh_dlc01_weapon_passive_auric_armour		False	False	False	0	0	0	0.5	4	0	0	0	4	False	0	0	False	0		wh_main_generic_hp_regen_passive		-1	False	True	True	0	
+-1	positive	wh_dlc02_unit_passive_the_flag_of_blood_keep		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	negative	wh_dlc03_banner_passive_manbane_standard		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_buff_morale_passive		-1	False	True	True	0	
+-1	positive	wh_dlc03_banner_passive_slug_skin		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0	wh_main_unit_contact_poison			-1	False	True	True	0	
+-1	negative	wh_dlc03_banner_passive_totem_of_rust		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_buff_morale_passive		-1	False	True	True	0	
+18	positive	wh_dlc03_character_abilities_apocalyptic_vision		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence	wh_ability_positive	-1	False	True	True	0	
+14	positive	wh_dlc03_character_abilities_call_of_violence		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+-1	negative	wh_dlc03_hero_passive_something_wicked_this_way_comes		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc03_hero_passive_strength_of_the_land_i		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc03_hero_passive_strength_of_the_land_ii		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc03_hero_passive_strength_of_the_land_iii		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc03_hero_passive_strength_of_the_land_iv		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc03_hero_passive_the_unrelenting_warherd_i		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc03_hero_passive_the_unrelenting_warherd_ii		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc03_hero_passive_the_unrelenting_warherd_iii		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc03_hero_passive_the_unrelenting_warherd_iv		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc03_hero_passive_unholy_power		False	False	False	0	0	0	0	0	0	0	-1	0	False	0.06	0	False	0				-1	False	True	True	0	
+89	negative	wh_dlc03_item_abilities_chalice_of_dark_rain		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack	wh_ability_negative	-1	False	True	True	0	
+29	positive	wh_dlc03_item_abilities_hagtree_fetish		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive_one_shot	-1	False	True	True	0	
+35	positive	wh_dlc03_item_abilities_horn_of_the_first_beast		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+17	positive	wh_dlc03_item_abilities_jagged_dagger		False	False	False	0	0	0	0	0	0	0	-1	0	False	0.15	30	False	0		wh2_main_generic_buff_wom_banner		-1	False	True	True	0	
+44	positive	wh_dlc03_item_abilities_skull_of_rarkos		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	30	False	0		wh2_main_generic_buff_wom_banner	wh_ability_negative_one_shot	-1	False	True	True	0	
+-1	positive	wh_dlc03_item_passive_banner_of_the_fallen_king		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	positive	wh_dlc03_item_passive_blackened_plate		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc03_item_passive_icon_of_vilification		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc03_item_passive_shard_of_the_herdstone		False	False	False	0	0	0	0	0	0	0	-1	0	False	0.09	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc03_item_passive_the_dark_mail		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence_passive		-1	False	True	True	0	
+-1	positive	wh_dlc03_item_passive_trollhide		False	False	False	0	0	0	0.5	4	0	0	0	4	False	0	0	False	0				-1	False	True	True	0	
+-1	negative	wh_dlc03_lord_passive_crush_the_weak		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_defence_passive		-1	False	True	True	0	
+9	positive	wh_dlc03_lore_passive_bestial_surge		False	False	False	-0.05	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+29	positive	wh_dlc03_lore_passive_wild_heart		False	False	False	0	0	0	0	0	0	0	-1	0	False	0.07500001	10	False	0				-1	False	True	True	0	
+-1	negative	wh_dlc03_quest_passive_poisoning		False	False	False	0	0	0	1	0	0.75	6	1	0	False	0	0	False	0		wh_main_generic_hp_damage_passive		-1	False	True	True	0	
+7	negative	wh_dlc03_spell_beasts_flock_of_doom		False	False	False	0	0	0	1	0	0.18	6	18	0	False	0	0	False	0		wh_dlc03_spell_beast_flock_of_doom	wh_dlc03_spell_beasts_flock_of_doom	-1	False	True	True	0	
+14	negative	wh_dlc03_spell_beasts_flock_of_doom_upgraded		False	False	False	0	0	0	1	0	0.18	6	18	0	False	0	0	False	0		wh_dlc03_spell_beasts_flock_of_doom_upgraded	wh_dlc03_spell_beasts_flock_of_doom	-1	False	True	True	0	
+44	positive	wh_dlc03_spell_beasts_panns_impenetrable_pelt		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_dlc03_spell_beasts_panns_impenetrable_pelt	wh_dlc03_spell_beasts_panns_impenetrable_pelt	-1	False	True	True	0	
+44	positive	wh_dlc03_spell_beasts_panns_impenetrable_pelt_upgraded		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_dlc03_spell_beasts_panns_impenetrable_pelt	wh_dlc03_spell_beasts_panns_impenetrable_pelt	-1	False	True	True	0	
+39	negative	wh_dlc03_spell_beasts_the_curse_of_anraheir		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_dlc03_spell_beasts_the_curse_of_anraheir	wh_dlc03_spell_beasts_curse_of_anraheir	-1	False	True	True	0	
+22	positive	wh_dlc03_spell_beasts_wyssans_wildform		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_dlc03_spell_beasts_wyssans_wildform	wh_dlc03_spell_beasts_wyssans_wildform	-1	False	True	True	0	
+11	negative	wh_dlc03_spell_wild_devolve		False	False	False	0	0	0	1	0	0.18	6	18	0	False	0	0	False	0		wh_dlc03_spell_wild_devolve	wh_dlc03_spell_wild_devolve	-1	False	True	True	0	
+22	negative	wh_dlc03_spell_wild_devolve_upgraded		False	False	False	0	0	0	1	0	0.18	6	18	0	False	0	0	False	0		wh_dlc03_spell_wild_devolve	wh_dlc03_spell_wild_devolve	-1	False	True	True	0	
+29	positive	wh_dlc03_spell_wild_mantle_of_ghorok		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_dlc03_spell_wild_mantle_of_ghorok	wh_dlc03_spell_wild_mantle_of_ghorok	-1	False	True	True	0	
+12	negative	wh_dlc03_spell_wild_traitor_kin		False	False	False	0	0	0	2	0	0.17	80	2	0	False	0	0	False	0		wh_dlc03_spell_wild_traitor_kin	wh_dlc03_spell_wild_traitor_kin	-1	False	True	True	0	
+12	negative	wh_dlc03_spell_wild_traitor_kin_upgraded		False	False	False	0	0	0	2	0	0.17	120	2	0	False	0	0	False	0		wh_dlc03_spell_wild_traitor_kin	wh_dlc03_spell_wild_traitor_kin	-1	False	True	True	0	
+-1	positive	wh_dlc03_unit_abilities_slaughterers_call		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc03_unit_passive_bloodgreed		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_dlc03_unit_passive_bloodgreed		-1	False	True	True	0	
+-1	positive	wh_dlc03_unit_passive_drunken		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc03_unit_passive_primal_fury		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	negative	wh_dlc03_unit_passive_soul_eater		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+56	negative	wh_dlc03_unit_passive_unbinding_chaos_spawn		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_bound_entity_energy_large	wh2_dlc13_ability_summon_unbinding_generic_large_phase_01	-1	False	True	True	0	
+72	negative	wh_dlc03_unit_passive_unbinding_cygor		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_bound_entity_energy_large	wh2_dlc13_ability_summon_unbinding_generic_large_phase_01	-1	False	True	True	0	
+56	negative	wh_dlc03_unit_passive_unbinding_giant		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_bound_entity_energy_large	wh2_dlc13_ability_summon_unbinding_generic_large_phase_01	-1	False	True	True	0	
+61	negative	wh_dlc03_unit_passive_unbinding_manticore		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_bound_entity_energy_manticore	wh2_dlc13_ability_summon_unbinding_generic_large_phase_01	-1	False	True	True	0	
+46	positive	wh_dlc03_weapon_abilities_axe_of_men		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence_morale_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+41	positive	wh_dlc03_weapon_abilities_scourge		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0	wh_main_unit_contact_poison	wh_main_generic_buff_attack_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+-1	positive	wh_dlc03_weapon_passive_everbleed		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0	wh_main_unit_contact_poison			-1	False	True	True	0	
+-1	negative	wh_dlc03_weapon_passive_mangelder		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc03_weapon_passive_the_brass_cleaver		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc03_weapon_passive_the_middenland_runefang		False	False	False	0	0	0	0.5	4	0	0	0	4	False	0	0	False	0				-1	False	True	True	0	
+-1	negative	wh_dlc04_hero_passive_divine_power		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+30	positive	wh_dlc04_item_abilities_the_carstein_ring		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_ward_save_all	wh_main_item_abilities_potion_of_healing	-1	False	True	True	0	
+27	positive	wh_dlc04_item_abilities_the_liber_noctus		False	False	False	0	0	-60	1	0	0.7	24	1	0	False	0.45	30	False	0		wh2_main_generic_buff_wom_banner		-1	False	True	True	0	
+-1	positive	wh_dlc04_item_passive_jade_griffon		False	False	False	0	0	0	0.5	4	0	0	0	4	False	0	0	False	0				-1	False	True	True	0	
+44	negative	wh_dlc04_lord_abilities_beguile		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack_banner	wh_ability_negative_one_shot	-1	False	True	True	0	
+-1	negative	wh_dlc04_lord_passive_aura_of_dark_majesty		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_morale_passive		-1	False	True	True	0	
+5	negative	wh_dlc04_quest_abilities_servant_of_nagash		False	False	False	0	0	0	1	0	1	200	50	0	False	0	0	False	0				-1	False	True	True	0	
+50	positive	wh_dlc04_spell_bound_hammer_of_sigmar_upgraded		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+50	positive	wh_dlc04_spell_bound_shield_of_faith_upgraded		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_ward_save_all	wh_ability_positive	-1	False	True	True	0	
+10	negative	wh_dlc04_unit_contact_helmans_blight		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0				-1	False	False	True	0	
+-1	negative	wh_dlc04_unit_passive_balefire		False	False	False	0	0	0	0	0	0	0	-1	0	False	-0.03	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc04_unit_passive_blasphemous_tome		False	False	False	0	0	0	0	0	0	0	-1	0	False	0.06	0	False	0				-1	False	True	True	0	
+-1	negative	wh_dlc04_unit_passive_chilling_aura		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_debuff_defence_passive		-1	False	True	True	0	
+15	positive	wh_dlc04_unit_passive_strength_of_the_penitent		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	positive	wh_dlc04_unit_passive_the_reliquary_binding		False	False	False	0	0	0	1	2	0	0	-1	2	False	0	0	False	0		wh_main_generic_hp_regen_passive		-1	False	True	True	0	
+-1	negative	wh_dlc04_unit_passive_the_reliquary_corruption		False	False	False	0	0	0	1	0	1	4	4	0	False	0	0	False	0		wh_main_generic_hp_damage_passive		-1	False	True	True	0	
+50	negative	wh_dlc04_unit_passive_unbinding_crypt_ghouls		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_bound_entity_energy_small	wh2_dlc13_ability_summon_unbinding_generic_small_phase_01	-1	False	True	True	0	
+42	negative	wh_dlc04_unit_passive_unbinding_crypt_horrors		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_bound_entity_energy_small	wh2_dlc13_ability_summon_unbinding_generic_large_phase_01	-1	False	True	True	0	
+51	negative	wh_dlc04_unit_passive_unbinding_grave_guard		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_bound_entity_energy_small	wh2_dlc13_ability_summon_unbinding_generic_small_phase_01	-1	False	True	True	0	
+82	negative	wh_dlc04_unit_passive_unbinding_wight_king		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_bound_entity_energy_small	wh2_dlc13_ability_summon_unbinding_generic_small_phase_01	-1	False	True	True	0	
+-1	positive	wh_dlc04_unit_passive_unholy_lodestone		False	False	False	0	0	0	1	2	0	0	-1	2	False	0	0	False	0		wh_main_generic_hp_regen_passive		-1	False	True	True	0	
+-1	positive	wh_dlc04_unit_passive_vigour_mortis		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	positive	wh_dlc04_weapon_passive_blood_drinker		False	False	False	0	0	0	0.5	4	0	0	0	4	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc05_banner_passive_banner_of_the_eternal_queen		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc05_banner_passive_banner_of_the_hunter_king		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+16	negative	wh_dlc05_character_abilities_pray_of_anath_raema		False	True	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_dlc05_ability_pray_of_anath_raema	wh_ability_negative	-1	False	True	True	0	
+-1	positive	wh_dlc05_hero_passive_blessing_of_the_ancients		False	False	False	0	0	0	0	0	0	0	-1	0	False	0.09	15	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc05_hero_passive_hawkish_finesse		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	positive	wh_dlc05_hero_passive_hawkish_precision		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+24	positive	wh_dlc05_item_abilities_horn_of_the_wild_hunt		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+-1	positive	wh_dlc05_item_passive_cloak_of_isha		False	False	False	0	0	0	0.5	4	0	0	0	4	False	0	0	False	0		wh_main_generic_ward_save_all_passive		-1	False	True	True	0	
+10	negative	wh_dlc05_lord_abilities_spirit_essence_of_chaos		False	False	False	0	0	0	1	0	1	500	100	0	False	0	0	False	0		wh_dlc03_spell_beast_flock_of_doom		-1	False	True	True	0	
+-1	positive	wh_dlc05_lord_passive_call_of_the_woods		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	positive	wh_dlc05_lord_passive_howl_of_the_forest		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	positive	wh_dlc05_lord_passive_sight_beyond_sight		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	positive	wh_dlc05_lord_passive_the_eye_of_kurnous		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+5	positive	wh_dlc05_lore_passive_life_bloom		False	False	False	0	0	0	0.5	4	0	0	-1	4	False	0	0	False	0				-1	False	True	True	0	
+24	positive	wh_dlc05_lore_passive_smoke_and_mirrors		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+60	positive	wh_dlc05_quest_passive_aura_of_transmutation		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_dlc05_abilities_aura_of_transmutation		-1	False	True	True	0	
+240	positive	wh_dlc05_quest_passive_blessed_by_the_mage_queen		False	False	False	0	0	0	1	8	0	0	-1	8	False	0	0	False	0		wh_main_generic_hp_damage_passive		-1	False	True	True	0	
+330	positive	wh_dlc05_quest_passive_blessed_by_the_mage_queen_1		False	False	False	0	0	0	1	12	0	0	-1	12	False	0	0	False	0		wh_main_generic_hp_damage_passive		-1	False	True	True	0	
+-1	positive	wh_dlc05_quest_passive_blessed_by_the_mage_queen_2		False	False	False	0	0	0	1	16	0	0	-1	16	False	0	0	False	0		wh_main_generic_hp_damage_passive		-1	False	True	True	0	
+240	negative	wh_dlc05_quest_passive_corruptor_of_the_shadowgave		False	False	False	0	0	0	1	0	0.15	8	1	0	False	0	0	False	0		wh_main_generic_hp_damage_passive		-1	False	True	True	0	
+330	negative	wh_dlc05_quest_passive_corruptor_of_the_shadowgave_1		False	False	False	0	0	0	1	0	0.5	12	2	0	False	0	0	False	0		wh_main_generic_hp_damage_passive		-1	False	True	True	0	
+-1	negative	wh_dlc05_quest_passive_corruptor_of_the_shadowgave_2		False	False	False	0	0	0	1	0	0.5	12	2	0	False	0	0	False	0		wh_main_generic_hp_damage_passive		-1	False	True	True	0	
+10	positive	wh_dlc05_quest_passive_gift_of_slaanesh		False	False	False	0	0	0	1	0	1	2000	50	0	False	0	0	False	0				-1	False	True	True	0	
+12	negative	wh_dlc05_spell_life_awakening_of_the_wood		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	False	True	0	
+7	positive	wh_dlc05_spell_life_earth_blood		False	False	False	0	0	0	0.5	24	0	0	0	24	False	0	0	False	0		wh_dlc05_spell_life_earth_blood	wh_dlc05_spell_life_earth_blood	-1	False	True	True	0	
+14	positive	wh_dlc05_spell_life_earth_blood_upgraded		False	False	False	0	0	0	0.5	24	0	0	0	24	False	0	0	False	0		wh_dlc05_spell_life_earth_blood	wh_dlc05_spell_life_earth_blood	-1	False	True	True	0	
+44	positive	wh_dlc05_spell_life_flesh_to_stone		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_dlc05_spell_life_flesh_to_stone	wh_dlc05_spell_life_flesh_to_stone	-1	False	True	True	0	
+88	positive	wh_dlc05_spell_life_flesh_to_stone_upgraded		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_dlc05_spell_life_flesh_to_stone	wh_dlc05_spell_life_flesh_to_stone	-1	False	True	True	0	
+29	positive	wh_dlc05_spell_life_regrowth		False	False	False	-1	0	0	0.5	24	0	0	0	24	False	0	0	False	0		wh_dlc05_spell_life_regrowth	wh_dlc05_spell_life_regrowth	-1	False	True	True	0	
+29	positive	wh_dlc05_spell_life_regrowth_upgraded		False	False	False	-1	0	0	0.5	36	0	0	0	36	False	0	0	False	0		wh_dlc05_spell_life_regrowth	wh_dlc05_spell_life_regrowth	-1	False	True	True	0	
+22	positive	wh_dlc05_spell_life_shield_of_thorns		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_dlc05_spell_life_shield_of_thorns	wh_dlc05_spell_life_shield_of_thorns	-1	False	True	True	0	
+22	positive	wh_dlc05_spell_life_shield_of_thorns_upgraded		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_dlc05_spell_life_shield_of_thorns	wh_dlc05_spell_life_shield_of_thorns	-1	False	True	True	0	
+2	negative	wh_dlc05_spell_life_the_dwellers_below		False	False	False	0	0	0	2	0	0.33	60	4	0	False	0	0	False	0				-1	False	False	True	0	
+2	negative	wh_dlc05_spell_life_the_dwellers_below_upgraded		False	False	False	0	0	0	2	0	0.33	60	4	0	False	0	0	False	0				-1	False	False	True	0	
+14	negative	wh_dlc05_spell_shadow_melkoths_mystifying_miasma		False	False	False	0	0	0	1	0	0.18	6	18	0	False	0	0	False	0		wh_dlc05_spell_shadow_melkoths_mystifying_miasma	wh_dlc05_spell_shadow_melkoths_mystifying_miasma	-1	False	True	True	0	
+14	negative	wh_dlc05_spell_shadow_melkoths_mystifying_miasma_upgraded		False	False	False	0	0	0	1	0	0.18	6	18	0	False	0	0	False	0		wh_dlc05_spell_shadow_melkoths_mystifying_miasma	wh_dlc05_spell_shadow_melkoths_mystifying_miasma	-1	False	True	True	0	
+32	positive	wh_dlc05_spell_shadow_okkams_mindrazor		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	True	0		wh_main_shadow_buff_attack_passive	wh_dlc05_spell_shadow_okkams_mindrazor	-1	False	True	True	0	
+32	positive	wh_dlc05_spell_shadow_okkams_mindrazor_upgraded		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	True	0		wh_main_shadow_buff_attack_passive	wh_dlc05_spell_shadow_okkams_mindrazor	-1	False	True	True	0	
+22	negative	wh_dlc05_spell_shadow_the_enfeebling_foe		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_dlc05_spell_shadow_the_enfeebling_foe	wh_dlc05_spell_shadow_the_enfeebling_foe	-1	False	True	True	0	
+44	negative	wh_dlc05_spell_shadow_the_enfeebling_foe_upgraded		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_dlc05_spell_shadow_the_enfeebling_foe	wh_dlc05_spell_shadow_the_enfeebling_foe	-1	False	True	True	0	
+40	negative	wh_dlc05_spell_shadow_the_withering		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_dlc05_spell_shadow_the_withering	wh_dlc05_spell_shadow_the_withering	-1	False	True	True	0	
+40	negative	wh_dlc05_spell_shadow_the_withering_upgraded		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_dlc05_spell_shadow_the_withering	wh_dlc05_spell_shadow_the_withering	-1	False	True	True	0	
+30	positive	wh_dlc05_unit_abilities_storm_of_blades		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack		-1	False	True	True	0	
+30	positive	wh_dlc05_unit_abilities_the_shadows_coil		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence	wh_dlc05_ability_shadows_coil	-1	False	True	True	0	
+30	positive	wh_dlc05_unit_abilities_woven_mist		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_ward_save_missile	wh_dlc05_ability_shadows_coil	-1	False	True	True	0	
+-1	positive	wh_dlc05_unit_passive_guardians_of_the_wildwood		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+17	negative	wh_dlc05_weapon_abilities_daiths_sword		False	False	False	0	0	0	2	0	0.33	40	4	0	False	0	0	False	0		wh_main_generic_debuff_defence	wh_ability_negative	-1	False	True	True	0	
+24	negative	wh_dlc05_weapon_abilities_el_syf		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_defence_passive	wh_ability_negative	-1	False	True	True	0	
+13	negative	wh_dlc06_character_abilities_effagee_of_da_git		False	True	False	0	0	0	2	0	0.5	144	1	0	False	0	0	False	0		wh_dlc06_character_abilities_effagee_of_da_git	wh_dlc06_character_abilities_effagee_of_da_git	-1	False	True	True	0	
+-1	positive	wh_dlc06_item_passive_squiggly_beast		False	False	False	0	0	0	0	0	0	0	-1	0	False	0.09	15	False	0				-1	False	True	True	0	
+25	positive	wh_dlc06_lord_abilities_mighty_oath_stone		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence_morale	wh_ability_positive_one_shot	-1	False	True	True	0	
+33	positive	wh_dlc06_lord_abilities_revenge_incarnate		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+20	positive	wh_dlc06_lord_abilities_spite_of_da_bad_moon		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive_aoe	-1	False	True	True	0	
+29	positive	wh_dlc06_lord_abilities_tricksy_traps		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_lil_waaagh_night_shroud	wh_main_spell_lil_waaagh_night_shroud	-1	False	True	True	0	
+-1	positive	wh_dlc06_lord_passive_locus_of_power		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc06_lord_passive_sneaky_schemes		False	False	False	0	0	0	300	1	0	0	-1	1	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc06_lord_passive_warpaint_of_wurrzag		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	negative	wh_dlc06_lord_passive_wurrzags_revenge		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+60	positive	wh_dlc06_quest_abilities_grand_faiths_bastion		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_ward_save_all	wh_ability_positive	-1	False	True	True	0	
+15	positive	wh_dlc06_quest_passive_inquisitor_of_sigmar		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+1	negative	wh_dlc06_quest_passive_squigs_go_boom		False	False	False	0	0	0	0.5	0	0.75	60	1	0	False	0	0	False	0				-1	False	True	True	0	
+18	positive	wh_dlc06_rune_abilities_master_rune_of_negation		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_ward_save_all	wh_ability_positive	-1	False	True	True	0	
+25	positive	wh_dlc06_rune_abilities_master_rune_of_oath_and_steel		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence	wh_ability_positive	-1	False	True	True	0	
+30	negative	wh_dlc06_rune_abilities_master_rune_of_wrath_and_ruin		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_defence	wh_ability_negative	-1	False	True	True	0	
+-1	negative	wh_dlc06_rune_passive_master_rune_of_slowness		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack_passive		-1	False	True	True	0	
+-1	positive	wh_dlc06_rune_passive_rune_of_hearth_and_home		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence_morale_passive		-1	False	True	True	0	
+28	negative	wh_dlc06_unit_abilities_marked_by_ulthar		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_defence		-1	False	True	True	0	
+21	negative	wh_dlc06_unit_abilities_smoke_bomb		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack		-1	False	True	True	0	
+10	negative	wh_dlc06_unit_contact_blinded		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0				-1	False	False	True	0	
+10	negative	wh_dlc06_unit_contact_discouraged		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0				-1	False	False	True	0	
+10	negative	wh_dlc06_unit_contact_flammable		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0				-1	False	False	True	0	
+10	negative	wh_dlc06_unit_contact_sundered_armour		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0				-1	False	False	True	0	
+-1	positive	wh_dlc06_unit_passive_liquid_fortification		False	False	False	0	0	0	0.5	2	0	0	0	2	False	0	0	False	0				-1	False	True	True	0	
+15	positive	wh_dlc06_unit_passive_opportunist_murderer		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	positive	wh_dlc06_unit_passive_power_of_the_dragonback		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0	wh_dlc06_unit_contact_flammable			-1	False	True	True	0	
+-1	positive	wh_dlc06_unit_passive_squigs_go_wild		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+5	positive	wh_dlc06_unit_passive_the_old_grumblers		False	False	False	-0.09	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_hp_regen_passive		-1	False	True	True	0	
+115	negative	wh_dlc06_unit_passive_unbinding_spider_hatchling		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_bound_entity_energy_small	wh2_dlc13_ability_summon_unbinding_generic_large_phase_01	-1	False	True	True	0	
+17	positive	wh_dlc06_weapon_passive_bonewoof_staff		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc06_weapon_passive_hammer_of_angrund		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+48	positive	wh_dlc07_hero_abilities_dolorous_blade		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+-1	positive	wh_dlc07_hero_passive_precise_control		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	positive	wh_dlc07_hero_passive_sacred_guardian		False	False	False	0	0	0	0.5	2	0	0	0	2	False	0	0	False	0		wh_main_generic_hp_regen_passive		-1	False	True	True	0	
+44	positive	wh_dlc07_lord_abilities_favour_of_the_fay		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_dlc07_ability_favour_of_the_fay	-1	False	True	True	0	
+22	positive	wh_dlc07_lord_abilities_lions_shield		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_ward_save_magic	wh_ability_positive	-1	False	True	True	0	
+-1	negative	wh_dlc07_lord_passive_mist_of_the_lady		False	False	False	0	0	0	1	0	1	4	4	0	False	0	0	False	0		wh_main_generic_hp_damage_passive		-1	False	True	True	0	
+-1	positive	wh_dlc07_lord_passive_spirit_of_the_tempest		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	positive	wh_dlc07_unit_formation_diamond		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc07_unit_formation_flying_wedge		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc07_unit_formation_lance		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+3	positive	wh_dlc07_unit_formation_lance_buffer		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc07_unit_passive_icon_of_devotion		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_morale_passive		-1	False	True	True	0	
+24	negative	wh_dlc08_character_abilities_hunter_of_champions		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_dlc08_spell_nor_hunter_of_champions	wh_ability_negative	-1	False	True	True	0	
+-1	positive	wh_dlc08_hero_passive_frenzied_assault		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc08_hero_passive_ruinious_flesh		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc08_hero_passive_twisted_flesh_i		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc08_hero_passive_twisted_flesh_ii		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc08_hero_passive_twisted_flesh_iii		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc08_hero_passive_vicious_assault_i		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc08_hero_passive_vicious_assault_ii		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_dlc08_hero_passive_vicious_assault_iii		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+44	positive	wh_dlc08_item_abilities_terrorgheist_skull		False	False	False	0	0	-60	0	0	0	0	-1	0	False	0	0	False	0	wh_dlc06_unit_contact_blinded		wh_dlc08_ability_terrorgheist_skull	-1	False	True	True	0	
+24	positive	wh_dlc08_item_abilities_the_wintertooth_crown		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_buff_defence_morale	wh_ability_positive	-1	False	True	True	0	
+73	positive	wh_dlc08_item_abilities_vial_of_troll_blood		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_morale	wh_ability_positive	-1	False	True	True	0	
+-1	positive	wh_dlc08_lord_passive_daring_deathblow		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	positive	wh_dlc08_lord_passive_determined_deathblow		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	negative	wh_dlc08_quest_abilities_soul_binding		False	False	False	0	0	0	0.5	0	1	150	8	0	False	0	0	False	0		wh_main_spell_death_soulblight	wh_main_spell_death_soulblight	-1	False	True	True	0	
+-1	positive	wh_dlc08_quest_ancient_protector		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_dlc08_life_ancient_protector_entity_buff		-1	False	True	True	0	
+-1	negative	wh_dlc08_quest_passive_chilling_aura_boss		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_debuff_defence_passive		-1	False	True	True	0	
+10	negative	wh_dlc08_quest_passive_exploding_fart		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_defence_attack_morale_passive	wh_dlc08_ability_explosive_fart	-1	False	True	True	0	
+240	positive	wh_dlc08_quest_passive_favoured_by_the_god		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_dlc05_abilities_aura_of_transmutation		-1	False	True	True	0	
+20	positive	wh_dlc08_quest_passive_lightening_down		False	True	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+30	positive	wh_dlc08_unit_abilities_berserk_i		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack		-1	False	True	True	0	
+30	positive	wh_dlc08_unit_abilities_berserk_ii		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack		-1	False	True	True	0	
+30	positive	wh_dlc08_unit_abilities_berserk_iii		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack		-1	False	True	True	0	
+-1	positive	wh_dlc08_unit_abilities_favour_of_the_ruinous_powers		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_morale_passive		-1	False	True	True	0	
+18	positive	wh_dlc08_unit_abilities_fight_or_die		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+29	positive	wh_dlc08_unit_abilities_giver_of_glory		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	10		wh_main_generic_buff_morale_attack	wh_ability_positive	-1	False	True	True	0	
+45	positive	wh_dlc08_unit_abilities_rage_i		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_dlc08_ability_passive_rage	-1	False	True	True	0	
+45	positive	wh_dlc08_unit_abilities_rage_ii		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_dlc08_ability_passive_rage	-1	False	True	True	0	
+45	positive	wh_dlc08_unit_abilities_rage_iii		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_dlc08_ability_passive_rage	-1	False	True	True	0	
+17	positive	wh_dlc08_unit_abilities_seduction_of_the_serpent		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0	wh_dlc06_unit_contact_discouraged	wh_main_generic_buff_defence	wh_ability_positive	-1	False	True	True	0	
+10	negative	wh_dlc08_unit_contact_frostbite		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0				-1	False	False	True	0	
+-1	positive	wh_dlc08_unit_passive_from_the_mist		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+57	positive	wh_dlc08_weapon_abilities_stinky_giant_club		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_banner	wh_ability_positive	-1	False	True	True	0	
+44	positive	wh_dlc08_weapon_abilities_sword_of_torgald		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_banner	wh_ability_positive_banner	-1	False	True	True	0	
+-1	positive	wh_dlc08_weapon_passive_flaming_axe_of_cormac		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	10				-1	False	True	True	0	
+66	negative	wh_dlc15_unit_passive_unbinding_rogue_idol		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_bound_entity_energy_large	wh2_dlc13_ability_summon_unbinding_generic_large_phase_01	-1	False	True	True	0	
+-1	positive	wh_main_banner_passive_banner_of_eternal_flame		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	50				-1	False	True	True	0	
+-1	positive	wh_main_banner_passive_banner_of_lost_holds		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_debuff_attack_passive		-1	False	True	True	0	
+-1	positive	wh_main_banner_passive_banner_of_rage		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_main_banner_passive_gleaming_pennant		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0				-1	False	True	True	0	
+-1	negative	wh_main_banner_passive_griffon_banner		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_debuff_morale_passive		-1	False	True	True	0	
+-1	negative	wh_main_banner_passive_scarecrow_banner		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_buff_morale_passive		-1	False	True	True	0	
+-1	positive	wh_main_banner_passive_spider_banner		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0	wh_main_unit_contact_poison			-1	False	True	True	0	
+-1	negative	wh_main_banner_passive_the_screaming_banner		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_debuff_morale_passive		-1	False	True	True	0	
+40	positive	wh_main_character_abilities_arcane_conduit		False	False	False	0	0	0	0	0	0	0	-1	0	False	0.15	10	False	0		wh2_main_generic_buff_wom_banner	wh_ability_negative_one_shot	-1	False	True	True	0	
+33	positive	wh_main_character_abilities_blood_lust		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+31	positive	wh_main_character_abilities_deadly_onslaught		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+25	positive	wh_main_character_abilities_foe_seeker		False	False	False	-0.18	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_main_character_abilities_foe_seeker	-1	False	True	True	0	
+14	positive	wh_main_character_abilities_get_back_ere		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_morale_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+25	positive	wh_main_character_abilities_heroic_killing_blow		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+14	positive	wh_main_character_abilities_magical_animus		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+14	positive	wh_main_character_abilities_rally		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+31	positive	wh_main_character_abilities_red_fury		False	False	False	-0.18	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_main_character_abilities_red_fury	-1	False	True	True	0	
+18	positive	wh_main_character_abilities_stand_or_die		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence	wh_ability_positive	-1	False	True	True	0	
+18	positive	wh_main_character_abilities_stand_your_ground		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence	wh_ability_positive	-1	False	True	True	0	
+18	positive	wh_main_character_abilities_undeath_resurgent		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence	wh_ability_positive	-1	False	True	True	0	
+30	positive	wh_main_character_abilities_waaagh		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc10_waaagh	wh_main_character_abilities_waaagh	-1	False	True	True	0	
+-1	positive	wh_main_character_passive_benediction		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_morale_passive		-1	False	True	True	0	
+-1	positive	wh_main_character_passive_dark_benediction		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_morale_passive		-1	False	True	True	0	
+-1	positive	wh_main_character_passive_evasion		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_main_character_passive_master_of_the_dead		False	False	False	0	0	0	0.5	2	0	0	0	2	False	0	0	False	0		wh_main_generic_hp_regen_passive		-1	False	True	True	0	
+35	negative	wh_main_hero_abilities_accusation		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_defence	wh_ability_negative	-1	False	True	True	0	
+32	positive	wh_main_hero_abilities_ballistics_calibration		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+22	positive	wh_main_hero_abilities_faiths_bastion		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_ward_save_all	wh_ability_positive	-1	False	True	True	0	
+13	positive	wh_main_hero_abilities_immortal_will		False	False	False	0	0	0	0.5	24	0	0	0	24	False	0	0	False	0		wh_main_generic_hp_regen	wh_main_item_abilities_potion_of_healing	-1	False	True	True	0	
+50	positive	wh_main_hero_abilities_mad_cap_mushrooms		False	False	False	0	0	-30	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+25	positive	wh_main_hero_abilities_slippery		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence	wh_ability_positive	-1	False	True	True	0	
+-1	positive	wh_main_hero_passive_aura_of_the_lady		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_ward_save_magic_passive		-1	False	True	True	0	
+-1	positive	wh_main_hero_passive_extra_powder		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh2_dlc11_unit_passive_extra_powder		-1	False	True	True	0	
+-1	positive	wh_main_hero_passive_forgefire		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_spell_fire_passive		-1	False	True	True	0	
+-1	negative	wh_main_hero_passive_swarm_of_flies		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+30	positive	wh_main_item_abilities_black_periapt		False	False	False	0	0	0	0	0	0	0	-1	0	False	0.3	20	False	0		wh2_main_generic_buff_wom_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+29	positive	wh_main_item_abilities_channelling_staff		False	False	False	0	0	-15	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+29	positive	wh_main_item_abilities_cloak_of_mists_and_shadows		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	True	0		wh_main_generic_ward_save_all	wh_ability_positive	-1	False	True	True	0	
+30	positive	wh_main_item_abilities_crown_of_command		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_morale	wh_ability_positive	-1	False	True	True	0	
+22	positive	wh_main_item_abilities_daemonic_strength		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+57	positive	wh_main_item_abilities_dark_fortune		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_ward_save_all	wh_ability_positive	-1	False	True	True	0	
+36	positive	wh_main_item_abilities_earthing_rod		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+40	positive	wh_main_item_abilities_forbidden_rod		False	False	False	0	0	0	1	0	0.7	24	1	0	False	0.3	20	False	0		wh2_main_generic_buff_wom_banner	wh_ability_positive_banner	-1	False	True	True	0	
+22	positive	wh_main_item_abilities_opal_amulet		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_ward_save_all	wh_ability_positive	-1	False	True	True	0	
+42	positive	wh_main_item_abilities_pendant_of_slaanesh		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+31	positive	wh_main_item_abilities_potion_of_foolhardiness		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_morale	wh_ability_positive	-1	False	True	True	0	
+33	positive	wh_main_item_abilities_potion_of_healing		False	False	False	0	0	0	0.5	24	0	0	0	24	False	0	0	False	0		wh_main_generic_hp_regen	wh_main_item_abilities_potion_of_healing	-1	False	True	True	0	
+36	positive	wh_main_item_abilities_potion_of_speed		False	False	False	-0.18	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+33	positive	wh_main_item_abilities_potion_of_strength		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+21	positive	wh_main_item_abilities_potion_of_toughness		False	False	False	0	0	0	0.5	24	0	0	0	24	False	0	0	False	0		wh_main_generic_buff_defence_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+50	positive	wh_main_item_abilities_power_stone		False	False	False	0	0	0	0	0	0	0	-1	0	False	0.15	10	False	0		wh2_main_generic_buff_wom_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+33	positive	wh_main_item_abilities_regenerating_flesh		False	False	False	0	0	0	0.5	24	0	0	0	24	False	0	0	False	0		wh_main_generic_hp_regen	wh_main_item_abilities_potion_of_healing	-1	False	True	True	0	
+22	positive	wh_main_item_abilities_sceptre_of_stability		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_ward_save_magic	wh_ability_positive	-1	False	True	True	0	
+44	negative	wh_main_item_abilities_scroll_of_leeching		False	False	False	0	0	0	0	0	0	0	-1	0	False	-0.15	0	False	0		wh2_main_generic_debuff_wom_banner	wh_ability_negative_one_shot	-1	False	True	True	0	
+57	positive	wh_main_item_abilities_scroll_of_power		False	False	False	0	0	-60	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+57	positive	wh_main_item_abilities_scroll_of_shielding		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_ward_save_all	wh_ability_positive	-1	False	True	True	0	
+22	positive	wh_main_item_abilities_silver_horn_of_vengeance		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+36	negative	wh_main_item_abilities_skull_of_katam		False	False	False	0	0	0	0	0	0	0	-1	0	False	-0.07500001	0	False	0		wh2_main_generic_debuff_wom_banner	wh_ability_negative_one_shot	-1	False	True	True	0	
+27	positive	wh_main_item_abilities_skull_wand_of_kaloth		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0	wh_dlc06_unit_contact_discouraged	wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+24	positive	wh_main_item_abilities_staff_of_volans		False	False	False	0	0	0	0	0	0	0	-1	0	False	0.45	20	False	0		wh2_main_generic_buff_wom_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+16	negative	wh_main_item_abilities_tricksters_shard		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack	wh_ability_negative	-1	False	True	True	0	
+16	negative	wh_main_item_abilities_van_horstmanns_speculum		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_buff_defence_attack	wh_ability_positive	-1	False	True	True	0	
+57	positive	wh_main_item_abilities_wand_of_jet		False	False	False	0	0	30	0	0	0	0	-1	0	False	0.15	10	False	0		wh2_main_generic_buff_wom_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+-1	negative	wh_main_item_passive_featherfoe_torc		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack_passive		-1	False	True	True	0	
+-1	negative	wh_main_item_passive_pidgeon_plucker_pendant		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack_passive		-1	False	True	True	0	
+-1	positive	wh_main_item_passive_seed_of_rebirth		False	False	False	0	0	0	0.5	2	0	0	0	2	False	0	0	False	0		wh_main_generic_hp_regen_passive		-1	False	True	True	0	
+-1	positive	wh_main_item_passive_the_great_book_of_grudges		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	negative	wh_main_item_passive_the_other_tricksters_shard		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_defence_passive		-1	False	True	True	0	
+-1	negative	wh_main_item_passive_the_white_cloak_of_ulric		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_morale_passive		-1	False	True	True	0	
+20	positive	wh_main_lord_abilities_master_of_the_black_arts		False	False	False	0	0	0	0	0	0	0	-1	0	False	0.15	10	False	0		wh2_main_generic_buff_wom_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+-1	positive	wh_main_lord_passive_beloved_son_of_bretonnia		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_main_lord_passive_deathblow		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	positive	wh_main_lord_passive_get_on_wiv_it		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_passive		-1	False	True	True	0	
+-1	positive	wh_main_lord_passive_high_king		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_main_lord_passive_hold_the_line		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence_morale_passive		-1	False	True	True	0	
+-1	positive	wh_main_lord_passive_the_blessing_of_the_lady		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_ward_save_all_passive		-1	False	True	True	0	
+-1	positive	wh_main_lord_passive_the_hunger		False	False	False	0	0	0	0.5	2	0	0	0	2	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_main_lord_passive_the_ladys_champion		False	False	False	0	0	0	0.5	2	0	0	0	2	False	0	0	False	0				-1	False	True	True	0	
+11	positive	wh_main_lore_passive_exorcism		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+15	negative	wh_main_lore_passive_kindleflame		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+25	positive	wh_main_lore_passive_life_leeching		False	False	False	0	0	0	0	0	0	0	-1	0	False	0.15	0	False	0				-1	False	True	True	0	
+13	positive	wh_main_lore_passive_metalshifting		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+25	positive	wh_main_lore_passive_power_of_da_waaagh		False	False	False	0	0	0	0	0	0	0	-1	0	False	0.15	0	False	0				-1	False	True	True	0	
+25	negative	wh_main_lore_passive_roiling_skies		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+25	negative	wh_main_lore_passive_sneaky_stealin		False	False	False	0	0	0	0	0	0	0	-1	0	False	-0.07500001	0	False	0				-1	False	True	True	0	
+7	positive	wh_main_lore_passive_the_curse_of_undeath		False	False	False	0	0	0	0.5	4	0	0	-1	4	True	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_main_mark_passive_mark_of_khorne		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	negative	wh_main_mount_abilities_locus_of_hysh		False	False	False	0	0	0	0	0	0	0	-1	0	False	-0.03	0	False	0				-1	False	True	True	0	
+-1	positive	wh_main_mount_passive_aura_of_protection		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_ward_save_all_passive		-1	False	True	True	0	
+-1	negative	wh_main_mount_passive_bloodroar		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_defence_attack_morale_passive		-1	False	True	True	0	
+15	positive	wh_main_rune_abilities_ancestor_rune		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+33	positive	wh_main_rune_abilities_rune_of_courage		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_morale	wh_ability_positive	-1	False	True	True	0	
+25	positive	wh_main_rune_abilities_rune_of_negation		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_ward_save_all	wh_ability_positive	-1	False	True	True	0	
+25	positive	wh_main_rune_abilities_rune_of_oath_and_steel		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence	wh_ability_positive	-1	False	True	True	0	
+25	positive	wh_main_rune_abilities_rune_of_stoicism		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_morale	wh_ability_positive	-1	False	True	True	0	
+15	negative	wh_main_rune_abilities_rune_of_wrath_and_ruin		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_defence	wh_ability_negative	-1	False	True	True	0	
+-1	positive	wh_main_rune_passive_master_rune_of_groth_one_eye		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_morale_passive		-1	False	True	True	0	
+-1	positive	wh_main_rune_passive_master_rune_of_grungni		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_ward_save_missile_passive		-1	False	True	True	0	
+-1	positive	wh_main_rune_passive_master_rune_of_stromni_redbeard		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_morale_attack_passive		-1	False	True	True	0	
+-1	negative	wh_main_rune_passive_rune_of_slowness		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack_passive		-1	False	True	True	0	
+38	positive	wh_main_spell_big_waaagh_ere_we_go		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_big_waaagh_ere_we_go	wh_main_spell_big_waaagh_ere_we_go	-1	False	True	True	0	
+35	positive	wh_main_spell_big_waaagh_fists_of_gork		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	True	0		wh_main_spell_big_waaagh_fists_of_gork	wh_main_spell_big_waaagh_fists_of_gork	-1	False	True	True	0	
+25	positive	wh_main_spell_bound_book_of_arkhan		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+25	positive	wh_main_spell_bound_hammer_of_sigmar		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+25	positive	wh_main_spell_bound_shield_of_faith		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_ward_save_all	wh_ability_positive	-1	False	True	True	0	
+25	positive	wh_main_spell_bound_staff_of_damnation		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_spell_vampires_vanhels_danse_macabre		-1	False	True	True	0	
+16	positive	wh_main_spell_death_aspect_of_the_dreadknight		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_death_aspect_of_the_dreadknight	wh_main_spell_death_aspect_of_the_dreadknight	-1	False	True	True	0	
+32	positive	wh_main_spell_death_aspect_of_the_dreadknight_upgraded		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_death_aspect_of_the_dreadknight	wh_main_spell_death_aspect_of_the_dreadknight	-1	False	True	True	0	
+36	negative	wh_main_spell_death_doom_and_darkness		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_death_doom_and_darkness	wh_main_spell_death_doom_and_darkness	-1	False	True	True	0	
+36	negative	wh_main_spell_death_doom_and_darkness_upgraded		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_death_doom_and_darkness	wh_main_spell_death_doom_and_darkness	-1	False	True	True	0	
+25	negative	wh_main_spell_death_soulblight		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_death_soulblight	wh_main_spell_death_soulblight	-1	False	True	True	0	
+50	negative	wh_main_spell_death_soulblight_upgraded		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_death_soulblight	wh_main_spell_death_soulblight	-1	False	True	True	0	
+13	negative	wh_main_spell_death_spirit_leech		False	False	False	0	0	0	2	0	0.5	144	1	0	False	0	0	False	0		wh_main_spell_death_spirit_leech	wh_main_spell_death_spirit_leech	-1	False	False	True	0	
+13	negative	wh_main_spell_death_spirit_leech_upgraded		False	False	False	0	0	0	2	0	0.5	144	1	0	False	0	0	False	0		wh_main_spell_death_spirit_leech	wh_main_spell_death_spirit_leech	-1	False	False	True	0	
+20	negative	wh_main_spell_death_the_fate_of_bjuna		False	False	False	0	0	0	0.5	0	0.18	9	9	0	False	0	0	False	0		wh_main_spell_death_the_fate_of_bjuna	wh_main_spell_death_the_fate_of_bjuna	-1	False	True	True	0	
+19	positive	wh_main_spell_fire_cascading_fire_cloak		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_fire_cascading_fire_cloak	wh_main_spell_fire_cascading_fire_cloak	-1	False	True	True	0	
+22	positive	wh_main_spell_fire_flaming_sword_of_rhuin		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	True	10		wh_main_spell_fire_flaming_sword_of_rhuin	wh_main_spell_fire_flaming_sword_of_rhuin	-1	False	True	True	0	
+44	positive	wh_main_spell_fire_flaming_sword_of_rhuin_upgraded		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	True	10		wh_main_spell_fire_flaming_sword_of_rhuin	wh_main_spell_fire_flaming_sword_of_rhuin	-1	False	True	True	0	
+25	negative	wh_main_spell_heavens_curse_of_the_midnight_wind		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_heavens_curse_of_the_midnight_wind	wh_main_spell_heavens_curse_of_the_midnight_wind	-1	False	True	True	0	
+50	negative	wh_main_spell_heavens_curse_of_the_midnight_wind_upgraded		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_heavens_curse_of_the_midnight_wind	wh_main_spell_heavens_curse_of_the_midnight_wind	-1	False	True	True	0	
+22	positive	wh_main_spell_heavens_harmonic_convergence		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_heavens_harmonic_convergence	wh_main_spell_heavens_harmonic_convergence	-1	False	True	True	0	
+22	positive	wh_main_spell_heavens_harmonic_convergence_upgraded		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_heavens_harmonic_convergence	wh_main_spell_heavens_harmonic_convergence	-1	False	True	True	0	
+50	positive	wh_main_spell_light_bironas_timewarp		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_light_bironas_timewarp	wh_main_spell_light_bironas_timewarp	-1	False	True	True	0	
+50	positive	wh_main_spell_light_bironas_timewarp_upgraded		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_light_bironas_timewarp	wh_main_spell_light_bironas_timewarp	-1	False	True	True	0	
+22	positive	wh_main_spell_light_light_of_battle		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_light_light_of_battle	wh_main_spell_light_light_of_battle	-1	False	True	True	0	
+44	positive	wh_main_spell_light_light_of_battle_upgraded		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_light_light_of_battle	wh_main_spell_light_light_of_battle	-1	False	True	True	0	
+20	negative	wh_main_spell_light_net_of_amyntok		False	True	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_light_net_of_amyntok	wh_main_spell_light_net_of_amyntok	-1	False	True	True	0	
+20	negative	wh_main_spell_light_net_of_amyntok_upgraded		False	True	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_light_net_of_amyntok	wh_main_spell_light_net_of_amyntok	-1	False	True	True	0	
+22	positive	wh_main_spell_light_phas_protection		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_light_phas_protection	wh_main_spell_light_phas_protection	-1	False	True	True	0	
+22	positive	wh_main_spell_light_phas_protection_upgraded		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_light_phas_protection	wh_main_spell_light_phas_protection	-1	False	True	True	0	
+22	negative	wh_main_spell_lil_waaagh_curse_of_da_bad_moon		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	False	True	0	
+44	negative	wh_main_spell_lil_waaagh_curse_of_da_bad_moon_upgraded		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	False	True	0	
+24	negative	wh_main_spell_lil_waaagh_gorkll_fix_it		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_lil_waaagh_gorkll_fix_it	wh_main_spell_lil_waaagh_gorkll_fix_it	-1	False	True	True	0	
+25	negative	wh_main_spell_lil_waaagh_itchy_nuisance		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_lil_waaagh_itchy_nuisance	wh_main_spell_lil_waaagh_itchy_nuisance	-1	False	True	True	0	
+41	positive	wh_main_spell_lil_waaagh_night_shroud		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_lil_waaagh_night_shroud	wh_main_spell_lil_waaagh_night_shroud	-1	False	True	True	0	
+82	positive	wh_main_spell_lil_waaagh_night_shroud_upgraded		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_lil_waaagh_night_shroud	wh_main_spell_lil_waaagh_night_shroud	-1	False	True	True	0	
+19	positive	wh_main_spell_lil_waaagh_sneaky_stabbin		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_lil_waaagh_sneaky_stabbin	wh_main_spell_lil_waaagh_sneaky_stabbin	-1	False	True	True	0	
+8	negative	wh_main_spell_metal_final_transmutation		False	False	False	0	0	0	1	0	0.5	144	1	0	False	0	0	False	0		wh_main_spell_metal_final_transmutation	wh_main_spell_metal_final_transmutation	-1	False	True	True	0	
+16	negative	wh_main_spell_metal_final_transmutation_upgraded		False	False	False	0	0	0	1	0	0.5	144	1	0	False	0	0	False	0		wh_main_spell_metal_final_transmutation	wh_main_spell_metal_final_transmutation	-1	False	True	True	0	
+44	positive	wh_main_spell_metal_glittering_robe		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_metal_glittering_robe	wh_main_spell_metal_glittering_robe	-1	False	True	True	0	
+44	positive	wh_main_spell_metal_glittering_robe_upgraded		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_metal_glittering_robe	wh_main_spell_metal_glittering_robe	-1	False	True	True	0	
+44	negative	wh_main_spell_metal_plague_of_rust		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_metal_plague_of_rust	wh_main_spell_metal_plague_of_rust	-1	False	True	True	0	
+44	negative	wh_main_spell_metal_plague_of_rust_upgraded		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_metal_plague_of_rust	wh_main_spell_metal_plague_of_rust	-1	False	True	True	0	
+38	negative	wh_main_spell_metal_transmutation_of_lead		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_metal_transmutation_of_lead	wh_main_spell_metal_transmutation_of_lead	-1	False	True	True	0	
+38	negative	wh_main_spell_metal_transmutation_of_lead_upgraded		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_metal_transmutation_of_lead	wh_main_spell_metal_transmutation_of_lead	-1	False	True	True	0	
+32	negative	wh_main_spell_vampires_curse_of_years		False	False	False	0	0	15	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_vampires_curse_of_years	wh_main_spell_vampires_curse_of_years	-1	False	True	True	0	
+18	positive	wh_main_spell_vampires_invocation_of_nehek		False	False	False	0	0	0	0.5	24	0	0	0	24	True	0	0	False	0		wh_main_spell_vampires_invocation_of_nehek	wh_main_spell_invocation_of_nehek	-1	False	True	True	0	
+18	positive	wh_main_spell_vampires_invocation_of_nehek_upgraded		False	False	False	0	0	0	0.5	24	0	0	0	24	True	0	0	False	0		wh_main_spell_vampires_invocation_of_nehek	wh_main_spell_invocation_of_nehek	-1	False	True	True	0	
+29	positive	wh_main_spell_vampires_vanhels_danse_macabre		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_vampires_vanhels_danse_macabre	wh_main_spell_vampires_vanhels_danse_macabre	-1	False	True	True	0	
+29	positive	wh_main_spell_vampires_vanhels_danse_macabre_upgraded		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_spell_vampires_vanhels_danse_macabre	wh_main_spell_vampires_vanhels_danse_macabre	-1	False	True	True	0	
+-1	positive	wh_main_unit_abilities_black_nimbus		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_ward_save_all		-1	False	True	True	0	
+-1	positive	wh_main_unit_abilities_black_scythes		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack		-1	False	True	True	0	
+18	positive	wh_main_unit_abilities_blooood		False	False	False	-0.18	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+15	positive	wh_main_unit_abilities_boom		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+44	positive	wh_main_unit_abilities_entrenchment		False	True	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_main_unit_abilities_entrenchment	-1	False	True	True	0	
+13	positive	wh_main_unit_abilities_killing_blow		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+-1	positive	wh_main_unit_abilities_unholy_vigour		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	10		wh_main_generic_buff_defence_attack		-1	False	True	True	0	
+10	negative	wh_main_unit_contact_morale		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	False	True	0	
+10	negative	wh_main_unit_contact_overhead_morale		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	False	True	0	
+10	negative	wh_main_unit_contact_poison		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0				-1	False	False	True	0	
+-1	positive	wh_main_unit_passive_frenzy		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+-1	positive	wh_main_unit_passive_regeneration		False	False	False	0	0	0	0.5	2	0	0	0	2	False	0	0	False	0				-1	False	True	True	0	
+5	negative	wh_main_unit_passive_unbinding_critical		False	False	False	0	0	0	0.2	0	1	750	10	0	False	0	0	False	0		wh_main_bound_entity_energy_small_extreme	wh2_dlc13_ability_summon_unbinding_generic_phase_03	-1	False	True	True	0	
+5	negative	wh_main_unit_passive_unbinding_critical_eagle		False	False	False	0	0	0	0.2	0	1	750	10	0	False	0	0	False	0		wh_main_bound_entity_energy_small_extreme	wh2_dlc13_ability_summon_unbinding_generic_phase_03	-1	False	True	True	0	
+5	negative	wh_main_unit_passive_unbinding_critical_large		False	False	False	0	0	0	0.2	0	1	750	10	0	False	0	0	False	0		wh_main_bound_entity_energy_large_extreme	wh2_dlc13_ability_summon_unbinding_generic_phase_03	-1	False	True	True	0	
+5	negative	wh_main_unit_passive_unbinding_critical_manticore		False	False	False	0	0	0	0.2	0	1	750	10	0	False	0	0	False	0		wh_main_bound_entity_energy_manticore_extreme	wh2_dlc13_ability_summon_unbinding_generic_phase_03	-1	False	True	True	0	
+5	negative	wh_main_unit_passive_unbinding_critical_rat		False	False	False	0	0	0	0.2	0	1	750	10	0	False	0	0	False	0		wh_main_bound_entity_energy_small_extreme	wh2_dlc13_ability_summon_unbinding_generic_phase_03	-1	False	True	True	0	
+45	negative	wh_main_unit_passive_unbinding_feral_cold_ones		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_bound_entity_energy_small	wh2_dlc13_ability_summon_unbinding_generic_large_phase_01	-1	False	True	True	0	
+45	negative	wh_main_unit_passive_unbinding_skeleton_warriors		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_bound_entity_energy_small	wh2_dlc13_ability_summon_unbinding_generic_small_phase_01	-1	False	True	True	0	
+30	negative	wh_main_unit_passive_unbinding_weak		False	False	False	0	0	0	0.2	0	1	8	1	0	False	0	0	False	0		wh_main_bound_entity_energy_small_low	wh2_dlc13_ability_summon_unbinding_generic_small_phase_02	-1	False	True	True	0	
+30	negative	wh_main_unit_passive_unbinding_weak_eagle		False	False	False	0	0	0	0.2	0	1	8	1	0	False	0	0	False	0		wh_main_bound_entity_energy_small_low	wh2_dlc13_ability_summon_unbinding_generic_large_phase_02	-1	False	True	True	0	
+30	negative	wh_main_unit_passive_unbinding_weak_large		False	False	False	0	0	0	0.2	0	1	8	1	0	False	0	0	False	0		wh_main_bound_entity_energy_large_low	wh2_dlc13_ability_summon_unbinding_generic_large_phase_02	-1	False	True	True	0	
+30	negative	wh_main_unit_passive_unbinding_weak_manticore		False	False	False	0	0	0	0.2	0	1	8	1	0	False	0	0	False	0		wh_main_bound_entity_energy_manticore_low	wh2_dlc13_ability_summon_unbinding_generic_large_phase_02	-1	False	True	True	0	
+30	negative	wh_main_unit_passive_unbinding_weak_rat		False	False	False	0	0	0	0.2	0	1	8	1	0	False	0	0	False	0		wh_main_bound_entity_energy_small_low	wh2_dlc13_ability_summon_unbinding_generic_small_phase_02	-1	False	True	True	0	
+99	negative	wh_main_unit_passive_unbinding_zombie		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_bound_entity_energy_small	wh2_dlc13_ability_summon_unbinding_generic_small_phase_01	-1	False	True	True	0	
+-1	negative	wh_main_unit_passive_unstable		False	False	False	0	0	0	1	0	1	12	1	0	False	0	0	False	0		wh_main_generic_crumble		-1	False	True	True	0	
+-1	negative	wh_main_unit_passive_unstable_mark_ii		False	False	False	0	0	0	0.2	0	1	72	5	0	False	0	0	False	0		wh_main_generic_crumble_II		-1	False	True	True	0	
+-1	positive	wh_main_unit_passive_war_paint		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_generic_ward_save_magic_passive		-1	False	True	True	0	
+16	positive	wh_main_weapon_abilities_axe_of_dargo		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack_banner	wh_ability_negative_one_shot	-1	False	True	True	0	
+17	positive	wh_main_weapon_abilities_charmed_shield		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_ward_save_all	wh_ability_positive	-1	False	True	True	0	
+36	positive	wh_main_weapon_abilities_filth_mace		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0	wh_main_unit_contact_poison	wh_main_generic_buff_attack_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+39	positive	wh_main_weapon_abilities_ghal_maraz		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+18	positive	wh_main_weapon_abilities_gitsnik		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+50	positive	wh_main_weapon_abilities_hellfire_sword		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	10		wh_main_generic_buff_attack_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+25	negative	wh_main_weapon_abilities_helm_of_discord		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_defence_attack	wh_ability_negative	-1	False	True	True	0	
+33	positive	wh_main_weapon_abilities_runefang		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+40	positive	wh_main_weapon_abilities_sword_of_anti_heroes		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+50	negative	wh_main_weapon_abilities_the_hammer_of_karak_drazh		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_morale_attack_banner	wh_ability_negative_one_shot	-1	False	True	True	0	
+41	positive	wh_main_weapon_abilities_the_mace_of_helsturm		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	10		wh_main_generic_buff_attack_banner	wh_ability_positive_one_shot	-1	False	True	True	0	
+39	positive	wh_main_weapon_abilities_the_reikland_runefang		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+38	negative	wh_main_weapon_abilities_the_sword_of_couronne		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_defence	wh_ability_negative	-1	False	True	True	0	
+9	negative	wh_main_weapon_abilities_tormentor_sword		False	True	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_defence	wh_ability_negative	-1	False	True	True	0	
+-1	positive	wh_main_weapon_passive_chaos_tomb_blade		False	False	False	0	0	0	0.5	4	0	0	0	4	True	0	0	False	0		wh_main_generic_hp_regen_passive		-1	False	True	True	0	
+-1	negative	wh_main_weapon_passive_glittering_scales		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_weapon_passive_glittering_scales		-1	False	True	True	0	
+-1	positive	wh_main_weapon_passive_sword_of_unholy_power		False	False	False	0	0	0	0	0	0	0	-1	0	False	0.12	20	False	0				-1	False	True	True	0	
+-1	negative	wh_main_weapon_passive_warrior_bane		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack_passive		-1	False	True	True	0	
+-1	positive	wh_pro01_item_passive_rune_helm_of_zhufbar		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_buff_defence_morale_passive	wh_ability_positive	-1	False	True	True	0	
+16	negative	wh_pro01_lord_abilities_flash_bomb		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_debuff_attack		-1	False	True	True	0	
+32	positive	wh_pro01_lord_passive_grombrindal_has_no_fear		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+26	positive	wh_pro01_weapon_abilities_rune_axe_of_grombrindal		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0	wh_dlc06_unit_contact_discouraged	wh_main_generic_buff_attack	wh_ability_positive	-1	False	True	True	0	
+26	positive	wh_pro02_item_abilities_blood_chalice_of_bathori		False	False	False	-0.36	0	0	0.5	48	0	0	0	48	False	0	0	False	0		wh_main_generic_hp_regen	wh_main_item_abilities_potion_of_healing	-1	False	True	True	0	
+144	negative	wh_pro03_unit_passive_unbinding_krell		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_bound_entity_energy_small	wh2_dlc13_ability_summon_unbinding_generic_small_phase_01	-1	False	True	True	0	
+288	negative	wh_pro03_unit_passive_unbinding_krell_upgraded		False	False	False	0	0	0	0	0	0	0	0	0	False	0	0	False	0		wh_main_bound_entity_energy_small	wh2_dlc13_ability_summon_unbinding_generic_small_phase_01	-1	False	True	True	0	
+22	positive	wh_pro04_unit_abilities_enrage		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_dlc05_mammoth_phase	wh_ability_positive	-1	False	True	True	0	
+38	positive	wh_pro04_unit_abilities_loecs_shroud		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0				-1	False	True	True	0	
+12	positive	wh_pro04_unit_abilities_warp_gaze		False	True	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_dlc08_ability_warp_gaze	wh_ability_negative	-1	False	True	True	0	
+41	positive	wh_pro04_unit_passive_apocalyptic_charge		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_dlc08_apocaliptic_charge_banner_buff	wh_main_character_abilities_foe_seeker	-1	False	True	True	0	
+-1	positive	wh_pro04_unit_passive_guardian		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_ward_save_all		-1	False	True	True	0	
+44	positive	wh_pro04_unit_passive_soul_devourer		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_dlc08_ability_soul_devourer		-1	False	True	True	0	
+-1	positive	wh_pro04_unit_passive_wildfire_aura		False	False	False	0	0	0	0	0	0	0	-1	0	False	0	0	False	0		wh_main_generic_ward_save_all		-1	False	True	True	0	
