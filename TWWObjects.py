@@ -97,20 +97,13 @@ class TWWUnit:
             F = ""
         
         if math.isnan(self['ammo']):
+            missile_range = ""
+            missile_damage = ""
+            missile_strength = ""
             ammo = ""
-        else:
-            ammo = f"| Ammo             {int(self['ammo'])}\n"
-        
-        if math.isnan(self['range']):
-            weapon_range = ""
-        else:
-            weapon_range = f"| Range            {int(self['range'])}\n"
             
-        if math.isnan(self['ranged_total_damage']):
-            missile = ""
         else:
-            ranged_base = int(self['ranged_base_damage'])
-            ranged_ap = int(self['ranged_ap_damage'])
+            
             if self['ranged_is_magical']:
                 rM = "M"
             else:
@@ -119,8 +112,19 @@ class TWWUnit:
                 rF = "F"
             else:
                 rF = ""
-            missile = f"| Missile Strength {int(self['ranged_total_damage'])} ({ranged_base}\\{ranged_ap}) {rM}{rF}\n"
             
+            ranged_base = int(self['ranged_base_damage'])
+            ranged_ap = int(self['ranged_ap_damage'])
+            
+            base_reload = self["base_reload_time"]
+            reload_skill = self["reload_skill"]
+            reload_time = base_reload*(100-reload_skill)/100
+            
+            ammo =             f"| Ammo             {int(self['ammo'])} ({rM}{rF})\n"
+            missile_range =    f"| Range            {int(self['range'])}\n"
+            missile_damage =   f"| Missile Damage   {int(self['ranged_total_damage'])} ({ranged_base}\\{ranged_ap})\n"
+            missile_strength = f"| Missile Strength {int(self['ranged_total_damage']*10/reload_time)} ({reload_time}s)\n"
+        
         
         
         # NEED TO UPDATE WITH RANGED INFO
@@ -135,8 +139,9 @@ class TWWUnit:
               f"| Weapon Strength  {melee_total} ({melee_base}\\{melee_ap}) {M}{F}\n"
               f"| Charge Bonus     {int(self['charge_bonus'])}\n"
               f"{ammo}"
-              f"{weapon_range}"
-              f"{missile}"
+              f"{missile_range}"
+              f"{missile_strength}"
+              f"{missile_damage}"
               f"|\n"
               f"| Physical Resist  {self['damage_mod_physical']}%\n"
               f"| Magic Resist     {self['damage_mod_magic']}%\n"
