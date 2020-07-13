@@ -144,7 +144,29 @@ def random_unit(units):
     r, = np.random.randint(0,len(units),1)
     return units.iloc[r]
 
+
 def select_unit(unitsDF,name):
+    """
+    Look for a unit in the unitsDF with a name exactly equal to name
+    If there is exacty one then return that row using transpose and squeeze
+    Otherwise get every unit with a naame that contains name
+    If there are none those check if the input was a key instead and raise
+    and error if it is not
+    If there is exactly one result give that
+    If there is more than one result go through the partial matches and return
+    both their name and key
+    """
+    # Look for a unit with a name that matches exactly
+    # If we get exactly one match move on
+    # Otherwise
+    #     look for every unit that includes that name
+    #         if there is exactly one move on
+    #         if there are zero matches then
+    #              check if there is an exact match as a key value
+    #                  if not the input is invalid
+    #                  if there is then move on
+    #         if there is more then one match print out all the possibilities along with their key
+    
     unit = unitsDF[unitsDF["name"] == name]
     if len(unit) != 1:    
         unit = unitsDF[unitsDF["name"].str.contains(name)]
@@ -152,6 +174,9 @@ def select_unit(unitsDF,name):
             unit = unitsDF[unitsDF["key"] == name]
             if len(unit) == 0:
                 raise Exception(f"{name} is not a unit name or key")
+        
+        if len(unit) == 1:
+            return unit.T.squeeze()
         
         if len(unit) > 1:
             helper = unit[["name","key"]]
