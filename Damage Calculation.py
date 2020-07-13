@@ -10,7 +10,6 @@ def simulate_melee_attack(attacker,defender,units_attacking=None):
         units_attacking = math.ceil(attacker["unit_size"]*.2)
     
     print("## Attacker Stats ##")
-    attacker.unit_card()
     # Activate BvL if relevant
     if defender['is_large'] and attacker['melee_bonus_v_large'] > 0 and "BvL" not in attacker.effects:
         print("## Bonus vs Large Activated ##")
@@ -19,6 +18,7 @@ def simulate_melee_attack(attacker,defender,units_attacking=None):
     if not defender['is_large'] and attacker['melee_bonus_v_infantry'] > 0 and "BvI" not in attacker.effects:
         print("## Bonus vs Infantry Activated ##")
         attacker.toggle_BvI()
+    attacker.unit_card()
     
     print("\n## Defender Stats ##")
     defender.unit_card()
@@ -77,9 +77,11 @@ if __name__ == '__main__':
     effects_dict = pickle.load( open( "effectsDict.p", "rb" ) )
     
     fireborn = TWWUnit(select_unit(unitsDF,"The Fireborn"))
-    dryads = TWWUnit(select_unit(unitsDF,"wh_dlc05_wef_inf_dryads_0"))
+    trolls = TWWUnit(select_unit(unitsDF,"Trolls"))
+    
+    trolls.toggle_effect(effects_dict["Regeneration"])
     
     fireborn.toggle_effect(effects_dict["Martial Mastery"])
     fireborn.toggle_charge()
     
-    simulate_melee_attack(fireborn,dryads)
+    simulate_melee_attack(fireborn,trolls)

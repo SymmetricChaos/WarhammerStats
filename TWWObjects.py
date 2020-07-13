@@ -11,16 +11,13 @@ class TWWEffect:
     
     def __init__(self,name,effects):
         self.name = name
-        self.pretty_name = name
-        if self.pretty_name == "":
-            self.pretty_name = " ".join(name.split("_")[3:]).title()
         self.effects = effects
         
     def __str__(self):
-        return f"TWWEffect: {self.pretty_name}"
+        return f"TWWEffect: {self.name}"
     
     def __repr__(self):
-        return f"TWWEffect: {self.pretty_name}"
+        return f"TWWEffect: {self.name}"
     
     # This needs to deal with the fact that "speed" affects several stats
     def __call__(self,unit,remove=False):
@@ -33,6 +30,8 @@ class TWWEffect:
                 if stat[2] == 'mult':
                     try:
                         increase = round(unit.shadow[stat[1]]*stat[0]-unit.shadow[stat[1]])
+                        if type(stat[1]) == int:
+                            increase == int(increase)
                         if remove == False:
                             unit[stat[1]] += increase
                         else:
@@ -49,6 +48,7 @@ class TWWEffect:
                         pass
             unit["melee_total_damage"] = unit["melee_base_damage"]+unit["melee_ap_damage"]
             unit["ranged_total_damage"] = unit["ranged_base_damage"]+unit["ranged_ap_damage"]
+            unit["explosion_total_damage"] = unit["explosion_base_damage"]+unit["explosion_ap_damage"]
 
 
 
@@ -84,9 +84,10 @@ class TWWUnit:
     def unit_card(self):
         attributes = [attribute_pretty_name[att] for att in self['attributes']]
         
-        melee_total = int(self['melee_total_damage'])
-        melee_base = int(self['melee_base_damage'])
-        melee_ap = int(self['melee_ap_damage'])
+        # Melee Attack Stats
+        melee_total = self['melee_total_damage']
+        melee_base = self['melee_base_damage']
+        melee_ap = self['melee_ap_damage']
         
         if self['melee_is_magical']:
             M = "M"
@@ -96,6 +97,22 @@ class TWWUnit:
             F = "F"
         else:
             F = ""
+        
+        weapon_strength = f"| Weapon Strength  {melee_total} ({melee_base}\\{melee_ap}) {M}{F}\n"
+        
+        # Armor Stats
+        shield = self['missile_block_chance']
+        if shield == 0:
+            armor = f"| Armour           {self['armour']}\n"
+        else:
+            armor = f"| Armour           {self['armour']} ({shield}%)\n"
+        
+        spells = self['spells']
+        if len(spells) == 0:
+            spells = ""
+        else:
+            spells = f"| Spells: {', '.join(self['spells'])}\n"
+        
         
         if self['ammo'] == 0:
             missile_range = ""
@@ -128,12 +145,12 @@ class TWWUnit:
         
         print(f"\n| {self['name']}\n|\n"
               f"| HP               {self['health']}\n"
-              f"| Armour           {int(self['armour'])}\n"
-              f"| Leadership       {int(self['leadership'])}\n"
-              f"| Speed            {int(self['speed'])}\n"
-              f"| Melee Attack     {int(self['melee_attack'])}\n"
-              f"| Melee Defence    {int(self['melee_defence'])}\n"
-              f"| Weapon Strength  {melee_total} ({melee_base}\\{melee_ap}) {M}{F}\n"
+              f"{armor}"
+              f"| Leadership       {self['leadership']}\n"
+              f"| Speed            {self['speed']}\n"
+              f"| Melee Attack     {self['melee_attack']}\n"
+              f"| Melee Defence    {self['melee_defence']}\n"
+              f"{weapon_strength}"
               f"| Charge Bonus     {int(self['charge_bonus'])}\n"
               f"{ammo}"
               f"{missile_range}"
@@ -143,10 +160,13 @@ class TWWUnit:
               f"| Physical Resist  {self['damage_mod_physical']}%\n"
               f"| Magic Resist     {self['damage_mod_magic']}%\n"
               f"| Flame Resist     {self['damage_mod_flame']}%\n"
-              f"| Ward Save        {self['damage_mod_all']}%\n|\n"
+              f"| Ward Save        {self['damage_mod_all']}%\n"
+              f"|\n"
               f"| Fatigue: {self.fatigue.title()}\n|\n"
               f"| Attributes: {', '.join(attributes)}\n"
-              f"| Abilities: {', '.join(self['abilities'])}\n|\n"
+              f"| Abilities: {', '.join(self['abilities'])}\n"
+              f"{spells}"
+              f"|\n"
               f"| Active Effects: {', '.join(self.effects)}\n"
               )
         
@@ -154,7 +174,7 @@ class TWWUnit:
     def reset_stats(self):
         self.data = self.shadow
     
-    def change_stat(stat,value,operation,remove=False):
+    def change_stat(self,stat,value,operation,remove=False):
         if operation.lower() in ('add','addition'):
              if type(self[stat]) != str:
                  if remove == False:
@@ -170,7 +190,7 @@ class TWWUnit:
                      unit[stat] -= increase
         else:
             raise Exception("Operations must be either 'add' or 'mul'")
-        
+    
     
     def toggle_BvI(self):
         BvI = self.data["melee_bonus_v_infantry"]
