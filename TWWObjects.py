@@ -2,7 +2,7 @@ import math
 import pandas as pd
 import copy
 import pickle
-from Translators import attribute_pretty_name
+import textwrap
 
 
 fatigue_dict = pickle.load( open( "fatigueDict.p", "rb" ) )
@@ -94,9 +94,8 @@ class TWWUnit:
         return f"TWWUnit: {self['name']}"
     
     def unit_card(self):
-        attributes = [attribute_pretty_name[att] for att in self['attributes']]
         
-        # Melee Attack Stats
+        ### Melee Attack Stats ###
         melee_total = self['melee_total_damage']
         melee_base = self['melee_base_damage']
         melee_ap = self['melee_ap_damage']
@@ -116,20 +115,35 @@ class TWWUnit:
         else:
             melee_attack = f"| Melee Attack     {self['melee_attack']}\n"
         
-        # Armor Stats
+        ### Armor Stats ###
         shield = self['missile_block_chance']
         if shield == 0:
             armor = f"| Armour           {self['armour']}\n"
         else:
             armor = f"| Armour           {self['armour']} ({shield}%)\n"
         
+        ### Spells, Attributes, Abilities ###
         spells = self['spells']
         if len(spells) == 0:
             spells = ""
         else:
-            spells = f"| Spells: {', '.join(self['spells'])}\n"
+            spells = textwrap.wrap(f"| Spells: {', '.join(self['spells'])}")
+            spells = "\n|    ".join(spells) + "\n"
         
+        attributes = textwrap.wrap(f"| Attributes: {', '.join(self['attributes'])}")
+        attributes = "\n|    ".join(attributes)
         
+        abilities = textwrap.wrap(f"| Abilities: {', '.join(self['abilities'])}")
+        abilities = "\n|    ".join(abilities)
+        
+        active_effects = self.effects
+        if len(active_effects) == 0:
+            active_effects = "| Active Effects: None"
+        else:
+            active_effects = textwrap.wrap(f"| Spells: {', '.join(active_effects)}")
+            active_effects = "\n|    ".join(active_effects) + "\n"
+        
+        ### Ranged Stats for Ranged Units ###
         if self['ammo'] == 0:
             missile_range = ""
             missile_damage = ""
@@ -159,7 +173,7 @@ class TWWUnit:
                 proj_mul = ""
             else:
                 proj_mul = f"×{num_proj*shots_vol}"
-                    
+            
             if self['ranged_contact_effect'] != "":
                 missile_strength = f"| Missile Strength {int(self['ranged_total_damage']*10/reload_time*num_proj*shots_vol)} ({reload_time}s) {self['ranged_contact_effect']}\n"
             else:
@@ -170,7 +184,8 @@ class TWWUnit:
             ammo =             f"| Ammo             {self['ammo']} {rM}{rF}\n"
             missile_range =    f"| Range            {self['range']}\n"
             missile_damage =   f"| Missile Damage   {self['ranged_total_damage']}{proj_mul} ({ranged_base}\\{ranged_ap})\n"
-            
+        
+        ### Giant Print Statement ###
         print(f"\n| {self['name']}\n|\n"
               f"| HP               {self['health']}\n"
               f"{armor}"
@@ -193,11 +208,10 @@ class TWWUnit:
               f"|\n"
               f"| Fatigue: {self.fatigue.title()}\n"
               f"|\n"
-              f"| Attributes: {', '.join(attributes)}\n"
-              f"| Abilities: {', '.join(self['abilities'])}\n"
+              f"{attributes}\n"
+              f"{abilities}\n"
               f"{spells}"
-              f"|\n"
-              f"| Active Effects: {', '.join(self.effects)}\n"
+              f"{active_effects}"
               )
         
     

@@ -5,8 +5,6 @@ from UtilityFunctions import average_damage_with_armor_raw, select_unit
 
 def ranged_damage_stats(unit,target_armor=60,shield=0):
     
-    show_name = unit["name"]
-    
     ap_d = unit["ranged_ap_damage"]
     base_d = unit["ranged_base_damage"]
     
@@ -14,63 +12,43 @@ def ranged_damage_stats(unit,target_armor=60,shield=0):
     num_proj = unit["projectile_number"]
     shot_vol = unit["shots_per_volley"]
     ammo = unit["ammo"]
-    proj_range = unit["range"]
-    
-    caste = unit["caste"]
-    category = unit["category"]
     
     base_reload = unit["base_reload_time"]
     reload_skill = unit["reload_skill"]
     reload_time = base_reload*(100-reload_skill)/100 # this is probably wrong but it is very close
-
+    
     calibration_area = unit["calibration_area"]
     calibration_distance = unit["calibration_distance"]
-
+    
     damage_v_a = average_damage_with_armor_raw(base_d,ap_d,target_armor)
-
     damage_per_volley_a = damage_v_a*num_models*num_proj*shot_vol
     damage_per_ten_a = damage_per_volley_a*(10/reload_time)
     damage_per_battle_a = damage_per_volley_a*ammo
     
-    
-    
-    
-    print(f"Some Ranged Damage Stats for {show_name}")
-    if caste == category:
-        print(f"{caste}\n")
-    else:
-        print(f"{caste}: {category}\n")
-    
-    
     print("## User Facing Stats ##")
-    print(f"Ammo: {ammo}")
-    print(f"Shots per Volley: {int(shot_vol)}")
-    print(f"Number Projectiles: {int(num_proj)}")
-    print(f"Missile Strength: {int(unit['ranged_total_damage']*10/reload_time)} ({reload_time}s)")
-    print(f"Damage: {unit['ranged_total_damage']} ({unit['ranged_base_damage']}\\{unit['ranged_ap_damage']})")
-    print(f"Range: {int(proj_range)}m")
+    unit.unit_card()
     
     print("\n## Hidden Stats ##")
     print(f"Target Area: {calibration_area}m")
     print(f"Calibration Dist: {calibration_distance}m")
     
     print("\n## Derived Stats ##")
-    print("Shooting at {target_armor} Armor")
+    print(f"Shooting at {target_armor} Armor")
     print(f"Damage Per Projectile: {int(damage_v_a)}")
     print(f"Damage Per Volley: {int(damage_per_volley_a)}")
     print(f"Damage Per 10s: {int(damage_per_ten_a)}")
     print(f"Damage Per Battle: {int(damage_per_battle_a)}")
-    
     
 
 
 
 if __name__ == '__main__':
     
-    import pandas as pd
     unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
     from TWWObjects import TWWUnit
     
-    ranged_damage_stats(TWWUnit(select_unit(unitsDF,"wh_dlc05_wef_inf_waywatchers_0")))
+    waywatchers = TWWUnit(select_unit(unitsDF,"wh_dlc05_wef_inf_waywatchers_0"))
+    waywatchers.toggle_effect("Hawkish Precision")
+    ranged_damage_stats(waywatchers)
     print("\n\n")
     ranged_damage_stats(TWWUnit(select_unit(unitsDF,"Ratling Guns")))
