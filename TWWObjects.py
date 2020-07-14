@@ -147,13 +147,19 @@ class TWWUnit:
             base_reload = self["base_reload_time"]
             reload_skill = self["reload_skill"]
             reload_time = base_reload*(100-reload_skill)/100
+            num_proj = self['projectile_number']
+            shots_vol = self['shots_per_volley']
+            if num_proj == 1 and shots_vol == 1:
+                proj_mul = ""
+            else:
+                proj_mul = f"×{num_proj*shots_vol}"
             
             # Need to account for shots per volley and such
             
             ammo =             f"| Ammo             {self['ammo']} {rM}{rF}\n"
             missile_range =    f"| Range            {self['range']}\n"
-            missile_damage =   f"| Missile Damage   {self['ranged_total_damage']} ({ranged_base}\\{ranged_ap})\n"
-            missile_strength = f"| Missile Strength {int(self['ranged_total_damage']*10/reload_time)} ({reload_time}s)\n"
+            missile_damage =   f"| Missile Damage   {self['ranged_total_damage']}{proj_mul} ({ranged_base}\\{ranged_ap})\n"
+            missile_strength = f"| Missile Strength {int(self['ranged_total_damage']*10/reload_time*num_proj*shots_vol)} ({reload_time}s)\n"
         
         print(f"\n| {self['name']}\n|\n"
               f"| HP               {self['health']}\n"

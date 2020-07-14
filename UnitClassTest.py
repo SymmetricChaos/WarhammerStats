@@ -50,7 +50,7 @@ my_unit.unit_card()
 
 
 print("\n\n\nExample Ranged Unit")
-sisters = TWWUnit(select_unit(unitsDF,"Sisters of Avelorn"))
+sisters = TWWUnit(select_unit(unitsDF,"Darkshards"))
 sisters.unit_card()
-sisters.toggle_effect(effects_dict["Loose!"])
+sisters = TWWUnit(select_unit(unitsDF,"Ratling Guns"))
 sisters.unit_card()
