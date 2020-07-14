@@ -1,4 +1,5 @@
 from UtilityFunctions import no_nonstandard, deduplicate_lore
+from Translators import attribute_pretty_name
 
 
 
@@ -7,7 +8,7 @@ from UtilityFunctions import no_nonstandard, deduplicate_lore
 # Grab complex traits
 def get_attributes(D):
     att = D["attributes"]
-    return [line["key"] for line in att]
+    return [attribute_pretty_name[line["key"]] for line in att]
 
 def get_abilities(D):
     att = D["abilities"]
