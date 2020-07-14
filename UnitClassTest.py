@@ -21,28 +21,28 @@ my_unit.unit_card()
 
 print("\n\n\nTest Effects")
 
-my_unit.toggle_effect(effects_dict["Martial Mastery"])
+my_unit.toggle_effect("Martial Mastery")
 my_unit.unit_card()
 
-my_unit.toggle_effect(effects_dict["Stand Your Ground!"])
+my_unit.toggle_effect("Stand Your Ground!")
 my_unit.unit_card()
 
-my_unit.toggle_effect(effects_dict["Poisoned"])
+my_unit.toggle_effect("Poisoned")
 my_unit.unit_card()
 
 my_unit.set_fatigue("active")
 my_unit.unit_card()
 
-my_unit.toggle_effect(effects_dict["Martial Mastery"])
+my_unit.toggle_effect("Martial Mastery")
 my_unit.unit_card()
 
-my_unit.toggle_effect(effects_dict["Poisoned"])
+my_unit.toggle_effect("Poisoned")
 my_unit.unit_card()
 
 my_unit.set_fatigue("exhausted")
 my_unit.unit_card()
 
-my_unit.toggle_effect(effects_dict["Stand Your Ground!"])
+my_unit.toggle_effect("Stand Your Ground!")
 my_unit.unit_card()
 
 
@@ -52,5 +52,5 @@ my_unit.unit_card()
 print("\n\n\nExample Ranged Unit")
 sisters = TWWUnit(select_unit(unitsDF,"Darkshards"))
 sisters.unit_card()
-sisters = TWWUnit(select_unit(unitsDF,"Ratling Guns"))
+sisters = TWWUnit(select_unit(unitsDF,"Irondrakes"))
 sisters.unit_card()

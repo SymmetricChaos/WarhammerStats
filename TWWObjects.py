@@ -57,8 +57,14 @@ class TWWEffect:
             unit["explosion_total_damage"] = unit["explosion_base_damage"]+unit["explosion_ap_damage"]
 
 
+effects_dict = pickle.load( open( "effectsDict.p", "rb" ) )
 
 class TWWUnit:
+    
+    # This is a large dictionary but it is very use to have it be part of the
+    # definition of TWWUnit. As an class variable it is stored only once even
+    # if multiple TWWUnit objects exist
+    EFFECTS = effects_dict
     
     def __init__(self,data):
         if type(data) != pd.core.series.Series:
@@ -153,14 +159,18 @@ class TWWUnit:
                 proj_mul = ""
             else:
                 proj_mul = f"×{num_proj*shots_vol}"
-            
-            # Need to account for shots per volley and such
+                    
+            if self['ranged_contact_effect'] != "":
+                missile_strength = f"| Missile Strength {int(self['ranged_total_damage']*10/reload_time*num_proj*shots_vol)} ({reload_time}s) {self['ranged_contact_effect']}\n"
+            else:
+                missile_strength = f"| Missile Strength {int(self['ranged_total_damage']*10/reload_time*num_proj*shots_vol)} ({reload_time}s)\n"
+                
+                # Need to account for shots per volley and such
             
             ammo =             f"| Ammo             {self['ammo']} {rM}{rF}\n"
             missile_range =    f"| Range            {self['range']}\n"
             missile_damage =   f"| Missile Damage   {self['ranged_total_damage']}{proj_mul} ({ranged_base}\\{ranged_ap})\n"
-            missile_strength = f"| Missile Strength {int(self['ranged_total_damage']*10/reload_time*num_proj*shots_vol)} ({reload_time}s)\n"
-        
+            
         print(f"\n| {self['name']}\n|\n"
               f"| HP               {self['health']}\n"
               f"{armor}"
@@ -262,12 +272,12 @@ class TWWUnit:
             self.data["melee_total_damage"] = self.data["melee_base_damage"]+self.data["melee_ap_damage"]
     
     def toggle_effect(self,effect):
-        if effect.name not in self.effects:
-            self.effects.append(effect.name)
-            effect(self)
+        if effect not in self.effects:
+            self.effects.append(effect)
+            self.EFFECTS[effect](self)
         else:
-            self.effects.remove(effect.name)
-            effect(self,remove=True)
+            self.effects.remove(effect)
+            self.EFFECTS[effect](self,remove=True)
     
     def set_fatigue(self,level):
         if self.fatigue == level:

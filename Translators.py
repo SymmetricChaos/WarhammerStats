@@ -39,9 +39,9 @@ stat_translator = {
                     'scalar_missile_range': 'range',
                     'stat_accuracy': 'stat_accuracy',
                     
-                    'scalar_speed': 'speed', # note multiple speed
-                    'scalar_charge_speed': 'charge_speed',
-                    'stat_charge_bonus': 'charge_bonus', # note multiple charge speeds, too
+                    'scalar_speed': 'speed', # note multiple speeds
+                    'scalar_charge_speed': 'charge_speed',# note multiple charge speeds, too
+                    'stat_charge_bonus': 'charge_bonus', 
                     'scalar_entity_acceleration_modifier': 'acceleration',
                     'scalar_entity_deceleration_modifier':  'deceleration',
                     
