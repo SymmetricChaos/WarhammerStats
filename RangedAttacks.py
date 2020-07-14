@@ -1,4 +1,3 @@
-import numpy as np
 import pickle
 from UtilityFunctions import average_damage_with_armor_raw, select_unit
 
@@ -51,4 +50,5 @@ if __name__ == '__main__':
     waywatchers.toggle_effect("Hawkish Precision")
     ranged_damage_stats(waywatchers)
     print("\n\n")
-    ranged_damage_stats(TWWUnit(select_unit(unitsDF,"Ratling Guns")))
+    ratling = TWWUnit(select_unit(unitsDF,"Ratling Guns"))
+    ranged_damage_stats(ratling)

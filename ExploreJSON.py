@@ -2,19 +2,20 @@
 def show_dict(D,superdict=""):
     for key,val in D.items():
         if type(val) == dict:
-            print(f"\n####### begin {superdict}['{key}'] dict #######\n")
+            print(f"##### begin {superdict}['{key}'] #####")
             show_dict(val,superdict=superdict+f"['{key}']")
-            print(  f"#######  end {superdict}['{key}'] dict  #######\n\n")
+            print(f"#####  end  {superdict}['{key}']  #####\n")
             
         elif type(val) == list:
-            print(f"\n####### begin {superdict}['{key}'] list #######\n")
+            print(f"##### begin {superdict}['{key}'] #####")
             for n,i in enumerate(val):
                 if type(i) == dict:
-                    print(f"####### {superdict}['{key}'][{n}] #######\n")
+                    print(f"##### {superdict}['{key}'][{n}] #####\n")
                     show_dict(i,superdict=superdict+f"['{key}']")
                 else:
+                    print(f"##### {superdict}['{key}'][{n}] #####\n")
                     print(f"['{key}'][{n}]{val}\n")
-            print(f"#######  end ['{key}'] list  #######\n\n")
+            print(f"#####  end  {superdict}['{key}'] #####\n")
             
         else:
             print(f"{key}: {val}\n")
