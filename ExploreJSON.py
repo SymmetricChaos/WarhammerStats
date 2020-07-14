@@ -1,31 +1,28 @@
 
-def show_dict(D):
+def show_dict(D,superdict=""):
     for key,val in D.items():
         if type(val) == dict:
-            print(f"\n####### begin {key} #######\n")
-            show_dict(val)
-            print(f"####### end {key} #######\n\n")
+            print(f"\n####### begin {superdict}['{key}'] dict #######\n")
+            show_dict(val,superdict=superdict+f"['{key}']")
+            print(  f"#######  end {superdict}['{key}'] dict  #######\n\n")
+            
+        elif type(val) == list:
+            print(f"\n####### begin {superdict}['{key}'] list #######\n")
+            for n,i in enumerate(val):
+                if type(i) == dict:
+                    print(f"####### {superdict}['{key}'][{n}] #######\n")
+                    show_dict(i,superdict=superdict+f"['{key}']")
+                else:
+                    print(f"['{key}'][{n}]{val}\n")
+            print(f"#######  end ['{key}'] list  #######\n\n")
+            
         else:
             print(f"{key}: {val}\n")
-
-def show_dict_clean(D):
-    for key,val in D.items():
-        if type(val) == dict:
-            print(f"\n####### begin {key} #######\n")
-            show_dict(val)
-            print(f"####### end {key} #######\n\n")
-        else:
-            if key in ["spells","abilities"]:
-                print(f"{key}: {[line['name'] for line in val]}\n")
-            elif key in ["attributes"]:
-                print(f"{key}: {[line['key'] for line in val]}\n")
-            else:
-                print(f"{key}: {val}\n")
 
 def show_unit_by_key(D,key):
     for unit in D:
         if key == unit["key"]:
-            show_dict_clean(unit)
+            show_dict(unit)
             break
 
 def find_unit(D,name):
@@ -86,7 +83,14 @@ def get_faction_group(D):
 
 if __name__ == '__main__':
     import json
-    with open('unitsdata.json', encoding="utf8") as f:
+    # with open('unitsdata.json', encoding="utf8") as f:
+    #     J = json.load(f)
+    
+    with open('TWWAbilities.json', encoding="utf8") as f:
         J = json.load(f)
-
-    find_unit(J,"Ellyrian")
+    
+    for j in J:
+        if j['name'] == 'Extra Powder':
+            print(show_dict(j))
+            print("############################")
+            # break

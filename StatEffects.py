@@ -1,50 +1,61 @@
-import csv
+import json
+import pickle
 from TWWObjects import TWWEffect
-from Translators import stat_translator
-from MakeEffectDict import ability_key_to_name
+from Translators import stat_translator, attribute_pretty_name
 
-# The stat effects can be found in the:
-# special_abilty_phase_stat_effects_tables
-# Need to find a way to get correct names
-name_and_effects = {}
-with open("stat_effects_tables.tsv") as fd:
-    rd = csv.reader(fd, delimiter="\t", quotechar='"')
-    for n,row in enumerate(rd):
-        if n < 3:
-            continue
-        key = "_".join(row[0].split("_")[4:]) # split off unwanted part of key
-        try:
-            pretty_name = ability_key_to_name[key]
-            if pretty_name not in name_and_effects:
-                name_and_effects[pretty_name] = [(float(row[1]),stat_translator[row[2]],row[3])]
-            else:
-                name_and_effects[pretty_name].append((float(row[1]),stat_translator[row[2]],row[3]))
-        except:
-            print(key,row[0])
-
-# Same with raw names for everything
-name_and_effects_raw = {}
-with open("stat_effects_tables.tsv") as fd:
-    rd = csv.reader(fd, delimiter="\t", quotechar='"')
-    for n,row in enumerate(rd):
-        if n < 3:
-            continue
-        if row[0] not in name_and_effects_raw:
-            name_and_effects_raw[row[0]] = [(float(row[1]),row[2],row[3])]
-        else:
-            name_and_effects_raw[row[0]].append((float(row[1]),row[2],row[3]))
+with open('TWWAbilities.json', encoding="utf8") as f:
+    A = json.load(f)
 
 effects_dict = {}
-for name,effects in name_and_effects.items():
-    E = TWWEffect(name,effects)
-    effects_dict[E.pretty_name] = E
-
-
-if __name__ == '__main__':
-    import json
-    import pickle
+for ability in A:
+    stat_effects = []
+    other_effects = []
     
-    with open('stat_effects_raw.json', 'w') as fp:
-        json.dump(name_and_effects_raw, fp)
+    try:
+        stats = ability['sa_phase']['statEffects']
+        for s in stats:
+            stat_effects.append( (stat_translator[s['stat']], s['value'], s['how']) )
+    except:
+        pass
     
-    pickle.dump(effects_dict, open( "effectsDict.p", "wb" ) )
+    try:
+        attributes = ability['sa_phase']['attributeEffects']
+        for attr in attributes:
+            other_effects.append( attribute_pretty_name[attr['attribute']] )
+    except:
+        pass
+    
+    try:
+        phase = ability['sa_phase']
+        if phase["unbreakable"]:
+            other_effects.append("unbreakable")
+        if phase["imbue_magical"]:
+            other_effects.append("imbue_magical")
+        if phase["imbue_ignition"]:
+            other_effects.append("imbue_ignition")
+    except:
+        pass
+    
+    E = TWWEffect(ability["name"],ability["key"],stat_effects,other_effects)
+    # This has a minor issue due to some abilities have the same name
+    if E.name in effects_dict:
+        if str(E.stat_effects) != str(effects_dict[E.name].stat_effects) or \
+           str(E.other_effects) != str(effects_dict[E.name].other_effects):
+               print(f"CONFLICT {E.name}")
+               oldstat = E.stat_effects
+               oldother = E.other_effects
+               print(f"old:\n{oldstat}\n{oldother}")
+               newstat = effects_dict[E.name].stat_effects
+               newother = effects_dict[E.name].other_effects
+               print(f"new:\n{newstat}\n{newother}")
+               keep = input("keep:...")
+               if keep == "old":
+                   pass
+               if keep == "new":
+                   continue
+    effects_dict[E.name] = E
+    
+pickle.dump(effects_dict, open( "effectsDict.p", "wb" ) )
+print(effects_dict["Regeneration"])
+print(effects_dict["Regeneration"].stat_effects)
+print(effects_dict["Regeneration"].other_effects)

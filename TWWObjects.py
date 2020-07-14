@@ -9,9 +9,11 @@ fatigue_dict = pickle.load( open( "fatigueDict.p", "rb" ) )
 
 class TWWEffect:
     
-    def __init__(self,name,effects):
+    def __init__(self,name,key,stat_effects,other_effects):
         self.name = name
-        self.effects = effects
+        self.key = key
+        self.stat_effects = stat_effects
+        self.other_effects = other_effects
         
     def __str__(self):
         return f"TWWEffect: {self.name}"
@@ -19,33 +21,37 @@ class TWWEffect:
     def __repr__(self):
         return f"TWWEffect: {self.name}"
     
+    def __hash__(self):
+        return hash(f"{self.name}{self.key}")
+    
     # This needs to deal with the fact that "speed" affects several stats
     def __call__(self,unit,remove=False):
         if type(unit) != TWWUnit:
             raise Exception(f"Input must be of type TWWUnit not {type(unit)}")
-        for stat in self.effects:
-            if 'UNUSED' in stat[1]:
+        for stat, val, how in self.stat_effects:
+            if 'UNUSED' in stat:
                 continue
             else:
-                if stat[2] == 'mult':
+                if how == 'mult':
                     try:
-                        increase = round(unit.shadow[stat[1]]*stat[0]-unit.shadow[stat[1]])
-                        if type(stat[1]) == int:
+                        increase = round(unit.shadow[stat]*val-unit.shadow[stat])
+                        if type(stat) == int:
                             increase == int(increase)
                         if remove == False:
-                            unit[stat[1]] += increase
+                            unit[stat] += increase
                         else:
-                            unit[stat[1]] -= increase
+                            unit[stat] -= increase
                     except:
                         pass
-                elif stat[2] == 'add':
+                elif how == 'add':
                     try:
                         if remove == False:
-                            unit[stat[1]] += stat[0]
+                            unit[stat] += val
                         else:
-                            unit[stat[1]] -= stat[0]
+                            unit[stat] -= val
                     except:
                         pass
+                    
             unit["melee_total_damage"] = unit["melee_base_damage"]+unit["melee_ap_damage"]
             unit["ranged_total_damage"] = unit["ranged_base_damage"]+unit["ranged_ap_damage"]
             unit["explosion_total_damage"] = unit["explosion_base_damage"]+unit["explosion_ap_damage"]
@@ -174,6 +180,7 @@ class TWWUnit:
     def reset_stats(self):
         self.data = self.shadow
     
+    
     def change_stat(self,stat,value,operation,remove=False):
         if operation.lower() in ('add','addition'):
              if type(self[stat]) != str:
@@ -185,9 +192,9 @@ class TWWUnit:
              if type(self[stat]) != str:
                  increase = round(self.shadow[stat]*value-self.shadow[stat])
                  if remove == False:
-                     unit[stat] += increase
+                     self[stat] += increase
                  else:
-                     unit[stat] -= increase
+                     self[stat] -= increase
         else:
             raise Exception("Operations must be either 'add' or 'mul'")
     
@@ -241,11 +248,11 @@ class TWWUnit:
             self.data["melee_total_damage"] = self.data["melee_base_damage"]+self.data["melee_ap_damage"]
     
     def toggle_effect(self,effect):
-        if effect.pretty_name not in self.effects:
-            self.effects.append(effect.pretty_name)
+        if effect.name not in self.effects:
+            self.effects.append(effect.name)
             effect(self)
         else:
-            self.effects.remove(effect.pretty_name)
+            self.effects.remove(effect.name)
             effect(self,remove=True)
     
     def set_fatigue(self,level):
