@@ -54,7 +54,3 @@ sisters = TWWUnit(select_unit(unitsDF,"Sisters of Avelorn"))
 sisters.unit_card()
 sisters.toggle_effect(effects_dict["Loose!"])
 sisters.unit_card()
-
-
-slayers = TWWUnit(select_unit(unitsDF,"Giant River Troll Hag"))
-slayers.unit_card()

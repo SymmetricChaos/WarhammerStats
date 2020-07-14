@@ -105,6 +105,10 @@ class TWWUnit:
             F = ""
         
         weapon_strength = f"| Weapon Strength  {melee_total} ({melee_base}\\{melee_ap}) {M}{F}\n"
+        if self['melee_contact_effect'] != "":
+            melee_attack = f"| Melee Attack     {self['melee_attack']} ({self['melee_contact_effect']})\n"
+        else:
+            melee_attack = f"| Melee Attack     {self['melee_attack']}\n"
         
         # Armor Stats
         shield = self['missile_block_chance']
@@ -144,7 +148,9 @@ class TWWUnit:
             reload_skill = self["reload_skill"]
             reload_time = base_reload*(100-reload_skill)/100
             
-            ammo =             f"| Ammo             {self['ammo']} ({rM}{rF})\n"
+            # Need to account for shots per volley and such
+            
+            ammo =             f"| Ammo             {self['ammo']} {rM}{rF}\n"
             missile_range =    f"| Range            {self['range']}\n"
             missile_damage =   f"| Missile Damage   {self['ranged_total_damage']} ({ranged_base}\\{ranged_ap})\n"
             missile_strength = f"| Missile Strength {int(self['ranged_total_damage']*10/reload_time)} ({reload_time}s)\n"
@@ -154,7 +160,7 @@ class TWWUnit:
               f"{armor}"
               f"| Leadership       {self['leadership']}\n"
               f"| Speed            {self['speed']}\n"
-              f"| Melee Attack     {self['melee_attack']}\n"
+              f"{melee_attack}"
               f"| Melee Defence    {self['melee_defence']}\n"
               f"{weapon_strength}"
               f"| Charge Bonus     {int(self['charge_bonus'])}\n"
@@ -165,10 +171,12 @@ class TWWUnit:
               f"|\n"
               f"| Physical Resist  {self['damage_mod_physical']}%\n"
               f"| Magic Resist     {self['damage_mod_magic']}%\n"
+              f"| Missile Resist   {self['damage_mod_missile']}%\n"
               f"| Flame Resist     {self['damage_mod_flame']}%\n"
               f"| Ward Save        {self['damage_mod_all']}%\n"
               f"|\n"
-              f"| Fatigue: {self.fatigue.title()}\n|\n"
+              f"| Fatigue: {self.fatigue.title()}\n"
+              f"|\n"
               f"| Attributes: {', '.join(attributes)}\n"
               f"| Abilities: {', '.join(self['abilities'])}\n"
               f"{spells}"

@@ -83,14 +83,18 @@ def get_faction_group(D):
 
 if __name__ == '__main__':
     import json
-    # with open('unitsdata.json', encoding="utf8") as f:
-    #     J = json.load(f)
-    
-    with open('TWWAbilities.json', encoding="utf8") as f:
+    with open('unitsdata.json', encoding="utf8") as f:
         J = json.load(f)
     
     for j in J:
-        if j['name'] == 'Extra Powder':
-            print(show_dict(j))
-            print("############################")
-            # break
+        if j['name'] == 'Azhag the Slaughterer on Skullmuncha':
+            show_dict(j)
+    
+    # with open('TWWAbilities.json', encoding="utf8") as f:
+    #     J = json.load(f)
+    
+    # for j in J:
+    #     if j['name'] == 'Extra Powder':
+    #         show_dict(j)
+    #         print("############################")
+    #         # break
