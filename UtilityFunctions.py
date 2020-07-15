@@ -21,20 +21,20 @@ def show_dict(D):
 
 # Go from name code to the common name
 faction_code_to_name = {'brt': "Brettonia",
-                'bst': "Beastmen",
-                'chs': "Warriors of Chaos",
-                'cst': "Vampire Coast",
-                'def': "Dark Elves",
-                'dwf': "Dwarfs",
-                'emp': "The Empire",
-                'grn': "Greenskins",
-                'hef': "High Elves",
-                'lzd': "Lizardmen",
-                'nor': "Norsca",
-                'skv': "Skaven",
-                'tmb': "Tomb Kings",
-                'vmp': "Vampire Counts",
-                'wef': "Wood Elves"}
+                        'bst': "Beastmen",
+                        'chs': "Warriors of Chaos",
+                        'cst': "Vampire Coast",
+                        'def': "Dark Elves",
+                        'dwf': "Dwarfs",
+                        'emp': "The Empire",
+                        'grn': "Greenskins",
+                        'hef': "High Elves",
+                        'lzd': "Lizardmen",
+                        'nor': "Norsca",
+                        'skv': "Skaven",
+                        'tmb': "Tomb Kings",
+                        'vmp': "Vampire Counts",
+                        'wef': "Wood Elves"}
 
 # System for Removing Duplicate Characters That Share a Lore of Magic ###
 # This should only be used in JSONtoDataframe if it is needed elsewhere the

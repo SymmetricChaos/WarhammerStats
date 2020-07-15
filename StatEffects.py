@@ -8,54 +8,88 @@ with open('TWWAbilities.json', encoding="utf8") as f:
 
 effects_dict = {}
 for ability in A:
+    if 'bound' in ability['key']:
+        continue
+    if 'sa_vortex_phase' in ability:
+        if ability['sa_vortex_phase'] != None:
+            
+            phase = ability['sa_vortex_phase']
+            name = phase['name']
+            # All multiuse contact effects seems to have '!' in them
+            if "!" not in name:
+                name = ability['name']
+            
+            stat_effects = []
+            for s in phase['statEffects']:
+                stat_effects.append( (stat_translator[s['stat']], s['value'], s['how']) )
+            
+            other_effects = []
+            attributes = phase['attributeEffects']
+            for attr in attributes:
+                other_effects.append( attribute_pretty_name[attr['attribute']] )
+            
+            if phase["unbreakable"]:
+                other_effects.append("unbreakable")
+            if phase["imbue_magical"]:
+                other_effects.append("imbue_magical")
+            if phase["imbue_ignition"]:
+                other_effects.append("imbue_ignition")
+                
+            E = TWWEffect(name,stat_effects,other_effects)
+            if name in effects_dict and E.display() != effects_dict[name].display():
+                print("CONFLICT")
+                print(E.display())
+                print(effects_dict[name].display())
+                
+            effects_dict[name] = E
+
+for ability in A:
+    if 'bound' in ability['key']:
+        continue
     stat_effects = []
     other_effects = []
+    name = ability["name"]
     
-    try:
-        stats = ability['sa_phase']['statEffects']
+    if 'sa_phase' not in ability or ability['sa_phase'] == None:
+        continue
+    
+    sa_phase = ability['sa_phase']
+    
+    if 'statEffects' in sa_phase:
+        stats = sa_phase['statEffects']
         for s in stats:
             stat_effects.append( (stat_translator[s['stat']], s['value'], s['how']) )
-    except:
-        pass
     
-    try:
-        attributes = ability['sa_phase']['attributeEffects']
+    if 'attributeEffects' in sa_phase:
+        attributes = sa_phase['attributeEffects']
         for attr in attributes:
             other_effects.append( attribute_pretty_name[attr['attribute']] )
-    except:
-        pass
+        
+    if sa_phase["unbreakable"]:
+        other_effects.append("unbreakable")
+    if sa_phase["imbue_magical"]:
+        other_effects.append("imbue_magical")
+    if sa_phase["imbue_ignition"]:
+        other_effects.append("imbue_ignition")
     
-    try:
-        phase = ability['sa_phase']
-        if phase["unbreakable"]:
-            other_effects.append("unbreakable")
-        if phase["imbue_magical"]:
-            other_effects.append("imbue_magical")
-        if phase["imbue_ignition"]:
-            other_effects.append("imbue_ignition")
-    except:
-        pass
     
-    E = TWWEffect(ability["name"],ability["key"],stat_effects,other_effects)
+    E = TWWEffect(name,stat_effects,other_effects)
     # This has a minor issue due to some abilities have the same name
-    if E.name in effects_dict:
-        if str(E.stat_effects) != str(effects_dict[E.name].stat_effects) or \
-           str(E.other_effects) != str(effects_dict[E.name].other_effects):
-               print(f"CONFLICT {E.name}")
-               oldstat = E.stat_effects
-               oldother = E.other_effects
-               print(f"old:\n{oldstat}\n{oldother}")
-               newstat = effects_dict[E.name].stat_effects
-               newother = effects_dict[E.name].other_effects
-               print(f"new:\n{newstat}\n{newother}")
-               keep = input("keep:...")
-               if keep == "old":
-                   pass
-               if keep == "new":
-                   continue
+    if name in effects_dict:
+        if E.display() != effects_dict[name].display():
+            print("CONFLICT")
+            print("old")
+            print(effects_dict[name].display())
+            print("new")
+            print(E.display())
+            rename = input("rename which?")
+            if rename == "old":
+                newname = name + input("rename old to:")
+                
+                effects_dict[newname] = effects_dict[name]
+                effects_dict[newname] = newname
+            if rename == "new":
+                E.name += input("rename new to:")
     effects_dict[E.name] = E
-    
+
 pickle.dump(effects_dict, open( "effectsDict.p", "wb" ) )
-print(effects_dict["Regeneration"])
-print(effects_dict["Regeneration"].stat_effects)
-print(effects_dict["Regeneration"].other_effects)

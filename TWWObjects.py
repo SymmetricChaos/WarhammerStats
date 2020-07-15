@@ -9,9 +9,8 @@ fatigue_dict = pickle.load( open( "fatigueDict.p", "rb" ) )
 
 class TWWEffect:
     
-    def __init__(self,name,key,stat_effects,other_effects):
+    def __init__(self,name,stat_effects,other_effects):
         self.name = name
-        self.key = key
         self.stat_effects = stat_effects
         self.other_effects = other_effects
         
@@ -21,8 +20,8 @@ class TWWEffect:
     def __repr__(self):
         return f"TWWEffect: {self.name}"
     
-    def __hash__(self):
-        return hash(f"{self.name}{self.key}")
+    def display(self):
+        return f"{self.name}\n{self.stat_effects}\n{self.other_effects}"
     
     # This needs to deal with the fact that "speed" affects several stats
     def __call__(self,unit,remove=False):
@@ -140,7 +139,7 @@ class TWWUnit:
         if len(active_effects) == 0:
             active_effects = "| Active Effects: None"
         else:
-            active_effects = textwrap.wrap(f"| Spells: {', '.join(active_effects)}")
+            active_effects = textwrap.wrap(f"| Active Effects: {', '.join(active_effects)}")
             active_effects = "\n|    ".join(active_effects) + "\n"
         
         ### Ranged Stats for Ranged Units ###
@@ -211,7 +210,8 @@ class TWWUnit:
               f"{attributes}\n"
               f"{abilities}\n"
               f"{spells}"
-              f"{active_effects}"
+              f"|\n"
+              f"{active_effects}\n"
               )
         
     

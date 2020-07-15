@@ -79,9 +79,9 @@ if __name__ == '__main__':
     fireborn = TWWUnit(select_unit(unitsDF,"The Fireborn"))
     trolls = TWWUnit(select_unit(unitsDF,"Trolls"))
     
-    trolls.toggle_effect(effects_dict["Regeneration"])
+    trolls.toggle_effect("Regeneration")
     
-    fireborn.toggle_effect(effects_dict["Martial Mastery"])
+    fireborn.toggle_effect("Martial Mastery")
     fireborn.toggle_charge()
     
     simulate_melee_attack(fireborn,trolls)
