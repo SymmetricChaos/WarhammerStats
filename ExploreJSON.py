@@ -33,9 +33,8 @@ if __name__ == '__main__':
         J = json.load(f)
     
     for j in J:
-        if j['name'] == 'Azhag the Slaughterer on Skullmuncha':
-            j["primary_missile_weapon"] = (0,1,2,3)
-            show_dict(j,"j")
+        if j['name'] == 'Settra the Imperishable':
+            show_dict(j,"")
     
     # with open('TWWAbilities.json', encoding="utf8") as f:
     #     J = json.load(f)

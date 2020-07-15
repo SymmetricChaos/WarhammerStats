@@ -12,25 +12,21 @@ def show_dict(D,superdict=""):
     Recursively show the contents of a dictionary or iterable that make contain
     other dictionaries or iterables
     """
-    print()
     if type(D) == dict:
         if len(D) == 0:
-            print(f"{superdict}: {D}\n")
+            print(f"{superdict}: {D}")
         for key,val in D.items():
-            if type(val) in (dict,list,tuple):
-                show_dict(val,superdict=f"{superdict}['{key}']")
-            else:
-                print(f"{superdict}['{key}']: {val}\n")
+            show_dict(val,superdict=f"{superdict}['{key}']")
     
-    if type(D) in (list,tuple):
+    elif type(D) in (list,tuple):
         if len(D) == 0:
-            print(f"{superdict}: {D}\n")
+            print(f"{superdict}: {D}")
         for n,i in enumerate(D):
-            if type(i) == dict:
-                show_dict(i,superdict=f"{superdict}[{n}]")
-            else:
-                print(f"{superdict}[{n}]: {i}\n")
-    print()
+            show_dict(i,superdict=f"{superdict}[{n}]")
+    
+    else:
+        print(f"{superdict}: {D}")
+
 
 
 
