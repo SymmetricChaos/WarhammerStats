@@ -126,20 +126,20 @@ class TWWUnit:
         if len(spells) == 0:
             spells = ""
         else:
-            spells = textwrap.wrap(f"| Spells: {', '.join(self['spells'])}")
+            spells = textwrap.wrap(f"| Spells: {', '.join(self['spells'])}",45)
             spells = "\n|    ".join(spells) + "\n"
         
-        attributes = textwrap.wrap(f"| Attributes: {', '.join(self['attributes'])}")
+        attributes = textwrap.wrap(f"| Attributes: {', '.join(self['attributes'])}",45)
         attributes = "\n|    ".join(attributes)
         
-        abilities = textwrap.wrap(f"| Abilities: {', '.join(self['abilities'])}")
+        abilities = textwrap.wrap(f"| Abilities: {', '.join(self['abilities'])}",45)
         abilities = "\n|    ".join(abilities)
         
         active_effects = self.effects
         if len(active_effects) == 0:
             active_effects = "| Active Effects: None"
         else:
-            active_effects = textwrap.wrap(f"| Active Effects: {', '.join(active_effects)}")
+            active_effects = textwrap.wrap(f"| Active Effects: {', '.join(active_effects)}",45)
             active_effects = "\n|    ".join(active_effects) + "\n"
         
         ### Ranged Stats for Ranged Units ###
