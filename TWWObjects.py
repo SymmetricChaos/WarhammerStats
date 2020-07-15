@@ -177,8 +177,6 @@ class TWWUnit:
                 missile_strength = f"| Missile Strength {int(self['ranged_total_damage']*10/reload_time*num_proj*shots_vol)} ({reload_time}s) {self['ranged_contact_effect']}\n"
             else:
                 missile_strength = f"| Missile Strength {int(self['ranged_total_damage']*10/reload_time*num_proj*shots_vol)} ({reload_time}s)\n"
-                
-                # Need to account for shots per volley and such
             
             ammo =             f"| Ammo             {self['ammo']} {rM}{rF}\n"
             missile_range =    f"| Range            {self['range']}\n"
@@ -213,7 +211,7 @@ class TWWUnit:
               f"|\n"
               f"{active_effects}\n"
               )
-        
+    
     
     def reset_stats(self):
         self.data = self.shadow
@@ -310,4 +308,8 @@ class TWWUnit:
                 self[stat] += increase
             self.data["melee_total_damage"] = self.data["melee_base_damage"]+self.data["melee_ap_damage"]
             self.fatigue = level
-
+    
+    def set_rank(self,level):
+        if level not in (0,1,2,3,4,5,6,7,8,9):
+            raise Exception("Rank must be an integer from 0 to 9")
+        

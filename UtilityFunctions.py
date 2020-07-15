@@ -7,15 +7,30 @@ import numpy as np
 def pretty_name(S):
     return " ".join(S.split("_")).title()
 
-# Recursivelu show a dictionary
-def show_dict(D):
-    for key,val in D.items():
-        if type(val) == dict:
-            print(f"\n####### begin {key} #######\n")
-            show_dict(val)
-            print(f"####### end {key} #######\n\n")
-        else:
-            print(f"{key}: {val}\n")
+def show_dict(D,superdict=""):
+    """
+    Recursively show the contents of a dictionary or iterable that make contain
+    other dictionaries or iterables
+    """
+    print()
+    if type(D) == dict:
+        if len(D) == 0:
+            print(f"{superdict}: {D}\n")
+        for key,val in D.items():
+            if type(val) in (dict,list,tuple):
+                show_dict(val,superdict=f"{superdict}['{key}']")
+            else:
+                print(f"{superdict}['{key}']: {val}\n")
+    
+    if type(D) in (list,tuple):
+        if len(D) == 0:
+            print(f"{superdict}: {D}\n")
+        for n,i in enumerate(D):
+            if type(i) == dict:
+                show_dict(i,superdict=f"{superdict}[{n}]")
+            else:
+                print(f"{superdict}[{n}]: {i}\n")
+    print()
 
 
 
