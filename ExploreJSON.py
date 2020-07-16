@@ -33,7 +33,7 @@ if __name__ == '__main__':
         J = json.load(f)
     
     for j in J:
-        if j['name'] == 'Settra the Imperishable':
+        if j['name'] == 'Arkhan the Black':
             show_dict(j,"")
     
     # with open('TWWAbilities.json', encoding="utf8") as f:

@@ -175,6 +175,10 @@ def create_units_dict_from_JSON(J):
              "singleplayer_cost":  unit["singleplayer_cost"],
              "singleplayer_upkeep":  unit["singleplayer_upkeep"],
              "faction": faction_code_to_name[get_faction_group(unit)],
+             "caste": unit["caste"],
+             "category": unit["category"],
+             "rank": 0,
+             "fatigue": "fresh",
              
              ## Stats not visible to the user ##
              "health_per_entity": unit["health_per_entity"],
@@ -184,10 +188,7 @@ def create_units_dict_from_JSON(J):
              #"radius": unit["radius"], #removed temporarily by ciment
              "entity_size": unit["entity_size"],
              
-             "caste": unit["caste"],  
-             "category": unit["category"],
              "special_category": unit["special_category"],
-             
              "key": unit["key"],
              
              "run_speed": unit["run_speed"],

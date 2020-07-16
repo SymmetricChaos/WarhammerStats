@@ -54,21 +54,21 @@ ranged = TWWUnit(select_unit(unitsDF,"Darkshards"))
 print(ranged.unit_card)
 
 print("\n\n\nExample Unit With Lots of Attributes, Abilities, and Spells")
-lots_of_lists = TWWUnit(select_unit(unitsDF,"Settra the Imperishable"))
+lots_of_lists = TWWUnit(select_unit(unitsDF,"Settra the Imperishable on Chariot of the Gods"))
 print(lots_of_lists.unit_card)
 
 
 print("\n\n\nExample of Fatigue")
 fatigue_example = TWWUnit(select_unit(unitsDF,"Swordsmen"))
 print(fatigue_example.unit_card)
-fatigue_example.set_fatigue("exhausted")
+fatigue_example.set_fatigue("Exhausted")
 print(fatigue_example.unit_card)
 fatigue_example.set_fatigue("fresh")
 print(fatigue_example.unit_card)
 
 
 print("\n\n\nExample of Rank")
-rank_example = TWWUnit(select_unit(unitsDF,"Flagellants"))
+rank_example = TWWUnit(select_unit(unitsDF,"Black Lions"))
 print(rank_example.unit_card)
 rank_example.set_rank(9)
 print(rank_example.unit_card)

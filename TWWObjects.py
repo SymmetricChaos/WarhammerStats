@@ -84,10 +84,6 @@ class TWWUnit:
         
         # names of active effects
         self.effects = []
-        
-        # Fatgiue level
-        self.fatigue = "fresh"
-        self.rank = 0
     
     def __getitem__(self,n):
         return self.data[n]
@@ -197,11 +193,20 @@ class TWWUnit:
             missile_range =    f"| Range            {self['range']}\n"
             missile_damage =   f"| Missile Damage   {self['ranged_total_damage']}{proj_mul} ({ranged_base}\\{ranged_ap})\n"
         
+        # Lords and heroes always have the same unit count and rank
+        if self['caste'] not in ('Lord','Hero'):
+            units = f"| Units: {self['unit_size']}\n"
+            rank = f"| Rank: {self['rank']}\n"
+        else:
+            units = ""
+            rank = ""
         
         ### Giant String ###
-        return f"\n| {self['name']}\n" \
-               f"| Units: {self['unit_size']}\n" \
-               f"| Rank: {self.rank}\n|\n" \
+        return f"\n| {self['name']} ({self['faction']})\n" \
+               f"| {self['category']}\n" \
+               f"{units}" \
+               f"{rank}" \
+               f"|\n" \
                f"| HP               {self['health']}\n" \
                f"{armor}" \
                f"| Leadership       {self['leadership']}\n" \
@@ -221,7 +226,7 @@ class TWWUnit:
                f"| Flame Resist     {self['damage_mod_flame']}%\n" \
                f"| Ward Save        {self['damage_mod_all']}%\n" \
                f"|\n" \
-               f"| Fatigue: {self.fatigue.title()}\n" \
+               f"| Fatigue: {self['fatigue'].title()}\n" \
                f"|\n" \
                f"{attributes}\n" \
                f"{abilities}\n" \
@@ -309,12 +314,13 @@ class TWWUnit:
             self.EFFECTS[effect](self,remove=True)
     
     def set_fatigue(self,level):
-        if self.fatigue == level:
+        level = level.lower()
+        if self['fatigue'] == level:
             return None
         else:
             # Reset fatigue first
             for stat in ("melee_attack","melee_defence","melee_ap_damage","armour","charge_bonus"):
-                mul = self.FATIGUE[self.fatigue][stat]
+                mul = self.FATIGUE[self['fatigue']][stat]
                 increase = round(self.shadow[stat]*mul-self.shadow[stat])
                 self[stat] -= increase
             
@@ -324,7 +330,7 @@ class TWWUnit:
                 increase = round(self.shadow[stat]*mul-self.shadow[stat])
                 self[stat] += increase
             self.data["melee_total_damage"] = self.data["melee_base_damage"]+self.data["melee_ap_damage"]
-            self.fatigue = level
+            self['fatigue'] = level
     
     # this is weirdly complicated?
     # reload and leadership work correctly, accuracy probably does
@@ -332,18 +338,18 @@ class TWWUnit:
     def set_rank(self,level):
         if level not in (0,1,2,3,4,5,6,7,8,9):
             raise Exception("Rank must be an integer from 0 to 9")
-        if self['caste'] == 'commander':
+        if self['caste'] in ('Lord','Hero'):
             raise Exception("Characters do not gain unit ranks (chevrons).")
-        if self.rank == level:
+        if self['rank'] == level:
             return None
         else:
             # Reset rank
             for stat,val in self.EXP.items():
-                change = round(val[1]*self.rank)
+                change = round(val[1]*self['rank'])
                 self[stat] -= change
         
             # Then apply rank
             for stat,val in self.EXP.items():
                 change = round(val[1]*level)
                 self[stat] += change
-            self.rank = level
+            self['rank'] = level
