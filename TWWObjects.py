@@ -199,7 +199,9 @@ class TWWUnit:
         
         
         ### Giant String ###
-        return f"\n| {self['name']}\n|\n" \
+        return f"\n| {self['name']}\n" \
+               f"| Units: {self['unit_size']}\n" \
+               f"| Rank: {self.rank}\n|\n" \
                f"| HP               {self['health']}\n" \
                f"{armor}" \
                f"| Leadership       {self['leadership']}\n" \
@@ -207,7 +209,7 @@ class TWWUnit:
                f"{melee_attack}" \
                f"| Melee Defence    {self['melee_defence']}\n" \
                f"{weapon_strength}" \
-               f"| Charge Bonus     {int(self['charge_bonus'])}\n" \
+               f"| Charge Bonus     {self['charge_bonus']}\n" \
                f"{ammo}" \
                f"{missile_range}" \
                f"{missile_strength}" \
@@ -324,6 +326,7 @@ class TWWUnit:
             self.data["melee_total_damage"] = self.data["melee_base_damage"]+self.data["melee_ap_damage"]
             self.fatigue = level
     
+    # this is weirdly complicated
     def set_rank(self,level):
         if level not in (0,1,2,3,4,5,6,7,8,9):
             raise Exception("Rank must be an integer from 0 to 9")
@@ -334,11 +337,11 @@ class TWWUnit:
         else:
             # Reset rank
             for stat,val in self.EXP.items():
-                increase = int(val*self.rank)
-                self[stat] -= increase
-    
+                change = int(val*self.rank)
+                self[stat] += change
+        
             # Then apply rank
             for stat,val in self.EXP.items():
-                increase = int(val*level)
-                self[stat] += increase
+                change = int(val*level)
+                self[stat] += change
             self.rank = level
