@@ -68,7 +68,7 @@ print(fatigue_example.unit_card)
 
 
 print("\n\n\nExample of Rank")
-rank_example = TWWUnit(select_unit(unitsDF,"Crossbowmen"))
+rank_example = TWWUnit(select_unit(unitsDF,"Flagellants"))
 print(rank_example.unit_card)
 rank_example.set_rank(9)
 print(rank_example.unit_card)

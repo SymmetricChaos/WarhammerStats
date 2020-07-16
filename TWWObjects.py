@@ -66,11 +66,11 @@ class TWWUnit:
     # if multiple TWWUnit objects exist
     EFFECTS = effects_dict
     FATIGUE = fatigue_dict
-    EXP = {'accuracy': 3,
-            'melee_attack': 0.72,
-            'melee_defence': 0.72,
-            'leadership': 1.06,
-            'reload_skill': 1.8,
+    EXP = {'accuracy': [0,3],
+            'melee_attack': [0.6,0.12],
+            'melee_defence': [0.6,0.12],
+            'leadership': [0,1.06],
+            'reload_skill': [0,1.8],
             }
     FACTION = faction_code_to_name
     
@@ -326,7 +326,9 @@ class TWWUnit:
             self.data["melee_total_damage"] = self.data["melee_base_damage"]+self.data["melee_ap_damage"]
             self.fatigue = level
     
-    # this is weirdly complicated
+    # this is weirdly complicated?
+    # reload and leadership work correctly, accuracy probably does
+    # unclear on how melee attack and melee defence work
     def set_rank(self,level):
         if level not in (0,1,2,3,4,5,6,7,8,9):
             raise Exception("Rank must be an integer from 0 to 9")
@@ -337,11 +339,11 @@ class TWWUnit:
         else:
             # Reset rank
             for stat,val in self.EXP.items():
-                change = int(val*self.rank)
-                self[stat] += change
+                change = round(val[1]*self.rank)
+                self[stat] -= change
         
             # Then apply rank
             for stat,val in self.EXP.items():
-                change = int(val*level)
+                change = round(val[1]*level)
                 self[stat] += change
             self.rank = level
