@@ -1,8 +1,6 @@
 import numpy as np
 
 
-
-
 # Convert a trait name into a nicer looking version
 def pretty_name(S):
     return " ".join(S.split("_")).title()
@@ -27,25 +25,6 @@ def show_dict(D,superdict=""):
     else:
         print(f"{superdict}: {D}")
 
-
-
-
-# Go from name code to the common name
-faction_code_to_name = {'brt': "Brettonia",
-                        'bst': "Beastmen",
-                        'chs': "Warriors of Chaos",
-                        'cst': "Vampire Coast",
-                        'def': "Dark Elves",
-                        'dwf': "Dwarfs",
-                        'emp': "The Empire",
-                        'grn': "Greenskins",
-                        'hef': "High Elves",
-                        'lzd': "Lizardmen",
-                        'nor': "Norsca",
-                        'skv': "Skaven",
-                        'tmb': "Tomb Kings",
-                        'vmp': "Vampire Counts",
-                        'wef': "Wood Elves"}
 
 # System for Removing Duplicate Characters That Share a Lore of Magic ###
 # This should only be used in JSONtoDataframe if it is needed elsewhere the

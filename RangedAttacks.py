@@ -25,7 +25,7 @@ def ranged_damage_stats(unit,target_armor=60,shield=0):
     damage_per_battle_a = damage_per_volley_a*ammo
     
     print("## User Facing Stats ##")
-    unit.unit_card()
+    print(unit.unit_card)
     
     print("\n## Hidden Stats ##")
     print(f"Target Area: {calibration_area}m")

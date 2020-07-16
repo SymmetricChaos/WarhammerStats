@@ -3,9 +3,8 @@ import pandas as pd
 import copy
 import pickle
 import textwrap
+from Translators import faction_code_to_name
 
-
-fatigue_dict = pickle.load( open( "fatigueDict.p", "rb" ) )
 
 class TWWEffect:
     
@@ -57,6 +56,8 @@ class TWWEffect:
 
 
 effects_dict = pickle.load( open( "effectsDict.p", "rb" ) )
+fatigue_dict = pickle.load( open( "fatigueDict.p", "rb" ) )
+
 
 class TWWUnit:
     
@@ -64,6 +65,14 @@ class TWWUnit:
     # definition of TWWUnit. As an class variable it is stored only once even
     # if multiple TWWUnit objects exist
     EFFECTS = effects_dict
+    FATIGUE = fatigue_dict
+    EXP = {'accuracy': 3,
+            'melee_attack': 0.72,
+            'melee_defence': 0.72,
+            'leadership': 1.06,
+            'reload_skill': 1.8,
+            }
+    FACTION = faction_code_to_name
     
     def __init__(self,data):
         if type(data) != pd.core.series.Series:
@@ -87,11 +96,12 @@ class TWWUnit:
         self.data[n] = v
     
     def __str__(self):
-        return f"TWWUnit: {self['name']}"
+        return f"TWWUnit: {self['name']} ({self['faction']})"
     
     def __repr__(self):
-        return f"TWWUnit: {self['name']}"
+        return str(self)
     
+    @property
     def unit_card(self):
         
         ### Melee Attack Stats ###
@@ -99,20 +109,23 @@ class TWWUnit:
         melee_base = self['melee_base_damage']
         melee_ap = self['melee_ap_damage']
         
-        if self['melee_is_magical']:
-            M = "M"
-        else:
-            M = ""
-        if self['melee_is_flaming']:
-            F = "F"
-        else:
-            F = ""
+        weapon_strength = f"| Weapon Strength  {melee_total} ({melee_base}\\{melee_ap})"
         
-        weapon_strength = f"| Weapon Strength  {melee_total} ({melee_base}\\{melee_ap}) {M}{F}\n"
+        if self['melee_bonus_v_large'] != 0:
+            weapon_strength += f" BvL:{self['melee_bonus_v_large']}"
+        if self['melee_bonus_v_infantry'] != 0:
+            weapon_strength += f" BvI:{self['melee_bonus_v_infantry']}"
+        weapon_strength += "\n"
+        
+        melee_attack = f"| Melee Attack     {self['melee_attack']}"
+        if self['melee_is_magical']:
+            melee_attack += " M"
+        if self['melee_is_flaming']:
+            melee_attack += " F"
         if self['melee_contact_effect'] != "":
-            melee_attack = f"| Melee Attack     {self['melee_attack']} ({self['melee_contact_effect']})\n"
-        else:
-            melee_attack = f"| Melee Attack     {self['melee_attack']}\n"
+            melee_attack += f" ({self['melee_contact_effect']})"
+        melee_attack += "\n"
+        
         
         ### Armor Stats ###
         shield = self['missile_block_chance']
@@ -120,6 +133,7 @@ class TWWUnit:
             armor = f"| Armour           {self['armour']}\n"
         else:
             armor = f"| Armour           {self['armour']} ({shield}%)\n"
+        
         
         ### Spells, Attributes, Abilities ###
         spells = self['spells']
@@ -141,6 +155,7 @@ class TWWUnit:
         else:
             active_effects = textwrap.wrap(f"| Active Effects: {', '.join(active_effects)}",45)
             active_effects = "\n|    ".join(active_effects) + "\n"
+        
         
         ### Ranged Stats for Ranged Units ###
         if self['ammo'] == 0:
@@ -182,35 +197,35 @@ class TWWUnit:
             missile_range =    f"| Range            {self['range']}\n"
             missile_damage =   f"| Missile Damage   {self['ranged_total_damage']}{proj_mul} ({ranged_base}\\{ranged_ap})\n"
         
-        ### Giant Print Statement ###
-        print(f"\n| {self['name']}\n|\n"
-              f"| HP               {self['health']}\n"
-              f"{armor}"
-              f"| Leadership       {self['leadership']}\n"
-              f"| Speed            {self['speed']}\n"
-              f"{melee_attack}"
-              f"| Melee Defence    {self['melee_defence']}\n"
-              f"{weapon_strength}"
-              f"| Charge Bonus     {int(self['charge_bonus'])}\n"
-              f"{ammo}"
-              f"{missile_range}"
-              f"{missile_strength}"
-              f"{missile_damage}"
-              f"|\n"
-              f"| Physical Resist  {self['damage_mod_physical']}%\n"
-              f"| Magic Resist     {self['damage_mod_magic']}%\n"
-              f"| Missile Resist   {self['damage_mod_missile']}%\n"
-              f"| Flame Resist     {self['damage_mod_flame']}%\n"
-              f"| Ward Save        {self['damage_mod_all']}%\n"
-              f"|\n"
-              f"| Fatigue: {self.fatigue.title()}\n"
-              f"|\n"
-              f"{attributes}\n"
-              f"{abilities}\n"
-              f"{spells}"
-              f"|\n"
-              f"{active_effects}\n"
-              )
+        
+        ### Giant String ###
+        return f"\n| {self['name']}\n|\n" \
+               f"| HP               {self['health']}\n" \
+               f"{armor}" \
+               f"| Leadership       {self['leadership']}\n" \
+               f"| Speed            {self['speed']}\n" \
+               f"{melee_attack}" \
+               f"| Melee Defence    {self['melee_defence']}\n" \
+               f"{weapon_strength}" \
+               f"| Charge Bonus     {int(self['charge_bonus'])}\n" \
+               f"{ammo}" \
+               f"{missile_range}" \
+               f"{missile_strength}" \
+               f"{missile_damage}" \
+               f"|\n" \
+               f"| Physical Resist  {self['damage_mod_physical']}%\n" \
+               f"| Magic Resist     {self['damage_mod_magic']}%\n" \
+               f"| Missile Resist   {self['damage_mod_missile']}%\n" \
+               f"| Flame Resist     {self['damage_mod_flame']}%\n" \
+               f"| Ward Save        {self['damage_mod_all']}%\n" \
+               f"|\n" \
+               f"| Fatigue: {self.fatigue.title()}\n" \
+               f"|\n" \
+               f"{attributes}\n" \
+               f"{abilities}\n" \
+               f"{spells}" \
+               f"|\n" \
+               f"{active_effects}\n"
     
     
     def reset_stats(self):
@@ -297,13 +312,13 @@ class TWWUnit:
         else:
             # Reset fatigue first
             for stat in ("melee_attack","melee_defence","melee_ap_damage","armour","charge_bonus"):
-                mul = fatigue_dict[self.fatigue][stat]
+                mul = self.FATIGUE[self.fatigue][stat]
                 increase = round(self.shadow[stat]*mul-self.shadow[stat])
-                self[stat] += increase
+                self[stat] -= increase
             
             # Then apply fatigue
             for stat in ("melee_attack","melee_defence","melee_ap_damage","armour","charge_bonus"):
-                mul = fatigue_dict[level][stat]
+                mul = self.FATIGUE[level][stat]
                 increase = round(self.shadow[stat]*mul-self.shadow[stat])
                 self[stat] += increase
             self.data["melee_total_damage"] = self.data["melee_base_damage"]+self.data["melee_ap_damage"]
@@ -312,4 +327,18 @@ class TWWUnit:
     def set_rank(self,level):
         if level not in (0,1,2,3,4,5,6,7,8,9):
             raise Exception("Rank must be an integer from 0 to 9")
-        
+        if self['caste'] == 'commander':
+            raise Exception("Characters do not gain unit ranks (chevrons).")
+        if self.rank == level:
+            return None
+        else:
+            # Reset rank
+            for stat,val in self.EXP.items():
+                increase = int(val*self.rank)
+                self[stat] -= increase
+    
+            # Then apply rank
+            for stat,val in self.EXP.items():
+                increase = int(val*level)
+                self[stat] += increase
+            self.rank = level

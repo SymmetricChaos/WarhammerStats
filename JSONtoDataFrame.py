@@ -1,5 +1,5 @@
 from UtilityFunctions import no_nonstandard, deduplicate_lore
-from Translators import attribute_pretty_name
+from Translators import attribute_pretty_name, faction_code_to_name
 
 
 
@@ -174,6 +174,7 @@ def create_units_dict_from_JSON(J):
              "multiplayer_cost": unit["multiplayer_cost"],
              "singleplayer_cost":  unit["singleplayer_cost"],
              "singleplayer_upkeep":  unit["singleplayer_upkeep"],
+             "faction": faction_code_to_name[get_faction_group(unit)],
              
              ## Stats not visible to the user ##
              "health_per_entity": unit["health_per_entity"],
@@ -186,7 +187,7 @@ def create_units_dict_from_JSON(J):
              "caste": unit["caste"],  
              "category": unit["category"],
              "special_category": unit["special_category"],
-    
+             
              "key": unit["key"],
              
              "run_speed": unit["run_speed"],
@@ -197,14 +198,15 @@ def create_units_dict_from_JSON(J):
              "acceleration": unit["acceleration"],
              "deceleration": unit["deceleration"],
              
+             "faction_group": get_faction_group(unit),
+             
              "ground_stat_effect_group": unit["ground_stat_effect_group"]["group_name"],
              
              "accuracy": unit["accuracy"], # <- very unclear what this stat does
              "reload_skill": unit["reload"],
-    
+             
              ## Stats that are lists ##
              "factions": get_factions(unit),
-             "faction_group": get_faction_group(unit),
              "attributes": get_attributes(unit),
              "abilities": get_abilities(unit),
              "spells": get_spells(unit)
@@ -234,7 +236,6 @@ if __name__ == '__main__':
     
     pd.set_option('display.max_columns', None)
     pd.set_option('display.max_rows', None)
-    print(unitsDF.dtypes)
     
     
     # Save as a DataFrame, as a dictionary, and as a csv file

@@ -69,3 +69,23 @@ stat_translator = {
                     'stat_melee_attack': 'melee_attack',
                     'stat_melee_defence': 'melee_defence',
                     }
+
+# Go from name code to the common name
+faction_code_to_name = {'brt': "Brettonia",
+                        'bst': "Beastmen",
+                        'chs': "Warriors of Chaos",
+                        'cst': "Vampire Coast",
+                        'def': "Dark Elves",
+                        'dwf': "Dwarfs",
+                        'emp': "The Empire",
+                        'grn': "Greenskins",
+                        'hef': "High Elves",
+                        'lzd': "Lizardmen",
+                        'nor': "Norsca",
+                        'skv': "Skaven",
+                        'tmb': "Tomb Kings",
+                        'vmp': "Vampire Counts",
+                        'wef': "Wood Elves",
+                        'teb': "Southern Realms",
+                        'neu': "NEU",
+                        'huntmarshall': "The Empire"}

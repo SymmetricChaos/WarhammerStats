@@ -18,10 +18,10 @@ def simulate_melee_attack(attacker,defender,units_attacking=None):
     if not defender['is_large'] and attacker['melee_bonus_v_infantry'] > 0 and "BvI" not in attacker.effects:
         print("## Bonus vs Infantry Activated ##")
         attacker.toggle_BvI()
-    attacker.unit_card()
+    print(attacker.unit_card)
     
     print("\n## Defender Stats ##")
-    defender.unit_card()
+    print(defender.unit_card)
     
     # Probability of an attack to hit
     expected_hit = melee_hit_prob(attacker['melee_attack'],defender['melee_defence'])
