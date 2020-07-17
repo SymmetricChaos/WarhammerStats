@@ -22,25 +22,25 @@ def extract_flags():
             except:
                 print(f"{faction_name}_{size} not found")
     
-def extract_infopics():
-    cur_dir = os.getcwd()
-    units = cur_dir+"\\WarhammerUI\\units\\infopics"
+# def extract_infopics():
+#     cur_dir = os.getcwd()
+#     units = cur_dir+"\\WarhammerUI\\units\\infopics"
     
-    for r,d,f in os.walk(units):
-        for i in f:
-            oldfile = f"{r}\\{i}"
-            newfile = f"{cur_dir}\\UnitPics\\{i}"
-            shutil.copyfile(oldfile,newfile)
+#     for r,d,f in os.walk(units):
+#         for i in f:
+#             oldfile = f"{r}\\{i}"
+#             newfile = f"{cur_dir}\\UnitPics\\{i}"
+#             shutil.copyfile(oldfile,newfile)
             
-def extract_unit_icons():
-    cur_dir = os.getcwd()
-    units = cur_dir+"\\WarhammerUI\\units\\icons"
+# def extract_unit_icons():
+#     cur_dir = os.getcwd()
+#     units = cur_dir+"\\WarhammerUI\\units\\icons"
     
-    for r,d,f in os.walk(units):
-        for i in f:
-            oldfile = f"{r}\\{i}"
-            newfile = f"{cur_dir}\\UnitIcons\\{i}"
-            shutil.copyfile(oldfile,newfile)
+#     for r,d,f in os.walk(units):
+#         for i in f:
+#             oldfile = f"{r}\\{i}"
+#             newfile = f"{cur_dir}\\UnitIcons\\{i}"
+#             shutil.copyfile(oldfile,newfile)
             
 #def extract_character_icons():
 #    cur_dir = os.getcwd()

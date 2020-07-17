@@ -82,14 +82,59 @@ for ability in A:
             print(effects_dict[name].display())
             print("new")
             print(E.display())
-            rename = input("rename which?")
+            rename = input("annotate which?")
             if rename == "old":
-                newname = name + input("rename old to:")
+                newname = name + input("annotate old with:")
                 
                 effects_dict[newname] = effects_dict[name]
                 effects_dict[newname] = newname
             if rename == "new":
-                E.name += input("rename new to:")
+                E.name += input("annotate old with:")
     effects_dict[E.name] = E
+
+
+# Extract contact effects from units
+with open('unitsdata.json', encoding="utf8") as f:
+    U = json.load(f)
+
+# Get ranged effects
+for unit in U:
+    if 'primary_missile_weapon' in unit and unit['primary_missile_weapon'] != None:
+            if 'phase' in unit['primary_missile_weapon'] and  unit['primary_missile_weapon']['phase'] != None:
+                    
+                    stat_effects = []
+                    other_effects = []
+                    name = unit['primary_missile_weapon']['phase']['name']
+                    
+                    
+                    if 'statEffects' in unit['primary_missile_weapon']['phase']:
+                        stats = unit['primary_missile_weapon']['phase']['statEffects']
+                        for s in stats:
+                            stat_effects.append( (stat_translator[s['stat']], s['value'], s['how']) )
+                    
+                    if 'attributeEffects' in unit['primary_missile_weapon']['phase']:
+                        attributes = unit['primary_missile_weapon']['phase']['attributeEffects']
+                        for attr in attributes:
+                            other_effects.append( attribute_pretty_name[attr['attribute']] )
+                    
+                    E = TWWEffect(name,stat_effects,other_effects)
+                    
+                    if name in effects_dict:
+                        if E.display() != effects_dict[name].display():
+                            print("CONFLICT")
+                            print("old")
+                            print(effects_dict[name].display())
+                            print("new")
+                            print(E.display())
+                            rename = input("annotate which?")
+                            if rename == "old":
+                                newname = name + input("annotate old with:")
+                                
+                                effects_dict[newname] = effects_dict[name]
+                                effects_dict[newname] = newname
+                            if rename == "new":
+                                E.name += input("annotate old with:")
+                    effects_dict[E.name] = E
+
 
 pickle.dump(effects_dict, open( "effectsDict.p", "wb" ) )
