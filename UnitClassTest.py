@@ -76,3 +76,8 @@ print(rank_example.unit_card)
 # print(rank_example.unit_card)
 # rank_example.set_rank(7)
 # print(rank_example.unit_card)
+
+print(effects_dict["Power of the Dragonback"].display())
+print(effects_dict["Flammable!"].display())
+print(effects_dict["Regeneration"].display())
+print(effects_dict["Extremely Daring Deathblow"].display())

@@ -3,6 +3,33 @@ import pickle
 from TWWObjects import TWWEffect
 from Translators import stat_translator, attribute_pretty_name
 
+def statEffects_to_list(statEffects):
+    stat_effects_list = []
+    for s in statEffects:
+        if s['stat'] == 'stat_weakness_flame':
+            stat_effects_list.append( (stat_translator[s['stat']], -abs(s['value']), s['how']) )
+        else:
+            stat_effects_list.append( (stat_translator[s['stat']], s['value'], s['how']) )
+    return stat_effects_list
+
+def handle_conflict(D,new_entry):
+    if new_entry.name in D:
+        if new_entry.display() != effects_dict[new_entry.name].display():
+            print("\nCONFLICT")
+            print("old")
+            print(effects_dict[new_entry.name].display())
+            print("\nnew")
+            print(new_entry.display())
+            rename = input("annotate which?")
+            if rename == "old":
+                newname = name + input("annotate old with:")
+                D[newname] = D[name]
+                D[newname] = newname
+            if rename == "new":
+                new_entry.name += input("annotate new with:")
+    return new_entry
+
+
 with open('TWWAbilities.json', encoding="utf8") as f:
     A = json.load(f)
 
@@ -19,9 +46,7 @@ for ability in A:
             if "!" not in name:
                 name = ability['name']
             
-            stat_effects = []
-            for s in phase['statEffects']:
-                stat_effects.append( (stat_translator[s['stat']], s['value'], s['how']) )
+            stat_effects = statEffects_to_list(phase['statEffects'])
             
             other_effects = []
             attributes = phase['attributeEffects']
@@ -36,12 +61,8 @@ for ability in A:
                 other_effects.append("imbue_ignition")
                 
             E = TWWEffect(name,stat_effects,other_effects)
-            if name in effects_dict and E.display() != effects_dict[name].display():
-                print("CONFLICT")
-                print(E.display())
-                print(effects_dict[name].display())
-                
-            effects_dict[name] = E
+            E = handle_conflict(effects_dict,E)
+            effects_dict[E.name] = E
 
 for ability in A:
     if 'bound' in ability['key']:
@@ -56,9 +77,7 @@ for ability in A:
     sa_phase = ability['sa_phase']
     
     if 'statEffects' in sa_phase:
-        stats = sa_phase['statEffects']
-        for s in stats:
-            stat_effects.append( (stat_translator[s['stat']], s['value'], s['how']) )
+        stat_effects = statEffects_to_list(sa_phase['statEffects'])
     
     if 'attributeEffects' in sa_phase:
         attributes = sa_phase['attributeEffects']
@@ -74,22 +93,7 @@ for ability in A:
     
     
     E = TWWEffect(name,stat_effects,other_effects)
-    # This has a minor issue due to some abilities have the same name
-    if name in effects_dict:
-        if E.display() != effects_dict[name].display():
-            print("CONFLICT")
-            print("old")
-            print(effects_dict[name].display())
-            print("new")
-            print(E.display())
-            rename = input("annotate which?")
-            if rename == "old":
-                newname = name + input("annotate old with:")
-                
-                effects_dict[newname] = effects_dict[name]
-                effects_dict[newname] = newname
-            if rename == "new":
-                E.name += input("annotate old with:")
+    E = handle_conflict(effects_dict,E)
     effects_dict[E.name] = E
 
 
@@ -97,7 +101,7 @@ for ability in A:
 with open('unitsdata.json', encoding="utf8") as f:
     U = json.load(f)
 
-# Get ranged effects
+# Get ranged contact effects
 for unit in U:
     if 'primary_missile_weapon' in unit and unit['primary_missile_weapon'] != None:
             if 'phase' in unit['primary_missile_weapon'] and  unit['primary_missile_weapon']['phase'] != None:
@@ -108,9 +112,7 @@ for unit in U:
                     
                     
                     if 'statEffects' in unit['primary_missile_weapon']['phase']:
-                        stats = unit['primary_missile_weapon']['phase']['statEffects']
-                        for s in stats:
-                            stat_effects.append( (stat_translator[s['stat']], s['value'], s['how']) )
+                        stat_effects = statEffects_to_list(unit['primary_missile_weapon']['phase']['statEffects'])
                     
                     if 'attributeEffects' in unit['primary_missile_weapon']['phase']:
                         attributes = unit['primary_missile_weapon']['phase']['attributeEffects']
@@ -118,22 +120,7 @@ for unit in U:
                             other_effects.append( attribute_pretty_name[attr['attribute']] )
                     
                     E = TWWEffect(name,stat_effects,other_effects)
-                    
-                    if name in effects_dict:
-                        if E.display() != effects_dict[name].display():
-                            print("CONFLICT")
-                            print("old")
-                            print(effects_dict[name].display())
-                            print("new")
-                            print(E.display())
-                            rename = input("annotate which?")
-                            if rename == "old":
-                                newname = name + input("annotate old with:")
-                                
-                                effects_dict[newname] = effects_dict[name]
-                                effects_dict[newname] = newname
-                            if rename == "new":
-                                E.name += input("annotate old with:")
+                    E = handle_conflict(effects_dict,E)
                     effects_dict[E.name] = E
 
 
