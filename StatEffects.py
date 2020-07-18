@@ -65,8 +65,6 @@ for ability in A:
             effects_dict[E.name] = E
 
 for ability in A:
-    if 'bound' in ability['key']:
-        continue
     stat_effects = []
     other_effects = []
     name = ability["name"]

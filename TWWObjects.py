@@ -214,7 +214,6 @@ class TWWUnit:
     @property
     def unit_card(self):
         
-        
         ### Spells, Attributes, Abilities ###
         spells = self['spells']
         if len(spells) == 0:

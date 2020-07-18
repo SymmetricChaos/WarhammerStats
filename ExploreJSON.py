@@ -41,6 +41,6 @@ if __name__ == '__main__':
         J = json.load(f)
     
     for j in J:
-        if 'Dragonback' in j['name']:
+        if 'Grand Hammer of Sigmar' in j['name']:
             show_dict(j)
             break

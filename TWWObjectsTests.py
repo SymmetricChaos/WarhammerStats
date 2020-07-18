@@ -4,6 +4,12 @@ from TWWObjects import TWWUnit
 
 unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
 
-for i in unitsDF['key']:
-    unit = TWWUnit(select_unit(unitsDF,i))
-    unit.unit_card()
+effects_dict = pickle.load( open( "effectsDict.p", "rb" ) )
+
+# for i in unitsDF['key']:
+#     unit = TWWUnit(select_unit(unitsDF,i))
+#     unit.unit_card
+
+for e in effects_dict:
+    if e[0] == "G":
+        print(e)

@@ -69,13 +69,11 @@ print(fatigue_example.unit_card)
 
 
 print("\n\n\nExample of Rank")
-rank_example = TWWUnit(select_unit(unitsDF,"Black Lions"))
+rank_example = TWWUnit(select_unit(unitsDF,"Flagellants"))
 print(rank_example.unit_card)
 
 rank_example.set_rank(9)
 print(rank_example.unit_card)
-
-
 
 flier = TWWUnit(select_unit(unitsDF,"Feral Wyvern"))
 print(flier['run_speed'])
