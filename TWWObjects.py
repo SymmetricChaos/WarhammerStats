@@ -97,40 +97,119 @@ class TWWUnit:
     def __repr__(self):
         return str(self)
     
-    @property
-    def unit_card(self):
+    def melee_stat_block(self):
+        stat_block = ""
         
-        ### Melee Attack Stats ###
+        # HP and Armor
+        stat_block += f"| HP               {self['health']}\n"
+        stat_block += f"| Armour           {self['armour']}"
+        
+        if self['missile_block_chance'] != 0:
+            stat_block += f" ({self['missile_block_chance']}%)\n"
+        else:
+            stat_block += "\n"
+        
+        # Leadership
+        stat_block += f"| Leadership       {self['leadership']}\n"
+        
+        # Melee Attack
+        stat_block += f"| Melee Attack     {self['melee_attack']}"
+        if self['melee_is_magical']:
+            stat_block += " M"
+        if self['melee_is_flaming']:
+            stat_block += " F"
+        if self['melee_contact_effect'] != "":
+            stat_block += f" ({self['melee_contact_effect']})"
+        stat_block += "\n"
+        
+        # Melee Defence
+        stat_block += f"| Melee Defence    {self['melee_defence']}\n"
+        
+        # Weapon Strength
         melee_total = self['melee_total_damage']
         melee_base = self['melee_base_damage']
         melee_ap = self['melee_ap_damage']
         
-        weapon_strength = f"| Weapon Strength  {melee_total} ({melee_base}\\{melee_ap})"
+        stat_block += f"| Weapon Strength  {melee_total} ({melee_base}\\{melee_ap})"
         
         if self['melee_bonus_v_large'] != 0:
-            weapon_strength += f" BvL:{self['melee_bonus_v_large']}"
+            stat_block += f" BvL:{self['melee_bonus_v_large']}"
         if self['melee_bonus_v_infantry'] != 0:
-            weapon_strength += f" BvI:{self['melee_bonus_v_infantry']}"
-        weapon_strength += "\n"
+            stat_block += f" BvI:{self['melee_bonus_v_infantry']}"
+        stat_block += "\n"
         
-        melee_attack = f"| Melee Attack     {self['melee_attack']}"
-        if self['melee_is_magical']:
-            melee_attack += " M"
-        if self['melee_is_flaming']:
-            melee_attack += " F"
-        if self['melee_contact_effect'] != "":
-            melee_attack += f" ({self['melee_contact_effect']})"
-        melee_attack += "\n"
+        #Charge Bonus
+        stat_block += f"| Charge Bonus     {self['charge_bonus']}\n"
         
+        return stat_block
+    
+    def ranged_stat_block(self):
+        stat_block = ""
+        # Empty for units with no ammo
+        if self['ammo'] == 0:
+            return stat_block
         
-        ### Armor Stats ###
-        shield = self['missile_block_chance']
-        if shield == 0:
-            armor = f"| Armour           {self['armour']}\n"
+        # Ammo line
+        stat_block += f"| Ammo             {self['ammo']}"
+        
+        if self['ranged_is_magical']:
+            stat_block += "M"
+        if self['ranged_is_flaming']:
+            stat_block += "F"
+        stat_block += "\n"
+        
+        # Range
+        stat_block +=    f"| Range            {self['range']}\n"
+        
+        # Very complex missile strength line, needs to match in game line
+        ranged_base = self['ranged_base_damage']
+        ranged_ap = self['ranged_ap_damage']
+        
+        base_reload = self["base_reload_time"]
+        reload_skill = self["reload_skill"]
+        reload_time = base_reload*(100-reload_skill)/100
+        num_proj = self['projectile_number']
+        shots_vol = self['shots_per_volley']
+        stat_block += f"| Missile Strength {int(self['ranged_total_damage']*10/reload_time*num_proj*shots_vol)} ({reload_time}s)"
+        if self['ranged_contact_effect'] != "":
+            stat_block += f" {self['ranged_contact_effect']}"
+        stat_block += "\n"
+        
+        # Exact info about missile damage
+        if num_proj == 1 and shots_vol == 1:
+            proj_mul = ""
         else:
-            armor = f"| Armour           {self['armour']} ({shield}%)\n"
+            proj_mul = f"×{num_proj*shots_vol}"
+        stat_block +=   f"| Missile Damage   {self['ranged_total_damage']}{proj_mul} ({ranged_base}\\{ranged_ap})\n"
         
+        if self['explosion_total_damage'] != 0:
+            stat_block +=   f"| Explosion Damage {self['explosion_total_damage']} ({self['explosion_base_damage']}\\{self['explosion_ap_damage']})\n"
         
+        return stat_block
+    
+    def resistances_stat_block(self):
+        if sum([self['damage_mod_physical'],self['damage_mod_magic'],self['damage_mod_missile'],
+               self['damage_mod_flame'],self['damage_mod_all']]) == 0:
+            return ""
+        else:
+            stat_block = "|\n"
+            if self['damage_mod_physical'] != 0:
+                stat_block += f"| Physical Resist  {self['damage_mod_physical']}%\n"
+            if self['damage_mod_magic'] != 0:
+                stat_block += f"| Magic Resist     {self['damage_mod_magic']}%\n"
+            if self['damage_mod_missile'] != 0:
+                stat_block += f"| Missile Resist   {self['damage_mod_missile']}%\n"
+            if self['damage_mod_flame'] != 0:
+                stat_block += f"| Flame Resist     {self['damage_mod_flame']}%\n"
+            if self['damage_mod_all'] != 0:
+                stat_block += f"| Ward Save        {self['damage_mod_all']}%\n"
+        return stat_block
+
+    
+    @property
+    def unit_card(self):
+        
+
         ### Spells, Attributes, Abilities ###
         spells = self['spells']
         if len(spells) == 0:
@@ -153,46 +232,7 @@ class TWWUnit:
             active_effects = "\n|    ".join(active_effects) + "\n"
         
         
-        ### Ranged Stats for Ranged Units ###
-        if self['ammo'] == 0:
-            missile_range = ""
-            missile_damage = ""
-            missile_strength = ""
-            ammo = ""
-            
-        else:
-            
-            if self['ranged_is_magical']:
-                rM = "M"
-            else:
-                rM = ""
-            if self['ranged_is_flaming']:
-                rF = "F"
-            else:
-                rF = ""
-            
-            ranged_base = self['ranged_base_damage']
-            ranged_ap = self['ranged_ap_damage']
-            
-            base_reload = self["base_reload_time"]
-            reload_skill = self["reload_skill"]
-            reload_time = base_reload*(100-reload_skill)/100
-            num_proj = self['projectile_number']
-            shots_vol = self['shots_per_volley']
-            if num_proj == 1 and shots_vol == 1:
-                proj_mul = ""
-            else:
-                proj_mul = f"×{num_proj*shots_vol}"
-            
-            if self['ranged_contact_effect'] != "":
-                missile_strength = f"| Missile Strength {int(self['ranged_total_damage']*10/reload_time*num_proj*shots_vol)} ({reload_time}s) {self['ranged_contact_effect']}\n"
-            else:
-                missile_strength = f"| Missile Strength {int(self['ranged_total_damage']*10/reload_time*num_proj*shots_vol)} ({reload_time}s)\n"
-            
-            ammo =             f"| Ammo             {self['ammo']} {rM}{rF}\n"
-            missile_range =    f"| Range            {self['range']}\n"
-            missile_damage =   f"| Missile Damage   {self['ranged_total_damage']}{proj_mul} ({ranged_base}\\{ranged_ap})\n"
-        
+
         # Lords and heroes always have the same unit count and rank
         if self['caste'] not in ('Lord','Hero'):
             units = f"| Units: {self['unit_size']}\n"
@@ -207,24 +247,9 @@ class TWWUnit:
                f"{units}" \
                f"{rank}" \
                f"|\n" \
-               f"| HP               {self['health']}\n" \
-               f"{armor}" \
-               f"| Leadership       {self['leadership']}\n" \
-               f"| Speed            {self['speed']}\n" \
-               f"{melee_attack}" \
-               f"| Melee Defence    {self['melee_defence']}\n" \
-               f"{weapon_strength}" \
-               f"| Charge Bonus     {self['charge_bonus']}\n" \
-               f"{ammo}" \
-               f"{missile_range}" \
-               f"{missile_strength}" \
-               f"{missile_damage}" \
-               f"|\n" \
-               f"| Physical Resist  {self['damage_mod_physical']}%\n" \
-               f"| Magic Resist     {self['damage_mod_magic']}%\n" \
-               f"| Missile Resist   {self['damage_mod_missile']}%\n" \
-               f"| Flame Resist     {self['damage_mod_flame']}%\n" \
-               f"| Ward Save        {self['damage_mod_all']}%\n" \
+               f"{self.melee_stat_block()}" \
+               f"{self.ranged_stat_block()}" \
+               f"{self.resistances_stat_block()}" \
                f"|\n" \
                f"| Fatigue: {self['fatigue'].title()}\n" \
                f"|\n" \

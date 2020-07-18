@@ -88,6 +88,7 @@ def set_ranged_stats(D,unit):
         
         # If there is no ranged attack there is also no explosion so again we
         # provide default values
+        D["explosion_total_damage"] = 0
         D["explosion_base_damage"] = 0
         D["explosion_ap_damage"] = 0
         D["explosion_radius"] = 0
@@ -123,6 +124,7 @@ def set_ranged_stats(D,unit):
         
         # Some units have a ranged attack but no explosion so those stats are set to None
         if projectile["explosion"] == None:
+            D["explosion_total_damage"] = 0
             D["explosion_base_damage"] = 0
             D["explosion_ap_damage"] = 0
             D["explosion_radius"] = 0
@@ -130,6 +132,7 @@ def set_ranged_stats(D,unit):
             D["explosion_is_flaming"] = False
             D["explosion_contact_effect"] = ""
         else:
+            D["explosion_total_damage"] = projectile["explosion"]["base_damage"]+projectile["explosion"]["ap_damage"]
             D["explosion_base_damage"] = projectile["explosion"]["base_damage"]
             D["explosion_ap_damage"] = projectile["explosion"]["ap_damage"]
             D["explosion_radius"] = projectile["explosion"]["detonation_radius"]
