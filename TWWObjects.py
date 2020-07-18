@@ -3,7 +3,6 @@ import pandas as pd
 import copy
 import pickle
 import textwrap
-from Translators import faction_code_to_name
 
 
 class TWWEffect:
@@ -73,12 +72,11 @@ class TWWUnit:
             'leadership': [0,1.06],
             'reload_skill': [0,1.8],
             }
-    FACTION = faction_code_to_name
     
     def __init__(self,data):
         if type(data) != pd.core.series.Series:
-            raise Exception("data must be a Pandas Series object."
-                            " The select_unit() function from Utility Functions "
+            raise Exception("data must be a Pandas Series object. "
+                            "The select_unit() function from Utility Functions "
                             "will return this kind of object")
         self.data = dict(data)
         self.shadow = copy.deepcopy(dict(data)) # shadow not to be modified
@@ -97,6 +95,7 @@ class TWWUnit:
     
     def __repr__(self):
         return str(self)
+    
     
     def melee_stat_block(self):
         stat_block = ""
@@ -380,21 +379,24 @@ class TWWUnit:
     # this is weirdly complicated?
     # reload and leadership work correctly, accuracy probably does
     # unclear on how melee attack and melee defence work
+    # currently gets pretty close results
     def set_rank(self,level):
         if level not in (0,1,2,3,4,5,6,7,8,9):
             raise Exception("Rank must be an integer from 0 to 9")
         if self['caste'] in ('Lord','Hero'):
             raise Exception("Characters do not gain unit ranks (chevrons).")
+        if self['special_category'] == 'renown':
+            raise Exception("Regiments of Renown are locked to rank 9.")
         if self['rank'] == level:
             return None
         else:
             # Reset rank
             for stat,val in self.EXP.items():
-                change = round(val[1]*self['rank'])
+                change = round(val[1]*self.shadow[stat]**val[0]*self['rank'])
                 self[stat] -= change
         
             # Then apply rank
             for stat,val in self.EXP.items():
-                change = round(val[1]*level)
+                change = round(val[1]*self.shadow[stat]**val[0]*level)
                 self[stat] += change
             self['rank'] = level

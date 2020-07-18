@@ -180,7 +180,7 @@ def create_units_dict_from_JSON(J):
              "faction": faction_code_to_name[get_faction_group(unit)],
              "caste": unit["caste"],
              "category": unit["category"],
-             "rank": 0,
+             "rank": 0 if unit["special_category"] != 'renown' else 9,
              "fatigue": "fresh",
              
              ## Stats not visible to the user ##
