@@ -29,27 +29,28 @@ class TWWEffect:
         for stat, val, how in self.stat_effects:
             if 'UNUSED' in stat:
                 continue
+            if stat == 'speed':
+                if remove == False:
+                    unit.change_speed(val)
+                else:
+                     unit.change_speed(val,remove=True)
             else:
                 if how == 'mult':
-                    try:
-                        increase = round(unit.shadow[stat]*val-unit.shadow[stat])
-                        if type(stat) == int:
-                            increase == int(increase)
-                        if remove == False:
-                            unit[stat] += increase
-                        else:
-                            unit[stat] -= increase
-                    except:
-                        pass
+                    increase = round(unit.shadow[stat]*val-unit.shadow[stat])
+                    if type(stat) == int:
+                        increase == int(increase)
+                    if remove == False:
+                        unit[stat] += increase
+                    else:
+                        unit[stat] -= increase
+            
                 elif how == 'add':
-                    try:
-                        if remove == False:
-                            unit[stat] += val
-                        else:
-                            unit[stat] -= val
-                    except:
-                        pass
-                    
+                    if remove == False:
+                        unit[stat] += val
+                    else:
+                        unit[stat] -= val
+            
+            
             unit["melee_total_damage"] = unit["melee_base_damage"]+unit["melee_ap_damage"]
             unit["ranged_total_damage"] = unit["ranged_base_damage"]+unit["ranged_ap_damage"]
             unit["explosion_total_damage"] = unit["explosion_base_damage"]+unit["explosion_ap_damage"]
@@ -111,6 +112,7 @@ class TWWUnit:
         
         # Leadership
         stat_block += f"| Leadership       {self['leadership']}\n"
+        stat_block += f"| Speed            {self['speed']}\n"
         
         # Melee Attack
         stat_block += f"| Melee Attack     {self['melee_attack']}"
@@ -171,6 +173,10 @@ class TWWUnit:
         num_proj = self['projectile_number']
         shots_vol = self['shots_per_volley']
         stat_block += f"| Missile Strength {int(self['ranged_total_damage']*10/reload_time*num_proj*shots_vol)} ({reload_time}s)"
+        if self['ranged_bonus_v_large'] != 0:
+            stat_block += f" BvL:{self['ranged_bonus_v_large']}"
+        if self['ranged_bonus_v_infantry'] != 0:
+            stat_block += f" BvI:{self['ranged_bonus_v_infantry']}"
         if self['ranged_contact_effect'] != "":
             stat_block += f" {self['ranged_contact_effect']}"
         stat_block += "\n"
@@ -204,12 +210,12 @@ class TWWUnit:
             if self['damage_mod_all'] != 0:
                 stat_block += f"| Ward Save        {self['damage_mod_all']}%\n"
         return stat_block
-
+    
     
     @property
     def unit_card(self):
         
-
+        
         ### Spells, Attributes, Abilities ###
         spells = self['spells']
         if len(spells) == 0:
@@ -232,7 +238,6 @@ class TWWUnit:
             active_effects = "\n|    ".join(active_effects) + "\n"
         
         
-
         # Lords and heroes always have the same unit count and rank
         if self['caste'] not in ('Lord','Hero'):
             units = f"| Units: {self['unit_size']}\n"
@@ -260,8 +265,13 @@ class TWWUnit:
                f"{active_effects}\n"
     
     
-    def reset_stats(self):
+    # Completely reset the units stats
+    def reset_unit(self):
         self.data = self.shadow
+    
+    # Reset a specific stat
+    def reset_stat(self,stat):
+        self.data[stat] = self.shadow[stat]
     
     
     def change_stat(self,stat,value,operation,remove=False):
@@ -280,6 +290,16 @@ class TWWUnit:
                      self[stat] -= increase
         else:
             raise Exception("Operations must be either 'add' or 'mul'")
+    
+    
+    # Need this because there are so many different speeds
+    def change_speed(self,value,remove=False):
+        for speed_type in ('speed','run_speed','fly_speed','charge_speed','charge_speed_flying'):
+            increase = round(self.shadow[speed_type]*value-self.shadow[speed_type])
+            if remove == False:
+                self[speed_type] += increase
+            else:
+                self[speed_type] -= increase
     
     
     def toggle_BvI(self):
