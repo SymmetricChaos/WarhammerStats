@@ -87,5 +87,5 @@ faction_code_to_name = {'brt': "Brettonia",
                         'vmp': "Vampire Counts",
                         'wef': "Wood Elves",
                         'teb': "Southern Realms",
-                        'neu': "NEU",
+                        'neu': "Neutral",
                         'huntmarshall': "The Empire"}

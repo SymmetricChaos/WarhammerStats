@@ -50,7 +50,7 @@ unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
 
 
 print("\n\n\nExample Ranged Unit")
-ranged = TWWUnit(select_unit(unitsDF,"Chosen of the Gods (Ushabti - Great Bow)"))
+ranged = TWWUnit(select_unit(unitsDF,"Queen Bess"))
 print(ranged.unit_card)
 
 # print("\n\n\nExample Unit With Lots of Attributes, Abilities, and Spells")
@@ -72,3 +72,9 @@ print(ranged.unit_card)
 # print(rank_example.unit_card)
 # rank_example.set_rank(9)
 # print(rank_example.unit_card)
+
+print("\n\n\nTest Different Combinations of Stat Blocks")
+print(TWWUnit(select_unit(unitsDF,"Queen Bess")).unit_card)
+print(TWWUnit(select_unit(unitsDF,"Crossbowmen")).unit_card)
+print(TWWUnit(select_unit(unitsDF,"Casket of Souls")).unit_card)
+print(TWWUnit(select_unit(unitsDF,"Chosen")).unit_card)

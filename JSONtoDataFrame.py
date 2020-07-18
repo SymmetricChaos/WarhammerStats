@@ -173,7 +173,7 @@ def create_units_dict_from_JSON(J):
              "damage_mod_all": unit["damage_mod_all"],
              "speed": unit["speed"], # <- speed as shown in UI, better of ground and flying
              "recruitment_time": unit["create_time"], # <- recruitment time
-             "unit_card":unit["unit_card"].split("/")[-1],
+             "unit_card_img": unit["unit_card"].split("/")[-1],
              "multiplayer_cost": unit["multiplayer_cost"],
              "singleplayer_cost":  unit["singleplayer_cost"],
              "singleplayer_upkeep":  unit["singleplayer_upkeep"],
