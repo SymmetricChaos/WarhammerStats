@@ -75,6 +75,8 @@ print(rank_example.unit_card)
 rank_example.set_rank(9)
 print(rank_example.unit_card)
 
+
+print("\n\n\nExample of Speed")
 flier = TWWUnit(select_unit(unitsDF,"Feral Wyvern"))
 print(flier['run_speed'])
 print(flier['fly_speed'])
@@ -85,3 +87,13 @@ print(flier['run_speed'])
 print(flier['fly_speed'])
 print(flier['charge_speed'])
 print(flier['charge_speed_flying'])
+
+
+
+print("\n\n\nExample of Imbuments")
+imbument_example = TWWUnit(select_unit(unitsDF,"Grail Knights"))
+print(imbument_example.unit_card)
+imbument_example.toggle_effect("Flaming Sword of Rhuin")
+print(imbument_example.unit_card)
+imbument_example.toggle_effect("Flaming Sword of Rhuin")
+print(imbument_example.unit_card)

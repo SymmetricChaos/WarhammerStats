@@ -29,10 +29,7 @@ class TWWEffect:
             if 'UNUSED' in stat:
                 continue
             if stat == 'speed':
-                if remove == False:
-                    unit.change_speed(val)
-                else:
-                     unit.change_speed(val,remove=True)
+                unit.change_speed(val,remove=remove)
             else:
                 if how == 'mult':
                     increase = round(unit.shadow[stat]*val-unit.shadow[stat])
@@ -49,10 +46,33 @@ class TWWEffect:
                     else:
                         unit[stat] -= val
             
+        unit["melee_total_damage"] = unit["melee_base_damage"]+unit["melee_ap_damage"]
+        unit["ranged_total_damage"] = unit["ranged_base_damage"]+unit["ranged_ap_damage"]
+        unit["explosion_total_damage"] = unit["explosion_base_damage"]+unit["explosion_ap_damage"]
+        
+        for imbument in self.other_effects:
+            if remove == False:
+                if imbument == 'imbue_magical':
+                    unit['melee_is_magical'] = True
+                    unit.imbue_magical += 1
+                elif imbument == 'imbue_flaming':
+                    unit['melee_is_flaming'] = True
+                    unit.imbue_flaming += 1
+                else:
+                    unit['attributes'].append(imbument)
             
-            unit["melee_total_damage"] = unit["melee_base_damage"]+unit["melee_ap_damage"]
-            unit["ranged_total_damage"] = unit["ranged_base_damage"]+unit["ranged_ap_damage"]
-            unit["explosion_total_damage"] = unit["explosion_base_damage"]+unit["explosion_ap_damage"]
+            else:
+                if imbument == 'imbue_magical':
+                    unit.imbue_magical -= 1
+                    if unit.imbue_magical == 0:
+                        unit['melee_is_magical'] = unit.shadow['melee_is_magical']
+                elif imbument == 'imbue_flaming':
+                    unit.imbue_flaming -= 1
+                    if unit.imbue_flaming == 0:
+                        unit['melee_is_flaming'] = unit.shadow['melee_is_flaming']
+                else:
+                    unit['attributes'].remove(imbument)
+
 
 
 effects_dict = pickle.load( open( "effectsDict.p", "rb" ) )
@@ -64,9 +84,9 @@ class TWWUnit:
     # This is a large dictionary but it is very use to have it be part of the
     # definition of TWWUnit. As an class variable it is stored only once even
     # if multiple TWWUnit objects exist
-    EFFECTS = effects_dict
-    FATIGUE = fatigue_dict
-    EXP = {'accuracy': [0,3],
+    _EFFECTS = effects_dict
+    _FATIGUE = fatigue_dict
+    _EXP = {'accuracy': [0,3],
             'melee_attack': [0.6,0.12],
             'melee_defence': [0.6,0.12],
             'leadership': [0,1.06],
@@ -80,9 +100,9 @@ class TWWUnit:
                             "will return this kind of object")
         self.data = dict(data)
         self.shadow = copy.deepcopy(dict(data)) # shadow not to be modified
-        
-        # names of active effects
-        self.effects = []
+        self.effects = []  # names of active effects
+        self.imbue_magical = 0 # number effects giving magical
+        self.imbue_flaming = 0 # number effects giving flaming
     
     def __getitem__(self,n):
         return self.data[n]
@@ -219,20 +239,20 @@ class TWWUnit:
         if len(spells) == 0:
             spells = ""
         else:
-            spells = textwrap.wrap(f"| Spells: {', '.join(self['spells'])}",45)
+            spells = textwrap.wrap(f"| Spells: {', '.join(self['spells'])}",50)
             spells = "\n|    ".join(spells) + "\n"
         
-        attributes = textwrap.wrap(f"| Attributes: {', '.join(self['attributes'])}",45)
+        attributes = textwrap.wrap(f"| Attributes: {', '.join(sorted(self['attributes']))}",50)
         attributes = "\n|    ".join(attributes)
         
-        abilities = textwrap.wrap(f"| Abilities: {', '.join(self['abilities'])}",45)
+        abilities = textwrap.wrap(f"| Abilities: {', '.join(sorted(self['abilities']))}",50)
         abilities = "\n|    ".join(abilities)
         
         active_effects = self.effects
         if len(active_effects) == 0:
             active_effects = "| Active Effects: None"
         else:
-            active_effects = textwrap.wrap(f"| Active Effects: {', '.join(active_effects)}",45)
+            active_effects = textwrap.wrap(f"| Active Effects: {', '.join(sorted(active_effects))}",50)
             active_effects = "\n|    ".join(active_effects) + "\n"
         
         
@@ -351,10 +371,10 @@ class TWWUnit:
     def toggle_effect(self,effect):
         if effect not in self.effects:
             self.effects.append(effect)
-            self.EFFECTS[effect](self)
+            self._EFFECTS[effect](self)
         else:
             self.effects.remove(effect)
-            self.EFFECTS[effect](self,remove=True)
+            self._EFFECTS[effect](self,remove=True)
     
     def set_fatigue(self,level):
         level = level.lower()
@@ -363,22 +383,19 @@ class TWWUnit:
         else:
             # Reset fatigue first
             for stat in ("melee_attack","melee_defence","melee_ap_damage","armour","charge_bonus"):
-                mul = self.FATIGUE[self['fatigue']][stat]
+                mul = self._FATIGUE[self['fatigue']][stat]
                 increase = round(self.shadow[stat]*mul-self.shadow[stat])
                 self[stat] -= increase
             
             # Then apply fatigue
             for stat in ("melee_attack","melee_defence","melee_ap_damage","armour","charge_bonus"):
-                mul = self.FATIGUE[level][stat]
+                mul = self._FATIGUE[level][stat]
                 increase = round(self.shadow[stat]*mul-self.shadow[stat])
                 self[stat] += increase
             self.data["melee_total_damage"] = self.data["melee_base_damage"]+self.data["melee_ap_damage"]
             self['fatigue'] = level
     
-    # this is weirdly complicated?
-    # reload and leadership work correctly, accuracy probably does
-    # unclear on how melee attack and melee defence work
-    # currently gets pretty close results
+    # Thanks to ciment for the complete formula
     def set_rank(self,level):
         if level not in (0,1,2,3,4,5,6,7,8,9):
             raise Exception("Rank must be an integer from 0 to 9")
@@ -390,12 +407,12 @@ class TWWUnit:
             return None
         else:
             # Reset rank
-            for stat,val in self.EXP.items():
+            for stat,val in self._EXP.items():
                 change = round(val[1]*self.shadow[stat]**val[0]*self['rank'])
                 self[stat] -= change
         
             # Then apply rank
-            for stat,val in self.EXP.items():
+            for stat,val in self._EXP.items():
                 change = round(val[1]*self.shadow[stat]**val[0]*level)
                 self[stat] += change
             self['rank'] = level

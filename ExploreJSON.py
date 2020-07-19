@@ -32,15 +32,15 @@ if __name__ == '__main__':
     with open('unitsdata.json', encoding="utf8") as f:
         J = json.load(f)
     
-    # for j in J:
-    #     if 'Dragonback Slayers' in j['name']:
-    #         show_dict(j,"")
+    for j in J:
+        if 'Death Runners' in j['name']:
+            show_dict(j,"")
 
     
-    with open('TWWAbilities.json', encoding="utf8") as f:
-        J = json.load(f)
+    # with open('TWWAbilities.json', encoding="utf8") as f:
+    #     J = json.load(f)
     
-    for j in J:
-        if 'Grand Hammer of Sigmar' in j['name']:
-            show_dict(j)
-            break
+    # for j in J:
+    #     if 'Grand Hammer of Sigmar' in j['name']:
+    #         show_dict(j)
+    #         break

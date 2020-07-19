@@ -11,5 +11,5 @@ effects_dict = pickle.load( open( "effectsDict.p", "rb" ) )
 #     unit.unit_card
 
 for e in effects_dict:
-    if e[0] == "G":
-        print(e)
+    if e == "Frenzy":
+        print(effects_dict[e].display())
