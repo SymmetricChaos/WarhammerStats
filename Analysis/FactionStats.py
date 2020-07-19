@@ -4,7 +4,6 @@ import pickle
 import pandas as pd
 from AnalysisFunctions import histoplot
 
-    
 unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
 
 

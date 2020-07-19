@@ -2,6 +2,15 @@ import json
 import pickle
 from TWWObjects import TWWEffect
 from Translators import stat_translator, attribute_pretty_name
+import os
+
+cur_dir = os.getcwd()
+
+with open(cur_dir+'\\RawFiles\\TWWAbilities.json', encoding="utf8") as f:
+    A = json.load(f)
+with open(cur_dir+'\\RawFiles\\unitsdata.json', encoding="utf8") as f:
+    U = json.load(f)
+
 
 ## Helper functions ##
 
@@ -29,9 +38,8 @@ def handle_conflict(D,new_entry):
     D[new_entry.name] = new_entry
 
 
-## with TWWAbilities List ##
-with open('TWWAbilities.json', encoding="utf8") as f:
-    A = json.load(f)
+
+
 
 effects_dict = {}
 for ability in A:
@@ -91,11 +99,9 @@ for ability in A:
     handle_conflict(effects_dict,E)
 
 
-## Next is units with contact effects ##
-with open('unitsdata.json', encoding="utf8") as f:
-    U = json.load(f)
 
-# Get ranged contact effects
+
+
 for unit in U:
     if 'primary_missile_weapon' in unit and unit['primary_missile_weapon'] != None:
         if 'phase' in unit['primary_missile_weapon'] and  unit['primary_missile_weapon']['phase'] != None:
@@ -115,7 +121,7 @@ for unit in U:
             E = TWWEffect(name,stat_effects,other_effects)
             handle_conflict(effects_dict,E)
 
-# Get melee contact effects
+
 for unit in U:
     if 'phase' in unit['primary_melee_weapon'] and  unit['primary_melee_weapon']['phase'] != None:
             
@@ -134,4 +140,4 @@ for unit in U:
         E = TWWEffect(name,stat_effects,other_effects)
         handle_conflict(effects_dict,E)
 
-pickle.dump(effects_dict, open( "effectsDict.p", "wb" ) )
+pickle.dump(effects_dict, open(cur_dir+"\\WorkedFiles\\effectsDict.p", "wb" ) )

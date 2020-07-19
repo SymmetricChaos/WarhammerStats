@@ -3,6 +3,11 @@ import pandas as pd
 import copy
 import pickle
 import textwrap
+import os
+
+cur_dir = os.getcwd()
+effects_dict = pickle.load( open( cur_dir+"\\WorkedFiles\\effectsDict.p", "rb" ) )
+fatigue_dict = pickle.load( open( cur_dir+"\\WorkedFiles\\fatigueDict.p", "rb" ) )
 
 
 class TWWEffect:
@@ -75,8 +80,6 @@ class TWWEffect:
 
 
 
-effects_dict = pickle.load( open( "effectsDict.p", "rb" ) )
-fatigue_dict = pickle.load( open( "fatigueDict.p", "rb" ) )
 
 
 class TWWUnit:
