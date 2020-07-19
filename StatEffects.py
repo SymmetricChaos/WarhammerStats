@@ -59,8 +59,7 @@ for ability in A:
                 other_effects.append("imbue_flaming")
                 
             E = TWWEffect(name,stat_effects,other_effects)
-            E = handle_conflict(effects_dict,E)
-            effects_dict[E.name] = E
+            handle_conflict(effects_dict,E)
 
 
 for ability in A:
@@ -114,8 +113,7 @@ for unit in U:
                     other_effects.append( attribute_pretty_name[attr['attribute']] )
             
             E = TWWEffect(name,stat_effects,other_effects)
-            E = handle_conflict(effects_dict,E)
-            effects_dict[E.name] = E
+            handle_conflict(effects_dict,E)
 
 # Get melee contact effects
 for unit in U:
@@ -134,7 +132,6 @@ for unit in U:
                 other_effects.append( attribute_pretty_name[attr['attribute']] )
         
         E = TWWEffect(name,stat_effects,other_effects)
-        E = handle_conflict(effects_dict,E)
-        effects_dict[E.name] = E
+        handle_conflict(effects_dict,E)
 
 pickle.dump(effects_dict, open( "effectsDict.p", "wb" ) )
