@@ -91,7 +91,7 @@ print(flier['charge_speed_flying'])
 
 
 print("\n\n\nExample of Imbuments")
-imbument_example = TWWUnit(select_unit(unitsDF,"Flagellants"))
+imbument_example = TWWUnit(select_unit(unitsDF,"Sisters of Avelorn"))
 print(imbument_example.unit_card)
 imbument_example.toggle_effect("Flaming Sword of Rhuin")
 print(imbument_example.unit_card)

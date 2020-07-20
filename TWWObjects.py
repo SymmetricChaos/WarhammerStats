@@ -100,7 +100,7 @@ class TWWUnit:
             return stat_block
         
         # Ammo line
-        stat_block += f"| Ammo             {self['ammo']}"
+        stat_block += f"| Ammo             {self['ammo']} "
         
         if self['ranged_is_magical']:
             stat_block += "M"
