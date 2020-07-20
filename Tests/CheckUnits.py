@@ -1,8 +1,6 @@
-import pickle
-from UtilityFunctions import select_unit
-from TWWObjects import TWWUnit
+from WarhammerStuff import TWWUnit, select_unit, unitsDF
 
-unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
+# unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
 
 
 print("\nTest Bonus Vs Large")
@@ -74,6 +72,7 @@ print(rank_example.unit_card)
 
 rank_example.set_rank(9)
 print(rank_example.unit_card)
+
 
 
 print("\n\n\nExample of Speed")

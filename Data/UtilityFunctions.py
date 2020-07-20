@@ -1,4 +1,4 @@
-import numpy as np
+import math
 
 
 # Convert a trait name into a nicer looking version
@@ -90,7 +90,7 @@ def average_armor_reduction(armor):
     if armor < 0:
         raise Exception("Armor cannot be less than 0")
     elif armor <= 100:
-        return np.mean([armor,armor/2])/100
+        return math.mean([armor,armor/2])/100
     elif armor <= 200:
         return 2-.0025*armor - 100/armor
     else:
@@ -127,13 +127,6 @@ def melee_hit_prob(melee_attack,melee_defense):
 ## Most functions below accept the argument "units" which should be a pandas
 ## DataFrame where each row is a unit description like the one created by
 ## JSONtoDataFrame
-
-def random_unit(units):
-    # randint returns a list, the comma just skips having to extract the only
-    # element of the list
-    r, = np.random.randint(0,len(units),1)
-    return units.iloc[r]
-
 
 def select_unit(unitsDF,name):
     """
@@ -174,7 +167,7 @@ def select_unit(unitsDF,name):
             for line in helper.values:
                 S += f"{line[0]:<50} {line[1]}\n"
             raise Exception(f"The name '{name}' is ambiguous. Please use one of these names or key values:\n{S}")
-
+    
     return unit.T.squeeze()
 
 
@@ -295,32 +288,3 @@ def all_with_attribute(units,attribute):
 def all_from_faction(units,faction_group):
     faction = units["faction_group"] == faction_group
     return units[faction]
-
-
-
-
-
-if __name__ == '__main__':
-    import pickle
-    unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
-    
-    print(random_unit(unitsDF))
-    
-#    print(all_abilities(unitsDF))
-#    print(all_attributes(unitsDF))
-    
-#    unitsDF_filtered = no_nonstandard(unitsDF)
-    
-    
-#    print(100/average_damage_with_armor_ratio(100,.7,200))
-#    print(no_single_entity(unitsDF))
-    
-#    print(all_with_ability(unitsDF,"Foe-Seeker"))
-    
-#    print(all_with_attribute(unitsDF,"strider"))
-#    print(no_summoned(unitsDF))
-#    print(unit_named(unitsDF,"Zombies"))
-    
-#    for ar in [9,10,11,12,13,75,150]:
-#        print(average_armor_reduction(ar))
-#        print(average_armor_reduction_old(ar))
