@@ -2,7 +2,7 @@ import json
 import os
 
 cur_dir = os.getcwd()
-with open(cur_dir+'\\RawFiles\\twwstats_fatigue.json', encoding="utf8") as f:
+with open(cur_dir+'\\DataFiles\\twwstats_fatigue.json', encoding="utf8") as f:
     F = json.load(f)
 
 # All of the effects of fatigue are multiplers so values of None are 
@@ -43,10 +43,10 @@ import pickle
 
 pickle.dump(fatigue_dict, open( "fatigueDict.p", "wb" ) )
 
-with open(cur_dir+'\\WorkedFiles\\fatigue.csv', 'w') as f:
+with open(cur_dir+'\\DataFiles\\fatigue.csv', 'w') as f:
     w = csv.DictWriter(f, fatigue_dict.keys())
     w.writeheader()
     w.writerow(fatigue_dict)
 
-with open(cur_dir+'\\WorkedFiles\\fatigue.json', 'w') as fp:
+with open(cur_dir+'\\DataFiles\\fatigue.json', 'w') as fp:
     json.dump(fatigue_dict, fp)

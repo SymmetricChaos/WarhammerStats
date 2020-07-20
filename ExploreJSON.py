@@ -29,18 +29,21 @@ def find_unit(D,name):
 
 if __name__ == '__main__':
     import json
-    # with open('unitsdata.json', encoding="utf8") as f:
-    #     J = json.load(f)
-    
-    # for j in J:
-    #     if 'Death Runners' in j['name']:
-    #         show_dict(j,"")
+    import os
 
-    
-    with open('TWWAbilities.json', encoding="utf8") as f:
+    cur_dir = os.getcwd()
+    with open(cur_dir+'\\DataFiles\\unitsdata.json', encoding="utf8") as f:
         J = json.load(f)
     
     for j in J:
-        if 'Bless with Filth' in j['name']:
-            show_dict(j)
-            break
+        if 'Death Runners' in j['name']:
+            show_dict(j,"")
+
+    
+    # with open(cur_dir+'\\DataFiles\\TWWAbilities.json', encoding="utf8") as f:
+    #     J = json.load(f)
+    
+    # for j in J:
+    #     if 'Bless with Filth' in j['name']:
+    #         show_dict(j)
+    #         break

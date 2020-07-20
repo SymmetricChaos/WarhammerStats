@@ -2,7 +2,7 @@ import pickle
 from TWWObjects import TWWUnit
 from UtilityFunctions import select_unit
 
-unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
+unitsDF = pickle.load( open( "DataFiles\\unitsDF.p", "rb" ) )
 
 print("\nTest Bonus Vs Large")
 my_unit = TWWUnit(select_unit(unitsDF,"Phoenix Guard"))
@@ -68,7 +68,7 @@ print(fatigue_example.unit_card)
 
 
 print("\n\n\nExample of Rank")
-rank_example = TWWUnit(select_unit(unitsDF,"Flagellants"))
+rank_example = TWWUnit(select_unit(unitsDF,"wh2_main_hef_inf_archers_0"))
 print(rank_example.unit_card)
 
 rank_example.set_rank(9)

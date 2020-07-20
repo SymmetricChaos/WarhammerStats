@@ -5,8 +5,8 @@ import pickle
 import textwrap
 from TWWEffect import TWWEffect
 
-effects_dict = pickle.load( open( "effectsDict.p", "rb" ) )
-fatigue_dict = pickle.load( open( "fatigueDict.p", "rb" ) )
+effects_dict = pickle.load( open( "DataFiles\\effectsDict.p", "rb" ) )
+fatigue_dict = pickle.load( open( "DataFiles\\fatigueDict.p", "rb" ) )
 
 class TWWUnit:
     
