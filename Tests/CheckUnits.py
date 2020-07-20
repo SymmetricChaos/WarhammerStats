@@ -1,6 +1,4 @@
-from WarhammerStuff import TWWUnit, select_unit, unitsDF
-
-# unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
+from Stats import TWWUnit, select_unit, unitsDF
 
 
 print("\nTest Bonus Vs Large")
