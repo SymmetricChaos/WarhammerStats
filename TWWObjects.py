@@ -182,7 +182,7 @@ class TWWUnit:
             active_effects = "| Active Effects: None"
         else:
             active_effects = textwrap.wrap(f"| Active Effects: {', '.join(sorted(active_effects))}",50)
-            active_effects = "\n|    ".join(active_effects) + "\n"
+            active_effects = "\n|    ".join(active_effects)
         
         
         # Lords and heroes always have the same unit count and rank
