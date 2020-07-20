@@ -1,6 +1,3 @@
-import math
-
-
 # Convert a trait name into a nicer looking version
 def pretty_name(S):
     return " ".join(S.split("_")).title()
@@ -90,7 +87,7 @@ def average_armor_reduction(armor):
     if armor < 0:
         raise Exception("Armor cannot be less than 0")
     elif armor <= 100:
-        return math.mean([armor,armor/2])/100
+        return (armor+armor/2)/2/100
     elif armor <= 200:
         return 2-.0025*armor - 100/armor
     else:

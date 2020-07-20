@@ -42,9 +42,13 @@ def ranged_damage_stats(unit,target_armor=60,shield=0):
 
 
 if __name__ == '__main__':
-    
-    unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
+    from pathlib import Path
     from TWWObjects import TWWUnit
+    
+    top_of_path = str(Path(__file__).parent.parent)
+    
+    unitsDF = pickle.load( open( top_of_path+"\\DataFiles\\unitsDF.p", "rb" ) )
+
     
     waywatchers = TWWUnit(select_unit(unitsDF,"wh_dlc05_wef_inf_waywatchers_0"))
     waywatchers.toggle_effect("Hawkish Precision")
