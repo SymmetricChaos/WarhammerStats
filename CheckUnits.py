@@ -1,5 +1,8 @@
-from Stats import TWWUnit, select_unit, unitsDF
+import pickle
+from TWWObjects import TWWUnit
+from UtilityFunctions import select_unit
 
+unitsDF = pickle.load( open( "unitsDF.p", "rb" ) )
 
 print("\nTest Bonus Vs Large")
 my_unit = TWWUnit(select_unit(unitsDF,"Phoenix Guard"))

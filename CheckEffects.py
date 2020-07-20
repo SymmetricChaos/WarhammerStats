@@ -1,3 +1,4 @@
+import pickle
 effects_dict = pickle.load( open( "effectsDict.p", "rb" ) )
 
 for e in effects_dict:
