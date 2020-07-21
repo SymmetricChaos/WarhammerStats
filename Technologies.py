@@ -5,24 +5,41 @@ top_of_path = str(Path(__file__).parent)
 
 
 
-
-key_to_effect = {}
+# What effect value is tied to each key
+key_to_effect_vals = {}
+# What effect_keys are tied to each tech_key
+tech_key_to_keys = {}
 with open(top_of_path+'\\DataFiles\\technology_effects_junction_tables.tsv', encoding="utf8") as f:
     F = csv.reader(f,delimiter='\t')
     
     for n,row in enumerate(F):
         if n < 3:
             continue
-        key_to_effect[row[1]] = row
+        
+        if row[1] in key_to_effect_vals:
+            key_to_effect_vals[row[1]] += [row[3]]
+        else:
+            key_to_effect_vals[row[1]] = [row[3]]
+            
+        if row[0] in tech_key_to_keys:
+            tech_key_to_keys[row[0]] += [row[1]]
+        else:
+            tech_key_to_keys[row[0]] = [row[1]]
 
 
+#What tech_key corresponds to each name in the UI
+tech_key_to_name = {}
 with open(top_of_path+'\\DataFiles\\technologies__.loc.tsv', encoding="utf8") as f:
     F = csv.reader(f,delimiter='\t')
     
     for n,row in enumerate(F):
-        if "onscreen" in row[0] and row[1] != "":
-            if row[0][27:] in key_to_effect:
-                key_to_effect[row[0][27:]].append(row[1])
+        try:
+            tech_key,name,_ = row
+            if "onscreen" in tech_key and name != "":
+                tech_key_to_name[tech_key[27:]] = name
+        except:
+            if "onscreen" in row[0]:
+                print(row)
 
 # What units are in each unit set
 unit_set_to_units = {}
@@ -37,7 +54,8 @@ with open(top_of_path+'\\DataFiles\\unit_set_to_unit_junctions_tables.tsv', enco
         else:
             unit_set_to_units[row[5]] += [row[4]]
 
-# What unit sets are tied to each key
+# What unit sets are tied to each effect key
+# What stat is tied to each effect key
 key_to_unit_set = {}
 key_to_stat = {}
 with open(top_of_path+'\\DataFiles\\effect_bonus_value_ids_unit_sets_tables.tsv', encoding="utf8") as f:
@@ -73,20 +91,49 @@ for k,v in key_to_unit_set.items():
         except:
             key_to_units[k] += ["ERROR"+unit_set]
 
-print("key_to_effect")
-for k,v in key_to_effect.items():
-    if 'wh2_dlc11_effect_force_unit_stat_weapon_damage_deckhands_depthguards' in k:
-        print(k,v)
-        break
 
-print("\nkey_to_stat")
-for k,v in key_to_stat.items():
-    if 'wh2_dlc11_effect_force_unit_stat_weapon_damage_deckhands_depthguards' in k:
-        print(k,v)
-        break
 
-print("\nkey_to_units")
-for k,v in key_to_units.items():
-    if 'wh2_dlc11_effect_force_unit_stat_weapon_damage_deckhands_depthguards' in k:
-        print(k,v)
-        break
+# Tie everything to the name
+name_to_info = {}
+for tech_key,name in tech_key_to_name.items():
+    try:
+        effect_keys = tech_key_to_keys[tech_key]
+        stat_effects = [key_to_stat[e] for e in effect_keys]
+        stat_value = [key_to_effect_vals[e] for e in effect_keys]
+        name_to_info[name] = [tech_key,effect_keys,stat_effects,stat_value]
+    except:
+        pass
+
+
+
+print(name_to_info["Salvaged Arsenal"])
+
+# print("tech_key_to_key")
+# for k,v in tech_key_to_key.items():
+#     if k == 'tech_cst_piracy_03':
+#         print(k,v)
+#         break
+
+# print("\ntech_key_to_name")
+# for k,v in tech_key_to_name.items():
+#     if 'Salvage' in v:
+#         print(k,v)
+#         break
+
+# print("\nkey_to_effect_val")
+# for k,v in key_to_effect_val.items():
+#     if 'wh2_dlc11_effect_force_unit_stat_weapon_damage_deckhands_depthguards' in k:
+#         print(k,v)
+#         break
+
+# print("\nkey_to_stat")
+# for k,v in key_to_stat.items():
+#     if 'wh2_dlc11_effect_force_unit_stat_weapon_damage_deckhands_depthguards' in k:
+#         print(k,v)
+#         break
+
+# print("\nkey_to_units")
+# for k,v in key_to_units.items():
+#     if 'wh2_dlc11_effect_force_unit_stat_weapon_damage_deckhands_depthguards' in k:
+#         print(k,v)
+#         break
