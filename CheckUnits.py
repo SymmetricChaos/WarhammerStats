@@ -78,17 +78,11 @@ print(rank_example.unit_card)
 
 print("\n\n\nExample of Speed")
 flier = TWWUnit(select_unit(unitsDF,"wh2_main_hef_mon_great_eagle"))
-print(flier['run_speed'])
-print(flier['fly_speed'])
-print(flier['charge_speed'])
-print(flier['charge_speed_flying'])
-# flier.toggle_effect("Frostbite!")
-flier.toggle_technology("Swiftsense")
-print(flier['run_speed'])
-print(flier['fly_speed'])
-print(flier['charge_speed'])
-print(flier['charge_speed_flying'])
-
+print(flier.unit_card)
+print(flier.speeds)
+flier.toggle_effect("Frostbite!")
+print(flier.unit_card)
+print(flier.speeds)
 
 
 print("\n\n\nExample of Imbuments")

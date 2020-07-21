@@ -181,16 +181,22 @@ class TWWUnit:
         abilities = textwrap.wrap(f"| Abilities: {', '.join(sorted(self['abilities']))}",50)
         abilities = "\n|    ".join(abilities)
         
+        
+        if len(self.effects)+len(self.techs) > 0:
+            active_sep = "|\n"
+        else:
+            active_sep = ""
+        
         active_effects = self.effects
         if len(active_effects) == 0:
-            active_effects = "| Active Effects: None"
+            active_effects = ""
         else:
             active_effects = textwrap.wrap(f"| Active Effects: {', '.join(sorted(active_effects))}",50)
             active_effects = "\n|    ".join(active_effects)
         
         active_techs = self.techs
         if len(active_techs) == 0:
-            active_techs = "| Active Techs: None"
+            active_techs = ""
         else:
             active_techs = textwrap.wrap(f"| Active Techs: {', '.join(sorted(active_techs))}",50)
             active_techs = "\n|    ".join(active_techs)
@@ -218,10 +224,17 @@ class TWWUnit:
                f"{attributes}\n" \
                f"{abilities}\n" \
                f"{spells}" \
-               f"|\n" \
+               f"{active_sep}" \
                f"{active_effects}\n" \
                f"{active_techs}\n"
     
+    @property
+    def speeds(self):
+        return {'run_speed':self['run_speed'],
+                'fly_speed':self['fly_speed'],
+                'charge_speed':self['charge_speed'],
+                'charge_speed_flying':self['charge_speed_flying'],
+                }
     
     # Completely reset the units stats
     def reset_unit(self):
