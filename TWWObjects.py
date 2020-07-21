@@ -8,6 +8,7 @@ from TWWEffect import TWWEffect
 
 effects_dict = pickle.load( open( str(Path(__file__).parent)+"\\DataFiles\\effectsDict.p", "rb" ) )
 fatigue_dict = pickle.load( open( str(Path(__file__).parent)+"\\DataFiles\\fatigueDict.p", "rb" ) )
+techs_dict = pickle.load( open( str(Path(__file__).parent)+"\\DataFiles\\techsDict.p", "rb" ) )
 
 class TWWUnit:
     
@@ -15,6 +16,7 @@ class TWWUnit:
     # definition of TWWUnit. As an class variable it is stored only once even
     # if multiple TWWUnit objects exist
     _EFFECTS = effects_dict
+    _TECHS = techs_dict
     _FATIGUE = fatigue_dict
     _EXP = {'accuracy': [0,3],
             'melee_attack': [0.6,0.12],
@@ -31,6 +33,7 @@ class TWWUnit:
         self.data = dict(data)
         self.shadow = copy.deepcopy(dict(data)) # shadow not to be modified
         self.effects = []  # names of active effects
+        self.techs = [] # names of active effects
         self.imbue_magical = 0 # number effects giving magical
         self.imbue_flaming = 0 # number effects giving flaming
     
@@ -185,6 +188,12 @@ class TWWUnit:
             active_effects = textwrap.wrap(f"| Active Effects: {', '.join(sorted(active_effects))}",50)
             active_effects = "\n|    ".join(active_effects)
         
+        active_techs = self.techs
+        if len(active_techs) == 0:
+            active_techs = "| Active Techs: None"
+        else:
+            active_techs = textwrap.wrap(f"| Active Techs: {', '.join(sorted(active_techs))}",50)
+            active_techs = "\n|    ".join(active_techs)
         
         # Lords and heroes always have the same unit count and rank
         if self['caste'] not in ('Lord','Hero'):
@@ -210,7 +219,8 @@ class TWWUnit:
                f"{abilities}\n" \
                f"{spells}" \
                f"|\n" \
-               f"{active_effects}\n"
+               f"{active_effects}\n" \
+               f"{active_techs}\n"
     
     
     # Completely reset the units stats
@@ -305,6 +315,15 @@ class TWWUnit:
         else:
             self.effects.remove(effect)
             self._EFFECTS[effect](self,remove=True)
+    
+    def toggle_technology(self,tech):
+        if tech not in self.techs:
+            self.techs.append(tech)
+            self._TECHS[tech](self)
+        else:
+            self.techs.remove(tech)
+            self._TECHS[tech](self,remove=True)
+    
     
     def set_fatigue(self,level):
         level = level.lower()

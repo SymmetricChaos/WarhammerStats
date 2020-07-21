@@ -140,4 +140,4 @@ for unit in U:
         E = TWWEffect(name,stat_effects,other_effects)
         handle_conflict(effects_dict,E)
 
-pickle.dump(effects_dict, open(cur_dir+"\\WorkedFiles\\effectsDict.p", "wb" ) )
+pickle.dump(effects_dict, open(cur_dir+"\\DataFiles\\effectsDict.p", "wb" ) )

@@ -1,6 +1,8 @@
 import csv
 from pathlib import Path
 from Translators import tech_stat_translator
+from TWWObjects import TWWEffect
+import pickle
 
 top_of_path = str(Path(__file__).parent)
 
@@ -95,7 +97,7 @@ for k,v in key_to_unit_set.items():
 
 
 # Tie everything to the name
-name_to_info = {}
+techs_dict = {}
 for tech_key,name in tech_key_to_name.items():
     if tech_key not in tech_key_to_keys:
         continue
@@ -104,16 +106,24 @@ for tech_key,name in tech_key_to_name.items():
     for e in effect_keys:
         if e not in key_to_stat:
             continue
-
+        
         for k in key_to_stat[e]:
             if k not in tech_stat_translator:
                 continue
+            
             stat_effects = tech_stat_translator[k]
-
             stat_value = key_to_effect_vals[e]
-            effect_tuple = (stat_effects[0],stat_value[0],stat_effects[1])
+            if stat_effects[1] == "mult":
+                val = 1+int(stat_value[0])/100
+            else:
+                val = int(stat_value[0])
+            effect_tuple = (stat_effects[0],val,stat_effects[1])
             effects.append(effect_tuple)
+    
+    techs_dict[name] = TWWEffect(name,effects,[])
 
-    name_to_info[name] = effects
+print(techs_dict["Swiftsense"].display())
 
-print(name_to_info['Marching Songs'])
+pickle.dump(techs_dict, open(top_of_path+"\\DataFiles\\techsDict.p", "wb" ) )
+
+
