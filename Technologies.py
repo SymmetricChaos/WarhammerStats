@@ -122,7 +122,7 @@ for tech_key,name in tech_key_to_name.items():
     
     techs_dict[name] = TWWEffect(name,effects,[])
 
-print(techs_dict["Swiftsense"].display())
+# print(techs_dict["Swiftsense"].display())
 
 pickle.dump(techs_dict, open(top_of_path+"\\DataFiles\\techsDict.p", "wb" ) )
 

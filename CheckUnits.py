@@ -92,3 +92,10 @@ imbument_example.toggle_effect("Flaming Sword of Rhuin")
 print(imbument_example.unit_card)
 imbument_example.toggle_effect("Flaming Sword of Rhuin")
 print(imbument_example.unit_card)
+
+
+print("\n\n\nExample of Technology")
+tech_example = TWWUnit(select_unit(unitsDF,"wh2_main_hef_mon_great_eagle"))
+print(tech_example.unit_card)
+tech_example.toggle_technology("Swiftsense")
+print(tech_example.unit_card)

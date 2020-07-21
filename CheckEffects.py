@@ -1,6 +1,7 @@
 import pickle
-effects_dict = pickle.load( open( "effectsDict.p", "rb" ) )
+from pathlib import Path
+effects_dict = pickle.load( open( str(Path(__file__).parent)+"\\DataFiles\\effectsDict.p", "rb" ) )
+techs_dict = pickle.load( open( str(Path(__file__).parent)+"\\DataFiles\\techsDict.p", "rb" ) )
 
-for e in effects_dict:
-    if e == "Weeping Blade":
-        print(effects_dict[e].display())
+print(effects_dict["Heroic Killing Blow"].display())
+print(techs_dict["Swiftsense"].display())
