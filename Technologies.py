@@ -39,17 +39,29 @@ with open(top_of_path+'\\DataFiles\\unit_set_to_unit_junctions_tables.tsv', enco
 
 # What unit sets are tied to each key
 key_to_unit_set = {}
+key_to_stat = {}
 with open(top_of_path+'\\DataFiles\\effect_bonus_value_ids_unit_sets_tables.tsv', encoding="utf8") as f:
     F = csv.reader(f,delimiter='\t')
     
     for n,row in enumerate(F):
-        if n < 3:
+        if n < 5:
             continue
-        if row[1] in key_to_unit_set:
-            if row[2] not in key_to_unit_set[row[1]]:
-                key_to_unit_set[row[1]] += [row[2]]
+        
+        stat,key,unit_set = row
+        
+        if key in key_to_unit_set:
+            if unit_set not in key_to_unit_set[key]:
+                key_to_unit_set[key] += [unit_set]
         else:
-            key_to_unit_set[row[1]] = [row[2]]
+            key_to_unit_set[key] = [unit_set]
+        
+        
+        if key in key_to_stat:
+            if stat not in key_to_stat[key]:
+                key_to_stat[key] += [stat]
+        else:
+            key_to_stat[key] = [stat]
+
 
 # What units are tied to each key
 key_to_units = {}
@@ -63,6 +75,12 @@ for k,v in key_to_unit_set.items():
 
 print("key_to_effect")
 for k,v in key_to_effect.items():
+    if 'wh2_dlc11_effect_force_unit_stat_weapon_damage_deckhands_depthguards' in k:
+        print(k,v)
+        break
+
+print("\nkey_to_stat")
+for k,v in key_to_stat.items():
     if 'wh2_dlc11_effect_force_unit_stat_weapon_damage_deckhands_depthguards' in k:
         print(k,v)
         break
