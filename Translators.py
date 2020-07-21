@@ -70,6 +70,39 @@ stat_translator = {
                     'stat_melee_defence': 'melee_defence',
                     }
 
+# Change a stat modifier from effect_bonus_value_ids_unit_sets_tables.tsv into a list we can use
+tech_stat_translator = {
+                        'range_mod': ['range','mult'],
+                        'ammo_mod': ['ammo','mult'],
+                        'reload': ['reload_skill','add'],
+                        
+                        'charge_bonus': ['charge_bonus','mult'],
+                        'charge_add': ['charge_bonus','add'],
+                        
+                        'melee_attack_mod': ['melee_attack','add'],
+                        'melee_defence_mod': ['melee_defence','add'],
+                        
+                        'melee_damage_ap_mod_add': ['melee_ap_damage','add'],
+                        'melee_damage_ap_mod_mult': ['melee_ap_damage','mult'],
+                        'melee_damage_mod_add': ['melee_base_damage','add'],
+                        'melee_damage_mod_mult': ['melee_base_damage','mult'],
+                        
+                        'missile_damage_ap_mod_add': ['ranged_ap_damage','add'],
+                        'missile_damage_ap_mod_mult': ['ranged_ap_damage','mult'],
+                        'missile_damage_mod_add': ['ranged_base_damage','add'],
+                        'missile_damage_mod_mult': ['ranged_base_damage','mult'],
+                        
+                        'morale': ['leadership','add'],
+                        
+                        'unit_damage_resistance_flame_mod': ['damage_mod_flame','add'],
+                        'unit_damage_resistance_all_mod': ['damage_mod_all','add'],
+                        'unit_damage_resistance_missile_mod': ['damage_mod_missile','add'],
+                        'unit_damage_resistance_physical_mod': ['damage_mod_physical','add'],
+                        'unit_damage_resistance_magic_mod': ['damage_mod_magic','add'],
+                        
+                        'mod_land_movement_battle': ['speed','mult']
+                        }
+
 # Go from name code to the common name
 faction_code_to_name = {'brt': "Brettonia",
                         'bst': "Beastmen",

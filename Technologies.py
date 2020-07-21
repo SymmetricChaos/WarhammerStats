@@ -1,5 +1,6 @@
 import csv
 from pathlib import Path
+from Translators import tech_stat_translator
 
 top_of_path = str(Path(__file__).parent)
 
@@ -96,44 +97,23 @@ for k,v in key_to_unit_set.items():
 # Tie everything to the name
 name_to_info = {}
 for tech_key,name in tech_key_to_name.items():
-    try:
-        effect_keys = tech_key_to_keys[tech_key]
-        stat_effects = [key_to_stat[e] for e in effect_keys]
-        stat_value = [key_to_effect_vals[e] for e in effect_keys]
-        name_to_info[name] = [tech_key,effect_keys,stat_effects,stat_value]
-    except:
-        pass
+    if tech_key not in tech_key_to_keys:
+        continue
+    effect_keys = tech_key_to_keys[tech_key]
+    effects = []
+    for e in effect_keys:
+        if e not in key_to_stat:
+            continue
 
+        for k in key_to_stat[e]:
+            if k not in tech_stat_translator:
+                continue
+            stat_effects = tech_stat_translator[k]
 
+            stat_value = key_to_effect_vals[e]
+            effect_tuple = (stat_effects[0],stat_value[0],stat_effects[1])
+            effects.append(effect_tuple)
 
-print(name_to_info["Salvaged Arsenal"])
+    name_to_info[name] = effects
 
-# print("tech_key_to_key")
-# for k,v in tech_key_to_key.items():
-#     if k == 'tech_cst_piracy_03':
-#         print(k,v)
-#         break
-
-# print("\ntech_key_to_name")
-# for k,v in tech_key_to_name.items():
-#     if 'Salvage' in v:
-#         print(k,v)
-#         break
-
-# print("\nkey_to_effect_val")
-# for k,v in key_to_effect_val.items():
-#     if 'wh2_dlc11_effect_force_unit_stat_weapon_damage_deckhands_depthguards' in k:
-#         print(k,v)
-#         break
-
-# print("\nkey_to_stat")
-# for k,v in key_to_stat.items():
-#     if 'wh2_dlc11_effect_force_unit_stat_weapon_damage_deckhands_depthguards' in k:
-#         print(k,v)
-#         break
-
-# print("\nkey_to_units")
-# for k,v in key_to_units.items():
-#     if 'wh2_dlc11_effect_force_unit_stat_weapon_damage_deckhands_depthguards' in k:
-#         print(k,v)
-#         break
+print(name_to_info['Marching Songs'])
