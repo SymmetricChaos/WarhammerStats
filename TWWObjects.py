@@ -182,14 +182,9 @@ class TWWUnit:
         abilities = "\n|    ".join(abilities)
         
         
-        if len(self.effects)+len(self.techs) > 0:
-            active_sep = "|\n"
-        else:
-            active_sep = ""
-        
         active_effects = self.effects
         if len(active_effects) == 0:
-            active_effects = ""
+            active_effects = "| Active Effects: None"
         else:
             active_effects = textwrap.wrap(f"| Active Effects: {', '.join(sorted(active_effects))}",50)
             active_effects = "\n|    ".join(active_effects)
@@ -224,7 +219,7 @@ class TWWUnit:
                f"{attributes}\n" \
                f"{abilities}\n" \
                f"{spells}" \
-               f"{active_sep}" \
+               f"|\n" \
                f"{active_effects}\n" \
                f"{active_techs}\n"
     
