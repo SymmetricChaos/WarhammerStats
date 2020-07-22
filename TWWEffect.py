@@ -11,15 +11,23 @@ class TWWEffect:
     def __repr__(self):
         return f"TWWEffect: {self.name}"
     
-    def display(self):
-        S = f"{self.name}\n"
+    @property
+    def effect_card(self):
+        S = f"| {self.name}\n"
         for e in self.stat_effects:
-            if e[2] == "add":
-                S += f"{e[0]} +{e[1]}\n"
+            if e[1] > 0 and e[2] == 'add':
+                sign = "+"
+            elif e[1] > 1 and e[2] == 'mult':
+                sign = "+"
             else:
-                S += f"{e[0]} +{int((e[1]-1)*100)}%\n"
+                sign = ""
+            
+            if e[2] == "add":
+                S += f"| {e[0]} {sign}{e[1]}\n"
+            else:
+                S += f"| {e[0]} {sign}{int((e[1]-1)*100)}%\n"
         for o in self.other_effects:
-            S += f"Grants {o}\n"
+            S += f"| Grants {o}\n"
         return S
     
     def __call__(self,unit,remove=False):
