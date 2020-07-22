@@ -5,3 +5,4 @@ techs_dict = pickle.load( open( str(Path(__file__).parent)+"\\DataFiles\\techsDi
 
 print(effects_dict["Heroic Killing Blow"].display())
 print(techs_dict["Swiftsense"].display())
+print(effects_dict["Tombstrike"].display())

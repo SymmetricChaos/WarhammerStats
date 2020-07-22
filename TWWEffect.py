@@ -12,7 +12,15 @@ class TWWEffect:
         return f"TWWEffect: {self.name}"
     
     def display(self):
-        return f"{self.name}\n{self.stat_effects}\n{self.other_effects}"
+        S = f"{self.name}\n"
+        for e in self.stat_effects:
+            if e[2] == "add":
+                S += f"{e[0]} +{e[1]}\n"
+            else:
+                S += f"{e[0]} +{int((e[1]-1)*100)}%\n"
+        for o in self.other_effects:
+            S += f"Grants {o}\n"
+        return S
     
     def __call__(self,unit,remove=False):
         for stat, val, how in self.stat_effects:
