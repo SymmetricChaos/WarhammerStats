@@ -6,9 +6,9 @@ import os
 
 cur_dir = os.getcwd()
 
-with open(cur_dir+'\\RawFiles\\TWWAbilities.json', encoding="utf8") as f:
+with open(cur_dir+'\\DataFiles\\TWWAbilities.json', encoding="utf8") as f:
     A = json.load(f)
-with open(cur_dir+'\\RawFiles\\unitsdata.json', encoding="utf8") as f:
+with open(cur_dir+'\\DataFiles\\unitsdata.json', encoding="utf8") as f:
     U = json.load(f)
 
 
@@ -22,17 +22,16 @@ def statEffects_to_list(statEffects):
 
 def handle_conflict(D,new_entry):
     if new_entry.name in D:
-        if new_entry.display() != effects_dict[new_entry.name].display():
+        if new_entry.effect_card != effects_dict[new_entry.name].effect_card:
             print("\nCONFLICT")
             print("old")
-            print(effects_dict[new_entry.name].display())
+            print(effects_dict[new_entry.name].effect_card)
             print("\nnew")
-            print(new_entry.display())
+            print(new_entry.effect_card)
             rename = input("annotate which?")
             if rename == "old":
                 newname = name + input("annotate old with:")
-                D[newname] = D[name]
-                D[newname] = newname
+                D[newname] = D[new_entry.name]
             if rename == "new":
                 new_entry.name += input("annotate new with:")
     D[new_entry.name] = new_entry
@@ -67,6 +66,8 @@ for ability in A:
                 other_effects.append("imbue_flaming")
                 
             E = TWWEffect(name,stat_effects,other_effects)
+            if E.stat_effects == [] and E.other_effects == []:
+                continue
             handle_conflict(effects_dict,E)
 
 
@@ -96,6 +97,8 @@ for ability in A:
         other_effects.append("imbue_flaming")
     
     E = TWWEffect(name,stat_effects,other_effects)
+    if E.stat_effects == [] and E.other_effects == []:
+        continue
     handle_conflict(effects_dict,E)
 
 
@@ -119,6 +122,8 @@ for unit in U:
                     other_effects.append( attribute_pretty_name[attr['attribute']] )
             
             E = TWWEffect(name,stat_effects,other_effects)
+            if E.stat_effects == [] and E.other_effects == []:
+                continue
             handle_conflict(effects_dict,E)
 
 
@@ -138,6 +143,8 @@ for unit in U:
                 other_effects.append( attribute_pretty_name[attr['attribute']] )
         
         E = TWWEffect(name,stat_effects,other_effects)
+        if E.stat_effects == [] and E.other_effects == []:
+            continue
         handle_conflict(effects_dict,E)
 
 pickle.dump(effects_dict, open(cur_dir+"\\DataFiles\\effectsDict.p", "wb" ) )

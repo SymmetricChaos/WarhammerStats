@@ -32,6 +32,7 @@ with open(top_of_path+'\\DataFiles\\technology_effects_junction_tables.tsv', enc
 
 #What tech_key corresponds to each name in the UI
 tech_key_to_name = {}
+tech_key_to_tool = {}
 with open(top_of_path+'\\DataFiles\\technologies__.loc.tsv', encoding="utf8") as f:
     F = csv.reader(f,delimiter='\t')
     
@@ -43,6 +44,7 @@ with open(top_of_path+'\\DataFiles\\technologies__.loc.tsv', encoding="utf8") as
         except:
             if "onscreen" in row[0]:
                 print(row)
+
 
 # What units are in each unit set
 unit_set_to_units = {}
@@ -56,6 +58,7 @@ with open(top_of_path+'\\DataFiles\\unit_set_to_unit_junctions_tables.tsv', enco
             unit_set_to_units[row[5]] = [row[4]]
         else:
             unit_set_to_units[row[5]] += [row[4]]
+
 
 # What unit sets are tied to each effect key
 # What stat is tied to each effect key
@@ -119,6 +122,9 @@ for tech_key,name in tech_key_to_name.items():
                 val = int(stat_value[0])
             effect_tuple = (stat_effects[0],val,stat_effects[1])
             effects.append(effect_tuple)
+    
+    if effects == []:
+        continue
     
     techs_dict[name] = TWWEffect(name,effects,[])
 

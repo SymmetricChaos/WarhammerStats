@@ -100,7 +100,10 @@ tech_stat_translator = {
                         'unit_damage_resistance_physical_mod': ['damage_mod_physical','add'],
                         'unit_damage_resistance_magic_mod': ['damage_mod_magic','add'],
                         
-                        'mod_land_movement_battle': ['speed','mult']
+                        'mod_land_movement_battle': ['speed','mult'],
+                        
+                        'damage_vs_infantry': ['melee_bonus_v_infantry','add'],
+                        'damage_vs_large_entities': ['melee_bonus_v_large','add']
                         }
 
 # Go from name code to the common name
