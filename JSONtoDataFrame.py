@@ -230,7 +230,7 @@ if __name__ == '__main__':
     import pandas as pd 
     import pickle
     
-    with open('unitsdata.json', encoding="utf8") as f:
+    with open('DataFiles\\unitsdata.json', encoding="utf8") as f:
         J = json.load(f)
      
     # Create the dictionary
@@ -243,23 +243,23 @@ if __name__ == '__main__':
     
     
     # Save as a DataFrame, as a dictionary, and as a csv file
-    pickle.dump(unitsDF, open( "unitsDF.p", "wb" ) )
-    pickle.dump(unitsDF.to_dict(), open( "unitsDict.p", "wb" ) )
-    unitsDF.to_csv("units.csv")
+    pickle.dump(unitsDF, open( "DataFiles\\unitsDF.p", "wb" ) )
+    pickle.dump(unitsDF.to_dict(), open( "DataFiles\\unitsDict.p", "wb" ) )
+    unitsDF.to_csv("DataFiles\\units.csv")
     
     # Create a deeply cleaned version of the DataFrame that removed all non-standard
     # units. This avoid some issues when looking at the data
     unitsDFclean = no_nonstandard(unitsDF)
     
-    pickle.dump(unitsDFclean, open( "unitsDF_clean.p", "wb" ) )
-    pickle.dump(unitsDFclean.to_dict(), open( "unitsDict_clean.p", "wb" ) )
-    unitsDFclean.to_csv("units_clean.csv")
+    pickle.dump(unitsDFclean, open( "DataFiles\\unitsDF_clean.p", "wb" ) )
+    pickle.dump(unitsDFclean.to_dict(), open( "DataFiles\\unitsDict_clean.p", "wb" ) )
+    unitsDFclean.to_csv("DataFiles\\units_clean.csv")
     
     # Deduplicate characters that can have various different lores of magic
     # This has a big impact on High Elves which have many identical Mages and
     # Archmages
     unitsDFdedupe = deduplicate_lore(unitsDFclean)
     
-    pickle.dump(unitsDFdedupe, open( "unitsDF_dedupe.p", "wb" ) )
-    pickle.dump(unitsDFdedupe.to_dict(), open( "unitsDict_dedupe.p", "wb" ) )
-    unitsDFdedupe.to_csv("units_dedupe.csv")
+    pickle.dump(unitsDFdedupe, open( "DataFiles\\unitsDF_dedupe.p", "wb" ) )
+    pickle.dump(unitsDFdedupe.to_dict(), open( "DataFiles\\unitsDict_dedupe.p", "wb" ) )
+    unitsDFdedupe.to_csv("DataFiles\\units_dedupe.csv")
