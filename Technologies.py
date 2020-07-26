@@ -16,6 +16,9 @@ with open(top_of_path+'\\DataFiles\\technology_effects_junction_tables.tsv', enc
     F = csv.reader(f,delimiter='\t')
     
     for n,row in enumerate(F):
+        
+
+        
         if n < 3:
             continue
         
@@ -30,6 +33,7 @@ with open(top_of_path+'\\DataFiles\\technology_effects_junction_tables.tsv', enc
             tech_key_to_keys[row[0]] = [row[1]]
 
 
+
 #What tech_key corresponds to each name in the UI
 tech_key_to_name = {}
 tech_key_to_tool = {}
@@ -42,9 +46,7 @@ with open(top_of_path+'\\DataFiles\\technologies__.loc.tsv', encoding="utf8") as
             if "onscreen" in tech_key and name != "":
                 tech_key_to_name[tech_key[27:]] = name
         except:
-            if "onscreen" in row[0]:
-                print(row)
-
+            print(row,"\n")
 
 # What units are in each unit set
 unit_set_to_units = {}
@@ -111,6 +113,7 @@ for tech_key,name in tech_key_to_name.items():
             continue
         
         for k in key_to_stat[e]:
+            
             if k not in tech_stat_translator:
                 continue
             
@@ -128,8 +131,13 @@ for tech_key,name in tech_key_to_name.items():
     
     techs_dict[name] = TWWEffect(name,effects,[])
 
-# print(techs_dict["Swiftsense"].display())
+# print(key_to_stat["wh2_main_effect_tech_armour_increase_hef_silverhelm_dragon_princes"])
+# print(tech_key_to_keys["tech_hef_2_05"])
+# print(techs_dict["Swiftsense"].effect_card)
+print(techs_dict["Heavy Ithilmar Armour"].effect_card)
+# tech_hef_2_05
 
-pickle.dump(techs_dict, open(top_of_path+"\\DataFiles\\techsDict.p", "wb" ) )
+
+# pickle.dump(techs_dict, open(top_of_path+"\\DataFiles\\techsDict.p", "wb" ) )
 
 

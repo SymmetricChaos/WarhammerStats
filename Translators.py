@@ -72,6 +72,8 @@ stat_translator = {
 
 # Change a stat modifier from effect_bonus_value_ids_unit_sets_tables.tsv into a list we can use
 tech_stat_translator = {
+                        'armour_mod': ['armour','add'],
+                        
                         'range_mod': ['range','mult'],
                         'ammo_mod': ['ammo','mult'],
                         'reload': ['reload_skill','add'],

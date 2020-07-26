@@ -7,23 +7,19 @@ from Translators import attribute_pretty_name, faction_code_to_name
 
 # Grab complex traits
 def get_attributes(D):
-    att = D["attributes"]
-    return [attribute_pretty_name[line["key"]] for line in att]
+    return [attribute_pretty_name[line["key"]] for line in D["attributes"]]
 
 def get_abilities(D):
-    att = D["abilities"]
-    return [line["name"] for line in att]
+    return [line["name"] for line in D["abilities"]]
 
 def get_factions(D):
-    fac = D["factions"]
-    return [line["screen_name"] for line in fac]
+    return [line["screen_name"] for line in D["factions"]]
 
 def get_faction_group(D):
     return D["key"].split("_")[2]
 
 def get_spells(D):
-    spl = D["spells"]
-    return [line["name"] for line in spl]
+    return [line["name"] for line in D["spells"]]
 
 
 
@@ -57,7 +53,7 @@ def set_melee_stats(D,unit):
         D["melee_contact_effect"] = "" # <- internally called phase but goes into the data as contact effect
     else:
         D["melee_contact_effect"] = weapon["phase"]["name"].split("\\")[0] # <- contact effects can contain an image after the name
-    
+
 
 # Mutate some dictionary D to add the ranged vital stats of unit
 def set_ranged_stats(D,unit):
@@ -95,8 +91,8 @@ def set_ranged_stats(D,unit):
         D["explosion_is_magical"] = False
         D["explosion_is_flaming"] = False
         D["explosion_contact_effect"] = ""
-
-
+    
+    
     else:
         # Most ranged weapon stats are tied to the projectile
         projectile = unit["primary_missile_weapon"]["projectile"]
@@ -145,8 +141,6 @@ def set_ranged_stats(D,unit):
         
         # Total shots
         D["ammo"] = unit["primary_missile_weapon"]["ammo"]
-        # No idea how this affects accuracy exactly
-        #D["accuracy"] = unit["total_accuracy"] #removed temporarily by ciment
 
 
 def create_units_dict_from_JSON(J):
@@ -219,7 +213,7 @@ def create_units_dict_from_JSON(J):
         # Weapon stats
         set_melee_stats(D,unit)
         set_ranged_stats(D,unit)
-    
+        
         units.append(D)
     return units
 
@@ -237,9 +231,6 @@ if __name__ == '__main__':
     units = create_units_dict_from_JSON(J)
     # Convert to a pandas DataFrame
     unitsDF = pd.DataFrame(units)
-    
-    pd.set_option('display.max_columns', None)
-    pd.set_option('display.max_rows', None)
     
     
     # Save as a DataFrame, as a dictionary, and as a csv file
