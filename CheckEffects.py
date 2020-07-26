@@ -14,15 +14,5 @@ print(effects_dict["Tombstrike"].effect_card)
 
 print("\n\nSome Technologies\n")
 print(techs_dict["Swiftsense"].effect_card)
+print(techs_dict["Heavy Ithilmar Armour"].effect_card)
 
-
-# print("\n\nEmpty Effects\n")
-# for k,v in effects_dict.items():
-#     if v.stat_effects == [] and v.other_effects == []:
-#         print(v.effect_card)
-
-
-# print("\n\nEmpty Technologies\n")
-# for k,v in techs_dict.items():
-#     if v.stat_effects == [] and v.other_effects == []:
-#         print(v.effect_card)
