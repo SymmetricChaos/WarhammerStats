@@ -66,6 +66,7 @@ def check_rank():
     rank_example.set_rank(0)
     print(rank_example.unit_card)
 
+
 def check_speed():
     print("\n\n\nExample of Speed")
     flier = TWWUnit(select_unit(unitsDF,"wh2_main_hef_mon_great_eagle"))
@@ -101,5 +102,8 @@ def check_technology():
     print(tech_example.unit_card)
 
 
+
+
+
 if __name__ == '__main__':
-    check_imbuments()
+    check_technology()

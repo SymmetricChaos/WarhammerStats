@@ -1,9 +1,7 @@
 import pickle
 import pandas as pd
 import numpy as np
-from UtilityFunctions import random_unit, all_from_faction, all_attributes, \
-                             all_abilities, all_spells, no_special_category, \
-                             no_summoned
+from UtilityFunctions import all_from_faction
 
 units = pickle.load( open( "unitsDF.p", "rb" ) )
 pd.set_option('display.max_rows', 500)
@@ -43,7 +41,7 @@ if __name__ == '__main__':
 #    print("Show A random Unit's Stats\n")
 #    R = random_unit(units)
 #    print(R)
-    # print("\n\n\n\nShow the various categories a unit can fall into\n")
+    print("\n\n\n\nShow the various categories a unit can fall into\n")
     show_categorical_stats()
 
     # print(units[units["reload_skill"]==15])

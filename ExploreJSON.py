@@ -36,7 +36,7 @@ if __name__ == '__main__':
         J = json.load(f)
     
     for j in J:
-        if 'Death Runners' in j['name']:
+        if 'Warplock' in j['name']:
             show_dict(j,"")
 
     
